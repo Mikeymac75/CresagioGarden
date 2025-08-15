@@ -3,51 +3,37 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
   Alert,
-  ScrollView
+  Dimensions
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import MapView, { Marker } from 'react-native-maps';
+import { fetchClimateData } from '../services/GardeningService';
 
 export default function SetupScreen({ navigation }) {
-  const [zipCode, setZipCode] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [selectedZone, setSelectedZone] = useState(null);
+  const [pin, setPin] = useState({
+    latitude: 45.4215, // Default to Ottawa
+    longitude: -75.6972,
+  });
+  const [climateData, setClimateData] = useState(null);
 
-  // Simple hardiness zone mapping based on zip codes (simplified for MVP)
-  const getHardinessZone = (zip) => {
-    const firstDigit = parseInt(zip.charAt(0));
-    const secondDigit = parseInt(zip.charAt(1));
-    
-    // Rough US hardiness zone mapping
-    if (firstDigit === 0) return 3; // Northern states
-    if (firstDigit === 1) return 4;
-    if (firstDigit === 2) return 5;
-    if (firstDigit === 3) return 6;
-    if (firstDigit === 4) return 7;
-    if (firstDigit === 5) return 7;
-    if (firstDigit === 6) return 8;
-    if (firstDigit === 7) return 8;
-    if (firstDigit === 8) return 9;
-    if (firstDigit === 9) return 10;
-    
-    return 6; // Default middle zone
+  const handleMapPress = (e) => {
+    const location = e.nativeEvent.coordinate;
+    setPin(location);
+    const data = fetchClimateData(location);
+    setClimateData(data);
   };
 
   const handleContinue = async () => {
-    if (!zipCode || zipCode.length < 5) {
-      Alert.alert('Error', 'Please enter a valid zip code');
+    if (!climateData) {
+      Alert.alert('Set Location', 'Please drop a pin on your garden location first.');
       return;
     }
 
-    const zone = getHardinessZone(zipCode);
     const userData = {
-      zipCode,
-      city,
-      state,
-      hardinessZone: zone,
+      ...pin,
+      ...climateData,
       setupComplete: true
     };
 
@@ -60,67 +46,48 @@ export default function SetupScreen({ navigation }) {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.content}>
+    <View style={styles.container}>
+      <View style={styles.header}>
         <Text style={styles.title}>Welcome to GardenCommand! 🌱</Text>
         <Text style={styles.subtitle}>
-          Let's set up your personalized garden assistant
+          To create your personalized schedule, drop a pin on your garden.
         </Text>
-
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Your Location</Text>
-          <Text style={styles.description}>
-            We'll use this to create your custom planting calendar
-          </Text>
-
-          <TextInput
-            style={styles.input}
-            placeholder="Zip Code (12345)"
-            value={zipCode}
-            onChangeText={setZipCode}
-            keyboardType="numeric"
-            maxLength={5}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="City (optional)"
-            value={city}
-            onChangeText={setCity}
-          />
-
-          <TextInput
-            style={styles.input}
-            placeholder="State (optional)"
-            value={state}
-            onChangeText={setState}
-          />
-
-          {zipCode.length >= 5 && (
-            <View style={styles.zoneInfo}>
-              <Text style={styles.zoneText}>
-                📍 Hardiness Zone: {getHardinessZone(zipCode)}
-              </Text>
-              <Text style={styles.zoneDescription}>
-                This determines your frost dates and planting schedule
-              </Text>
-            </View>
-          )}
-        </View>
-
-        <TouchableOpacity style={styles.continueButton} onPress={handleContinue}>
-          <Text style={styles.continueButtonText}>Start Gardening!</Text>
-        </TouchableOpacity>
-
-        <View style={styles.features}>
-          <Text style={styles.featuresTitle}>What you'll get:</Text>
-          <Text style={styles.feature}>🗓️ Personalized planting calendar</Text>
-          <Text style={styles.feature}>🌿 Track up to 10 plants (Free)</Text>
-          <Text style={styles.feature}>📔 Garden journal with photos</Text>
-          <Text style={styles.feature}>💡 Expert growing tips</Text>
-        </View>
       </View>
-    </ScrollView>
+
+      <MapView
+        style={styles.map}
+        initialRegion={{
+          ...pin,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+        onPress={handleMapPress}
+      >
+        <Marker coordinate={pin} title="My Garden" description="Your selected location" />
+      </MapView>
+      
+      {climateData && (
+        <View style={styles.zoneInfo}>
+          <Text style={styles.zoneText}>
+            📍 Hardiness Zone: {climateData.hardinessZone}
+          </Text>
+          <Text style={styles.zoneDescription}>
+            Last Frost: {new Date(climateData.lastFrostDate + 'T00:00:00').toLocaleDateString()}
+          </Text>
+          <Text style={styles.zoneDescription}>
+            First Frost: {new Date(climateData.firstFrostDate + 'T00:00:00').toLocaleDateString()}
+          </Text>
+        </View>
+      )}
+
+      <TouchableOpacity 
+        style={[styles.continueButton, !climateData && styles.disabledButton]} 
+        onPress={handleContinue}
+        disabled={!climateData}
+      >
+        <Text style={styles.continueButtonText}>Start Gardening!</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
@@ -129,11 +96,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f5f5',
   },
-  content: {
+  header: {
     padding: 20,
+    paddingTop: 40,
+    backgroundColor: 'white',
   },
   title: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#2E7D32',
@@ -143,44 +112,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
     color: '#666',
-    marginBottom: 30,
   },
-  card: {
-    backgroundColor: 'white',
-    borderRadius: 12,
-    padding: 20,
-    marginBottom: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 3,
-  },
-  cardTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 5,
-  },
-  description: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 20,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
-    padding: 12,
-    fontSize: 16,
-    marginBottom: 15,
-    backgroundColor: '#f9f9f9',
+  map: {
+    width: Dimensions.get('window').width,
+    flex: 1,
   },
   zoneInfo: {
     backgroundColor: '#E8F5E8',
     padding: 15,
+    margin: 20,
     borderRadius: 8,
-    marginTop: 10,
   },
   zoneText: {
     fontSize: 16,
@@ -197,33 +138,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 16,
     alignItems: 'center',
+    marginHorizontal: 20,
     marginBottom: 20,
+  },
+  disabledButton: {
+    backgroundColor: '#a5d6a7',
   },
   continueButtonText: {
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
-  },
-  features: {
-    backgroundColor: 'white',
-    borderRadius: 12,
-    padding: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 3,
-  },
-  featuresTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 15,
-  },
-  feature: {
-    fontSize: 16,
-    color: '#555',
-    marginBottom: 8,
-    paddingLeft: 5,
   },
 });

@@ -5,77 +5,66 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  Alert
+  ActivityIndicator
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { PLANTS, HARDINESS_ZONES } from '../data/plants';
+import { getPlantableNow } from '../services/GardeningService';
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function HomeScreen({ navigation }) {
   const [userData, setUserData] = useState(null);
-  const [currentWeekPlants, setCurrentWeekPlants] = useState([]);
+  const [plantableNow, setPlantableNow] = useState([]);
   const [plantCount, setPlantCount] = useState(0);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadUserData();
-    loadPlantCount();
-  }, []);
+  // useFocusEffect will refetch data every time the screen comes into view
+  useFocusEffect(
+    React.useCallback(() => {
+      const loadData = async () => {
+        setLoading(true);
+        try {
+          const data = await AsyncStorage.getItem('userData');
+          if (data) {
+            const parsed = JSON.parse(data);
+            setUserData(parsed);
+            
+            if (parsed.firstFrostDate) {
+              const plantable = getPlantableNow(parsed.firstFrostDate);
+              setPlantableNow(plantable);
+            }
+          }
 
-  const loadUserData = async () => {
-    try {
-      const data = await AsyncStorage.getItem('userData');
-      if (data) {
-        const parsed = JSON.parse(data);
-        setUserData(parsed);
-        calculateCurrentWeekPlants(parsed.hardinessZone);
-      }
-    } catch (error) {
-      console.error('Error loading user data:', error);
-    }
-  };
+          const myGarden = await AsyncStorage.getItem('myGarden');
+          if (myGarden) {
+            const plants = JSON.parse(myGarden);
+            setPlantCount(plants.length);
+          } else {
+            setPlantCount(0);
+          }
 
-  const loadPlantCount = async () => {
-    try {
-      const myGarden = await AsyncStorage.getItem('myGarden');
-      if (myGarden) {
-        const plants = JSON.parse(myGarden);
-        setPlantCount(plants.length);
-      }
-    } catch (error) {
-      console.error('Error loading plant count:', error);
-    }
-  };
+        } catch (error) {
+          console.error('Error loading data:', error);
+        } finally {
+          setLoading(false);
+        }
+      };
 
-  const calculateCurrentWeekPlants = (zone) => {
-    // Simple calculation for what to plant this week
-    // In a real app, this would be more sophisticated
-    const currentDate = new Date();
-    const currentMonth = currentDate.getMonth() + 1; // 1-12
-    
-    let recommendations = [];
-    
-    if (currentMonth >= 3 && currentMonth <= 5) { // Spring
-      recommendations = PLANTS.filter(plant => 
-        plant.directSowWeeksAfterLastFrost <= 2 || plant.transplantWeeksAfterLastFrost <= 2
-      ).slice(0, 3);
-    } else if (currentMonth >= 6 && currentMonth <= 8) { // Summer
-      recommendations = PLANTS.filter(plant => 
-        plant.name.includes('Bean') || plant.name.includes('Cucumber') || plant.name === 'Basil'
-      ).slice(0, 3);
-    } else if (currentMonth >= 9 && currentMonth <= 11) { // Fall
-      recommendations = PLANTS.filter(plant => 
-        plant.category === 'Leafy Green' || plant.name === 'Radishes'
-      ).slice(0, 3);
-    } else { // Winter
-      recommendations = []; // Plan for next season
-    }
-    
-    setCurrentWeekPlants(recommendations);
-  };
+      loadData();
+    }, [])
+  );
+
+  if (loading) {
+    return (
+      <View style={[styles.container, styles.center]}>
+        <ActivityIndicator size="large" color="#4CAF50" />
+      </View>
+    );
+  }
 
   if (!userData) {
     return (
-      <View style={styles.container}>
-        <Text>Loading...</Text>
+      <View style={[styles.container, styles.center]}>
+        <Text>Could not load user data.</Text>
       </View>
     );
   }
@@ -87,7 +76,7 @@ export default function HomeScreen({ navigation }) {
           Welcome back! 🌱
         </Text>
         <Text style={styles.locationText}>
-          📍 Zone {userData.hardinessZone} • {userData.city || userData.zipCode}
+          📍 Zone {userData.hardinessZone}
         </Text>
       </View>
 
@@ -98,8 +87,8 @@ export default function HomeScreen({ navigation }) {
         </View>
         <View style={styles.statDivider} />
         <View style={styles.statItem}>
-          <Text style={styles.statNumber}>{currentWeekPlants.length}</Text>
-          <Text style={styles.statLabel}>Recommended This Week</Text>
+          <Text style={styles.statNumber}>{plantableNow.length}</Text>
+          <Text style={styles.statLabel}>Plantable Now</Text>
         </View>
       </View>
 
@@ -116,19 +105,19 @@ export default function HomeScreen({ navigation }) {
       )}
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>🗓️ What to Plant This Week</Text>
-        {currentWeekPlants.length > 0 ? (
-          currentWeekPlants.map(plant => (
+        <Text style={styles.sectionTitle}>✅ What You Can Plant Now</Text>
+        {plantableNow.length > 0 ? (
+          plantableNow.map(plant => (
             <View key={plant.id} style={styles.plantCard}>
               <Text style={styles.plantName}>{plant.name}</Text>
               <Text style={styles.plantDescription}>{plant.description}</Text>
-              <Text style={styles.plantTip}>💡 {plant.tips}</Text>
+              <Text style={styles.plantTip}>💡 Matures in ~{plant.daysToMaturity} days</Text>
             </View>
           ))
         ) : (
           <View style={styles.emptyState}>
             <Text style={styles.emptyStateText}>
-              No planting recommendations for this week. Check back later!
+              It's likely too late in the season to plant new crops. Time to plan for next year!
             </Text>
           </View>
         )}
@@ -167,10 +156,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f5f5',
   },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   header: {
     backgroundColor: '#4CAF50',
     padding: 20,
-    paddingTop: 10,
+    paddingBottom: 30,
   },
   welcomeText: {
     fontSize: 24,
@@ -184,7 +177,8 @@ const styles = StyleSheet.create({
   },
   statsCard: {
     backgroundColor: 'white',
-    margin: 20,
+    marginHorizontal: 20,
+    marginTop: -20, // Pulls the card up into the header
     padding: 20,
     borderRadius: 12,
     flexDirection: 'row',
@@ -193,14 +187,14 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
-    elevation: 3,
+    elevation: 5,
   },
   statItem: {
     alignItems: 'center',
     flex: 1,
   },
   statNumber: {
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: 'bold',
     color: '#4CAF50',
   },
@@ -212,12 +206,11 @@ const styles = StyleSheet.create({
   statDivider: {
     width: 1,
     backgroundColor: '#ddd',
-    marginHorizontal: 20,
   },
   upgradeCard: {
     backgroundColor: '#FFF3E0',
     margin: 20,
-    marginTop: 0,
+    marginTop: 20,
     padding: 20,
     borderRadius: 12,
     borderLeftWidth: 4,
@@ -246,7 +239,7 @@ const styles = StyleSheet.create({
   },
   section: {
     margin: 20,
-    marginTop: 0,
+    marginTop: 10,
   },
   sectionTitle: {
     fontSize: 20,
@@ -261,7 +254,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.05,
     shadowRadius: 4,
     elevation: 2,
   },
@@ -274,11 +267,11 @@ const styles = StyleSheet.create({
   plantDescription: {
     fontSize: 14,
     color: '#666',
-    marginBottom: 5,
+    marginBottom: 8,
   },
   plantTip: {
     fontSize: 12,
-    color: '#4CAF50',
+    color: '#2E7D32',
     fontStyle: 'italic',
   },
   emptyState: {
@@ -303,7 +296,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.05,
     shadowRadius: 4,
     elevation: 2,
   },
@@ -311,5 +304,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#333',
     textAlign: 'center',
+    fontWeight: '500',
   },
 });
