@@ -110,3 +110,53 @@ export const getPlantableNow = (firstFrostDate) => {
     return false;
   });
 };
+
+/**
+ * **-- NEW FUNCTION --**
+ * Generates and filters tasks for the user's specific garden for the upcoming week.
+ * @param {array} myGarden - The user's garden array from AsyncStorage.
+ * @param {string} lastFrostDate - The user's last spring frost date (YYYY-MM-DD).
+ * @returns {array} A sorted list of tasks for the next 7 days.
+ */
+export const getUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
+  if (!myGarden || myGarden.length === 0) {
+    return [];
+  }
+
+  let allTasks = [];
+  myGarden.forEach(gardenEntry => {
+    const plantDetails = PLANTS.find(p => p.id === gardenEntry.plantId);
+    if (plantDetails) {
+      // We only care about tasks relevant to plants already planted, like care/harvest.
+      // For this MVP, we will simulate a "Watering" task.
+      const plantedDate = new Date(gardenEntry.plantedDate);
+
+      // Add a recurring "Water" task every 3 days for demonstration
+      for (let i = 0; i < plantDetails.daysToMaturity; i += 3) {
+        const waterDate = new Date(plantedDate);
+        waterDate.setDate(waterDate.getDate() + i);
+        allTasks.push({
+          plantName: plantDetails.name,
+          task: `💧 Water ${plantDetails.name}`,
+          date: waterDate.toISOString(),
+          type: 'care'
+        });
+      }
+    }
+  });
+
+  // Filter for tasks in the next 7 days
+  const today = new Date();
+  const nextWeek = new Date();
+  nextWeek.setDate(today.getDate() + 7);
+
+  const upcomingTasks = allTasks.filter(task => {
+    const taskDate = new Date(task.date);
+    return taskDate >= today && taskDate <= nextWeek;
+  });
+
+  // Sort tasks by date
+  upcomingTasks.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  return upcomingTasks;
+};

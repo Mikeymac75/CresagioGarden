@@ -8,38 +8,40 @@ import {
   ActivityIndicator
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getPlantableNow } from '../services/GardeningService';
+import { getPlantableNow, getUpcomingTasksForMyGarden } from '../services/GardeningService';
 import { useFocusEffect } from '@react-navigation/native';
 
 export default function HomeScreen({ navigation }) {
   const [userData, setUserData] = useState(null);
   const [plantableNow, setPlantableNow] = useState([]);
+  const [upcomingTasks, setUpcomingTasks] = useState([]);
   const [plantCount, setPlantCount] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  // useFocusEffect will refetch data every time the screen comes into view
   useFocusEffect(
     React.useCallback(() => {
       const loadData = async () => {
         setLoading(true);
         try {
-          const data = await AsyncStorage.getItem('userData');
-          if (data) {
-            const parsed = JSON.parse(data);
-            setUserData(parsed);
+          const userDataString = await AsyncStorage.getItem('userData');
+          const myGardenString = await AsyncStorage.getItem('myGarden');
+          
+          const myGarden = myGardenString ? JSON.parse(myGardenString) : [];
+          setPlantCount(myGarden.length);
+
+          if (userDataString) {
+            const parsedUserData = JSON.parse(userDataString);
+            setUserData(parsedUserData);
             
-            if (parsed.firstFrostDate) {
-              const plantable = getPlantableNow(parsed.firstFrostDate);
+            if (parsedUserData.firstFrostDate) {
+              const plantable = getPlantableNow(parsedUserData.firstFrostDate);
               setPlantableNow(plantable);
             }
-          }
 
-          const myGarden = await AsyncStorage.getItem('myGarden');
-          if (myGarden) {
-            const plants = JSON.parse(myGarden);
-            setPlantCount(plants.length);
-          } else {
-            setPlantCount(0);
+            if (parsedUserData.lastFrostDate) {
+              const tasks = getUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate);
+              setUpcomingTasks(tasks);
+            }
           }
 
         } catch (error) {
@@ -52,6 +54,22 @@ export default function HomeScreen({ navigation }) {
       loadData();
     }, [])
   );
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const today = new Date();
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+
+    if (date.toDateString() === today.toDateString()) {
+      return 'Today';
+    }
+    if (date.toDateString() === tomorrow.toDateString()) {
+      return 'Tomorrow';
+    }
+    return date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+  };
+
 
   if (loading) {
     return (
@@ -87,41 +105,30 @@ export default function HomeScreen({ navigation }) {
         </View>
         <View style={styles.statDivider} />
         <View style={styles.statItem}>
-          <Text style={styles.statNumber}>{plantableNow.length}</Text>
-          <Text style={styles.statLabel}>Plantable Now</Text>
+          <Text style={styles.statNumber}>{upcomingTasks.length}</Text>
+          <Text style={styles.statLabel}>Tasks This Week</Text>
         </View>
       </View>
 
-      {plantCount >= 10 && (
-        <View style={styles.upgradeCard}>
-          <Text style={styles.upgradeTitle}>🚀 Upgrade to Pro</Text>
-          <Text style={styles.upgradeText}>
-            Add unlimited plants, get weather alerts, and unlock advanced features!
-          </Text>
-          <TouchableOpacity style={styles.upgradeButton}>
-            <Text style={styles.upgradeButtonText}>Learn More</Text>
-          </TouchableOpacity>
-        </View>
-      )}
-
+      {/* --- NEW SECTION: THIS WEEK'S TASKS --- */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>✅ What You Can Plant Now</Text>
-        {plantableNow.length > 0 ? (
-          plantableNow.map(plant => (
-            <View key={plant.id} style={styles.plantCard}>
-              <Text style={styles.plantName}>{plant.name}</Text>
-              <Text style={styles.plantDescription}>{plant.description}</Text>
-              <Text style={styles.plantTip}>💡 Matures in ~{plant.daysToMaturity} days</Text>
+        <Text style={styles.sectionTitle}>✅ This Week's Tasks</Text>
+        {upcomingTasks.length > 0 ? (
+          upcomingTasks.map((item, index) => (
+            <View key={index} style={styles.taskCard}>
+              <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
+              <Text style={styles.taskText}>{item.task}</Text>
             </View>
           ))
         ) : (
           <View style={styles.emptyState}>
             <Text style={styles.emptyStateText}>
-              It's likely too late in the season to plant new crops. Time to plan for next year!
+              You're all caught up! No tasks for the week.
             </Text>
           </View>
         )}
       </View>
+
 
       <View style={styles.quickActions}>
         <Text style={styles.sectionTitle}>Quick Actions</Text>
@@ -147,6 +154,25 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.actionButtonText}>📔 Garden Journal</Text>
         </TouchableOpacity>
       </View>
+
+       <View style={styles.section}>
+        <Text style={styles.sectionTitle}>🌱 What You Can Still Plant</Text>
+        {plantableNow.length > 0 ? (
+          plantableNow.slice(0, 3).map(plant => ( // Show top 3
+            <View key={plant.id} style={styles.plantCard}>
+              <Text style={styles.plantName}>{plant.name}</Text>
+              <Text style={styles.plantTip}>💡 Matures in ~{plant.daysToMaturity} days</Text>
+            </View>
+          ))
+        ) : (
+          <View style={styles.emptyState}>
+            <Text style={styles.emptyStateText}>
+              It's likely too late in the season to plant new crops.
+            </Text>
+          </View>
+        )}
+      </View>
+
     </ScrollView>
   );
 }
@@ -163,7 +189,7 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: '#4CAF50',
     padding: 20,
-    paddingBottom: 30,
+    paddingBottom: 40,
   },
   welcomeText: {
     fontSize: 24,
@@ -178,7 +204,7 @@ const styles = StyleSheet.create({
   statsCard: {
     backgroundColor: 'white',
     marginHorizontal: 20,
-    marginTop: -20, // Pulls the card up into the header
+    marginTop: -30,
     padding: 20,
     borderRadius: 12,
     flexDirection: 'row',
@@ -207,36 +233,6 @@ const styles = StyleSheet.create({
     width: 1,
     backgroundColor: '#ddd',
   },
-  upgradeCard: {
-    backgroundColor: '#FFF3E0',
-    margin: 20,
-    marginTop: 20,
-    padding: 20,
-    borderRadius: 12,
-    borderLeftWidth: 4,
-    borderLeftColor: '#FF9800',
-  },
-  upgradeTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#F57C00',
-    marginBottom: 5,
-  },
-  upgradeText: {
-    fontSize: 14,
-    color: '#BF360C',
-    marginBottom: 15,
-  },
-  upgradeButton: {
-    backgroundColor: '#FF9800',
-    padding: 10,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  upgradeButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
   section: {
     margin: 20,
     marginTop: 10,
@@ -247,27 +243,35 @@ const styles = StyleSheet.create({
     color: '#333',
     marginBottom: 15,
   },
+  taskCard: {
+    backgroundColor: 'white',
+    padding: 15,
+    borderRadius: 8,
+    marginBottom: 10,
+    borderLeftWidth: 4,
+    borderLeftColor: '#4CAF50'
+  },
+  taskDate: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#666',
+    marginBottom: 4,
+  },
+  taskText: {
+    fontSize: 16,
+    color: '#333',
+  },
   plantCard: {
     backgroundColor: 'white',
     padding: 15,
     borderRadius: 8,
     marginBottom: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
-    elevation: 2,
   },
   plantName: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
     color: '#333',
     marginBottom: 5,
-  },
-  plantDescription: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 8,
   },
   plantTip: {
     fontSize: 12,
@@ -286,19 +290,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   quickActions: {
-    margin: 20,
-    marginTop: 0,
+    marginHorizontal: 20,
   },
   actionButton: {
     backgroundColor: 'white',
     padding: 16,
     borderRadius: 8,
     marginBottom: 10,
+    elevation: 1,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.05,
-    shadowRadius: 4,
-    elevation: 2,
+    shadowRadius: 2,
   },
   actionButtonText: {
     fontSize: 16,
