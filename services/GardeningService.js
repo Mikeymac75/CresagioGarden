@@ -1,23 +1,65 @@
 import { PLANTS, HARDINESS_ZONES } from '../data/plants';
 
 /**
- * A mock function to simulate fetching precise climate data from a backend API.
- * In a real app, this would make a network request with latitude/longitude.
- * For the MVP, we'll use the hardcoded data but pretend it's dynamic.
- * @param {object} location - An object with latitude and longitude.
- * @returns {object} An object with hardinessZone, lastFrostDate, and firstFrostDate.
+ * Determines the hardiness zone from a US zip code or Canadian postal code.
+ * This is a simplified mapping for MVP purposes.
+ * @param {string} postalCode - The user's postal or zip code.
+ * @returns {number|null} The hardiness zone number, or null if not found.
  */
-export const fetchClimateData = (location) => {
-  // This is where you'd call a weather/climate API.
-  // For now, we'll just assign a default zone's data for demonstration.
-  // We'll use Zone 5 as a default, but a real implementation would be more complex.
-  const zone = 5; // Placeholder
-  const zoneData = HARDINESS_ZONES[zone];
+const getZoneFromPostalCode = (code) => {
+  if (!code) return null;
+  const firstChar = code.charAt(0).toUpperCase();
 
+  // Canadian Postal Codes (by first letter)
+  const canadianZones = {
+    'A': 6, // Newfoundland
+    'B': 6, // Nova Scotia
+    'C': 5, // PEI
+    'E': 5, // New Brunswick
+    'G': 5, // Quebec East
+    'H': 6, // Montreal
+    'J': 5, // Quebec West
+    'K': 5, // Eastern Ontario (e.g., Ottawa)
+    'L': 6, // Central Ontario
+    'M': 7, // Toronto
+    'N': 6, // Southwestern Ontario
+    'P': 4, // Northern Ontario
+    'R': 4, // Manitoba
+    'S': 3, // Saskatchewan
+    'T': 4, // Alberta
+    'V': 8, // British Columbia
+    'X': 1, // Northwest Territories / Nunavut
+    'Y': 2, // Yukon
+  };
+
+  if (isNaN(parseInt(firstChar, 10))) { // It's a Canadian postal code if the first char is a letter
+    return canadianZones[firstChar] || null;
+  }
+
+  // US Zip Codes (by first digit)
+  const usZones = {
+    '0': 6, '1': 6, '2': 7, '3': 8, '4': 6,
+    '5': 5, '6': 5, '7': 8, '8': 8, '9': 9,
+  };
+  return usZones[firstChar] || null;
+};
+
+
+/**
+ * Fetches climate data based on a postal code.
+ * @param {string} postalCode - The postal or zip code.
+ * @returns {object|null} Climate data object or null if zone not found.
+ */
+export const fetchClimateData = (postalCode) => {
+  const zone = getZoneFromPostalCode(postalCode);
+  if (!zone) {
+    return null;
+  }
+  const zoneData = HARDINESS_ZONES[zone];
   return {
     hardinessZone: zone,
-    lastFrostDate: zoneData.lastFrostDate, // e.g., '2024-04-15'
-    firstFrostDate: zoneData.firstFrostDate, // e.g., '2024-10-15'
+    lastFrostDate: zoneData.lastFrostDate,
+    firstFrostDate: zoneData.firstFrostDate,
   };
 };
 
@@ -31,7 +73,6 @@ const generateTasksForPlant = (plant, lastFrostDate) => {
   const tasks = [];
   const lastFrost = new Date(`${lastFrostDate}T00:00:00`);
 
-  // Task: Start Indoors
   if (plant.startIndoorsWeeksBefore != null) {
     const date = new Date(lastFrost);
     date.setDate(date.getDate() - plant.startIndoorsWeeksBefore * 7);
@@ -42,8 +83,6 @@ const generateTasksForPlant = (plant, lastFrostDate) => {
       type: 'start-indoors',
     });
   }
-
-  // Task: Direct Sow
   if (plant.directSowWeeksAfterLastFrost != null) {
     const date = new Date(lastFrost);
     date.setDate(date.getDate() + plant.directSowWeeksAfterLastFrost * 7);
@@ -54,8 +93,6 @@ const generateTasksForPlant = (plant, lastFrostDate) => {
       type: 'direct-sow',
     });
   }
-
-  // Task: Transplant
   if (plant.transplantWeeksAfterLastFrost != null) {
     const date = new Date(lastFrost);
     date.setDate(date.getDate() + plant.transplantWeeksAfterLastFrost * 7);
@@ -66,7 +103,6 @@ const generateTasksForPlant = (plant, lastFrostDate) => {
       type: 'transplant',
     });
   }
-
   return tasks;
 };
 
@@ -82,12 +118,8 @@ export const getTasksForMonth = (lastFrostDate, monthIndex) => {
     const plantTasks = generateTasksForPlant(plant, lastFrostDate);
     allTasks = [...allTasks, ...plantTasks];
   });
-
   const monthTasks = allTasks.filter(task => new Date(task.date).getMonth() === monthIndex);
-  
-  // Sort tasks by date
   monthTasks.sort((a, b) => new Date(a.date) - new Date(b.date));
-  
   return monthTasks;
 };
 
@@ -97,10 +129,10 @@ export const getTasksForMonth = (lastFrostDate, monthIndex) => {
  * @returns {array} A list of plant objects that are safe to plant.
  */
 export const getPlantableNow = (firstFrostDate) => {
+  if (!firstFrostDate) return [];
   const today = new Date();
   const firstFrost = new Date(`${firstFrostDate}T00:00:00`);
-  const safetyBuffer = 14; // 2-week buffer before frost
-
+  const safetyBuffer = 14; 
   return PLANTS.filter(plant => {
     if (plant.daysToMaturity) {
       const expectedHarvest = new Date(today);
@@ -112,8 +144,8 @@ export const getPlantableNow = (firstFrostDate) => {
 };
 
 /**
- * **-- NEW FUNCTION --**
- * Generates and filters tasks for the user's specific garden for the upcoming week.
+ * **-- NEW UPGRADED FUNCTION --**
+ * Generates a full lifecycle of tasks for the user's garden for the upcoming week.
  * @param {array} myGarden - The user's garden array from AsyncStorage.
  * @param {string} lastFrostDate - The user's last spring frost date (YYYY-MM-DD).
  * @returns {array} A sorted list of tasks for the next 7 days.
@@ -124,35 +156,64 @@ export const getUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
   }
 
   let allTasks = [];
+  const today = new Date();
+  const todayTime = today.getTime();
+
   myGarden.forEach(gardenEntry => {
     const plantDetails = PLANTS.find(p => p.id === gardenEntry.plantId);
     if (plantDetails) {
-      // We only care about tasks relevant to plants already planted, like care/harvest.
-      // For this MVP, we will simulate a "Watering" task.
       const plantedDate = new Date(gardenEntry.plantedDate);
 
-      // Add a recurring "Water" task every 3 days for demonstration
-      for (let i = 0; i < plantDetails.daysToMaturity; i += 3) {
-        const waterDate = new Date(plantedDate);
-        waterDate.setDate(waterDate.getDate() + i);
-        allTasks.push({
-          plantName: plantDetails.name,
-          task: `💧 Water ${plantDetails.name}`,
-          date: waterDate.toISOString(),
-          type: 'care'
+      // --- Generate Recurring Care Tasks ---
+      if (plantDetails.careTasks) {
+        plantDetails.careTasks.forEach(careTask => {
+          let taskDate = new Date(plantedDate);
+          taskDate.setDate(taskDate.getDate() + careTask.daysAfterPlanting);
+
+          // If the task is recurring, add it multiple times until the harvest date
+          if (careTask.recurring) {
+            while (taskDate.getTime() < todayTime + (365 * 24 * 60 * 60 * 1000)) { // Limit to one year
+              if (taskDate.getTime() > todayTime - (30 * 24 * 60 * 60 * 1000)) { // Only add recent/future tasks
+                allTasks.push({
+                  plantName: plantDetails.name,
+                  task: `🔧 ${careTask.name}`,
+                  date: taskDate.toISOString(),
+                  type: 'care'
+                });
+              }
+              taskDate.setDate(taskDate.getDate() + careTask.recurring);
+            }
+          } else { // If not recurring, just add it once
+            allTasks.push({
+              plantName: plantDetails.name,
+              task: `🔧 ${careTask.name}`,
+              date: taskDate.toISOString(),
+              type: 'care'
+            });
+          }
         });
       }
+
+      // --- Generate Harvest Window Task ---
+      const harvestDate = new Date(plantedDate);
+      harvestDate.setDate(harvestDate.getDate() + plantDetails.daysToMaturity);
+      allTasks.push({
+        plantName: plantDetails.name,
+        task: `🥕 Harvest ${plantDetails.name}`,
+        date: harvestDate.toISOString(),
+        type: 'harvest'
+      });
     }
   });
 
   // Filter for tasks in the next 7 days
-  const today = new Date();
   const nextWeek = new Date();
   nextWeek.setDate(today.getDate() + 7);
 
   const upcomingTasks = allTasks.filter(task => {
     const taskDate = new Date(task.date);
-    return taskDate >= today && taskDate <= nextWeek;
+    // Include tasks from the last 3 days (in case they were missed) up to next week
+    return taskDate >= new Date(today.setDate(today.getDate() - 3)) && taskDate <= nextWeek;
   });
 
   // Sort tasks by date

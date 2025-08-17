@@ -1,38 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
   StyleSheet,
+  TextInput,
   TouchableOpacity,
   Alert,
-  Dimensions
+  ScrollView
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import MapView, { Marker } from 'react-native-maps';
 import { fetchClimateData } from '../services/GardeningService';
 
 export default function SetupScreen({ navigation }) {
-  const [pin, setPin] = useState({
-    latitude: 45.4215, // Default to Ottawa
-    longitude: -75.6972,
-  });
+  const [postalCode, setPostalCode] = useState('');
   const [climateData, setClimateData] = useState(null);
 
-  const handleMapPress = (e) => {
-    const location = e.nativeEvent.coordinate;
-    setPin(location);
-    const data = fetchClimateData(location);
-    setClimateData(data);
-  };
+  useEffect(() => {
+    if (postalCode.trim().length >= 3) {
+      const data = fetchClimateData(postalCode.trim());
+      setClimateData(data);
+    } else {
+      setClimateData(null);
+    }
+  }, [postalCode]);
 
   const handleContinue = async () => {
     if (!climateData) {
-      Alert.alert('Set Location', 'Please drop a pin on your garden location first.');
+      Alert.alert('Error', 'Please enter a valid US Zip Code or Canadian Postal Code.');
       return;
     }
 
     const userData = {
-      ...pin,
+      postalCode,
       ...climateData,
       setupComplete: true
     };
@@ -46,48 +45,52 @@ export default function SetupScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
+    <ScrollView style={styles.container}>
+      <View style={styles.content}>
         <Text style={styles.title}>Welcome to GardenCommand! 🌱</Text>
         <Text style={styles.subtitle}>
-          To create your personalized schedule, drop a pin on your garden.
+          Let's set up your personalized garden assistant.
         </Text>
-      </View>
 
-      <MapView
-        style={styles.map}
-        initialRegion={{
-          ...pin,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-        onPress={handleMapPress}
-      >
-        <Marker coordinate={pin} title="My Garden" description="Your selected location" />
-      </MapView>
-      
-      {climateData && (
-        <View style={styles.zoneInfo}>
-          <Text style={styles.zoneText}>
-            📍 Hardiness Zone: {climateData.hardinessZone}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Your Location</Text>
+          <Text style={styles.description}>
+            Enter your US Zip Code or Canadian Postal Code.
           </Text>
-          <Text style={styles.zoneDescription}>
-            Last Frost: {new Date(climateData.lastFrostDate + 'T00:00:00').toLocaleDateString()}
-          </Text>
-          <Text style={styles.zoneDescription}>
-            First Frost: {new Date(climateData.firstFrostDate + 'T00:00:00').toLocaleDateString()}
-          </Text>
+
+          <TextInput
+            style={styles.input}
+            placeholder="e.g., 90210 or K1A 0A9"
+            value={postalCode}
+            onChangeText={setPostalCode}
+            autoCapitalize="characters"
+            maxLength={7}
+          />
+
+          {climateData && (
+            <View style={styles.zoneInfo}>
+              <Text style={styles.zoneText}>
+                📍 Hardiness Zone: {climateData.hardinessZone}
+              </Text>
+              <Text style={styles.zoneDescription}>
+                Last Frost: {new Date(climateData.lastFrostDate + 'T00:00:00').toLocaleDateString()}
+              </Text>
+              <Text style={styles.zoneDescription}>
+                First Frost: {new Date(climateData.firstFrostDate + 'T00:00:00').toLocaleDateString()}
+              </Text>
+            </View>
+          )}
         </View>
-      )}
 
-      <TouchableOpacity 
-        style={[styles.continueButton, !climateData && styles.disabledButton]} 
-        onPress={handleContinue}
-        disabled={!climateData}
-      >
-        <Text style={styles.continueButtonText}>Start Gardening!</Text>
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity 
+          style={[styles.continueButton, !climateData && styles.disabledButton]} 
+          onPress={handleContinue}
+          disabled={!climateData}
+        >
+          <Text style={styles.continueButtonText}>Start Gardening!</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 }
 
@@ -96,13 +99,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f5f5',
   },
-  header: {
+  content: {
     padding: 20,
     paddingTop: 40,
-    backgroundColor: 'white',
   },
   title: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#2E7D32',
@@ -112,16 +114,44 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
     color: '#666',
+    marginBottom: 30,
   },
-  map: {
-    width: Dimensions.get('window').width,
-    flex: 1,
+  card: {
+    backgroundColor: 'white',
+    borderRadius: 12,
+    padding: 20,
+    marginBottom: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  cardTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 5,
+  },
+  description: {
+    fontSize: 14,
+    color: '#666',
+    marginBottom: 20,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    padding: 12,
+    fontSize: 16,
+    marginBottom: 15,
+    backgroundColor: '#f9f9f9',
   },
   zoneInfo: {
     backgroundColor: '#E8F5E8',
     padding: 15,
-    margin: 20,
     borderRadius: 8,
+    marginTop: 10,
   },
   zoneText: {
     fontSize: 16,
@@ -138,7 +168,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 16,
     alignItems: 'center',
-    marginHorizontal: 20,
     marginBottom: 20,
   },
   disabledButton: {
