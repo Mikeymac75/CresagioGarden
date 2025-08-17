@@ -11,10 +11,18 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getPlantableNow, getUpcomingTasksForMyGarden } from '../services/GardeningService';
 import { useFocusEffect } from '@react-navigation/native';
 
+// Simple Checkbox component
+const Checkbox = ({ isChecked, onToggle }) => (
+  <TouchableOpacity onPress={onToggle} style={[styles.checkboxBase, isChecked && styles.checkboxChecked]}>
+    {isChecked && <Text style={styles.checkmark}>✓</Text>}
+  </TouchableOpacity>
+);
+
 export default function HomeScreen({ navigation }) {
   const [userData, setUserData] = useState(null);
   const [plantableNow, setPlantableNow] = useState([]);
   const [upcomingTasks, setUpcomingTasks] = useState([]);
+  const [completedTasks, setCompletedTasks] = useState(new Set());
   const [plantCount, setPlantCount] = useState(0);
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +35,7 @@ export default function HomeScreen({ navigation }) {
           const myGardenString = await AsyncStorage.getItem('myGarden');
           
           const myGarden = myGardenString ? JSON.parse(myGardenString) : [];
-          setPlantCount(myGarden.length);
+          setPlantCount(myGarden.filter(p => p.status !== 'harvested').length);
 
           if (userDataString) {
             const parsedUserData = JSON.parse(userDataString);
@@ -54,6 +62,16 @@ export default function HomeScreen({ navigation }) {
       loadData();
     }, [])
   );
+
+  const toggleTask = (taskId) => {
+    const newCompletedTasks = new Set(completedTasks);
+    if (newCompletedTasks.has(taskId)) {
+      newCompletedTasks.delete(taskId);
+    } else {
+      newCompletedTasks.add(taskId);
+    }
+    setCompletedTasks(newCompletedTasks);
+  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -110,16 +128,22 @@ export default function HomeScreen({ navigation }) {
         </View>
       </View>
 
-      {/* --- NEW SECTION: THIS WEEK'S TASKS --- */}
+      {/* --- THIS WEEK'S TASKS --- */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>✅ This Week's Tasks</Text>
         {upcomingTasks.length > 0 ? (
-          upcomingTasks.map((item, index) => (
-            <View key={index} style={styles.taskCard}>
-              <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
-              <Text style={styles.taskText}>{item.task}</Text>
-            </View>
-          ))
+          upcomingTasks.map((item) => {
+            const isCompleted = completedTasks.has(item.id);
+            return (
+              <View key={item.id} style={styles.taskCard}>
+                <Checkbox isChecked={isCompleted} onToggle={() => toggleTask(item.id)} />
+                <View style={styles.taskDetails}>
+                  <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
+                  <Text style={[styles.taskText, isCompleted && styles.completedTaskText]}>{item.task}</Text>
+                </View>
+              </View>
+            );
+          })
         ) : (
           <View style={styles.emptyState}>
             <Text style={styles.emptyStateText}>
@@ -145,6 +169,13 @@ export default function HomeScreen({ navigation }) {
           onPress={() => navigation.navigate('PlantCalendar')}
         >
           <Text style={styles.actionButtonText}>📅 Planting Calendar</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={styles.actionButton}
+          onPress={() => navigation.navigate('AllTasksCalendar')}
+        >
+          <Text style={styles.actionButtonText}>🗓️ All Tasks Calendar</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
@@ -248,8 +279,11 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 8,
     marginBottom: 10,
-    borderLeftWidth: 4,
-    borderLeftColor: '#4CAF50'
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  taskDetails: {
+    flex: 1,
   },
   taskDate: {
     fontSize: 12,
@@ -260,6 +294,10 @@ const styles = StyleSheet.create({
   taskText: {
     fontSize: 16,
     color: '#333',
+  },
+  completedTaskText: {
+    textDecorationLine: 'line-through',
+    color: '#aaa',
   },
   plantCard: {
     backgroundColor: 'white',
@@ -308,5 +346,23 @@ const styles = StyleSheet.create({
     color: '#333',
     textAlign: 'center',
     fontWeight: '500',
+  },
+  checkboxBase: {
+    width: 24,
+    height: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    borderWidth: 2,
+    borderColor: '#4CAF50',
+    backgroundColor: 'transparent',
+    marginRight: 15,
+  },
+  checkboxChecked: {
+    backgroundColor: '#4CAF50',
+  },
+  checkmark: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });

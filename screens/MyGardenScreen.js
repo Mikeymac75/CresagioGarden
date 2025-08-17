@@ -10,20 +10,24 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { PLANTS } from '../data/plants';
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function MyGardenScreen({ navigation }) {
   const [myGarden, setMyGarden] = useState([]);
   const [showAddPlant, setShowAddPlant] = useState(false);
   const [availablePlants, setAvailablePlants] = useState(PLANTS);
 
-  useEffect(() => {
-    loadMyGarden();
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      loadMyGarden();
+    }, [])
+  );
 
   useEffect(() => {
     // Update navigation title with plant count
+    const activePlants = myGarden.filter(p => p.status !== 'harvested').length;
     navigation.setOptions({
-      title: `My Garden (${myGarden.length}/10)`
+      title: `My Garden (${activePlants}/10)`
     });
   }, [myGarden, navigation]);
 
@@ -39,7 +43,7 @@ export default function MyGardenScreen({ navigation }) {
   };
 
   const addPlant = async (plant) => {
-    if (myGarden.length >= 10) {
+    if (myGarden.filter(p => p.status !== 'harvested').length >= 10) {
       Alert.alert(
         'Garden Full! 🌱',
         'Free accounts can track up to 10 plants. Upgrade to Pro for unlimited plants!',
@@ -77,7 +81,7 @@ export default function MyGardenScreen({ navigation }) {
   const removePlant = async (plantEntry) => {
     Alert.alert(
       'Remove Plant',
-      `Remove ${plantEntry.plantName} from your garden?`,
+      `Remove ${plantEntry.plantName} from your garden? This cannot be undone.`,
       [
         { text: 'Cancel', style: 'cancel' },
         { 
@@ -90,6 +94,30 @@ export default function MyGardenScreen({ navigation }) {
               await AsyncStorage.setItem('myGarden', JSON.stringify(updatedGarden));
             } catch (error) {
               console.error('Error removing plant:', error);
+            }
+          }
+        }
+      ]
+    );
+  };
+
+  const harvestPlant = async (plantEntry) => {
+    Alert.alert(
+      'Harvest Plant',
+      `Did you harvest your ${plantEntry.plantName}? This will remove it from your active garden.`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        { 
+          text: 'Harvest', 
+          onPress: async () => {
+            const updatedGarden = myGarden.map(p => 
+              p.id === plantEntry.id ? { ...p, status: 'harvested' } : p
+            );
+            setMyGarden(updatedGarden);
+            try {
+              await AsyncStorage.setItem('myGarden', JSON.stringify(updatedGarden));
+            } catch (error) {
+              console.error('Error harvesting plant:', error);
             }
           }
         }
@@ -114,6 +142,10 @@ export default function MyGardenScreen({ navigation }) {
     const daysUntilHarvest = getDaysUntilHarvest(item.expectedHarvest);
     const plantedDate = new Date(item.plantedDate).toLocaleDateString();
 
+    if (item.status === 'harvested') {
+      return null;
+    }
+
     return (
       <View style={styles.plantEntry}>
         <View style={styles.plantHeader}>
@@ -125,7 +157,7 @@ export default function MyGardenScreen({ navigation }) {
         
         <Text style={styles.plantDetail}>📅 Planted: {plantedDate}</Text>
         <Text style={styles.plantDetail}>
-          🌾 Harvest: {daysUntilHarvest > 0 ? `${daysUntilHarvest} days` : 'Ready!'}
+          🌾 Harvest in: {daysUntilHarvest > 0 ? `${daysUntilHarvest} days` : 'Ready!'}
         </Text>
         
         {plantInfo && (
@@ -133,6 +165,14 @@ export default function MyGardenScreen({ navigation }) {
         )}
         
         <View style={styles.plantActions}>
+          {plantInfo.harvestType === 'single' && daysUntilHarvest <= 7 && (
+            <TouchableOpacity 
+              style={[styles.actionButton, styles.harvestButton]}
+              onPress={() => harvestPlant(item)}
+            >
+              <Text style={[styles.actionButtonText, styles.harvestButtonText]}>🥕 Harvest</Text>
+            </TouchableOpacity>
+          )}
           <TouchableOpacity style={styles.actionButton}>
             <Text style={styles.actionButtonText}>📝 Add Note</Text>
           </TouchableOpacity>
@@ -170,40 +210,39 @@ export default function MyGardenScreen({ navigation }) {
     </View>
   );
 
+  const activeGarden = myGarden.filter(p => p.status !== 'harvested');
+
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>
-          My Garden ({myGarden.length}/10)
-        </Text>
-        <TouchableOpacity 
-          style={styles.addButton}
-          onPress={() => setShowAddPlant(true)}
-          disabled={myGarden.length >= 10}
-        >
-          <Text style={[
-            styles.addButtonText,
-            myGarden.length >= 10 && styles.disabledText
-          ]}>
-            + Add Plant
-          </Text>
-        </TouchableOpacity>
-      </View>
-
-      {myGarden.length >= 10 && (
-        <View style={styles.limitWarning}>
-          <Text style={styles.limitWarningText}>
-            🚀 Garden full! Upgrade to Pro for unlimited plants
-          </Text>
-        </View>
-      )}
-
       <FlatList
-        data={myGarden}
+        data={activeGarden}
         renderItem={renderPlantEntry}
         keyExtractor={item => item.id.toString()}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.content}
+        ListHeaderComponent={() => (
+          <>
+            <TouchableOpacity 
+              style={styles.addButton}
+              onPress={() => setShowAddPlant(true)}
+              disabled={activeGarden.length >= 10}
+            >
+              <Text style={[
+                styles.addButtonText,
+                activeGarden.length >= 10 && styles.disabledText
+              ]}>
+                + Add New Plant
+              </Text>
+            </TouchableOpacity>
+            {activeGarden.length >= 10 && (
+              <View style={styles.limitWarning}>
+                <Text style={styles.limitWarningText}>
+                  🚀 Garden full! Upgrade to Pro for unlimited plants
+                </Text>
+              </View>
+            )}
+          </>
+        )}
         ListEmptyComponent={renderEmptyState}
       />
 
@@ -238,38 +277,26 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f5f5',
   },
-  header: {
-    backgroundColor: 'white',
-    padding: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
-  },
-  headerTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#333',
-  },
   addButton: {
     backgroundColor: '#4CAF50',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
+    padding: 16,
     borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 16,
   },
   addButtonText: {
     color: 'white',
     fontWeight: 'bold',
+    fontSize: 16,
   },
   disabledText: {
-    color: '#ccc',
+    color: '#a5d6a7',
   },
   limitWarning: {
     backgroundColor: '#FFF3E0',
     padding: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: '#FFE0B2',
+    borderRadius: 8,
+    marginBottom: 16,
   },
   limitWarningText: {
     color: '#F57C00',
@@ -351,6 +378,10 @@ const styles = StyleSheet.create({
   plantActions: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+    marginTop: 8,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: '#f0f0f0',
   },
   actionButton: {
     backgroundColor: '#f0f0f0',
@@ -361,6 +392,13 @@ const styles = StyleSheet.create({
   actionButtonText: {
     fontSize: 12,
     color: '#666',
+  },
+  harvestButton: {
+    backgroundColor: '#FF9800',
+  },
+  harvestButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
   modalContainer: {
     flex: 1,

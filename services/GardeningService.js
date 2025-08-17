@@ -98,7 +98,7 @@ const generateTasksForPlant = (plant, lastFrostDate) => {
     date.setDate(date.getDate() + plant.transplantWeeksAfterLastFrost * 7);
     tasks.push({
       plantName: plant.name,
-      task: `🏡 Transplant ${plant.name} seedlings outside`,
+      task: ` transplant ${plant.name} seedlings outside`,
       date: date.toISOString(),
       type: 'transplant',
     });
@@ -151,18 +151,45 @@ export const getPlantableNow = (firstFrostDate) => {
  * @returns {array} A sorted list of tasks for the next 7 days.
  */
 export const getUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
+  const allTasks = getAllUpcomingTasksForMyGarden(myGarden, lastFrostDate);
+  const today = new Date();
+  
+  // Filter for tasks in the next 7 days
+  const nextWeek = new Date();
+  nextWeek.setDate(today.getDate() + 7);
+
+  const upcomingTasks = allTasks.filter(task => {
+    const taskDate = new Date(task.date);
+    // Include tasks from the last 3 days (in case they were missed) up to next week
+    return taskDate >= new Date(new Date().setDate(today.getDate() - 3)) && taskDate <= nextWeek;
+  });
+
+  return upcomingTasks;
+};
+
+/**
+ * Generates a full lifecycle of tasks for all plants in the user's garden.
+ * @param {array} myGarden - The user's garden array from AsyncStorage.
+ * @param {string} lastFrostDate - The user's last spring frost date (YYYY-MM-DD).
+ * @returns {array} A sorted list of all upcoming tasks.
+ */
+export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
   if (!myGarden || myGarden.length === 0) {
     return [];
   }
 
   let allTasks = [];
-  const today = new Date();
-  const todayTime = today.getTime();
 
   myGarden.forEach(gardenEntry => {
+    if (gardenEntry.status === 'harvested') {
+      return; // Skip harvested plants
+    }
+
     const plantDetails = PLANTS.find(p => p.id === gardenEntry.plantId);
     if (plantDetails) {
       const plantedDate = new Date(gardenEntry.plantedDate);
+      const harvestDate = new Date(plantedDate);
+      harvestDate.setDate(harvestDate.getDate() + plantDetails.daysToMaturity);
 
       // --- Generate Recurring Care Tasks ---
       if (plantDetails.careTasks) {
@@ -170,21 +197,20 @@ export const getUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
           let taskDate = new Date(plantedDate);
           taskDate.setDate(taskDate.getDate() + careTask.daysAfterPlanting);
 
-          // If the task is recurring, add it multiple times until the harvest date
           if (careTask.recurring) {
-            while (taskDate.getTime() < todayTime + (365 * 24 * 60 * 60 * 1000)) { // Limit to one year
-              if (taskDate.getTime() > todayTime - (30 * 24 * 60 * 60 * 1000)) { // Only add recent/future tasks
-                allTasks.push({
-                  plantName: plantDetails.name,
-                  task: `🔧 ${careTask.name}`,
-                  date: taskDate.toISOString(),
-                  type: 'care'
-                });
-              }
+            while (taskDate <= harvestDate) {
+              allTasks.push({
+                id: `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`,
+                plantName: plantDetails.name,
+                task: `🔧 ${careTask.name}`,
+                date: taskDate.toISOString(),
+                type: 'care'
+              });
               taskDate.setDate(taskDate.getDate() + careTask.recurring);
             }
-          } else { // If not recurring, just add it once
+          } else if (taskDate <= harvestDate) {
             allTasks.push({
+              id: `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`,
               plantName: plantDetails.name,
               task: `🔧 ${careTask.name}`,
               date: taskDate.toISOString(),
@@ -194,10 +220,24 @@ export const getUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
         });
       }
 
+      // --- Generate Recurring Watering Tasks ---
+      if (plantDetails.wateringFrequencyDays) {
+        let waterDate = new Date(plantedDate);
+        while (waterDate <= harvestDate) {
+          allTasks.push({
+            id: `${gardenEntry.id}-water-${waterDate.toISOString()}`,
+            plantName: plantDetails.name,
+            task: `💧 Water ${plantDetails.name}`,
+            date: waterDate.toISOString(),
+            type: 'water'
+          });
+          waterDate.setDate(waterDate.getDate() + plantDetails.wateringFrequencyDays);
+        }
+      }
+
       // --- Generate Harvest Window Task ---
-      const harvestDate = new Date(plantedDate);
-      harvestDate.setDate(harvestDate.getDate() + plantDetails.daysToMaturity);
       allTasks.push({
+        id: `${gardenEntry.id}-harvest-${harvestDate.toISOString()}`,
         plantName: plantDetails.name,
         task: `🥕 Harvest ${plantDetails.name}`,
         date: harvestDate.toISOString(),
@@ -206,18 +246,8 @@ export const getUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
     }
   });
 
-  // Filter for tasks in the next 7 days
-  const nextWeek = new Date();
-  nextWeek.setDate(today.getDate() + 7);
-
-  const upcomingTasks = allTasks.filter(task => {
-    const taskDate = new Date(task.date);
-    // Include tasks from the last 3 days (in case they were missed) up to next week
-    return taskDate >= new Date(today.setDate(today.getDate() - 3)) && taskDate <= nextWeek;
-  });
-
   // Sort tasks by date
-  upcomingTasks.sort((a, b) => new Date(a.date) - new Date(b.date));
+  allTasks.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  return upcomingTasks;
+  return allTasks;
 };

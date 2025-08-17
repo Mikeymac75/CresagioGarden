@@ -8,6 +8,7 @@ import HomeScreen from './screens/HomeScreen';
 import MyGardenScreen from './screens/MyGardenScreen';
 import PlantCalendarScreen from './screens/PlantCalendarScreen';
 import GardenJournalScreen from './screens/GardenJournalScreen';
+import AllTasksCalendarScreen from './screens/AllTasksCalendarScreen';
 import { ActivityIndicator, View } from 'react-native';
 
 const Stack = createStackNavigator();
@@ -53,6 +54,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="MyGarden" component={MyGardenScreen} />
         <Stack.Screen name="PlantCalendar" component={PlantCalendarScreen} />
+        <Stack.Screen name="AllTasksCalendar" component={AllTasksCalendarScreen} />
         <Stack.Screen name="GardenJournal" component={GardenJournalScreen} />
       </Stack.Navigator>
     </NavigationContainer>
