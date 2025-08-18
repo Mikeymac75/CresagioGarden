@@ -5,7 +5,7 @@ Garden Command is a mobile application designed to help gardeners of all levels 
 ## Key Features
 
 *   **Personalized Planting Calendar:** Get a customized planting schedule based on your local hardiness zone. Know the best times to start seeds indoors, transplant seedlings, and direct sow into your garden.
-*   **Task Management:** Stay on top of your gardening chores with a dynamic task list that tells you what needs to be done each week.
+*   **Dynamic Task Management:** Automatically generates a personalized task list based on the plants in your garden. It creates tasks for initial planting, recurring watering schedules, specific care instructions (like fertilizing or pruning), and even reminds you when it's time to harvest. The weekly view keeps you focused on what's important now.
 *   **My Garden:** Keep a virtual representation of your garden. Add plants you're growing and track their progress from seed to harvest.
 *   **Plant Database:** Access a comprehensive database of common garden plants, complete with growing information, tips, and care instructions.
 *   **Garden Journal:** Document your gardening journey, take notes, and keep track of your successes and challenges.
@@ -55,8 +55,8 @@ This project is built with [React Native](https://reactnative.dev/) and [Expo](h
 │   ├── HomeScreen.js
 │   ├── MyGardenScreen.js
 │   └── ...
-├── services/           # Business logic and data processing
-│   └── GardeningService.js
+├── services/           # Core business logic
+│   └── GardeningService.js # Handles climate data, task generation, and plant information.
 ├── utils/              # Utility functions
 │   └── scheduleGenerator.js
 ├── App.js              # Main app component and navigation setup
