@@ -36,7 +36,8 @@ function GardenStackNavigator() {
 function CalendarStackNavigator() {
   return (
     <CalendarStack.Navigator screenOptions={stackNavigatorOptions}>
-      <CalendarStack.Screen name="AllTasksCalendar" component={AllTasksCalendarScreen} options={{ title: 'Calendar' }}/>
+      <CalendarStack.Screen name="AllTasksCalendar" component={AllTasksCalendarScreen} options={{ title: 'All Tasks' }}/>
+      <CalendarStack.Screen name="PlantingCalendar" component={PlantCalendarScreen} options={{ title: 'Planting Calendar' }}/>
     </CalendarStack.Navigator>
   );
 }

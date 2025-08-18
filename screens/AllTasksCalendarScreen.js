@@ -11,10 +11,18 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getAllUpcomingTasksForMyGarden } from '../services/GardeningService';
 import { useFocusEffect } from '@react-navigation/native';
 
-export default function AllTasksCalendarScreen() {
+export default function AllTasksCalendarScreen({ navigation }) {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState(null);
+  const [allTasks, setAllTasks] = useState([]);
+  const [activeFilters, setActiveFilters] = useState(['water', 'care', 'harvest']);
+
+  const filterOptions = {
+    'water': '💧',
+    'care': '🔧',
+    'harvest': '🥕'
+  };
 
   useFocusEffect(
     React.useCallback(() => {
@@ -23,7 +31,6 @@ export default function AllTasksCalendarScreen() {
         try {
           const userDataString = await AsyncStorage.getItem('userData');
           const myGardenString = await AsyncStorage.getItem('myGarden');
-          
           const myGarden = myGardenString ? JSON.parse(myGardenString) : [];
 
           if (userDataString) {
@@ -31,8 +38,9 @@ export default function AllTasksCalendarScreen() {
             setUserData(parsedUserData);
             
             if (parsedUserData.lastFrostDate) {
-              const allTasks = getAllUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate);
-              const groupedTasks = groupTasksByMonth(allTasks);
+              const fetchedTasks = getAllUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate);
+              setAllTasks(fetchedTasks);
+              const groupedTasks = groupTasksByMonth(fetchedTasks.filter(task => activeFilters.includes(task.type)));
               setTasks(groupedTasks);
             }
           }
@@ -46,6 +54,22 @@ export default function AllTasksCalendarScreen() {
       loadData();
     }, [])
   );
+
+  useEffect(() => {
+    const filteredTasks = allTasks.filter(task => activeFilters.includes(task.type));
+    const groupedTasks = groupTasksByMonth(filteredTasks);
+    setTasks(groupedTasks);
+  }, [activeFilters, allTasks]);
+
+  const handleFilterChange = (filter) => {
+    setActiveFilters(prevFilters => {
+      if (prevFilters.includes(filter)) {
+        return prevFilters.filter(f => f !== filter);
+      } else {
+        return [...prevFilters, filter];
+      }
+    });
+  };
 
   const groupTasksByMonth = (tasks) => {
     const grouped = {};
@@ -82,6 +106,26 @@ export default function AllTasksCalendarScreen() {
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>All Upcoming Tasks</Text>
+        <TouchableOpacity
+          style={styles.linkButton}
+          onPress={() => navigation.navigate('PlantingCalendar')}
+        >
+          <Text style={styles.linkButtonText}>View Planting Calendar</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.filterContainer}>
+        {Object.entries(filterOptions).map(([key, value]) => (
+          <TouchableOpacity
+            key={key}
+            style={[
+              styles.filterButton,
+              activeFilters.includes(key) && styles.filterButtonActive
+            ]}
+            onPress={() => handleFilterChange(key)}
+          >
+            <Text style={styles.filterButtonText}>{value} {key.charAt(0).toUpperCase() + key.slice(1)}</Text>
+          </TouchableOpacity>
+        ))}
       </View>
 
       {Object.keys(tasks).length > 0 ? (
@@ -160,5 +204,38 @@ const styles = StyleSheet.create({
   emptyStateText: {
     fontSize: 16,
     color: '#666',
+  },
+  filterContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 10,
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
+  filterButton: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
+    backgroundColor: '#f0f0f0',
+  },
+  filterButtonActive: {
+    backgroundColor: '#4CAF50',
+  },
+  filterButtonText: {
+    fontSize: 14,
+    color: '#333',
+    fontWeight: '500',
+  },
+  linkButton: {
+    marginTop: 10,
+    padding: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    borderRadius: 5,
+    alignSelf: 'flex-start',
+  },
+  linkButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
