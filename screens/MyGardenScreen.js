@@ -6,16 +6,21 @@ import {
   TouchableOpacity,
   Alert,
   Modal,
-  FlatList
+  FlatList,
+  Platform
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { PLANTS } from '../data/plants';
 import { useFocusEffect } from '@react-navigation/native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function MyGardenScreen({ navigation }) {
   const [myGarden, setMyGarden] = useState([]);
   const [showAddPlant, setShowAddPlant] = useState(false);
   const [availablePlants, setAvailablePlants] = useState(PLANTS);
+  const [selectedPlant, setSelectedPlant] = useState(null);
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [plantedDate, setPlantedDate] = useState(new Date());
 
   useFocusEffect(
     React.useCallback(() => {
@@ -42,7 +47,25 @@ export default function MyGardenScreen({ navigation }) {
     }
   };
 
-  const addPlant = async (plant) => {
+  const handleSelectPlant = (plant) => {
+    setSelectedPlant(plant);
+    setPlantedDate(new Date()); // Reset date for new selection
+    setShowDatePicker(Platform.OS === 'ios'); // Show date picker immediately on iOS
+  };
+
+  const onDateChange = (event, selectedDate) => {
+    const currentDate = selectedDate || plantedDate;
+    setShowDatePicker(Platform.OS === 'ios');
+    setPlantedDate(currentDate);
+
+    if (Platform.OS === 'android') {
+      addPlant(selectedPlant, currentDate);
+      setSelectedPlant(null);
+    }
+  };
+
+  const addPlant = async (plant, date) => {
+    if (!plant || !date) return;
     if (myGarden.filter(p => p.status !== 'harvested').length >= 10) {
       Alert.alert(
         'Garden Full! 🌱',
@@ -59,10 +82,10 @@ export default function MyGardenScreen({ navigation }) {
       id: Date.now(), // Simple ID for demo
       plantId: plant.id,
       plantName: plant.name,
-      plantedDate: new Date().toISOString(),
+      plantedDate: date.toISOString(),
       status: 'growing',
       notes: '',
-      expectedHarvest: new Date(Date.now() + (plant.daysToMaturity * 24 * 60 * 60 * 1000)).toISOString()
+      expectedHarvest: new Date(date.getTime() + (plant.daysToMaturity * 24 * 60 * 60 * 1000)).toISOString()
     };
 
     const updatedGarden = [...myGarden, newPlantEntry];
@@ -71,6 +94,7 @@ export default function MyGardenScreen({ navigation }) {
     try {
       await AsyncStorage.setItem('myGarden', JSON.stringify(updatedGarden));
       setShowAddPlant(false);
+      setSelectedPlant(null);
       Alert.alert('Success!', `${plant.name} added to your garden! 🌱`);
     } catch (error) {
       console.error('Error saving garden:', error);
@@ -187,7 +211,7 @@ export default function MyGardenScreen({ navigation }) {
   const renderAvailablePlant = ({ item }) => (
     <TouchableOpacity 
       style={styles.availablePlant}
-      onPress={() => addPlant(item)}
+      onPress={() => handleSelectPlant(item)}
     >
       <Text style={styles.availablePlantName}>{item.name}</Text>
       <Text style={styles.availablePlantCategory}>{item.category}</Text>
@@ -251,21 +275,58 @@ export default function MyGardenScreen({ navigation }) {
         visible={showAddPlant}
         animationType="slide"
         presentationStyle="pageSheet"
+        onDismiss={() => setSelectedPlant(null)}
       >
         <View style={styles.modalContainer}>
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>Add Plant to Garden</Text>
-            <TouchableOpacity onPress={() => setShowAddPlant(false)}>
+            <TouchableOpacity onPress={() => {
+              setShowAddPlant(false);
+              setSelectedPlant(null);
+            }}>
               <Text style={styles.modalClose}>✕</Text>
             </TouchableOpacity>
           </View>
           
-          <FlatList
-            data={availablePlants}
-            renderItem={renderAvailablePlant}
-            keyExtractor={item => item.id.toString()}
-            style={styles.plantList}
-          />
+          {selectedPlant && showDatePicker && Platform.OS === 'ios' ? (
+            <View style={styles.datePickerContainer}>
+              <Text style={styles.datePickerTitle}>When did you plant {selectedPlant.name}?</Text>
+              <DateTimePicker
+                testID="dateTimePicker"
+                value={plantedDate}
+                mode="date"
+                is24Hour={true}
+                display="spinner"
+                onChange={onDateChange}
+                maximumDate={new Date()}
+              />
+              <TouchableOpacity
+                style={styles.confirmDateButton}
+                onPress={() => addPlant(selectedPlant, plantedDate)}
+              >
+                <Text style={styles.confirmDateButtonText}>Confirm Date</Text>
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <FlatList
+              data={availablePlants}
+              renderItem={renderAvailablePlant}
+              keyExtractor={item => item.id.toString()}
+              style={styles.plantList}
+            />
+          )}
+
+          {selectedPlant && showDatePicker && Platform.OS === 'android' && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={plantedDate}
+              mode="date"
+              is24Hour={true}
+              display="default"
+              onChange={onDateChange}
+              maximumDate={new Date()}
+            />
+          )}
         </View>
       </Modal>
     </View>
@@ -273,6 +334,29 @@ export default function MyGardenScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  datePickerContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20,
+  },
+  datePickerTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  confirmDateButton: {
+    backgroundColor: '#4CAF50',
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  confirmDateButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
