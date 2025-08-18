@@ -413,17 +413,139 @@ export const PLANTS = [
       { name: 'Harvest main head when buds are tight', daysAfterPlanting: 80, recurring: null },
       { name: 'Continue harvesting side shoots', daysAfterPlanting: 90, recurring: 7 }
     ]
-  }
-];
-
-// Hardiness zone data for calculating planting dates
-export const HARDINESS_ZONES = {
-  3: { lastFrostDate: '2025-05-15', firstFrostDate: '2025-09-15' },
-  4: { lastFrostDate: '2025-05-01', firstFrostDate: '2025-10-01' },
-  5: { lastFrostDate: '2025-04-15', firstFrostDate: '2025-10-15' },
-  6: { lastFrostDate: '2025-04-01', firstFrostDate: '2025-10-30' },
-  7: { lastFrostDate: '2025-03-15', firstFrostDate: '2025-11-15' },
-  8: { lastFrostDate: '2025-03-01', firstFrostDate: '2025-12-01' },
-  9: { lastFrostDate: '2025-02-15', firstFrostDate: '2025-12-15' },
-  10: { lastFrostDate: '2025-01-30', firstFrostDate: '2026-01-15' }
-};
+  },
+  {
+    id: 19,
+    name: 'Eggplant',
+    category: 'Fruit',
+    harvestType: 'continuous',
+    daysToMaturity: 85,
+    spacing: '18-24 inches',
+    sunRequirement: 'Full sun',
+    startIndoorsWeeksBefore: 8,
+    transplantWeeksAfterLastFrost: 3,
+    directSowWeeksAfterLastFrost: null,
+    wateringNeeds: 'Consistent moisture',
+    wateringFrequencyDays: 3,
+    frostTolerant: false,
+    description: 'A heat-loving warm-season crop that needs a long growing season.',
+    tips: 'Wait for consistently warm weather before transplanting. Harvest when skin is glossy and firm. Overripe fruits become seedy and bitter.',
+    careTasks: [
+      { name: 'Begin hardening off seedlings', daysAfterPlanting: 49, recurring: null },
+      { name: 'Stake plants when flowers appear', daysAfterPlanting: 70, recurring: null },
+      { name: 'Fertilize when first fruits set', daysAfterPlanting: 80, recurring: 21 },
+      { name: 'Begin checking for harvestable fruits', daysAfterPlanting: 120, recurring: 5 }
+    ]
+  },
+  {
+    id: 20,
+    name: 'Sweet Corn',
+    category: 'Grain',
+    harvestType: 'single',
+    daysToMaturity: 80,
+    spacing: '12 inches',
+    sunRequirement: 'Full sun',
+    startIndoorsWeeksBefore: null,
+    transplantWeeksAfterLastFrost: null,
+    directSowWeeksAfterLastFrost: 2,
+    wateringNeeds: 'Deep watering, especially during silking and tasseling',
+    wateringFrequencyDays: 5,
+    frostTolerant: false,
+    description: 'A tall, warm-season crop that needs space and wind for pollination.',
+    tips: 'Plant in blocks rather than rows for better pollination. Harvest when silks turn brown and kernels are plump and milky.',
+    careTasks: [
+      { name: 'Side-dress with nitrogen when knee-high', daysAfterPlanting: 35, recurring: null },
+      { name: 'Check for corn earworm', daysAfterPlanting: 60, recurring: 5 },
+      { name: 'Begin checking ears for ripeness', daysAfterPlanting: 75, recurring: 2 }
+    ]
+  },
+  {
+    id: 21,
+    name: 'Onions',
+    category: 'Root Vegetable',
+    harvestType: 'single',
+    daysToMaturity: 120,
+    spacing: '4-6 inches',
+    sunRequirement: 'Full sun',
+    startIndoorsWeeksBefore: 10,
+    transplantWeeksAfterLastFrost: -4,
+    directSowWeeksAfterLastFrost: -6,
+    wateringNeeds: 'Consistent moisture until bulbing begins',
+    wateringFrequencyDays: 4,
+    frostTolerant: true,
+    description: 'A long-season cool-weather crop. Day-length sensitive for bulb formation.',
+    tips: 'Choose varieties suited to your latitude. Stop watering when tops begin to fall over naturally. Cure bulbs in a dry, ventilated area.',
+    careTasks: [
+      { name: 'Begin hardening off seedlings', daysAfterPlanting: 56, recurring: null },
+      { name: 'Weed carefully around shallow roots', daysAfterPlanting: 70, recurring: 14 },
+      { name: 'Stop watering when tops fall over', daysAfterPlanting: 105, recurring: null },
+      { name: 'Harvest when tops are brown and dry', daysAfterPlanting: 120, recurring: null }
+    ]
+  },
+  {
+    id: 22,
+    name: 'Winter Squash (Butternut)',
+    category: 'Fruit',
+    harvestType: 'single',
+    daysToMaturity: 110,
+    spacing: '48 inches',
+    sunRequirement: 'Full sun',
+    startIndoorsWeeksBefore: 4,
+    transplantWeeksAfterLastFrost: 2,
+    directSowWeeksAfterLastFrost: 2,
+    wateringNeeds: 'Deep, infrequent watering',
+    wateringFrequencyDays: 5,
+    frostTolerant: false,
+    description: 'A vining warm-season crop that stores well through winter.',
+    tips: 'Harvest when rind is hard and cannot be dented with fingernail. Cure in sun for 10 days before storage.',
+    careTasks: [
+      { name: 'Begin hardening off seedlings', daysAfterPlanting: 21, recurring: null },
+      { name: 'Check for squash vine borer eggs', daysAfterPlanting: 28, recurring: 7 },
+      { name: 'Place boards under developing fruit', daysAfterPlanting: 70, recurring: null },
+      { name: 'Harvest before first hard frost', daysAfterPlanting: 105, recurring: null }
+    ]
+  },
+  {
+    id: 23,
+    name: 'Swiss Chard',
+    category: 'Leafy Green',
+    harvestType: 'continuous',
+    daysToMaturity: 55,
+    spacing: '6-8 inches',
+    sunRequirement: 'Full sun to partial shade',
+    startIndoorsWeeksBefore: 4,
+    transplantWeeksAfterLastFrost: -2,
+    directSowWeeksAfterLastFrost: -2,
+    wateringNeeds: 'Consistent moisture',
+    wateringFrequencyDays: 3,
+    frostTolerant: true,
+    description: 'A heat-tolerant leafy green that produces all season long.',
+    tips: 'Harvest outer leaves regularly to encourage continued growth. Both leaves and stems are edible.',
+    careTasks: [
+      { name: 'Begin hardening off seedlings', daysAfterPlanting: 21, recurring: null },
+      { name: 'Thin direct-sown seedlings', daysAfterPlanting: 21, recurring: null },
+      { name: 'Begin harvesting outer leaves', daysAfterPlanting: 50, recurring: 7 }
+    ]
+  },
+  {
+    id: 24,
+    name: 'Beets',
+    category: 'Root Vegetable',
+    harvestType: 'single',
+    daysToMaturity: 55,
+    spacing: '3-4 inches',
+    sunRequirement: 'Full sun to partial shade',
+    startIndoorsWeeksBefore: null,
+    transplantWeeksAfterLastFrost: null,
+    directSowWeeksAfterLastFrost: -4,
+    wateringNeeds: 'Consistent moisture',
+    wateringFrequencyDays: 3,
+    frostTolerant: true,
+    description: 'A cool-season crop grown for both roots and greens.',
+    tips: 'Thin seedlings and eat the thinnings as baby greens. Harvest roots when golf ball sized for best tenderness.',
+    careTasks: [
+      { name: 'Thin seedlings to 3-4 inches apart', daysAfterPlanting: 21, recurring: null },
+      { name: 'Begin harvesting baby greens from thinnings', daysAfterPlanting: 21, recurring: null },
+      { name: 'Begin checking for harvest-size roots', daysAfterPlanting: 50, recurring: 7 }
+    ]
+  },
