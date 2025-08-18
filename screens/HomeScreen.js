@@ -41,22 +41,43 @@ export default function HomeScreen({ navigation }) {
           const myGarden = myGardenString ? JSON.parse(myGardenString) : [];
           setPlantCount(myGarden.filter(p => p.status !== 'harvested').length);
 
-          if (completedTasksString) {
-            setCompletedTasks(new Set(JSON.parse(completedTasksString)));
-          }
+          const loadedCompletedTasks = completedTasksString
+            ? new Set(JSON.parse(completedTasksString))
+            : new Set();
+          setCompletedTasks(loadedCompletedTasks);
 
           if (userDataString) {
             const parsedUserData = JSON.parse(userDataString);
             setUserData(parsedUserData);
-            
+
             if (parsedUserData.firstFrostDate) {
               const plantable = getPlantableNow(parsedUserData.firstFrostDate);
               setPlantableNow(plantable);
             }
 
             if (parsedUserData.lastFrostDate) {
-              const tasks = getUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate);
-              setUpcomingTasks(tasks);
+              const rawTasks = getUpcomingTasksForMyGarden(
+                myGarden,
+                parsedUserData.lastFrostDate
+              );
+
+              // Filter tasks: hide completed tasks from past days
+              const today = new Date();
+              today.setHours(0, 0, 0, 0); // Set to midnight to compare dates only
+
+              const filteredTasks = rawTasks.filter((task) => {
+                const taskDate = new Date(task.date);
+                taskDate.setHours(0, 0, 0, 0); // Normalize task date as well
+
+                if (taskDate < today) {
+                  // It's a past task. Only show it if it's NOT completed.
+                  return !loadedCompletedTasks.has(task.id);
+                }
+                // It's a task for today or the future, always show it.
+                return true;
+              });
+
+              setUpcomingTasks(filteredTasks);
             }
           }
 
