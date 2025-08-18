@@ -79,7 +79,6 @@ export default function MyGardenScreen({ navigation }) {
     const newPlantEntry = {
       id: Date.now().toString(),
       plantId: selectedPlant.id,
-      plantName: selectedPlant.name,
       nickname: plantNickname.trim() || selectedPlant.name,
       plantedDate: plantedDate.toISOString(),
       status: 'active',
@@ -138,7 +137,7 @@ export default function MyGardenScreen({ navigation }) {
             <Text style={styles.removeButton}>✕</Text>
           </TouchableOpacity>
         </View>
-        <Text style={styles.plantDetail}>Type: {item.plantName}</Text>
+        <Text style={styles.plantDetail}>Type: {plantInfo.name}</Text>
         <Text style={styles.plantDetail}>
           📅 Planted: {new Date(item.plantedDate).toLocaleDateString()}
         </Text>
