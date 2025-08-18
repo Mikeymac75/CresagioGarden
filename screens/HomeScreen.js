@@ -224,14 +224,6 @@ export default function HomeScreen({ navigation }) {
       </View>
 
 
-      <View style={styles.quickActions}>
-        <Text style={styles.sectionTitle}>Quick Actions</Text>
-        <TouchableOpacity style={styles.actionButton} onPress={() => navigation.navigate('MyGarden')}><Text style={styles.actionButtonText}>🌿 My Garden ({plantCount}/10)</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton} onPress={() => navigation.navigate('PlantCalendar')}><Text style={styles.actionButtonText}>📅 Planting Guide</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton} onPress={() => navigation.navigate('AllTasksCalendar')}><Text style={styles.actionButtonText}>🗓️ All Tasks Calendar</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton} onPress={() => navigation.navigate('GardenJournal')}><Text style={styles.actionButtonText}>📔 Garden Journal</Text></TouchableOpacity>
-      </View>
-
        <View style={styles.section}>
         <Text style={styles.sectionTitle}>🌱 What You Can Still Plant</Text>
         {plantableNow.length > 0 ? (
@@ -272,9 +264,6 @@ const styles = StyleSheet.create({
     plantTip: { fontSize: 12, color: '#2E7D32', fontStyle: 'italic' },
     emptyState: { backgroundColor: 'white', padding: 20, borderRadius: 8, alignItems: 'center' },
     emptyStateText: { fontSize: 16, color: '#666', textAlign: 'center' },
-    quickActions: { marginHorizontal: 20 },
-    actionButton: { backgroundColor: 'white', padding: 16, borderRadius: 8, marginBottom: 10, elevation: 1 },
-    actionButtonText: { fontSize: 16, color: '#333', textAlign: 'center', fontWeight: '500' },
     checkboxBase: { width: 24, height: 24, justifyContent: 'center', alignItems: 'center', borderRadius: 4, borderWidth: 2, borderColor: '#4CAF50', marginRight: 15 },
     checkboxChecked: { backgroundColor: '#4CAF50' },
     checkmark: { color: 'white', fontWeight: 'bold' },

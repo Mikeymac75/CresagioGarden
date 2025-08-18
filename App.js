@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Ionicons } from '@expo/vector-icons';
 
 import SetupScreen from './screens/SetupScreen';
 import HomeScreen from './screens/HomeScreen';
@@ -11,7 +13,72 @@ import GardenJournalScreen from './screens/GardenJournalScreen';
 import AllTasksCalendarScreen from './screens/AllTasksCalendarScreen';
 import { ActivityIndicator, View } from 'react-native';
 
-const Stack = createStackNavigator();
+const RootStack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+const GardenStack = createStackNavigator();
+const CalendarStack = createStackNavigator();
+const JournalStack = createStackNavigator();
+
+const stackNavigatorOptions = {
+  headerStyle: { backgroundColor: '#4CAF50' },
+  headerTintColor: '#fff',
+  headerTitleStyle: { fontWeight: 'bold' },
+};
+
+function GardenStackNavigator() {
+  return (
+    <GardenStack.Navigator screenOptions={stackNavigatorOptions}>
+      <GardenStack.Screen name="MyGarden" component={MyGardenScreen} options={{ title: 'My Garden' }}/>
+    </GardenStack.Navigator>
+  );
+}
+
+function CalendarStackNavigator() {
+  return (
+    <CalendarStack.Navigator screenOptions={stackNavigatorOptions}>
+      <CalendarStack.Screen name="AllTasksCalendar" component={AllTasksCalendarScreen} options={{ title: 'Calendar' }}/>
+    </CalendarStack.Navigator>
+  );
+}
+
+function JournalStackNavigator() {
+  return (
+    <JournalStack.Navigator screenOptions={stackNavigatorOptions}>
+      <JournalStack.Screen name="GardenJournal" component={GardenJournalScreen} options={{ title: 'Journal' }}/>
+    </JournalStack.Navigator>
+  );
+}
+
+function MainAppTabs() {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === 'Home') {
+            iconName = focused ? 'ios-home' : 'ios-home-outline';
+          } else if (route.name === 'My Garden') {
+            iconName = focused ? 'ios-leaf' : 'ios-leaf-outline';
+          } else if (route.name === 'Calendar') {
+            iconName = focused ? 'ios-calendar' : 'ios-calendar-outline';
+          } else if (route.name === 'Journal') {
+            iconName = focused ? 'ios-book' : 'ios-book-outline';
+          }
+
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: '#4CAF50',
+        tabBarInactiveTintColor: 'gray',
+      })}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+      <Tab.Screen name="My Garden" component={GardenStackNavigator} options={{ headerShown: false }} />
+      <Tab.Screen name="Calendar" component={CalendarStackNavigator} options={{ headerShown: false }} />
+      <Tab.Screen name="Journal" component={JournalStackNavigator} options={{ headerShown: false }} />
+    </Tab.Navigator>
+  );
+}
 
 export default function App() {
   const [initialRoute, setInitialRoute] = useState(null);
@@ -23,7 +90,7 @@ export default function App() {
         if (userDataString) {
           const userData = JSON.parse(userDataString);
           if (userData.setupComplete) {
-            setInitialRoute('Home');
+            setInitialRoute('MainApp');
           } else {
             setInitialRoute('Setup');
           }
@@ -49,14 +116,10 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={initialRoute}>
-        <Stack.Screen name="Setup" component={SetupScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="MyGarden" component={MyGardenScreen} />
-        <Stack.Screen name="PlantCalendar" component={PlantCalendarScreen} />
-        <Stack.Screen name="AllTasksCalendar" component={AllTasksCalendarScreen} />
-        <Stack.Screen name="GardenJournal" component={GardenJournalScreen} />
-      </Stack.Navigator>
+      <RootStack.Navigator initialRouteName={initialRoute} screenOptions={{ headerShown: false }}>
+        <RootStack.Screen name="Setup" component={SetupScreen} />
+        <RootStack.Screen name="MainApp" component={MainAppTabs} />
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 }
