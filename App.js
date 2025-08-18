@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getItem as getSecureItem } from './utils/SecureStorage';
 import { Ionicons } from '@expo/vector-icons';
 
 import SetupScreen from './screens/SetupScreen';
@@ -87,7 +87,7 @@ export default function App() {
   useEffect(() => {
     const checkSetup = async () => {
       try {
-        const userDataString = await AsyncStorage.getItem('userData');
+        const userDataString = await getSecureItem('userData');
         if (userDataString) {
           const userData = JSON.parse(userDataString);
           if (userData.setupComplete) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 
-const WeatherWidget = ({ weatherData, locationAvailable }) => {
+const WeatherWidget = React.memo(({ weatherData, locationAvailable }) => {
   // If location is not available, show a helpful message.
   if (!locationAvailable) {
     return (
@@ -50,7 +50,7 @@ const WeatherWidget = ({ weatherData, locationAvailable }) => {
       </View>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   loadingContainer: {

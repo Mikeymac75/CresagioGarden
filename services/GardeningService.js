@@ -1,4 +1,5 @@
 import { PLANTS, HARDINESS_ZONES } from '../data/plants';
+import * as yup from 'yup';
 
 // Configuration constants
 const CONFIG = {
@@ -10,8 +11,38 @@ const CONFIG = {
   HARD_FREEZE_TEMP_CELSIUS: -2,
   FROST_TEMP_CELSIUS: 0,
   USER_AGENT: "GardenCommand/1.0 https://github.com/your-username/garden-command",
-  WEATHER_API_BASE_URL: "https://api.met.no/weatherapi/locationforecast/2.0/compact"
+  WEATHER_API_BASE_URL: "https://api.met.no/weatherapi/locationforecast/2.0/compact",
+  WEATHER_API_TIMEOUT: 15000, // 15 seconds
+  WEATHER_API_MAX_RETRIES: 3,
+  WEATHER_API_RETRY_DELAY: 1000, // 1 second
 };
+
+// --- Yup Weather Schema ---
+const weatherSchema = yup.object().shape({
+  properties: yup.object().shape({
+    timeseries: yup.array().of(
+      yup.object().shape({
+        time: yup.string().required(),
+        data: yup.object().shape({
+          instant: yup.object().shape({
+            details: yup.object().shape({
+              air_temperature: yup.number().required(),
+            }).required(),
+          }).required(),
+          next_1_hours: yup.object().shape({
+            summary: yup.object().shape({
+              symbol_code: yup.string(),
+            }),
+            details: yup.object().shape({
+              precipitation_amount: yup.number(),
+            }),
+          }),
+        }).required(),
+      })
+    ).min(1, "Timeseries data cannot be empty").required(),
+  }).required(),
+});
+
 
 // Task type constants
 const TASK_TYPES = {
@@ -609,7 +640,14 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate, firstFro
 };
 
 /**
- * Enhanced weather forecast function with caching and better error handling
+ * A utility to introduce a delay.
+ * @param {number} ms - The delay in milliseconds.
+ * @returns {Promise<void>}
+ */
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+/**
+ * Robust weather forecast function with caching, retries, and validation.
  */
 export const getWeatherForecast = async (latitude, longitude) => {
   if (!ValidationUtils.isValidCoordinates(latitude, longitude)) {
@@ -624,36 +662,48 @@ export const getWeatherForecast = async (latitude, longitude) => {
 
   const url = `${CONFIG.WEATHER_API_BASE_URL}?lat=${latitude}&lon=${longitude}`;
 
-  try {
-    const response = await fetch(url, { 
-      headers: { 'User-Agent': CONFIG.USER_AGENT },
-      timeout: 10000 // 10 second timeout
-    });
+  let lastError = null;
 
-    if (!response.ok) {
-      throw new Error(`Weather API request failed: ${response.status} ${response.statusText}`);
+  for (let attempt = 1; attempt <= CONFIG.WEATHER_API_MAX_RETRIES; attempt++) {
+    try {
+      const response = await fetch(url, {
+        headers: { 'User-Agent': CONFIG.USER_AGENT },
+        timeout: CONFIG.WEATHER_API_TIMEOUT,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Weather API request failed: ${response.status} ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      // Validate the structure of the API response
+      await weatherSchema.validate(data);
+
+      const weatherData = WeatherService.processWeatherData(data.properties.timeseries);
+
+      // Cache the successful result
+      WeatherService.setCachedWeather(latitude, longitude, weatherData);
+
+      return weatherData;
+
+    } catch (error) {
+      lastError = error;
+      console.warn(`Weather forecast attempt ${attempt} failed:`, error.message);
+
+      if (attempt < CONFIG.WEATHER_API_MAX_RETRIES) {
+        const retryDelay = CONFIG.WEATHER_API_RETRY_DELAY * Math.pow(2, attempt - 1);
+        console.log(`Retrying in ${retryDelay}ms...`);
+        await delay(retryDelay);
+      }
     }
-
-    const data = await response.json();
-    
-    if (!data.properties?.timeseries?.length) {
-      throw new Error("Weather API response missing timeseries data");
-    }
-
-    const weatherData = WeatherService.processWeatherData(data.properties.timeseries);
-    
-    // Cache the result
-    WeatherService.setCachedWeather(latitude, longitude, weatherData);
-    
-    return weatherData;
-
-  } catch (error) {
-    console.error("Weather forecast error:", error);
-    return { 
-      error: `Failed to fetch weather data: ${error.message}`,
-      fallback: true
-    };
   }
+
+  console.error("Weather forecast error after all retries:", lastError);
+  return {
+    error: `Failed to fetch weather data: ${lastError.message}`,
+    fallback: true
+  };
 };
 
 /**

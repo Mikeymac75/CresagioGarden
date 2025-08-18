@@ -10,7 +10,10 @@ import {
   TextInput,
   Platform
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  getItem as getSecureItem,
+  setItem as setSecureItem,
+} from '../utils/SecureStorage';
 import { PLANTS } from '../data/plants';
 import { useFocusEffect } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -39,7 +42,7 @@ export default function MyGardenScreen({ navigation }) {
 
   const loadMyGarden = async () => {
     try {
-      const garden = await AsyncStorage.getItem('myGarden');
+      const garden = await getSecureItem('myGarden');
       setMyGarden(garden ? JSON.parse(garden) : []);
     } catch (error) { console.error('Error loading garden:', error); }
   };
@@ -82,7 +85,7 @@ export default function MyGardenScreen({ navigation }) {
     const updatedGarden = [...myGarden, newPlantEntry];
     setMyGarden(updatedGarden);
     try {
-      await AsyncStorage.setItem('myGarden', JSON.stringify(updatedGarden));
+      await setSecureItem('myGarden', JSON.stringify(updatedGarden));
       resetAddPlantState();
       Alert.alert('Success!', `${newPlantEntry.nickname} added to your garden! 🌱`);
     } catch (error) {
@@ -104,7 +107,7 @@ export default function MyGardenScreen({ navigation }) {
           onPress: async () => {
             const updatedGarden = myGarden.filter(p => p.id !== plantEntry.id);
             setMyGarden(updatedGarden);
-            await AsyncStorage.setItem('myGarden', JSON.stringify(updatedGarden));
+            await setSecureItem('myGarden', JSON.stringify(updatedGarden));
           }
         }
       ]

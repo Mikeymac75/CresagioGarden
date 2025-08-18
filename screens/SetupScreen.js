@@ -9,7 +9,7 @@ import {
   ScrollView,
   Platform,
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { setItem as setSecureItem } from '../utils/SecureStorage';
 import * as Location from 'expo-location';
 import { fetchClimateData } from '../services/GardeningService';
 import { requestNotificationPermissions } from '../services/NotificationService';
@@ -67,8 +67,9 @@ export default function SetupScreen({ navigation }) {
     };
 
     try {
-      await AsyncStorage.setItem('userData', JSON.stringify(userData));
-      navigation.replace('Home');
+      await setSecureItem('userData', JSON.stringify(userData));
+      // Also save non-sensitive data to AsyncStorage for easy access
+      navigation.replace('MainApp', { screen: 'Home' });
     } catch (error) {
       Alert.alert('Error', 'Failed to save user data');
     }

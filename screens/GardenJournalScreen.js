@@ -9,7 +9,10 @@ import {
   Modal,
   TextInput
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  getItem as getSecureItem,
+  setItem as setSecureItem,
+} from '../utils/SecureStorage';
 
 export default function GardenJournalScreen() {
   const [journalEntries, setJournalEntries] = useState([]);
@@ -23,7 +26,7 @@ export default function GardenJournalScreen() {
 
   const loadJournalEntries = async () => {
     try {
-      const entries = await AsyncStorage.getItem('journalEntries');
+      const entries = await getSecureItem('journalEntries');
       if (entries) {
         setJournalEntries(JSON.parse(entries));
       }
@@ -50,7 +53,7 @@ export default function GardenJournalScreen() {
     setJournalEntries(updatedEntries);
 
     try {
-      await AsyncStorage.setItem('journalEntries', JSON.stringify(updatedEntries));
+      await setSecureItem('journalEntries', JSON.stringify(updatedEntries));
       setNewEntryTitle('');
       setNewEntryNote('');
       setShowAddEntry(false);
@@ -74,7 +77,7 @@ export default function GardenJournalScreen() {
             const updatedEntries = journalEntries.filter(entry => entry.id !== entryId);
             setJournalEntries(updatedEntries);
             try {
-              await AsyncStorage.setItem('journalEntries', JSON.stringify(updatedEntries));
+              await setSecureItem('journalEntries', JSON.stringify(updatedEntries));
             } catch (error) {
               console.error('Error deleting journal entry:', error);
             }

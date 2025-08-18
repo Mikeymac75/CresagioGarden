@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ActivityIndicator
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getItem as getSecureItem } from '../utils/SecureStorage';
 import { getTasksForMonth } from '../services/GardeningService';
 
 export default function PlantCalendarScreen() {
@@ -25,7 +25,7 @@ export default function PlantCalendarScreen() {
     const loadAndGenerate = async () => {
       setLoading(true);
       try {
-        const data = await AsyncStorage.getItem('userData');
+        const data = await getSecureItem('userData');
         if (data) {
           const parsedData = JSON.parse(data);
           setUserData(parsedData);
