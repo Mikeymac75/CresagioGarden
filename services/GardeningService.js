@@ -150,8 +150,8 @@ export const getPlantableNow = (firstFrostDate) => {
  * @param {string} lastFrostDate - The user's last spring frost date (YYYY-MM-DD).
  * @returns {array} A sorted list of tasks for the next 7 days.
  */
-export const getUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
-  const allTasks = getAllUpcomingTasksForMyGarden(myGarden, lastFrostDate);
+export const getUpcomingTasksForMyGarden = (myGarden, lastFrostDate, firstFrostDate) => {
+  const allTasks = getAllUpcomingTasksForMyGarden(myGarden, lastFrostDate, firstFrostDate);
   const today = new Date();
   
   // Filter for tasks in the next 7 days
@@ -173,11 +173,12 @@ export const getUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
  * @param {string} lastFrostDate - The user's last spring frost date (YYYY-MM-DD).
  * @returns {array} A sorted list of all upcoming tasks.
  */
-export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
+export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate, firstFrostDate) => {
   if (!myGarden || myGarden.length === 0) {
     return [];
   }
 
+  const firstFrost = firstFrostDate ? new Date(`${firstFrostDate}T00:00:00`) : null;
   let allTasks = [];
 
   myGarden.forEach(gardenEntry => {
@@ -207,6 +208,10 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
 
           if (careTask.recurring) {
             while (taskDate <= harvestDate) {
+              // If plant isn't frost tolerant, don't schedule tasks after the first frost date.
+              if (firstFrost && !plantDetails.frostTolerant && taskDate > firstFrost) {
+                break;
+              }
               allTasks.push({
                 id: `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`,
                 plantName: displayName,
@@ -217,13 +222,16 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
               taskDate.setDate(taskDate.getDate() + careTask.recurring);
             }
           } else if (taskDate <= harvestDate) {
-            allTasks.push({
-              id: `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`,
-              plantName: displayName,
-              task: `${taskDescription} for ${displayName}`,
-              date: taskDate.toISOString(),
-              type: 'care'
-            });
+            // Also check non-recurring tasks
+            if (!firstFrost || plantDetails.frostTolerant || taskDate <= firstFrost) {
+              allTasks.push({
+                id: `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`,
+                plantName: displayName,
+                task: `${taskDescription} for ${displayName}`,
+                date: taskDate.toISOString(),
+                type: 'care'
+              });
+            }
           }
         });
       }
@@ -232,6 +240,10 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
       if (plantDetails.wateringFrequencyDays) {
         let waterDate = new Date(plantedDate);
         while (waterDate <= harvestDate) {
+          // If plant isn't frost tolerant, don't schedule tasks after the first frost date.
+          if (firstFrost && !plantDetails.frostTolerant && waterDate > firstFrost) {
+            break;
+          }
           allTasks.push({
             id: `${gardenEntry.id}-water-${waterDate.toISOString()}`,
             plantName: displayName,

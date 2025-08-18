@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
@@ -76,7 +77,8 @@ export default function HomeScreen({ navigation }) {
             if (parsedUserData.lastFrostDate) {
               const rawTasks = getUpcomingTasksForMyGarden(
                 myGarden,
-                parsedUserData.lastFrostDate
+                parsedUserData.lastFrostDate,
+                parsedUserData.firstFrostDate
               );
 
               // Filter tasks: hide completed tasks from past days
@@ -108,6 +110,32 @@ export default function HomeScreen({ navigation }) {
       loadData();
     }, [])
   );
+
+  const handleChangeLocation = () => {
+    Alert.alert(
+      'Change Location',
+      'Are you sure you want to change your location? This will require you to set it up again.',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Change',
+          onPress: async () => {
+            try {
+              await AsyncStorage.removeItem('userData');
+              navigation.replace('Setup');
+            } catch (error) {
+              console.error('Failed to remove user data:', error);
+              Alert.alert('Error', 'Could not reset location.');
+            }
+          },
+          style: 'destructive',
+        },
+      ]
+    );
+  };
 
   const toggleTask = async taskId => {
     const newCompletedTasks = new Set(completedTasks);
@@ -151,9 +179,11 @@ export default function HomeScreen({ navigation }) {
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.welcomeText}>Welcome back! 🌱</Text>
-        <Text style={styles.locationText}>
-          📍 Zone {userData?.hardinessZone || 'N/A'}
-        </Text>
+        <TouchableOpacity onLongPress={handleChangeLocation}>
+          <Text style={styles.locationText}>
+            📍 Zone {userData?.hardinessZone || 'N/A'}
+          </Text>
+        </TouchableOpacity>
       </View>
 
       <WeatherWidget

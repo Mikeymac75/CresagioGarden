@@ -13,6 +13,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: null,
     wateringNeeds: 'Consistent, deep watering',
     wateringFrequencyDays: 3,
+    frostTolerant: false,
     description: 'A popular warm-season crop that loves heat and needs support.',
     tips: 'Stake or cage for support. Water deeply and consistently to prevent blossom end rot. Mulch helps retain moisture.',
     careTasks: [
@@ -35,6 +36,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: -2,
     wateringNeeds: 'Consistent moisture, shallow roots',
     wateringFrequencyDays: 2,
+    frostTolerant: true,
     description: 'A cool-season crop that grows quickly. Tends to bolt in hot weather.',
     tips: 'Plant every 2 weeks for a continuous harvest. Prefers cooler soil and appreciates afternoon shade in summer.',
     careTasks: [
@@ -56,6 +58,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: 2,
     wateringNeeds: 'Consistent moisture',
     wateringFrequencyDays: 3,
+    frostTolerant: false,
     description: 'A warm-season herb that is sensitive to frost. Great companion for tomatoes.',
     tips: 'Pinch off flower heads as they appear to encourage leafy growth. Harvest often.',
     careTasks: [
@@ -76,6 +79,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: -3,
     wateringNeeds: 'Consistent moisture to prevent splitting',
     wateringFrequencyDays: 2,
+    frostTolerant: true,
     description: 'A cool-season root crop that needs loose, sandy soil to grow straight.',
     tips: 'Thin seedlings to prevent crowding and misshapen roots. Keep soil consistently moist and weed-free.',
     careTasks: [
@@ -96,6 +100,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: 1,
     wateringNeeds: 'Moderate, consistent watering',
     wateringFrequencyDays: 3,
+    frostTolerant: false,
     description: 'A warm-season crop that produces abundantly. Does not require a trellis.',
     tips: 'Plant after all danger of frost has passed. Avoid over-fertilizing with nitrogen. Sow every 2 weeks for continuous harvest.',
     careTasks: [
@@ -115,6 +120,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: null,
     wateringNeeds: 'Consistent moisture',
     wateringFrequencyDays: 3,
+    frostTolerant: false,
     description: 'A long-season, warm-weather crop that loves heat.',
     tips: 'Wait for consistently warm weather. Mulch to retain soil heat and moisture. Peppers can be harvested green or left to ripen to red, yellow, or orange.',
     careTasks: [
@@ -136,6 +142,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: -4,
     wateringNeeds: 'Consistent moisture',
     wateringFrequencyDays: 2,
+    frostTolerant: true,
     description: 'A very cold-hardy, cool-season crop. Plant in early spring and fall.',
     tips: 'Bolts quickly in heat. Provide afternoon shade to extend the harvest. Can be sown in late summer for a fall crop.',
     careTasks: [
@@ -156,6 +163,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: 2,
     wateringNeeds: 'Deep, consistent watering',
     wateringFrequencyDays: 3,
+    frostTolerant: false,
     description: 'An incredibly productive warm-season crop. A few plants go a long way.',
     tips: 'Give it lots of space to sprawl. Harvest fruits when they are small and tender for the best flavor. Check under large leaves daily during peak season.',
     careTasks: [
@@ -177,6 +185,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: -4,
     wateringNeeds: 'Very consistent moisture',
     wateringFrequencyDays: 1,
+    frostTolerant: true,
     description: 'A very fast-growing, cool-season crop perfect for filling in garden gaps.',
     tips: 'Ready to harvest in as little as 3-4 weeks. Inconsistent watering can cause them to split or become woody. Plant in succession for a steady supply.',
     careTasks: [
@@ -197,6 +206,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: -2,
     wateringNeeds: 'Regular moisture',
     wateringFrequencyDays: 3,
+    frostTolerant: true,
     description: 'A cool-season herb that bolts (goes to flower) very quickly in heat.',
     tips: 'Sow seeds every 2-3 weeks for a continuous supply. Harvest leaves often to delay bolting. The flowers are edible and attract beneficial insects.',
     careTasks: [
@@ -216,6 +226,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: 2,
     wateringNeeds: 'Very consistent, deep watering',
     wateringFrequencyDays: 2,
+    frostTolerant: false,
     description: 'Vining plant that needs warm weather and consistent moisture.',
     tips: 'Grow on a trellis to save space and keep fruit clean. Water deeply to prevent bitterness. Mulching is highly recommended.',
     careTasks: [
@@ -237,6 +248,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: -4,
     wateringNeeds: 'Consistent moisture',
     wateringFrequencyDays: 3,
+    frostTolerant: true,
     description: 'Hardy cool-season green that gets sweeter after a light frost.',
     tips: 'Harvest outer leaves to allow the center to keep producing. Very cold tolerant and can often be harvested into winter.',
     careTasks: [
@@ -258,6 +270,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: null,
     wateringNeeds: 'Consistent moisture, especially during fruit development',
     wateringFrequencyDays: 2,
+    frostTolerant: true,
     description: 'Perennial fruit that establishes in year one and produces heavily for a few weeks in year two.',
     tips: 'Pinch off all flowers in the first year to encourage a strong root system for future harvests. Mulch with straw to keep berries clean.',
     careTasks: [
@@ -278,6 +291,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: -4,
     wateringNeeds: 'Consistent moisture, especially when tubers form',
     wateringFrequencyDays: 4,
+    frostTolerant: false,
     description: 'Planted as "seed potatoes". The underground tubers are the harvested crop.',
     tips: '"Hill" the plants by mounding soil up the stems as they grow to protect tubers from sunlight, which can turn them green and toxic.',
     careTasks: [
@@ -302,6 +316,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: -6,
     wateringNeeds: 'Consistent moisture, especially during flowering and pod set',
     wateringFrequencyDays: 3,
+    frostTolerant: true,
     description: 'One of the first crops to be planted in spring. Does not like heat.',
     tips: 'Provide a trellis for vining varieties. Harvest pods when they are plump and sweet for best flavor. Pods left too long become starchy.',
     careTasks: [
@@ -322,6 +337,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: 2,
     wateringNeeds: 'Deep, infrequent watering',
     wateringFrequencyDays: 5,
+    frostTolerant: false,
     description: 'A vining, warm-season crop that requires a lot of space and a long growing season.',
     tips: 'Water at the base of the plant to prevent powdery mildew. Place a board or straw under developing fruits to keep them off wet soil.',
     careTasks: [
@@ -344,6 +360,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: -24, // Represents planting in the fall, 24 weeks before spring's last frost
     wateringNeeds: 'Moderate, stop when leaves yellow',
     wateringFrequencyDays: 7,
+    frostTolerant: true,
     description: 'Planted in the fall for a mid-summer harvest the following year.',
     tips: 'Plant individual cloves, pointed end up. Mulch heavily after planting to protect through winter. Harvest when the lower leaves start to turn brown.',
     careTasks: [
@@ -366,6 +383,7 @@ export const PLANTS = [
     directSowWeeksAfterLastFrost: -4,
     wateringNeeds: 'Consistent moisture',
     wateringFrequencyDays: 4,
+    frostTolerant: true,
     description: 'A cool-season crop that produces a large central head, followed by smaller side shoots.',
     tips: 'Transplant into the garden before the weather gets too hot. Heat can cause it to bolt. Harvest the main head before the flowers open.',
     careTasks: [
