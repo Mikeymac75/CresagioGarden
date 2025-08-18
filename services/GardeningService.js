@@ -259,3 +259,84 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
 
   return allTasks;
 };
+
+/**
+ * Fetches the weather forecast for a given latitude and longitude.
+ * @param {number} latitude - The latitude.
+ * @param {number} longitude - The longitude.
+ * @returns {Promise<object|null>} An object with current weather, hourly forecast, and frost warning, or null on failure.
+ */
+export const getWeatherForecast = async (latitude, longitude) => {
+  if (!latitude || !longitude) {
+    return null;
+  }
+
+  const url = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${latitude}&lon=${longitude}`;
+
+  // IMPORTANT: The API requires a custom User-Agent header.
+  const userAgent = "GardenCommand/1.0 https://github.com/your-username/garden-command";
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        'User-Agent': userAgent,
+      },
+    });
+
+    if (!response.ok) {
+      console.error(`Weather API request failed with status: ${response.status}`);
+      return null;
+    }
+
+    const data = await response.json();
+
+    if (!data.properties || !data.properties.timeseries) {
+      console.error("Weather API response is missing timeseries data.");
+      return null;
+    }
+
+    const { timeseries } = data.properties;
+
+    // Find the current weather (the first timeseries entry)
+    const currentWeather = {
+      time: timeseries[0].time,
+      temperature: timeseries[0].data.instant.details.air_temperature,
+      symbol_code: timeseries[0].data.next_1_hours.summary.symbol_code,
+    };
+
+    // Extract the next 24 hours of forecast
+    const now = new Date();
+    const next24Hours = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+    const hourlyForecast = timeseries
+      .filter(item => {
+        const itemDate = new Date(item.time);
+        return itemDate > now && itemDate <= next24Hours;
+      })
+      .map(item => ({
+        time: item.time,
+        temperature: item.data.instant.details.air_temperature,
+      }));
+
+    // Check for frost in the next 48 hours
+    const next48Hours = new Date(now.getTime() + 48 * 60 * 60 * 1000);
+    let frostWarning = false;
+    for (const item of timeseries) {
+      const itemDate = new Date(item.time);
+      if (itemDate > next48Hours) break; // Only check up to 48 hours
+      if (item.data.instant.details.air_temperature <= 0) {
+        frostWarning = true;
+        break;
+      }
+    }
+
+    return {
+      currentWeather,
+      hourlyForecast,
+      frostWarning,
+    };
+
+  } catch (error) {
+    console.error("Failed to fetch or process weather data:", error);
+    return null;
+  }
+};

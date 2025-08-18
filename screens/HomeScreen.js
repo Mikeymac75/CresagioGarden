@@ -5,11 +5,16 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  ActivityIndicator
+  ActivityIndicator,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getPlantableNow, getUpcomingTasksForMyGarden } from '../services/GardeningService';
+import {
+  getPlantableNow,
+  getUpcomingTasksForMyGarden,
+  getWeatherForecast,
+} from '../services/GardeningService';
 import { useFocusEffect } from '@react-navigation/native';
+import WeatherWidget from '../components/WeatherWidget';
 
 // Simple Checkbox component
 const Checkbox = ({ isChecked, onToggle }) => (
@@ -25,19 +30,21 @@ export default function HomeScreen({ navigation }) {
   const [completedTasks, setCompletedTasks] = useState(new Set());
   const [plantCount, setPlantCount] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [weatherData, setWeatherData] = useState(null); // New state for weather
 
   useFocusEffect(
     React.useCallback(() => {
       const loadData = async () => {
         setLoading(true);
+        setWeatherData(null); // Reset weather data on focus
         try {
           // Load all data in parallel for speed
           const [userDataString, myGardenString, completedTasksString] = await Promise.all([
             AsyncStorage.getItem('userData'),
             AsyncStorage.getItem('myGarden'),
-            AsyncStorage.getItem('completedTasks')
+            AsyncStorage.getItem('completedTasks'),
           ]);
-          
+
           const myGarden = myGardenString ? JSON.parse(myGardenString) : [];
           setPlantCount(myGarden.filter(p => p.status !== 'harvested').length);
 
@@ -50,8 +57,19 @@ export default function HomeScreen({ navigation }) {
             const parsedUserData = JSON.parse(userDataString);
             setUserData(parsedUserData);
 
+            // Fetch weather data if location is available
+            if (parsedUserData.latitude && parsedUserData.longitude) {
+              const weather = await getWeatherForecast(
+                parsedUserData.latitude,
+                parsedUserData.longitude
+              );
+              setWeatherData(weather);
+            }
+
             if (parsedUserData.firstFrostDate) {
-              const plantable = getPlantableNow(parsedUserData.firstFrostDate);
+              const plantable = getPlantableNow(
+                parsedUserData.firstFrostDate
+              );
               setPlantableNow(plantable);
             }
 
@@ -65,7 +83,7 @@ export default function HomeScreen({ navigation }) {
               const today = new Date();
               today.setHours(0, 0, 0, 0); // Set to midnight to compare dates only
 
-              const filteredTasks = rawTasks.filter((task) => {
+              const filteredTasks = rawTasks.filter(task => {
                 const taskDate = new Date(task.date);
                 taskDate.setHours(0, 0, 0, 0); // Normalize task date as well
 
@@ -80,7 +98,6 @@ export default function HomeScreen({ navigation }) {
               setUpcomingTasks(filteredTasks);
             }
           }
-
         } catch (error) {
           console.error('Error loading data:', error);
         } finally {
@@ -92,7 +109,7 @@ export default function HomeScreen({ navigation }) {
     }, [])
   );
 
-  const toggleTask = async (taskId) => {
+  const toggleTask = async taskId => {
     const newCompletedTasks = new Set(completedTasks);
     if (newCompletedTasks.has(taskId)) {
       newCompletedTasks.delete(taskId);
@@ -101,10 +118,13 @@ export default function HomeScreen({ navigation }) {
     }
     setCompletedTasks(newCompletedTasks);
     // Save the updated set to AsyncStorage
-    await AsyncStorage.setItem('completedTasks', JSON.stringify(Array.from(newCompletedTasks)));
+    await AsyncStorage.setItem(
+      'completedTasks',
+      JSON.stringify(Array.from(newCompletedTasks))
+    );
   };
 
-  const formatDate = (dateString) => {
+  const formatDate = dateString => {
     const date = new Date(dateString);
     const today = new Date();
     const tomorrow = new Date();
@@ -112,9 +132,12 @@ export default function HomeScreen({ navigation }) {
 
     if (date.toDateString() === today.toDateString()) return 'Today';
     if (date.toDateString() === tomorrow.toDateString()) return 'Tomorrow';
-    return date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+    return date.toLocaleDateString('en-US', {
+      weekday: 'long',
+      month: 'short',
+      day: 'numeric',
+    });
   };
-
 
   if (loading) {
     return (
@@ -123,13 +146,17 @@ export default function HomeScreen({ navigation }) {
       </View>
     );
   }
-  
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.welcomeText}>Welcome back! 🌱</Text>
-        <Text style={styles.locationText}>📍 Zone {userData?.hardinessZone || 'N/A'}</Text>
+        <Text style={styles.locationText}>
+          📍 Zone {userData?.hardinessZone || 'N/A'}
+        </Text>
       </View>
+
+      <WeatherWidget weatherData={weatherData} />
 
       <View style={styles.statsCard}>
         <View style={styles.statItem}>

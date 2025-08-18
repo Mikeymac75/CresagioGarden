@@ -6,9 +6,11 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
-  ScrollView
+  ScrollView,
+  Platform,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Location from 'expo-location';
 import { fetchClimateData } from '../services/GardeningService';
 import { requestNotificationPermissions } from '../services/NotificationService';
 
@@ -31,20 +33,44 @@ export default function SetupScreen({ navigation }) {
       return;
     }
 
-    // Request notification permissions before proceeding
+    // Request location permissions
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    let locationData = {};
+    if (status === 'granted') {
+      try {
+        let location = await Location.getCurrentPositionAsync({});
+        locationData = {
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+        };
+      } catch (error) {
+         Alert.alert(
+           'Location Error',
+           'Could not fetch location. Weather features will be disabled. You can grant permission in your device settings later.'
+         );
+      }
+    } else {
+       Alert.alert(
+        'Permission Denied',
+        'You have not granted location permissions. Weather features will be disabled. You can grant permission in your device settings later.'
+      );
+    }
+
+    // Request notification permissions
     await requestNotificationPermissions();
 
     const userData = {
       postalCode,
       ...climateData,
-      setupComplete: true
+      ...locationData, // Add lat/lon here, will be empty if permission denied
+      setupComplete: true,
     };
 
     try {
       await AsyncStorage.setItem('userData', JSON.stringify(userData));
       navigation.replace('Home');
     } catch (error) {
-      Alert.alert('Error', 'Failed to save location data');
+      Alert.alert('Error', 'Failed to save user data');
     }
   };
 
