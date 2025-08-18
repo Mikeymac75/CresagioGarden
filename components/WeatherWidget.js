@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import PropTypes from 'prop-types';
 
 const WeatherWidget = React.memo(({ weatherData, locationAvailable }) => {
   // If location is not available, show a helpful message.
@@ -51,6 +52,16 @@ const WeatherWidget = React.memo(({ weatherData, locationAvailable }) => {
     </View>
   );
 });
+
+WeatherWidget.propTypes = {
+    weatherData: PropTypes.shape({
+      currentWeather: PropTypes.shape({
+        temperature: PropTypes.number.isRequired,
+        symbol_code: PropTypes.string,
+      }),
+    }),
+    locationAvailable: PropTypes.bool.isRequired,
+  };
 
 const styles = StyleSheet.create({
   loadingContainer: {

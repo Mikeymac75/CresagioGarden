@@ -10,6 +10,7 @@ import {
 import { getItem as getSecureItem } from '../utils/SecureStorage';
 import { getAllUpcomingTasksForMyGarden } from '../services/GardeningService';
 import { useFocusEffect } from '@react-navigation/native';
+import PropTypes from 'prop-types';
 
 export default function AllTasksCalendarScreen({ navigation }) {
   const [tasks, setTasks] = useState([]);
@@ -152,6 +153,10 @@ export default function AllTasksCalendarScreen({ navigation }) {
     </ScrollView>
   );
 }
+
+AllTasksCalendarScreen.propTypes = {
+    navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

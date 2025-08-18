@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Animated } from 'react-native';
+import PropTypes from 'prop-types';
 
 /**
  * A reusable skeleton loader component that shows a shimmering animation.
@@ -36,6 +37,12 @@ const SkeletonPiece = ({ width, height, style }) => {
       </Animated.View>
     </View>
   );
+};
+
+SkeletonPiece.propTypes = {
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    style: PropTypes.object,
 };
 
 /**

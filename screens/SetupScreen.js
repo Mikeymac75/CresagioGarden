@@ -13,6 +13,7 @@ import { setItem as setSecureItem } from '../utils/SecureStorage';
 import * as Location from 'expo-location';
 import { fetchClimateData } from '../services/GardeningService';
 import { requestNotificationPermissions } from '../services/NotificationService';
+import PropTypes from 'prop-types';
 
 export default function SetupScreen({ navigation }) {
   const [postalCode, setPostalCode] = useState('');
@@ -124,6 +125,10 @@ export default function SetupScreen({ navigation }) {
     </ScrollView>
   );
 }
+
+SetupScreen.propTypes = {
+    navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

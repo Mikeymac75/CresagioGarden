@@ -18,6 +18,7 @@ import { PLANTS } from '../data/plants';
 import { useFocusEffect } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { validateGardenEntry, getDaysUntilHarvest } from '../services/GardeningService';
+import PropTypes from 'prop-types';
 
 export default function MyGardenScreen({ navigation }) {
   const [myGarden, setMyGarden] = useState([]);
@@ -194,6 +195,10 @@ export default function MyGardenScreen({ navigation }) {
     </View>
   );
 }
+
+MyGardenScreen.propTypes = {
+    navigation: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f5f5f5' },
