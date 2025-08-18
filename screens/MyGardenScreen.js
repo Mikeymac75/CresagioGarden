@@ -13,6 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { PLANTS } from '../data/plants';
 import { useFocusEffect } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { scheduleNotificationsForPlant, cancelNotificationsForPlant } from '../services/NotificationService';
 
 export default function MyGardenScreen({ navigation }) {
   const [myGarden, setMyGarden] = useState([]);
@@ -88,17 +89,20 @@ export default function MyGardenScreen({ navigation }) {
       expectedHarvest: new Date(date.getTime() + (plant.daysToMaturity * 24 * 60 * 60 * 1000)).toISOString()
     };
 
-    const updatedGarden = [...myGarden, newPlantEntry];
-    setMyGarden(updatedGarden);
-    
     try {
+      // Schedule all notifications for the new plant
+      await scheduleNotificationsForPlant(newPlantEntry, plant);
+
+      const updatedGarden = [...myGarden, newPlantEntry];
+      setMyGarden(updatedGarden);
+
       await AsyncStorage.setItem('myGarden', JSON.stringify(updatedGarden));
       setShowAddPlant(false);
       setSelectedPlant(null);
       Alert.alert('Success!', `${plant.name} added to your garden! 🌱`);
     } catch (error) {
-      console.error('Error saving garden:', error);
-      Alert.alert('Error', 'Failed to save plant to garden');
+      console.error('Error adding plant or scheduling notifications:', error);
+      Alert.alert('Error', 'Failed to save plant to garden. Please try again.');
     }
   };
 
@@ -112,12 +116,17 @@ export default function MyGardenScreen({ navigation }) {
           text: 'Remove', 
           style: 'destructive',
           onPress: async () => {
-            const updatedGarden = myGarden.filter(p => p.id !== plantEntry.id);
-            setMyGarden(updatedGarden);
             try {
+              // First, cancel all notifications for this plant
+              await cancelNotificationsForPlant(plantEntry.id);
+
+              // Then, remove the plant from the garden
+              const updatedGarden = myGarden.filter(p => p.id !== plantEntry.id);
+              setMyGarden(updatedGarden);
               await AsyncStorage.setItem('myGarden', JSON.stringify(updatedGarden));
             } catch (error) {
-              console.error('Error removing plant:', error);
+              console.error('Error removing plant or cancelling notifications:', error);
+              Alert.alert('Error', 'Could not remove the plant. Please try again.');
             }
           }
         }

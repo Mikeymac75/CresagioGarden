@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { fetchClimateData } from '../services/GardeningService';
+import { requestNotificationPermissions } from '../services/NotificationService';
 
 export default function SetupScreen({ navigation }) {
   const [postalCode, setPostalCode] = useState('');
@@ -29,6 +30,9 @@ export default function SetupScreen({ navigation }) {
       Alert.alert('Error', 'Please enter a valid US Zip Code or Canadian Postal Code.');
       return;
     }
+
+    // Request notification permissions before proceeding
+    await requestNotificationPermissions();
 
     const userData = {
       postalCode,
