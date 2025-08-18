@@ -8,6 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import SetupScreen from './screens/SetupScreen';
 import HomeScreen from './screens/HomeScreen';
 import MyGardenScreen from './screens/MyGardenScreen';
+import SeedBankScreen from './screens/SeedBankScreen';
 import PlantCalendarScreen from './screens/PlantCalendarScreen';
 import GardenJournalScreen from './screens/GardenJournalScreen';
 import AllTasksCalendarScreen from './screens/AllTasksCalendarScreen';
@@ -28,7 +29,16 @@ const stackNavigatorOptions = {
 function GardenStackNavigator() {
   return (
     <GardenStack.Navigator screenOptions={stackNavigatorOptions}>
-      <GardenStack.Screen name="MyGarden" component={MyGardenScreen} options={{ title: 'My Garden' }}/>
+      <GardenStack.Screen
+        name="MyGarden"
+        component={MyGardenScreen}
+        options={{ title: 'My Garden' }}
+      />
+      <GardenStack.Screen
+        name="SeedBank"
+        component={SeedBankScreen}
+        options={{ title: 'Seed Bank' }}
+      />
     </GardenStack.Navigator>
   );
 }
