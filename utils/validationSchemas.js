@@ -52,10 +52,20 @@ const hardinessZoneSchema = yup.object().shape({
 });
 
 // Schema for the HARDINESS_ZONES object
-export const hardinessZonesSchema = yup.object().shape({}).pattern(
-  /^\d+$/, // Keys must be numbers (as strings)
-  hardinessZoneSchema
+export const hardinessZonesSchema = yup.object().test(
+  'is-dictionary-of-zones',
+  'HARDINESS_ZONES must be an object with numeric keys',
+  (value) => {
+    if (!value) return true; // Allow empty object
+    for (const key in value) {
+      if (isNaN(Number(key))) {
+        return false;
+      }
+    }
+    return true;
+  }
 );
+
 
 // Schema for a garden entry
 export const gardenEntrySchema = yup.object().shape({

@@ -77,7 +77,7 @@ export default function MyGardenScreen({ navigation }) {
       return;
     }
     const newPlantEntry = {
-      id: Date.now(),
+      id: Date.now().toString(),
       plantId: selectedPlant.id,
       plantName: selectedPlant.name,
       nickname: plantNickname.trim() || selectedPlant.name,
@@ -85,7 +85,7 @@ export default function MyGardenScreen({ navigation }) {
       status: 'growing',
     };
 
-    const { isValid, errors } = validateGardenEntry(newPlantEntry);
+    const { isValid, errors } = await validateGardenEntry(newPlantEntry);
     if (!isValid) {
       Alert.alert('Validation Error', errors.join('\n'));
       return;

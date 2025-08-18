@@ -42,7 +42,7 @@ export default function GardenJournalScreen() {
     }
 
     const newEntry = {
-      id: Date.now(),
+      id: Date.now().toString(),
       title: newEntryTitle.trim(),
       note: newEntryNote.trim(),
       date: new Date().toISOString(),
