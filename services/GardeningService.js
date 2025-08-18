@@ -432,8 +432,8 @@ const WeatherService = {
       }
 
       // Rain accumulation
-      if (itemDate <= next24Hours && item.data.next_1_hours) {
-        totalRainNext24h += item.data.next_1_hours.details.precipitation_amount || 0;
+      if (itemDate <= next24Hours && item.data.next_1_hours?.details?.precipitation_amount) {
+        totalRainNext24h += parseFloat(item.data.next_1_hours.details.precipitation_amount);
       }
 
       // Daily maximum temperature tracking
