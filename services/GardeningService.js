@@ -191,18 +191,26 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
       const harvestDate = new Date(plantedDate);
       harvestDate.setDate(harvestDate.getDate() + plantDetails.daysToMaturity);
 
+      // If a nickname is provided, use it to create a display name, otherwise just use the plant's name.
+      const displayName = gardenEntry.nickname ? `${plantDetails.name} (${gardenEntry.nickname})` : plantDetails.name;
+
+
       // --- Generate Recurring Care Tasks ---
       if (plantDetails.careTasks) {
         plantDetails.careTasks.forEach(careTask => {
           let taskDate = new Date(plantedDate);
           taskDate.setDate(taskDate.getDate() + careTask.daysAfterPlanting);
 
+          // Use the original care task name, but associate it with the specific plant instance's display name.
+          const taskDescription = `🔧 ${careTask.name.replace(plantDetails.name, '').trim()}`;
+
+
           if (careTask.recurring) {
             while (taskDate <= harvestDate) {
               allTasks.push({
                 id: `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`,
-                plantName: plantDetails.name,
-                task: `🔧 ${careTask.name}`,
+                plantName: displayName,
+                task: `${taskDescription} for ${displayName}`,
                 date: taskDate.toISOString(),
                 type: 'care'
               });
@@ -211,8 +219,8 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
           } else if (taskDate <= harvestDate) {
             allTasks.push({
               id: `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`,
-              plantName: plantDetails.name,
-              task: `🔧 ${careTask.name}`,
+              plantName: displayName,
+              task: `${taskDescription} for ${displayName}`,
               date: taskDate.toISOString(),
               type: 'care'
             });
@@ -226,8 +234,8 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
         while (waterDate <= harvestDate) {
           allTasks.push({
             id: `${gardenEntry.id}-water-${waterDate.toISOString()}`,
-            plantName: plantDetails.name,
-            task: `💧 Water ${plantDetails.name}`,
+            plantName: displayName,
+            task: `💧 Water ${displayName}`,
             date: waterDate.toISOString(),
             type: 'water'
           });
@@ -238,8 +246,8 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate) => {
       // --- Generate Harvest Window Task ---
       allTasks.push({
         id: `${gardenEntry.id}-harvest-${harvestDate.toISOString()}`,
-        plantName: plantDetails.name,
-        task: `🥕 Harvest ${plantDetails.name}`,
+        plantName: displayName,
+        task: `🥕 Harvest ${displayName}`,
         date: harvestDate.toISOString(),
         type: 'harvest'
       });
