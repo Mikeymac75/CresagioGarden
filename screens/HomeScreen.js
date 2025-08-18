@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  ActivityIndicator,
   Alert,
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  getItem as getSecureItem,
+  setItem as setSecureItem,
+  removeItem as removeSecureItem,
+} from '../utils/SecureStorage';
 import {
   getPlantableNow,
   getUpcomingTasksForMyGarden,
@@ -17,111 +21,89 @@ import {
 } from '../services/GardeningService';
 import { useFocusEffect } from '@react-navigation/native';
 import WeatherWidget from '../components/WeatherWidget';
+import { StatsCardSkeleton, TaskCardSkeleton } from '../components/SkeletonLoader';
 
-// Simple Checkbox component
-const Checkbox = ({ isChecked, onToggle }) => (
+// Memoized Checkbox component to prevent re-renders
+const Checkbox = React.memo(({ isChecked, onToggle }) => (
   <TouchableOpacity onPress={onToggle} style={[styles.checkboxBase, isChecked && styles.checkboxChecked]}>
     {isChecked && <Text style={styles.checkmark}>✓</Text>}
   </TouchableOpacity>
-);
+));
 
-export default function HomeScreen({ navigation }) {
+const HomeScreen = ({ navigation }) => {
   const [userData, setUserData] = useState(null);
   const [plantableNow, setPlantableNow] = useState([]);
   const [upcomingTasks, setUpcomingTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState(new Set());
   const [plantCount, setPlantCount] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [weatherData, setWeatherData] = useState(null); // New state for weather
+  const [weatherData, setWeatherData] = useState(null);
+
+  const loadData = useCallback(async () => {
+    setLoading(true);
+    setWeatherData(null);
+    try {
+      const [userDataString, myGardenString, completedTasksString] = await Promise.all([
+        getSecureItem('userData'),
+        getSecureItem('myGarden'),
+        getSecureItem('completedTasks'),
+      ]);
+
+      const myGarden = myGardenString ? JSON.parse(myGardenString) : [];
+      setPlantCount(myGarden.filter(p => p.status !== 'harvested').length);
+
+      const loadedCompletedTasks = completedTasksString
+        ? new Set(JSON.parse(completedTasksString))
+        : new Set();
+      setCompletedTasks(loadedCompletedTasks);
+
+      if (userDataString) {
+        const parsedUserData = JSON.parse(userDataString);
+        setUserData(parsedUserData);
+
+        const weatherPromise = (parsedUserData.latitude && parsedUserData.longitude)
+          ? getWeatherForecast(parsedUserData.latitude, parsedUserData.longitude)
+          : Promise.resolve(null);
+
+        const [weather, plantable, rawTasks] = await Promise.all([
+          weatherPromise,
+          getPlantableNow(parsedUserData.firstFrostDate),
+          getUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
+        ]);
+
+        if (weather) setWeatherData(weather);
+        setPlantableNow(plantable);
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const filteredTasks = rawTasks.filter(task => {
+          const taskDate = new Date(task.date);
+          taskDate.setHours(0, 0, 0, 0);
+          return taskDate >= today || !loadedCompletedTasks.has(task.id);
+        });
+
+        let allUpcomingItems = [...filteredTasks];
+        if (weather) {
+          const alerts = generateDynamicAlerts(weather, myGarden);
+          allUpcomingItems = [...alerts, ...allUpcomingItems];
+        }
+
+        allUpcomingItems.sort((a, b) => new Date(a.date) - new Date(b.date));
+        setUpcomingTasks(allUpcomingItems);
+      }
+    } catch (error) {
+      console.error('Error loading data:', error);
+      Alert.alert('Error', 'Could not load your garden data. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useFocusEffect(
-    React.useCallback(() => {
-      const loadData = async () => {
-        setLoading(true);
-        setWeatherData(null); // Reset weather data on focus
-        try {
-          // Load all data in parallel for speed
-          const [userDataString, myGardenString, completedTasksString] = await Promise.all([
-            AsyncStorage.getItem('userData'),
-            AsyncStorage.getItem('myGarden'),
-            AsyncStorage.getItem('completedTasks'),
-          ]);
-
-          const myGarden = myGardenString ? JSON.parse(myGardenString) : [];
-          setPlantCount(myGarden.filter(p => p.status !== 'harvested').length);
-
-          const loadedCompletedTasks = completedTasksString
-            ? new Set(JSON.parse(completedTasksString))
-            : new Set();
-          setCompletedTasks(loadedCompletedTasks);
-
-          if (userDataString) {
-            const parsedUserData = JSON.parse(userDataString);
-            setUserData(parsedUserData);
-
-            // Fetch weather data if location is available
-            let weather = null;
-            if (parsedUserData.latitude && parsedUserData.longitude) {
-              weather = await getWeatherForecast(
-                parsedUserData.latitude,
-                parsedUserData.longitude
-              );
-              setWeatherData(weather);
-            }
-
-            if (parsedUserData.firstFrostDate) {
-              const plantable = getPlantableNow(
-                parsedUserData.firstFrostDate
-              );
-              setPlantableNow(plantable);
-            }
-
-            if (parsedUserData.lastFrostDate) {
-              const rawTasks = getUpcomingTasksForMyGarden(
-                myGarden,
-                parsedUserData.lastFrostDate,
-                parsedUserData.firstFrostDate
-              );
-
-              // Filter tasks: hide completed tasks from past days
-              const today = new Date();
-              today.setHours(0, 0, 0, 0); // Set to midnight to compare dates only
-
-              const filteredTasks = rawTasks.filter(task => {
-                const taskDate = new Date(task.date);
-                taskDate.setHours(0, 0, 0, 0); // Normalize task date as well
-
-                if (taskDate < today) {
-                  // It's a past task. Only show it if it's NOT completed.
-                  return !loadedCompletedTasks.has(task.id);
-                }
-                // It's a task for today or the future, always show it.
-                return true;
-              });
-
-              // --- Generate and Combine Dynamic Alerts ---
-              let allUpcomingItems = [...filteredTasks];
-              if (weather) {
-                const alerts = generateDynamicAlerts(weather, myGarden);
-                // Prepend alerts so they appear at the top for the same day
-                allUpcomingItems = [...alerts, ...allUpcomingItems];
-              }
-
-              // Sort all items by date
-              allUpcomingItems.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-              setUpcomingTasks(allUpcomingItems);
-            }
-          }
-        } catch (error) {
-          console.error('Error loading data:', error);
-        } finally {
-          setLoading(false);
-        }
-      };
-
+    useCallback(() => {
       loadData();
-    }, [])
+    }, [loadData])
   );
 
   const handleChangeLocation = () => {
@@ -129,15 +111,12 @@ export default function HomeScreen({ navigation }) {
       'Change Location',
       'Are you sure you want to change your location? This will require you to set it up again.',
       [
-        {
-          text: 'Cancel',
-          style: 'cancel',
-        },
+        { text: 'Cancel', style: 'cancel' },
         {
           text: 'Change',
           onPress: async () => {
             try {
-              await AsyncStorage.removeItem('userData');
+              await removeSecureItem('userData');
               navigation.replace('Setup');
             } catch (error) {
               console.error('Failed to remove user data:', error);
@@ -150,7 +129,7 @@ export default function HomeScreen({ navigation }) {
     );
   };
 
-  const toggleTask = async taskId => {
+  const toggleTask = useCallback(async (taskId) => {
     const newCompletedTasks = new Set(completedTasks);
     if (newCompletedTasks.has(taskId)) {
       newCompletedTasks.delete(taskId);
@@ -158,14 +137,10 @@ export default function HomeScreen({ navigation }) {
       newCompletedTasks.add(taskId);
     }
     setCompletedTasks(newCompletedTasks);
-    // Save the updated set to AsyncStorage
-    await AsyncStorage.setItem(
-      'completedTasks',
-      JSON.stringify(Array.from(newCompletedTasks))
-    );
-  };
+    await setSecureItem('completedTasks', JSON.stringify(Array.from(newCompletedTasks)));
+  }, [completedTasks]);
 
-  const formatDate = dateString => {
+  const formatDate = (dateString) => {
     const date = new Date(dateString);
     const today = new Date();
     const tomorrow = new Date();
@@ -182,9 +157,20 @@ export default function HomeScreen({ navigation }) {
 
   if (loading) {
     return (
-      <View style={[styles.container, styles.center]}>
-        <ActivityIndicator size="large" color="#4CAF50" />
-      </View>
+      <ScrollView style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.welcomeText}>Welcome back! 🌱</Text>
+           <View style={{...styles.locationText, backgroundColor: '#a5d6a7', width: 100, height: 20, borderRadius: 4}}/>
+        </View>
+        <WeatherWidget weatherData={null} locationAvailable={true} />
+        <StatsCardSkeleton />
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>✅ This Week's Tasks</Text>
+          <TaskCardSkeleton />
+          <TaskCardSkeleton />
+          <TaskCardSkeleton />
+        </View>
+      </ScrollView>
     );
   }
 
@@ -223,8 +209,6 @@ export default function HomeScreen({ navigation }) {
             const isCompleted = completedTasks.has(item.id);
             const isAlert = item.type === 'alert';
             const isCritical = item.type === 'critical';
-
-            // Alerts and critical tasks are not toggleable
             const canToggle = !isAlert && !isCritical;
 
             return (
@@ -239,7 +223,6 @@ export default function HomeScreen({ navigation }) {
                 {canToggle ? (
                   <Checkbox isChecked={isCompleted} onToggle={() => toggleTask(item.id)} />
                 ) : (
-                  // Spacer to align text with other tasks
                   <View style={{ width: 24, height: 24, marginRight: 15 }} />
                 )}
                 <View style={styles.taskDetails}>
@@ -256,8 +239,7 @@ export default function HomeScreen({ navigation }) {
         )}
       </View>
 
-
-       <View style={styles.section}>
+      <View style={styles.section}>
         <Text style={styles.sectionTitle}>🌱 What You Can Still Plant</Text>
         {plantableNow.length > 0 ? (
           plantableNow.slice(0, 3).map(plant => (
@@ -272,7 +254,9 @@ export default function HomeScreen({ navigation }) {
       </View>
     </ScrollView>
   );
-}
+};
+
+export default React.memo(HomeScreen);
 
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: '#f5f5f5' },
