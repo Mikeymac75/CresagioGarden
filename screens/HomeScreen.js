@@ -21,6 +21,7 @@ import {
 import { useFocusEffect } from '@react-navigation/native';
 import WeatherWidget from '../components/WeatherWidget';
 import { StatsCardSkeleton, TaskCardSkeleton } from '../components/SkeletonLoader';
+import PropTypes from 'prop-types';
 
 // Memoized Checkbox component to prevent re-renders
 const Checkbox = React.memo(({ isChecked, onToggle }) => (
@@ -28,6 +29,11 @@ const Checkbox = React.memo(({ isChecked, onToggle }) => (
     {isChecked && <Text style={styles.checkmark}>✓</Text>}
   </TouchableOpacity>
 ));
+
+Checkbox.propTypes = {
+    isChecked: PropTypes.bool.isRequired,
+    onToggle: PropTypes.func.isRequired,
+};
 
 const HomeScreen = ({ navigation }) => {
   const [userData, setUserData] = useState(null);
@@ -253,6 +259,10 @@ const HomeScreen = ({ navigation }) => {
       </View>
     </ScrollView>
   );
+};
+
+HomeScreen.propTypes = {
+    navigation: PropTypes.object.isRequired,
 };
 
 export default React.memo(HomeScreen);

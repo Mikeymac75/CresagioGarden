@@ -1,5 +1,5 @@
 import { PLANTS, HARDINESS_ZONES } from '../data/plants';
-import * as yup from 'yup';
+import { gardenEntrySchema, weatherSchema } from '../utils/validationSchemas';
 
 // Configuration constants
 const CONFIG = {
@@ -16,32 +16,6 @@ const CONFIG = {
   WEATHER_API_MAX_RETRIES: 3,
   WEATHER_API_RETRY_DELAY: 1000, // 1 second
 };
-
-// --- Yup Weather Schema ---
-const weatherSchema = yup.object().shape({
-  properties: yup.object().shape({
-    timeseries: yup.array().of(
-      yup.object().shape({
-        time: yup.string().required(),
-        data: yup.object().shape({
-          instant: yup.object().shape({
-            details: yup.object().shape({
-              air_temperature: yup.number().required(),
-            }).required(),
-          }).required(),
-          next_1_hours: yup.object().shape({
-            summary: yup.object().shape({
-              symbol_code: yup.string(),
-            }),
-            details: yup.object().shape({
-              precipitation_amount: yup.number(),
-            }),
-          }),
-        }).required(),
-      })
-    ).min(1, "Timeseries data cannot be empty").required(),
-  }).required(),
-});
 
 
 // Task type constants
@@ -835,22 +809,20 @@ export const getGardenStatistics = (myGarden) => {
 /**
  * Validates garden entry data
  */
-export const validateGardenEntry = (entry) => {
-  const errors = [];
-
-  if (!entry.plantId) errors.push('Plant ID is required');
-  if (!entry.plantedDate) errors.push('Planted date is required');
-  if (!ValidationUtils.isValidDate(entry.plantedDate)) {
-    errors.push('Invalid planted date format');
+export const validateGardenEntry = async (entry) => {
+  try {
+    await gardenEntrySchema.validate(entry, { abortEarly: false });
+    const plantExists = PLANTS.find(p => p.id === entry.plantId);
+    if (!plantExists) {
+      return {
+        isValid: false,
+        errors: ['Plant not found in database']
+      };
+    }
+    return { isValid: true, errors: [] };
+  } catch (err) {
+    return { isValid: false, errors: err.errors };
   }
-
-  const plantExists = PLANTS.find(p => p.id === entry.plantId);
-  if (!plantExists) errors.push('Plant not found in database');
-
-  return {
-    isValid: errors.length === 0,
-    errors
-  };
 };
 
 /**
