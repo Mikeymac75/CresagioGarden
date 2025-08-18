@@ -528,6 +528,353 @@ export const PLANTS = [
     ]
   },
   {
+   id: 25,
+   name: 'Parsley',
+   category: 'Herb',
+   harvestType: 'continuous',
+   daysToMaturity: 75,
+   spacing: '6-8 inches',
+   sunRequirement: 'Full sun to partial shade',
+   startIndoorsWeeksBefore: 10,
+   transplantWeeksAfterLastFrost: -2,
+   directSowWeeksAfterLastFrost: -4,
+   wateringNeeds: 'Consistent moisture',
+   wateringFrequencyDays: 3,
+   frostTolerant: true,
+   description: 'A biennial herb grown as annual. Very slow to germinate from seed.',
+   tips: 'Soak seeds overnight before planting to improve germination. Harvest outer stems regularly to encourage new growth.',
+   careTasks: [
+     { name: 'Begin hardening off seedlings', daysAfterPlanting: 63, recurring: null },
+     { name: 'Begin harvesting outer stems', daysAfterPlanting: 70, recurring: 7 }
+   ]
+ },
+ {
+   id: 26,
+   name: 'Cabbage',
+   category: 'Vegetable',
+   harvestType: 'single',
+   daysToMaturity: 80,
+   spacing: '18-24 inches',
+   sunRequirement: 'Full sun',
+   startIndoorsWeeksBefore: 6,
+   transplantWeeksAfterLastFrost: -2,
+   directSowWeeksAfterLastFrost: -4,
+   wateringNeeds: 'Consistent, deep watering',
+   wateringFrequencyDays: 4,
+   frostTolerant: true,
+   description: 'A cool-season crop that forms dense heads. Can split if growth is too rapid.',
+   tips: 'Harvest when heads are firm and solid. Cut at base leaving roots to potentially produce small secondary heads.',
+   careTasks: [
+     { name: 'Begin hardening off seedlings', daysAfterPlanting: 35, recurring: null },
+     { name: 'Check for cabbage worms', daysAfterPlanting: 45, recurring: 7 },
+     { name: 'Check heads for firmness', daysAfterPlanting: 75, recurring: 5 }
+   ]
+  },
+  {
+   id: 27,
+   name: 'Cauliflower',
+   category: 'Vegetable',
+   harvestType: 'single',
+   daysToMaturity: 75,
+   spacing: '18-24 inches',
+   sunRequirement: 'Full sun',
+   startIndoorsWeeksBefore: 6,
+   transplantWeeksAfterLastFrost: -2,
+   directSowWeeksAfterLastFrost: null,
+   wateringNeeds: 'Consistent moisture',
+   wateringFrequencyDays: 3,
+   frostTolerant: true,
+   description: 'A cool-season crop that requires steady temperatures. More finicky than cabbage.',
+   tips: 'Blanch heads by tying leaves over them when heads are 2-3 inches across to keep them white.',
+   careTasks: [
+     { name: 'Begin hardening off seedlings', daysAfterPlanting: 35, recurring: null },
+     { name: 'Tie leaves over developing heads to blanch', daysAfterPlanting: 60, recurring: null },
+     { name: 'Check for harvest readiness', daysAfterPlanting: 70, recurring: 3 }
+   ]
+ },
+ {
+   id: 28,
+   name: 'Brussels Sprouts',
+   category: 'Vegetable',
+   harvestType: 'continuous',
+   daysToMaturity: 100,
+   spacing: '24 inches',
+   sunRequirement: 'Full sun',
+   startIndoorsWeeksBefore: 12,
+   transplantWeeksAfterLastFrost: -4,
+   directSowWeeksAfterLastFrost: null,
+   wateringNeeds: 'Consistent moisture',
+   wateringFrequencyDays: 4,
+   frostTolerant: true,
+   description: 'A long-season cool-weather crop. Sprouts form along the tall stem.',
+   tips: 'Remove lower leaves as sprouts develop. Harvest from bottom up when sprouts are firm and 1-2 inches across.',
+   careTasks: [
+     { name: 'Begin hardening off seedlings', daysAfterPlanting: 70, recurring: null },
+     { name: 'Remove lower leaves to expose developing sprouts', daysAfterPlanting: 80, recurring: 14 },
+     { name: 'Begin harvesting bottom sprouts', daysAfterPlanting: 95, recurring: 7 }
+   ]
+ },
+ {
+   id: 29,
+   name: 'Watermelon',
+   category: 'Fruit',
+   harvestType: 'single',
+   daysToMaturity: 90,
+   spacing: '60-72 inches',
+   sunRequirement: 'Full sun',
+   startIndoorsWeeksBefore: 4,
+   transplantWeeksAfterLastFrost: 3,
+   directSowWeeksAfterLastFrost: 3,
+   wateringNeeds: 'Deep, consistent watering until fruit sets',
+   wateringFrequencyDays: 5,
+   frostTolerant: false,
+   description: 'A sprawling warm-season crop that needs a long, hot growing season.',
+   tips: 'Reduce watering as fruit ripens to concentrate sugars. Check for ripeness by thumping - ripe melons sound hollow.',
+   careTasks: [
+     { name: 'Begin hardening off seedlings', daysAfterPlanting: 21, recurring: null },
+     { name: 'Place cardboard under developing fruit', daysAfterPlanting: 60, recurring: null },
+     { name: 'Reduce watering frequency', daysAfterPlanting: 75, recurring: null },
+     { name: 'Test for ripeness by thumping', daysAfterPlanting: 85, recurring: 3 }
+   ]
+ },
+ {
+   id: 30,
+   name: 'Cantaloupe',
+   category: 'Fruit',
+   harvestType: 'single',
+   daysToMaturity: 85,
+   spacing: '36-48 inches',
+   sunRequirement: 'Full sun',
+   startIndoorsWeeksBefore: 4,
+   transplantWeeksAfterLastFrost: 2,
+   directSowWeeksAfterLastFrost: 2,
+   wateringNeeds: 'Consistent moisture until fruit sets, then reduce',
+   wateringFrequencyDays: 4,
+   frostTolerant: false,
+   description: 'A warm-season vine crop that produces fragrant, sweet melons.',
+   tips: 'Ripe melons slip easily from the vine and have a sweet aroma at the blossom end.',
+   careTasks: [
+     { name: 'Begin hardening off seedlings', daysAfterPlanting: 21, recurring: null },
+     { name: 'Check for powdery mildew', daysAfterPlanting: 50, recurring: 7 },
+     { name: 'Test fruit for slip (easy removal from vine)', daysAfterPlanting: 80, recurring: 2 }
+   ]
+ },
+ {
+   id: 31,
+   name: 'Arugula',
+   category: 'Leafy Green',
+   harvestType: 'continuous',
+   daysToMaturity: 35,
+   spacing: '4-6 inches',
+   sunRequirement: 'Full sun to partial shade',
+   startIndoorsWeeksBefore: null,
+   transplantWeeksAfterLastFrost: null,
+   directSowWeeksAfterLastFrost: -4,
+   wateringNeeds: 'Consistent moisture',
+   wateringFrequencyDays: 2,
+   frostTolerant: true,
+   description: 'A fast-growing, peppery cool-season green that bolts quickly in heat.',
+   tips: 'Succession plant every 2 weeks. Harvest leaves when young and tender for mildest flavor.',
+   careTasks: [
+     { name: 'Thin seedlings', daysAfterPlanting: 14, recurring: null },
+     { name: 'Begin harvesting leaves', daysAfterPlanting: 30, recurring: 5 }
+   ]
+ },
+ {
+   id: 32,
+   name: 'Turnips',
+   category: 'Root Vegetable',
+   harvestType: 'single',
+   daysToMaturity: 50,
+   spacing: '4-6 inches',
+   sunRequirement: 'Full sun',
+   startIndoorsWeeksBefore: null,
+   transplantWeeksAfterLastFrost: null,
+   directSowWeeksAfterLastFrost: -6,
+   wateringNeeds: 'Consistent moisture',
+   wateringFrequencyDays: 3,
+   frostTolerant: true,
+   description: 'A cool-season root crop grown for both roots and greens.',
+   tips: 'Harvest roots when tennis ball sized or smaller for best flavor. Greens can be harvested earlier.',
+   careTasks: [
+     { name: 'Thin seedlings to 4-6 inches apart', daysAfterPlanting: 21, recurring: null },
+     { name: 'Begin harvesting greens', daysAfterPlanting: 35, recurring: 7 },
+     { name: 'Begin checking root size', daysAfterPlanting: 45, recurring: 5 }
+   ]
+ },
+ {
+   id: 33,
+   name: 'Leeks',
+   category: 'Vegetable',
+   harvestType: 'single',
+   daysToMaturity: 120,
+   spacing: '6 inches',
+   sunRequirement: 'Full sun',
+   startIndoorsWeeksBefore: 10,
+   transplantWeeksAfterLastFrost: -2,
+   directSowWeeksAfterLastFrost: -6,
+   wateringNeeds: 'Consistent moisture',
+   wateringFrequencyDays: 4,
+   frostTolerant: true,
+   description: 'A long-season cool-weather crop related to onions, grown for thick white stems.',
+   tips: 'Hill soil around stems to blanch them white. Very cold hardy and can be harvested into winter.',
+   careTasks: [
+     { name: 'Begin hardening off seedlings', daysAfterPlanting: 56, recurring: null },
+     { name: 'Hill soil around stems', daysAfterPlanting: 70, recurring: 21 },
+     { name: 'Begin harvesting mature leeks', daysAfterPlanting: 115, recurring: 7 }
+   ]
+ },
+ {
+   id: 34,
+   name: 'Rutabaga',
+   category: 'Root Vegetable',
+   harvestType: 'single',
+   daysToMaturity: 90,
+   spacing: '6-8 inches',
+   sunRequirement: 'Full sun',
+   startIndoorsWeeksBefore: null,
+   transplantWeeksAfterLastFrost: null,
+   directSowWeeksAfterLastFrost: -10,
+   wateringNeeds: 'Consistent moisture',
+   wateringFrequencyDays: 4,
+   frostTolerant: true,
+   description: 'A cool-season root crop that improves in flavor after frost.',
+   tips: 'Can be left in ground through winter in mild climates. Mulch heavily for protection.',
+   careTasks: [
+     { name: 'Thin seedlings to 6-8 inches apart', daysAfterPlanting: 28, recurring: null },
+     { name: 'Begin checking root size', daysAfterPlanting: 80, recurring: 10 }
+   ]
+ },
+ {
+   id: 35,
+   name: 'Okra',
+   category: 'Fruit',
+   harvestType: 'continuous',
+   daysToMaturity: 60,
+   spacing: '18-24 inches',
+   sunRequirement: 'Full sun',
+   startIndoorsWeeksBefore: 6,
+   transplantWeeksAfterLastFrost: 3,
+   directSowWeeksAfterLastFrost: 3,
+   wateringNeeds: 'Deep, infrequent watering',
+   wateringFrequencyDays: 5,
+   frostTolerant: false,
+   description: 'A heat-loving warm-season crop that thrives in hot, humid conditions.',
+   tips: 'Harvest pods when 3-4 inches long for best tenderness. Pick daily to keep plants producing.',
+   careTasks: [
+     { name: 'Begin hardening off seedlings', daysAfterPlanting: 35, recurring: null },
+     { name: 'Begin harvesting pods', daysAfterPlanting: 55, recurring: 2 }
+   ]
+ },
+ {
+   id: 36,
+   name: 'Asparagus',
+   category: 'Vegetable',
+   harvestType: 'continuous',
+   daysToMaturity: 730, // 2 years to establish
+   spacing: '18 inches',
+   sunRequirement: 'Full sun',
+   startIndoorsWeeksBefore: null,
+   transplantWeeksAfterLastFrost: -4,
+   directSowWeeksAfterLastFrost: null,
+   wateringNeeds: 'Deep watering during growing season',
+   wateringFrequencyDays: 7,
+   frostTolerant: true,
+   description: 'A perennial vegetable that takes 2-3 years to establish but produces for decades.',
+   tips: 'Do not harvest in the first year. Allow ferns to grow to build root system. Harvest spears for 6-8 weeks in spring.',
+   careTasks: [
+     { name: 'Allow all spears to grow into ferns (Year 1)', daysAfterPlanting: 0, recurring: null },
+     { name: 'Begin light harvest (Year 2)', daysAfterPlanting: 365, recurring: null },
+     { name: 'Cut back dead ferns in late fall', daysAfterPlanting: 240, recurring: 365 }
+   ]
+ },
+ {
+   id: 37,
+   name: 'Rhubarb',
+   category: 'Fruit',
+   harvestType: 'continuous',
+   daysToMaturity: 365,
+   spacing: '36 inches',
+   sunRequirement: 'Full sun to partial shade',
+   startIndoorsWeeksBefore: null,
+   transplantWeeksAfterLastFrost: -4,
+   directSowWeeksAfterLastFrost: null,
+   wateringNeeds: 'Deep watering, especially in dry spells',
+   wateringFrequencyDays: 7,
+   frostTolerant: true,
+   description: 'A perennial vegetable treated as fruit. Very cold hardy and long-lived.',
+   tips: 'Never eat the leaves - they are toxic. Harvest stalks by pulling, not cutting. Stop harvest in mid-summer.',
+   careTasks: [
+     { name: 'Begin light harvest (second year)', daysAfterPlanting: 365, recurring: null },
+     { name: 'Divide crowns every 5-7 years', daysAfterPlanting: 1825, recurring: null }
+   ]
+ },
+ {
+   id: 38,
+   name: 'Fennel (Bulbing)',
+   category: 'Vegetable',
+   harvestType: 'single',
+   daysToMaturity: 85,
+   spacing: '12 inches',
+   sunRequirement: 'Full sun',
+   startIndoorsWeeksBefore: 4,
+   transplantWeeksAfterLastFrost: -2,
+   directSowWeeksAfterLastFrost: -2,
+   wateringNeeds: 'Consistent moisture',
+   wateringFrequencyDays: 3,
+   frostTolerant: true,
+   description: 'A cool-season crop grown for its swollen stem base with anise flavor.',
+   tips: 'Hill soil around bulbs as they develop to blanch them. Harvest when bulbs are tennis ball sized.',
+   careTasks: [
+     { name: 'Begin hardening off seedlings', daysAfterPlanting: 21, recurring: null },
+     { name: 'Hill soil around developing bulbs', daysAfterPlanting: 60, recurring: 14 },
+     { name: 'Check bulb size for harvest', daysAfterPlanting: 80, recurring: 5 }
+   ]
+ },
+ {
+   id: 39,
+   name: 'Artichoke',
+   category: 'Vegetable',
+   harvestType: 'continuous',
+   daysToMaturity: 180,
+   spacing: '48 inches',
+   sunRequirement: 'Full sun',
+   startIndoorsWeeksBefore: 8,
+   transplantWeeksAfterLastFrost: -2,
+   directSowWeeksAfterLastFrost: null,
+   wateringNeeds: 'Deep, regular watering',
+   wateringFrequencyDays: 5,
+   frostTolerant: true,
+   description: 'A large perennial vegetable that needs mild winters or can be grown as annual.',
+   tips: 'Harvest buds before they open into flowers. Cut main bud first to encourage side shoots.',
+   careTasks: [
+     { name: 'Begin hardening off seedlings', daysAfterPlanting: 49, recurring: null },
+     { name: 'Check for developing buds', daysAfterPlanting: 160, recurring: 7 },
+     { name: 'Harvest main bud when tight', daysAfterPlanting: 175, recurring: null }
+   ]
+ },
+ {
+   id: 40,
+   name: 'Collard Greens',
+   category: 'Leafy Green',
+   harvestType: 'continuous',
+   daysToMaturity: 65,
+   spacing: '18-24 inches',
+   sunRequirement: 'Full sun to partial shade',
+   startIndoorsWeeksBefore: 6,
+   transplantWeeksAfterLastFrost: -2,
+   directSowWeeksAfterLastFrost: -4,
+   wateringNeeds: 'Consistent moisture',
+   wateringFrequencyDays: 4,
+   frostTolerant: true,
+   description: 'A very cold-hardy leafy green that sweetens after frost.',
+   tips: 'Harvest outer leaves regularly. Can produce through winter in mild climates.',
+   careTasks: [
+     { name: 'Begin hardening off seedlings', daysAfterPlanting: 35, recurring: null },
+     { name: 'Begin harvesting outer leaves', daysAfterPlanting: 60, recurring: 7 }
+   ]
+ },
+  {
     id: 24,
     name: 'Beets',
     category: 'Root Vegetable',
@@ -548,4 +895,5 @@ export const PLANTS = [
       { name: 'Begin harvesting baby greens from thinnings', daysAfterPlanting: 21, recurring: null },
       { name: 'Begin checking for harvest-size roots', daysAfterPlanting: 50, recurring: 7 }
     ]
-  },
+  }
+];
