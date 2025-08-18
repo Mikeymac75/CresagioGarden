@@ -57,13 +57,13 @@ function MainAppTabs() {
           let iconName;
 
           if (route.name === 'Home') {
-            iconName = focused ? 'ios-home' : 'ios-home-outline';
+            iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'My Garden') {
-            iconName = focused ? 'ios-leaf' : 'ios-leaf-outline';
+            iconName = focused ? 'leaf' : 'leaf-outline';
           } else if (route.name === 'Calendar') {
-            iconName = focused ? 'ios-calendar' : 'ios-calendar-outline';
+            iconName = focused ? 'calendar' : 'calendar-outline';
           } else if (route.name === 'Journal') {
-            iconName = focused ? 'ios-book' : 'ios-book-outline';
+            iconName = focused ? 'book' : 'book-outline';
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
