@@ -290,8 +290,8 @@ export const getWeatherForecast = async (latitude, longitude) => {
 
     const data = await response.json();
 
-    if (!data.properties || !data.properties.timeseries) {
-      console.error("Weather API response is missing timeseries data.");
+    if (!data.properties || !data.properties.timeseries || data.properties.timeseries.length === 0) {
+      console.error("Weather API response is missing or has empty timeseries data.");
       return null;
     }
 
