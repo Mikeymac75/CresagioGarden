@@ -82,7 +82,7 @@ export default function MyGardenScreen({ navigation }) {
       plantName: selectedPlant.name,
       nickname: plantNickname.trim() || selectedPlant.name,
       plantedDate: plantedDate.toISOString(),
-      status: 'growing',
+      status: 'active',
     };
 
     const { isValid, errors } = await validateGardenEntry(newPlantEntry);
