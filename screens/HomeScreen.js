@@ -156,7 +156,10 @@ export default function HomeScreen({ navigation }) {
         </Text>
       </View>
 
-      <WeatherWidget weatherData={weatherData} />
+      <WeatherWidget
+        weatherData={weatherData}
+        locationAvailable={!!(userData?.latitude && userData?.longitude)}
+      />
 
       <View style={styles.statsCard}>
         <View style={styles.statItem}>

@@ -1,12 +1,37 @@
 import React from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 
-const WeatherWidget = ({ weatherData }) => {
+const WeatherWidget = ({ weatherData, locationAvailable }) => {
+  // If location is not available, show a helpful message.
+  if (!locationAvailable) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Local Weather</Text>
+        <Text style={styles.infoText}>
+          Enable location permissions in the app settings to see the weather forecast.
+        </Text>
+      </View>
+    );
+  }
+
+  // If location is available, but data is still fetching.
   if (!weatherData) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="#4CAF50" />
         <Text style={styles.loadingText}>Fetching Local Weather...</Text>
+      </View>
+    );
+  }
+
+  // Defensive check: If data arrives but is missing the 'currentWeather' block.
+  if (!weatherData.currentWeather) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Weather Update</Text>
+        <Text style={styles.infoText}>
+          Weather data is currently unavailable. Please try again later.
+        </Text>
       </View>
     );
   }
@@ -64,6 +89,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 12,
     color: '#2E7D32', // Darker green
+  },
+  infoText: {
+    fontSize: 16,
+    color: '#333',
+    textAlign: 'center',
+    lineHeight: 22,
   },
   weatherInfo: {
     flexDirection: 'row',
