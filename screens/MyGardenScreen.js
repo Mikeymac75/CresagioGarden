@@ -14,6 +14,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { PLANTS } from '../data/plants';
 import { useFocusEffect } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { validateGardenEntry, getDaysUntilHarvest } from '../services/GardeningService';
 
 export default function MyGardenScreen({ navigation }) {
   const [myGarden, setMyGarden] = useState([]);
@@ -71,6 +72,13 @@ export default function MyGardenScreen({ navigation }) {
       plantedDate: plantedDate.toISOString(),
       status: 'growing',
     };
+
+    const { isValid, errors } = validateGardenEntry(newPlantEntry);
+    if (!isValid) {
+      Alert.alert('Validation Error', errors.join('\n'));
+      return;
+    }
+
     const updatedGarden = [...myGarden, newPlantEntry];
     setMyGarden(updatedGarden);
     try {
@@ -103,18 +111,9 @@ export default function MyGardenScreen({ navigation }) {
     );
   };
 
-  const getPlantInfo = (plantId) => PLANTS.find(p => p.id === plantId);
-  
-  const getDaysUntilHarvest = (plantedDate, daysToMaturity) => {
-    const today = new Date();
-    const harvestDate = new Date(plantedDate);
-    harvestDate.setDate(harvestDate.getDate() + daysToMaturity);
-    return Math.ceil((harvestDate - today) / (1000 * 60 * 60 * 24));
-  };
-
   const renderPlantEntry = ({ item }) => {
     if (item.status === 'harvested') return null;
-    const plantInfo = getPlantInfo(item.plantId);
+    const plantInfo = PLANTS.find(p => p.id === item.plantId);
     const daysUntilHarvest = getDaysUntilHarvest(item.plantedDate, plantInfo.daysToMaturity);
     return (
       <View style={styles.plantEntry}>
