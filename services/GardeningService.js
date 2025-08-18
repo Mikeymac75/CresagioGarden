@@ -195,6 +195,35 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate, firstFro
       // If a nickname is provided, use it to create a display name, otherwise just use the plant's name.
       const displayName = gardenEntry.nickname ? `${plantDetails.name} (${gardenEntry.nickname})` : plantDetails.name;
 
+      // --- LATE PLANTING CHECK ---
+      if (firstFrost && plantDetails.daysToMaturity) {
+        const safetyBuffer = 14; // Or another value from config
+        const estimatedHarvestDate = new Date(plantedDate);
+        estimatedHarvestDate.setDate(plantedDate.getDate() + plantDetails.daysToMaturity + safetyBuffer);
+
+        if (estimatedHarvestDate > firstFrost) {
+          // This plant is at risk, check for critical tasks
+          if (plantDetails.criticalTasks) {
+            plantDetails.criticalTasks.forEach(criticalTask => {
+              if (criticalTask.condition === "LATE_PLANTING") {
+                const taskDate = new Date(plantedDate);
+                taskDate.setDate(taskDate.getDate() + criticalTask.daysAfterPlanting);
+
+                // Only add the task if it's not in the distant past
+                if (taskDate <= harvestDate) {
+                   allTasks.push({
+                    id: `${gardenEntry.id}-critical-${criticalTask.task.replace(/\s+/g, '')}`,
+                    plantName: displayName,
+                    task: `⚠️ ${criticalTask.task}`,
+                    date: taskDate.toISOString(),
+                    type: 'critical',
+                  });
+                }
+              }
+            });
+          }
+        }
+      }
 
       // --- Generate Recurring Care Tasks ---
       if (plantDetails.careTasks) {
@@ -273,10 +302,10 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate, firstFro
 };
 
 /**
- * Fetches the weather forecast for a given latitude and longitude.
+ * Fetches and analyzes the weather forecast to generate dynamic alerts.
  * @param {number} latitude - The latitude.
  * @param {number} longitude - The longitude.
- * @returns {Promise<object|null>} An object with current weather, hourly forecast, and frost warning, or null on failure.
+ * @returns {Promise<object|null>} An object with current weather, hourly forecast, and an array of alerts, or null on failure.
  */
 export const getWeatherForecast = async (latitude, longitude) => {
   if (!latitude || !longitude) {
@@ -284,41 +313,32 @@ export const getWeatherForecast = async (latitude, longitude) => {
   }
 
   const url = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${latitude}&lon=${longitude}`;
-
-  // IMPORTANT: The API requires a custom User-Agent header.
   const userAgent = "GardenCommand/1.0 https://github.com/your-username/garden-command";
 
   try {
-    const response = await fetch(url, {
-      headers: {
-        'User-Agent': userAgent,
-      },
-    });
-
+    const response = await fetch(url, { headers: { 'User-Agent': userAgent } });
     if (!response.ok) {
       console.error(`Weather API request failed with status: ${response.status}`);
       return null;
     }
 
     const data = await response.json();
-
     if (!data.properties || !data.properties.timeseries || data.properties.timeseries.length === 0) {
       console.error("Weather API response is missing or has empty timeseries data.");
       return null;
     }
 
     const { timeseries } = data.properties;
+    const now = new Date();
+    const next24Hours = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+    const next48Hours = new Date(now.getTime() + 48 * 60 * 60 * 1000);
 
-    // Find the current weather (the first timeseries entry)
     const currentWeather = {
       time: timeseries[0].time,
       temperature: timeseries[0].data.instant.details.air_temperature,
-      symbol_code: timeseries[0].data.next_1_hours.summary.symbol_code,
+      symbol_code: timeseries[0].data.next_1_hours?.summary.symbol_code,
     };
 
-    // Extract the next 24 hours of forecast
-    const now = new Date();
-    const next24Hours = new Date(now.getTime() + 24 * 60 * 60 * 1000);
     const hourlyForecast = timeseries
       .filter(item => {
         const itemDate = new Date(item.time);
@@ -329,26 +349,140 @@ export const getWeatherForecast = async (latitude, longitude) => {
         temperature: item.data.instant.details.air_temperature,
       }));
 
-    // Check for frost in the next 48 hours
-    const next48Hours = new Date(now.getTime() + 48 * 60 * 60 * 1000);
-    let frostWarning = false;
+    const alerts = [];
+    let frostFound = false;
+    let hardFreezeFound = false;
+    let totalRainNext24h = 0;
+    const dailyMaxTemps = {};
+
     for (const item of timeseries) {
       const itemDate = new Date(item.time);
-      if (itemDate > next48Hours) break; // Only check up to 48 hours
-      if (item.data.instant.details.air_temperature <= 0) {
-        frostWarning = true;
-        break;
+      if (itemDate > next48Hours) break;
+
+      // --- Frost and Freeze Check ---
+      const temp = item.data.instant.details.air_temperature;
+      if (!frostFound && temp <= 0) {
+        alerts.push({
+          type: 'FROST',
+          message: `❄️ Frost Alert! Low of ${Math.round(temp)}°C expected. Protect sensitive plants.`,
+          date: item.time,
+        });
+        frostFound = true; // Add only one frost alert
       }
+      if (!hardFreezeFound && temp <= -2) { // Typical definition of a hard freeze
+        hardFreezeFound = true;
+      }
+
+      // --- Rain Check (for next 24h) ---
+      if (itemDate <= next24Hours && item.data.next_1_hours) {
+        totalRainNext24h += item.data.next_1_hours.details.precipitation_amount;
+      }
+
+      // --- Heatwave Data Aggregation ---
+      const dayString = itemDate.toISOString().split('T')[0];
+      if (!dailyMaxTemps[dayString]) {
+        dailyMaxTemps[dayString] = -Infinity;
+      }
+      if (item.data.instant.details.air_temperature > dailyMaxTemps[dayString]) {
+        dailyMaxTemps[dayString] = item.data.instant.details.air_temperature;
+      }
+    }
+
+    // --- Heatwave Logic ---
+    const dates = Object.keys(dailyMaxTemps).sort();
+    if (dates.length >= 2) {
+      // Check for two consecutive days over 30°C
+      if (dailyMaxTemps[dates[0]] > 30 && dailyMaxTemps[dates[1]] > 30) {
+        alerts.push({
+          type: 'HEATWAVE',
+          message: '☀️ Heatwave Advisory! Expect high temperatures this week. Provide extra water and shade for sensitive plants.',
+          date: new Date().toISOString(), // Alert is for "now"
+        });
+      }
+    }
+
+    // --- Rain Logic ---
+    if (totalRainNext24h > 10) { // Threshold for "heavy" rain in mm
+       alerts.push({
+          type: 'RAIN',
+          message: `🌧️ Rain Incoming! Heavy rain (${Math.round(totalRainNext24h)}mm) is expected. You can skip watering.`,
+          date: new Date().toISOString(), // Alert is for "now"
+        });
     }
 
     return {
       currentWeather,
       hourlyForecast,
-      frostWarning,
+      alerts,
+      hardFreezeWarning: hardFreezeFound,
     };
 
   } catch (error) {
     console.error("Failed to fetch or process weather data:", error);
     return null;
   }
+};
+
+/**
+ * Generates dynamic, weather-based alert tasks based on the forecast and the user's garden.
+ * @param {object} weatherData - The processed weather data object from getWeatherForecast.
+ * @param {array} myGarden - The user's garden array.
+ * @returns {array} A list of alert task objects.
+ */
+export const generateDynamicAlerts = (weatherData, myGarden) => {
+  if (!weatherData || !weatherData.alerts) {
+    return [];
+  }
+
+  const dynamicAlerts = [];
+  const now = new Date().toISOString();
+
+  // --- Process Generic Weather Alerts ---
+  weatherData.alerts.forEach(alert => {
+    let message = alert.message;
+    // Tailor frost message to specific plants
+    if (alert.type === 'FROST') {
+      const sensitivePlants = myGarden
+        .map(entry => PLANTS.find(p => p.id === entry.plantId))
+        .filter(plant => plant && !plant.frostTolerant)
+        .map(plant => plant.name);
+
+      if (sensitivePlants.length > 0) {
+        // Customize the message to be more specific
+        const plantList = sensitivePlants.slice(0, 2).join(' and ');
+        message = `❄️ Frost Alert! Protect sensitive plants like ${plantList}.`;
+      }
+    }
+
+    dynamicAlerts.push({
+      id: `alert-${alert.type}-${now}`,
+      task: message,
+      date: alert.date,
+      type: 'alert',
+    });
+  });
+
+  // --- Process Plant-Specific Conditional Alerts ---
+  if (weatherData.hardFreezeWarning) {
+    myGarden.forEach(entry => {
+      const plantDetails = PLANTS.find(p => p.id === entry.plantId);
+      if (plantDetails && plantDetails.conditionalAlerts) {
+        plantDetails.conditionalAlerts.forEach(condAlert => {
+          if (condAlert.condition === 'HARD_FREEZE_WARNING') {
+            dynamicAlerts.push({
+              id: `alert-hardfreeze-${plantDetails.id}-${now}`,
+              task: `🥶 Hard Freeze Warning: ${condAlert.message}`,
+              date: now,
+              type: 'alert',
+            });
+          }
+        });
+      }
+    });
+  }
+
+  // Remove duplicate alerts based on the task message
+  const uniqueAlerts = Array.from(new Map(dynamicAlerts.map(item => [item.task, item])).values());
+
+  return uniqueAlerts;
 };

@@ -36,7 +36,7 @@ const WeatherWidget = ({ weatherData, locationAvailable }) => {
     );
   }
 
-  const { currentWeather, frostWarning } = weatherData;
+  const { currentWeather } = weatherData;
 
   return (
     <View style={styles.container}>
@@ -48,13 +48,6 @@ const WeatherWidget = ({ weatherData, locationAvailable }) => {
         {/* In a real app, you would map currentWeather.symbol_code to an icon */}
         <Text style={styles.weatherSymbol}>☀️</Text>
       </View>
-      {frostWarning && (
-        <View style={styles.frostWarningContainer}>
-          <Text style={styles.frostWarningText}>
-            ❄️ Frost Warning! Temperatures may drop to 0°C or below in the next 48 hours. Protect sensitive plants!
-          </Text>
-        </View>
-      )}
     </View>
   );
 };

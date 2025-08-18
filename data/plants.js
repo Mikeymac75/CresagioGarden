@@ -20,6 +20,7 @@ export const PLANTS = [
       { name: 'Begin hardening off seedlings', daysAfterPlanting: 35, recurring: null },
       { name: 'Pinch off suckers', daysAfterPlanting: 56, recurring: 7 },
       { name: 'Fertilize with tomato food', daysAfterPlanting: 63, recurring: 14 },
+      { name: 'Reduce watering as fruit begins to ripen to concentrate flavor', daysAfterPlanting: 85, recurring: null },
       { name: 'Begin checking for ripe fruit', daysAfterPlanting: 100, recurring: 3 }
     ]
   },
@@ -82,6 +83,12 @@ export const PLANTS = [
     frostTolerant: true,
     description: 'A cool-season root crop that needs loose, sandy soil to grow straight.',
     tips: 'Thin seedlings to prevent crowding and misshapen roots. Keep soil consistently moist and weed-free.',
+    conditionalAlerts: [
+      {
+        condition: 'HARD_FREEZE_WARNING',
+        message: 'Consider harvesting carrots. A light frost can make them sweeter, but a hard freeze can damage roots.'
+      }
+    ],
     careTasks: [
       { name: 'Thin seedlings to 2-3 inches apart', daysAfterPlanting: 21, recurring: null },
       { name: 'Begin checking for harvest-size roots', daysAfterPlanting: 65, recurring: 7 }
@@ -188,6 +195,12 @@ export const PLANTS = [
     frostTolerant: true,
     description: 'A very fast-growing, cool-season crop perfect for filling in garden gaps.',
     tips: 'Ready to harvest in as little as 3-4 weeks. Inconsistent watering can cause them to split or become woody. Plant in succession for a steady supply.',
+    conditionalAlerts: [
+      {
+        condition: 'HARD_FREEZE_WARNING',
+        message: 'Consider harvesting radishes. A light frost is okay, but a hard freeze can damage the roots.'
+      }
+    ],
     careTasks: [
       { name: 'Thin seedlings to 1-2 inches apart', daysAfterPlanting: 10, recurring: null },
       { name: 'Begin harvesting roots', daysAfterPlanting: 22, recurring: 3 }
@@ -298,7 +311,7 @@ export const PLANTS = [
       { name: 'Hill up soil around stems (first time)', daysAfterPlanting: 21, recurring: null },
       { name: 'Hill up soil around stems (second time)', daysAfterPlanting: 35, recurring: null },
       { name: 'Watch for Colorado potato beetles', daysAfterPlanting: 30, recurring: 5 },
-      { name: 'Stop watering 2 weeks before harvest', daysAfterPlanting: 75, recurring: null },
+      { name: 'Stop watering 1-2 weeks before harvest to help skins cure', daysAfterPlanting: 76, recurring: null },
       { name: 'Harvest new potatoes', daysAfterPlanting: 70, recurring: null },
       { name: 'Harvest main crop after foliage dies back', daysAfterPlanting: 90, recurring: null }
     ]
@@ -340,6 +353,13 @@ export const PLANTS = [
     frostTolerant: false,
     description: 'A vining, warm-season crop that requires a lot of space and a long growing season.',
     tips: 'Water at the base of the plant to prevent powdery mildew. Place a board or straw under developing fruits to keep them off wet soil.',
+    criticalTasks: [
+      {
+        "condition": "LATE_PLANTING",
+        "daysAfterPlanting": 60,
+        "task": "Prune smaller fruit to focus energy on the largest pumpkins before frost."
+      }
+    ],
     careTasks: [
       { name: 'Thin seedlings to the strongest one per mound', daysAfterPlanting: 14, recurring: null },
       { name: 'Check for squash vine borer eggs', daysAfterPlanting: 21, recurring: 7 },
@@ -365,7 +385,7 @@ export const PLANTS = [
     tips: 'Plant individual cloves, pointed end up. Mulch heavily after planting to protect through winter. Harvest when the lower leaves start to turn brown.',
     careTasks: [
       { name: 'Mulch bed heavily for winter protection', daysAfterPlanting: 7, recurring: null },
-      { name: 'Cut off flower scapes (on hardneck varieties)', daysAfterPlanting: 210, recurring: null },
+      { name: 'Cut off flower scapes to direct energy to the bulb', daysAfterPlanting: 210, recurring: null },
       { name: 'Stop watering', daysAfterPlanting: 225, recurring: null },
       { name: 'Harvest bulbs when lower leaves are yellow', daysAfterPlanting: 240, recurring: null }
     ]

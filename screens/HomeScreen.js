@@ -13,6 +13,7 @@ import {
   getPlantableNow,
   getUpcomingTasksForMyGarden,
   getWeatherForecast,
+  generateDynamicAlerts,
 } from '../services/GardeningService';
 import { useFocusEffect } from '@react-navigation/native';
 import WeatherWidget from '../components/WeatherWidget';
@@ -59,8 +60,9 @@ export default function HomeScreen({ navigation }) {
             setUserData(parsedUserData);
 
             // Fetch weather data if location is available
+            let weather = null;
             if (parsedUserData.latitude && parsedUserData.longitude) {
-              const weather = await getWeatherForecast(
+              weather = await getWeatherForecast(
                 parsedUserData.latitude,
                 parsedUserData.longitude
               );
@@ -97,7 +99,18 @@ export default function HomeScreen({ navigation }) {
                 return true;
               });
 
-              setUpcomingTasks(filteredTasks);
+              // --- Generate and Combine Dynamic Alerts ---
+              let allUpcomingItems = [...filteredTasks];
+              if (weather) {
+                const alerts = generateDynamicAlerts(weather, myGarden);
+                // Prepend alerts so they appear at the top for the same day
+                allUpcomingItems = [...alerts, ...allUpcomingItems];
+              }
+
+              // Sort all items by date
+              allUpcomingItems.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+              setUpcomingTasks(allUpcomingItems);
             }
           }
         } catch (error) {
@@ -208,12 +221,32 @@ export default function HomeScreen({ navigation }) {
         {upcomingTasks.length > 0 ? (
           upcomingTasks.map((item) => {
             const isCompleted = completedTasks.has(item.id);
+            const isAlert = item.type === 'alert';
+            const isCritical = item.type === 'critical';
+
+            // Alerts and critical tasks are not toggleable
+            const canToggle = !isAlert && !isCritical;
+
             return (
-              <View key={item.id} style={styles.taskCard}>
-                <Checkbox isChecked={isCompleted} onToggle={() => toggleTask(item.id)} />
+              <View
+                key={item.id}
+                style={[
+                  styles.taskCard,
+                  isAlert && styles.alertCard,
+                  isCritical && styles.criticalCard,
+                ]}
+              >
+                {canToggle ? (
+                  <Checkbox isChecked={isCompleted} onToggle={() => toggleTask(item.id)} />
+                ) : (
+                  // Spacer to align text with other tasks
+                  <View style={{ width: 24, height: 24, marginRight: 15 }} />
+                )}
                 <View style={styles.taskDetails}>
                   <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
-                  <Text style={[styles.taskText, isCompleted && styles.completedTaskText]}>{item.task}</Text>
+                  <Text style={[styles.taskText, isCompleted && styles.completedTaskText]}>
+                    {item.task}
+                  </Text>
                 </View>
               </View>
             );
@@ -255,6 +288,16 @@ const styles = StyleSheet.create({
     section: { margin: 20, marginTop: 10 },
     sectionTitle: { fontSize: 20, fontWeight: 'bold', color: '#333', marginBottom: 15 },
     taskCard: { backgroundColor: 'white', padding: 15, borderRadius: 8, marginBottom: 10, flexDirection: 'row', alignItems: 'center' },
+    alertCard: {
+      backgroundColor: '#E1F5FE', // Light blue
+      borderColor: '#0288D1',
+      borderWidth: 1,
+    },
+    criticalCard: {
+      backgroundColor: '#FFF3E0', // Light orange
+      borderColor: '#F57C00',
+      borderWidth: 1,
+    },
     taskDetails: { flex: 1 },
     taskDate: { fontSize: 12, fontWeight: 'bold', color: '#666', marginBottom: 4 },
     taskText: { fontSize: 16, color: '#333' },
