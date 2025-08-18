@@ -10,6 +10,7 @@ Garden Command is a mobile application designed to help gardeners of all levels 
 *   **Plant Database:** Access a comprehensive database of common garden plants, complete with growing information, tips, and care instructions.
 *   **Garden Journal:** Document your gardening journey, take notes, and keep track of your successes and challenges.
 *   **Climate-Aware Suggestions:** The app provides suggestions for what you can plant right now based on the time remaining before the first frost in your area.
+*   **Task Reminders via Notifications:** Receive local notifications for important gardening tasks like watering, fertilizing, and harvesting, ensuring you never miss a critical step.
 
 ## Getting Started
 
@@ -52,11 +53,15 @@ This project is built with [React Native](https://reactnative.dev/) and [Expo](h
 ├── data/               # Static data for plants and hardiness zones
 │   └── plants.js
 ├── screens/            # React components for each app screen
+│   ├── AllTasksCalendarScreen.js
+│   ├── GardenJournalScreen.js
 │   ├── HomeScreen.js
 │   ├── MyGardenScreen.js
-│   └── ...
+│   ├── PlantCalendarScreen.js
+│   └── SetupScreen.js
 ├── services/           # Core business logic
-│   └── GardeningService.js # Handles climate data, task generation, and plant information.
+│   ├── GardeningService.js # Handles climate data, task generation, etc.
+│   └── NotificationService.js # Manages local task notifications.
 ├── utils/              # Utility functions
 │   └── scheduleGenerator.js
 ├── App.js              # Main app component and navigation setup
@@ -68,14 +73,13 @@ This project is built with [React Native](https://reactnative.dev/) and [Expo](h
 
 This app is just getting started! Here are some ideas for future upgrades:
 
-*   **Expanded Plant Database:** Add more plants, including flowers, herbs, and native species. Include more detailed information like pest and disease control, companion planting, and specific nutrient needs.
-*   **User Accounts & Cloud Sync:** Allow users to create accounts and sync their garden data across multiple devices.
-*   **Push Notifications:** Send push notifications to remind users of important tasks, even when the app is closed.
-*   **Photo Journal:** Enable users to upload photos to their garden journal entries to visually track plant growth and garden changes.
-*   **Community Features:** Create a space for users to share tips, ask questions, and show off their gardens.
 *   **Advanced Weather Integration:** Integrate with a weather API to provide more accurate, real-time planting advice and warnings (e.g., "Frost expected tonight, cover your tomatoes!").
-*   **Pest & Disease Identifier:** Use the device's camera and machine learning to help users identify common garden pests and diseases.
 *   **UI/UX Refresh:**
     *   Implement a more dynamic and visually appealing home screen dashboard.
     *   Improve the calendar views with better filtering and visualization of tasks.
     *   Create a more engaging and intuitive "My Garden" view, perhaps with a visual layout tool.
+*   **Expanded Plant Database:** Add more plants, including flowers, herbs, and native species. Include more detailed information like pest and disease control, companion planting, and specific nutrient needs.
+*   **Photo Journal:** Enable users to upload photos to their garden journal entries to visually track plant growth and garden changes.
+*   **User Accounts & Cloud Sync:** Allow users to create accounts and sync their garden data across multiple devices. This would also enable true **Push Notifications** to sync tasks across devices.
+*   **Community Features:** Create a space for users to share tips, ask questions, and show off their gardens.
+*   **Pest & Disease Identifier:** Use the device's camera and machine learning to help users identify common garden pests and diseases.
