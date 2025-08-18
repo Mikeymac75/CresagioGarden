@@ -7,25 +7,38 @@ import PropTypes from 'prop-types';
  * It can be used to build loading placeholders for various UI elements.
  */
 const SkeletonPiece = ({ width, height, style }) => {
-  const animatedValue = new Animated.Value(0);
+  const [actualWidth, setActualWidth] = React.useState(0);
+  const animatedValue = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() => {
-    Animated.loop(
-      Animated.timing(animatedValue, {
-        toValue: 1,
-        duration: 1200,
-        useNativeDriver: true,
-      })
-    ).start();
-  }, [animatedValue]);
+    // We only want to start the animation when we have a measured width
+    if (actualWidth > 0) {
+      Animated.loop(
+        Animated.timing(animatedValue, {
+          toValue: 1,
+          duration: 1200,
+          useNativeDriver: true,
+        })
+      ).start();
+    }
+  }, [actualWidth, animatedValue]);
 
   const translateX = animatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [-width, width],
+    // Use the measured numeric width for the animation range, not the prop
+    outputRange: [-actualWidth, actualWidth],
   });
 
+  const handleLayout = (event) => {
+    const { width: measuredWidth } = event.nativeEvent.layout;
+    setActualWidth(measuredWidth);
+  };
+
   return (
-    <View style={[{ width, height, backgroundColor: '#E1E9EE', overflow: 'hidden' }, style]}>
+    <View
+      style={[{ width, height, backgroundColor: '#E1E9EE', overflow: 'hidden' }, style]}
+      onLayout={handleLayout}
+    >
       <Animated.View
         style={{
           width: '100%',
