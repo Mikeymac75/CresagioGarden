@@ -390,7 +390,7 @@ const WeatherService = {
 
     const currentWeather = {
       time: timeseries[0].time,
-      temperature: timeseries[0].data.instant.details.air_temperature,
+      temperature: parseFloat(timeseries[0].data.instant.details.air_temperature),
       symbol_code: timeseries[0].data.next_1_hours?.summary.symbol_code,
     };
 
@@ -401,7 +401,7 @@ const WeatherService = {
       })
       .map(item => ({
         time: item.time,
-        temperature: item.data.instant.details.air_temperature,
+        temperature: parseFloat(item.data.instant.details.air_temperature),
       }));
 
     const alerts = [];
@@ -415,7 +415,7 @@ const WeatherService = {
       const itemDate = new Date(item.time);
       if (itemDate > next48Hours) break;
 
-      const temp = item.data.instant.details.air_temperature;
+      const temp = parseFloat(item.data.instant.details.air_temperature);
       
       // Frost and freeze detection
       if (!frostFound && temp <= CONFIG.FROST_TEMP_CELSIUS) {
