@@ -11,6 +11,9 @@ Garden Command is a mobile application designed to help gardeners of all levels 
 *   **Garden Journal:** Document your gardening journey, take notes, and keep track of your successes and challenges.
 *   **Climate-Aware Suggestions:** The app provides suggestions for what you can plant right now based on the time remaining before the first frost in your area.
 *   **Task Reminders via Notifications:** Receive local notifications for important gardening tasks like watering, fertilizing, and harvesting, ensuring you never miss a critical step.
+*   **Real-Time Weather Integration & Alerts:** The app now fetches real-time weather forecasts to provide actionable alerts.
+    *   **Dynamic Alerts:** Get warnings for frost, heatwaves, and heavy rain.
+    *   **Smart Suggestions:** The app advises you to protect sensitive plants based on frost alerts and to skip watering when heavy rain is expected.
 
 ## Getting Started
 
@@ -73,7 +76,6 @@ This project is built with [React Native](https://reactnative.dev/) and [Expo](h
 
 This app is just getting started! Here are some ideas for future upgrades:
 
-*   **Advanced Weather Integration:** Integrate with a weather API to provide more accurate, real-time planting advice and warnings (e.g., "Frost expected tonight, cover your tomatoes!").
 *   **UI/UX Refresh:**
     *   Implement a more dynamic and visually appealing home screen dashboard.
     *   Improve the calendar views with better filtering and visualization of tasks.

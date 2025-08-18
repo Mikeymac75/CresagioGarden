@@ -803,4 +803,21 @@ export const validateGardenEntry = (entry) => {
   };
 };
 
+/**
+ * Calculates days until harvest for a given plant entry
+ */
+export const getDaysUntilHarvest = (plantedDate, daysToMaturity) => {
+  if (!ValidationUtils.isValidDate(plantedDate) || !daysToMaturity) {
+    return null;
+  }
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const harvestDate = DateUtils.addDays(new Date(plantedDate), daysToMaturity);
+  harvestDate.setHours(0, 0, 0, 0);
+
+  return Math.ceil((harvestDate - today) / (1000 * 60 * 60 * 24));
+};
+
+
 export { TASK_TYPES, ALERT_TYPES, CONFIG };
