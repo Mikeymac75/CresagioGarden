@@ -528,6 +528,28 @@ export const PLANTS = [
     ]
   },
   {
+    id: 24,
+    name: 'Beets',
+    category: 'Root Vegetable',
+    harvestType: 'single',
+    daysToMaturity: 55,
+    spacing: '3-4 inches',
+    sunRequirement: 'Full sun to partial shade',
+    startIndoorsWeeksBefore: null,
+    transplantWeeksAfterLastFrost: null,
+    directSowWeeksAfterLastFrost: -4,
+    wateringNeeds: 'Consistent moisture',
+    wateringFrequencyDays: 3,
+    frostTolerant: true,
+    description: 'A cool-season crop grown for both roots and greens.',
+    tips: 'Thin seedlings and eat the thinnings as baby greens. Harvest roots when golf ball sized for best tenderness.',
+    careTasks: [
+      { name: 'Thin seedlings to 3-4 inches apart', daysAfterPlanting: 21, recurring: null },
+      { name: 'Begin harvesting baby greens from thinnings', daysAfterPlanting: 21, recurring: null },
+      { name: 'Begin checking for harvest-size roots', daysAfterPlanting: 50, recurring: 7 }
+    ]
+  },
+  {
    id: 25,
    name: 'Parsley',
    category: 'Herb',
@@ -873,27 +895,5 @@ export const PLANTS = [
      { name: 'Begin hardening off seedlings', daysAfterPlanting: 35, recurring: null },
      { name: 'Begin harvesting outer leaves', daysAfterPlanting: 60, recurring: 7 }
    ]
- },
-  {
-    id: 24,
-    name: 'Beets',
-    category: 'Root Vegetable',
-    harvestType: 'single',
-    daysToMaturity: 55,
-    spacing: '3-4 inches',
-    sunRequirement: 'Full sun to partial shade',
-    startIndoorsWeeksBefore: null,
-    transplantWeeksAfterLastFrost: null,
-    directSowWeeksAfterLastFrost: -4,
-    wateringNeeds: 'Consistent moisture',
-    wateringFrequencyDays: 3,
-    frostTolerant: true,
-    description: 'A cool-season crop grown for both roots and greens.',
-    tips: 'Thin seedlings and eat the thinnings as baby greens. Harvest roots when golf ball sized for best tenderness.',
-    careTasks: [
-      { name: 'Thin seedlings to 3-4 inches apart', daysAfterPlanting: 21, recurring: null },
-      { name: 'Begin harvesting baby greens from thinnings', daysAfterPlanting: 21, recurring: null },
-      { name: 'Begin checking for harvest-size roots', daysAfterPlanting: 50, recurring: 7 }
-    ]
   }
 ];
