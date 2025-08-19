@@ -97,81 +97,54 @@ const ValidationUtils = {
   }
 };
 
-/**
- * Enhanced hardiness zone mapping with more accurate data
- */
-const getZoneFromPostalCode = (code) => {
-  if (!ValidationUtils.isValidPostalCode(code)) return null;
-  
-  const firstChar = code.charAt(0).toUpperCase();
-
-  // Canadian Postal Codes (by first letter) - Enhanced mapping
-  const canadianZones = {
-    'A': 6, // Newfoundland
-    'B': 6, // Nova Scotia, New Brunswick
-    'C': 5, // PEI
-    'E': 5, // New Brunswick
-    'G': 4, // Quebec East (colder regions)
-    'H': 5, // Montreal area
-    'J': 4, // Quebec West
-    'K': 5, // Eastern Ontario
-    'L': 6, // Central Ontario (Hamilton, etc.)
-    'M': 7, // Toronto GTA
-    'N': 6, // Southwestern Ontario
-    'P': 3, // Northern Ontario
-    'R': 3, // Manitoba
-    'S': 2, // Saskatchewan
-    'T': 3, // Alberta
-    'V': 8, // British Columbia (coastal)
-    'X': 1, // Northwest Territories / Nunavut
-    'Y': 2, // Yukon
-  };
-
-  if (isNaN(parseInt(firstChar, 10))) {
-    return canadianZones[firstChar] || null;
+export const REGIONS = {
+  "Select a Region": null,
+  "SWO, Ontario": {
+    zone: "6b",
+    lastFrostDate: "2023-05-15",
+    firstFrostDate: "2023-10-05",
+  },
+  "Southern California": {
+    zone: "10a",
+    lastFrostDate: "2023-01-30",
+    firstFrostDate: "2023-12-15",
+  },
+  "Northern Florida": {
+    zone: "8b",
+    lastFrostDate: "2023-03-01",
+    firstFrostDate: "2023-11-20",
+  },
+  "British Columbia (Coastal)": {
+    zone: "8b",
+    lastFrostDate: "2023-04-20",
+    firstFrostDate: "2023-10-25",
+  },
+  "Manitoba": {
+    zone: "3b",
+    lastFrostDate: "2023-05-24",
+    firstFrostDate: "2023-09-15",
   }
-
-  // US Zip Codes (by first digit) - More granular mapping
-  const usZones = {
-    '0': 6, // Northeast (MA, CT, RI, etc.)
-    '1': 6, // Northeast (NY, PA, etc.)
-    '2': 7, // Mid-Atlantic (DC, MD, VA, etc.)
-    '3': 8, // Southeast (FL, GA, SC, etc.)
-    '4': 6, // Great Lakes (MI, OH, IN, KY)
-    '5': 5, // Plains (IA, MN, ND, SD, etc.)
-    '6': 5, // South Central (TX, OK, AR, etc.)
-    '7': 8, // Mountain West (CO, NM, WY, etc.)
-    '8': 8, // Far West (NV, UT, AZ, etc.)
-    '9': 9, // Pacific (CA, WA, OR, AK, HI)
-  };
-  
-  return usZones[firstChar] || null;
 };
 
 /**
- * Enhanced climate data fetching with error handling
+ * Fetches climate data from the hardcoded list based on region.
  */
-export const fetchClimateData = (postalCode) => {
+export const fetchClimateData = (region) => {
+  if (!region || !REGIONS[region]) {
+    return { error: "Please select a valid region." };
+  }
+
   try {
-    const zone = getZoneFromPostalCode(postalCode);
-    if (!zone) {
-      return { error: 'Invalid postal code or zone not found' };
-    }
-
-    const zoneData = HARDINESS_ZONES[zone];
-    if (!zoneData) {
-      return { error: `Hardiness zone ${zone} data not available` };
-    }
-
+    const regionData = REGIONS[region];
     return {
-      hardinessZone: zone,
-      lastFrostDate: zoneData.lastFrostDate,
-      firstFrostDate: zoneData.firstFrostDate,
-      success: true
+      hardinessZone: regionData.zone,
+      lastFrostDate: regionData.lastFrostDate,
+      firstFrostDate: regionData.firstFrostDate,
+      success: true,
     };
   } catch (error) {
-    console.error('Error fetching climate data:', error);
-    return { error: 'Failed to fetch climate data' };
+    console.error("Error fetching climate data:", error);
+    return { error: "Failed to fetch climate data." };
   }
 };
 

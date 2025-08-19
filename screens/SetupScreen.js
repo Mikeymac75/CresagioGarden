@@ -3,34 +3,34 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
   Alert,
   ScrollView,
   Platform,
 } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import { setItem as setSecureItem } from '../utils/SecureStorage';
 import * as Location from 'expo-location';
-import { fetchClimateData } from '../services/GardeningService';
+import { fetchClimateData, REGIONS } from '../services/GardeningService';
 import { requestNotificationPermissions } from '../services/NotificationService';
 import PropTypes from 'prop-types';
 
 export default function SetupScreen({ navigation }) {
-  const [postalCode, setPostalCode] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState(Object.keys(REGIONS)[0]);
   const [climateData, setClimateData] = useState(null);
 
   useEffect(() => {
-    if (postalCode.trim().length >= 3) {
-      const data = fetchClimateData(postalCode.trim());
+    if (selectedRegion && REGIONS[selectedRegion]) {
+      const data = fetchClimateData(selectedRegion);
       setClimateData(data);
     } else {
       setClimateData(null);
     }
-  }, [postalCode]);
+  }, [selectedRegion]);
 
   const handleContinue = async () => {
-    if (!climateData) {
-      Alert.alert('Error', 'Please enter a valid US Zip Code or Canadian Postal Code.');
+    if (!climateData || !climateData.success) {
+      Alert.alert('Error', 'Please select a valid region.');
       return;
     }
 
@@ -61,7 +61,7 @@ export default function SetupScreen({ navigation }) {
     await requestNotificationPermissions();
 
     const userData = {
-      postalCode,
+      region: selectedRegion,
       ...climateData,
       ...locationData, // Add lat/lon here, will be empty if permission denied
       setupComplete: true,
@@ -69,7 +69,6 @@ export default function SetupScreen({ navigation }) {
 
     try {
       await setSecureItem('userData', JSON.stringify(userData));
-      // Also save non-sensitive data to AsyncStorage for easy access
       navigation.replace('MainApp', { screen: 'Home' });
     } catch (error) {
       Alert.alert('Error', 'Failed to save user data');
@@ -87,19 +86,22 @@ export default function SetupScreen({ navigation }) {
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Your Location</Text>
           <Text style={styles.description}>
-            Enter your US Zip Code or Canadian Postal Code.
+            Select your growing region from the list below.
           </Text>
 
-          <TextInput
-            style={styles.input}
-            placeholder="e.g., 90210 or K1A 0A9"
-            value={postalCode}
-            onChangeText={setPostalCode}
-            autoCapitalize="characters"
-            maxLength={7}
-          />
+          <View style={styles.pickerContainer}>
+            <Picker
+              selectedValue={selectedRegion}
+              onValueChange={(itemValue) => setSelectedRegion(itemValue)}
+              style={styles.picker}
+            >
+              {Object.keys(REGIONS).map((regionName) => (
+                <Picker.Item label={regionName} value={regionName} key={regionName} />
+              ))}
+            </Picker>
+          </View>
 
-          {climateData && (
+          {climateData && climateData.success && (
             <View style={styles.zoneInfo}>
               <Text style={styles.zoneText}>
                 📍 Hardiness Zone: {climateData.hardinessZone}
@@ -115,9 +117,9 @@ export default function SetupScreen({ navigation }) {
         </View>
 
         <TouchableOpacity 
-          style={[styles.continueButton, !climateData && styles.disabledButton]} 
+          style={[styles.continueButton, (!climateData || !climateData.success) && styles.disabledButton]}
           onPress={handleContinue}
-          disabled={!climateData}
+          disabled={!climateData || !climateData.success}
         >
           <Text style={styles.continueButtonText}>Start Gardening!</Text>
         </TouchableOpacity>
@@ -174,14 +176,16 @@ const styles = StyleSheet.create({
     color: '#666',
     marginBottom: 20,
   },
-  input: {
+  pickerContainer: {
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 8,
-    padding: 12,
-    fontSize: 16,
     marginBottom: 15,
     backgroundColor: '#f9f9f9',
+  },
+  picker: {
+    height: 50,
+    width: '100%',
   },
   zoneInfo: {
     backgroundColor: '#E8F5E8',
