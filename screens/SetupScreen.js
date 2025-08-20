@@ -6,64 +6,85 @@ import {
   TouchableOpacity,
   Alert,
   ScrollView,
-  Platform,
+  ActivityIndicator,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
 import { setItem as setSecureItem } from '../utils/SecureStorage';
 import * as Location from 'expo-location';
-import { fetchClimateData, REGIONS } from '../services/GardeningService';
+import {
+  getWeatherForecast,
+  getHardinessZone,
+  getFrostDates,
+} from '../services/GardeningService';
 import { requestNotificationPermissions } from '../services/NotificationService';
 import PropTypes from 'prop-types';
 
 export default function SetupScreen({ navigation }) {
-  const [selectedRegion, setSelectedRegion] = useState(Object.keys(REGIONS)[0]);
-  const [climateData, setClimateData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [zoneInfo, setZoneInfo] = useState(null);
 
   useEffect(() => {
-    if (selectedRegion && REGIONS[selectedRegion]) {
-      const data = fetchClimateData(selectedRegion);
-      setClimateData(data);
-    } else {
-      setClimateData(null);
-    }
-  }, [selectedRegion]);
+    const determineZone = async () => {
+      setLoading(true);
+
+      // 1. Request location permissions
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        Alert.alert(
+          'Permission Denied',
+          'Location is required to determine your hardiness zone. Please grant permission in your device settings.',
+          [{ text: 'OK', onPress: () => setLoading(false) }]
+        );
+        return;
+      }
+
+      try {
+        // 2. Get location
+        const location = await Location.getCurrentPositionAsync({});
+        const { latitude, longitude } = location.coords;
+
+        // 3. Get weather forecast
+        const weather = await getWeatherForecast(latitude, longitude);
+        if (weather.error) {
+          throw new Error(weather.error);
+        }
+
+        // 4. Find min temperature from the forecast
+        const minTemp = Math.min(
+          ...weather.hourlyForecast.map((h) => h.temperature)
+        );
+
+        // 5. Determine hardiness zone
+        const hardinessZone = getHardinessZone(minTemp);
+
+        // 6. Get frost dates
+        const climateData = getFrostDates(hardinessZone);
+
+        setZoneInfo({
+          latitude,
+          longitude,
+          ...climateData,
+        });
+      } catch (error) {
+        Alert.alert('Error', 'Could not determine your hardiness zone. ' + error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    determineZone();
+  }, []);
 
   const handleContinue = async () => {
-    if (!climateData || !climateData.success) {
-      Alert.alert('Error', 'Please select a valid region.');
+    if (!zoneInfo) {
+      Alert.alert('Error', 'Could not determine climate data. Please try again.');
       return;
-    }
-
-    // Request location permissions
-    let { status } = await Location.requestForegroundPermissionsAsync();
-    let locationData = {};
-    if (status === 'granted') {
-      try {
-        let location = await Location.getCurrentPositionAsync({});
-        locationData = {
-          latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
-        };
-      } catch (error) {
-         Alert.alert(
-           'Location Error',
-           'Could not fetch location. Weather features will be disabled. You can grant permission in your device settings later.'
-         );
-      }
-    } else {
-       Alert.alert(
-        'Permission Denied',
-        'You have not granted location permissions. Weather features will be disabled. You can grant permission in your device settings later.'
-      );
     }
 
     // Request notification permissions
     await requestNotificationPermissions();
 
     const userData = {
-      region: selectedRegion,
-      ...climateData,
-      ...locationData, // Add lat/lon here, will be empty if permission denied
+      ...zoneInfo,
       setupComplete: true,
     };
 
@@ -84,42 +105,37 @@ export default function SetupScreen({ navigation }) {
         </Text>
 
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Your Location</Text>
-          <Text style={styles.description}>
-            Select your growing region from the list below.
-          </Text>
-
-          <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={selectedRegion}
-              onValueChange={(itemValue) => setSelectedRegion(itemValue)}
-              style={styles.picker}
-            >
-              {Object.keys(REGIONS).map((regionName) => (
-                <Picker.Item label={regionName} value={regionName} key={regionName} />
-              ))}
-            </Picker>
-          </View>
-
-          {climateData && climateData.success && (
-            <View style={styles.zoneInfo}>
-              <Text style={styles.zoneText}>
-                📍 Hardiness Zone: {climateData.hardinessZone}
-              </Text>
-              <Text style={styles.zoneDescription}>
-                Last Frost: {new Date(climateData.lastFrostDate + 'T00:00:00').toLocaleDateString()}
-              </Text>
-              <Text style={styles.zoneDescription}>
-                First Frost: {new Date(climateData.firstFrostDate + 'T00:00:00').toLocaleDateString()}
+          <Text style={styles.cardTitle}>Your Growing Zone</Text>
+          {loading ? (
+            <View style={styles.loadingContainer}>
+              <ActivityIndicator size="large" color="#4CAF50" />
+              <Text style={styles.loadingText}>
+                Determining your hardiness zone based on your location...
               </Text>
             </View>
+          ) : zoneInfo ? (
+            <View style={styles.zoneInfo}>
+              <Text style={styles.zoneText}>
+                📍 Hardiness Zone: {zoneInfo.hardinessZone}
+              </Text>
+              <Text style={styles.zoneDescription}>
+                Estimated Last Frost: {zoneInfo.lastFrostDate ? new Date(zoneInfo.lastFrostDate + 'T00:00:00').toLocaleDateString() : 'N/A'}
+              </Text>
+              <Text style={styles.zoneDescription}>
+                Estimated First Frost: {zoneInfo.firstFrostDate ? new Date(zoneInfo.firstFrostDate + 'T00:00:00').toLocaleDateString() : 'N/A'}
+              </Text>
+            </View>
+          ) : (
+            <Text style={styles.errorText}>
+              Could not determine your zone. Please ensure location services are enabled and try again.
+            </Text>
           )}
         </View>
 
-        <TouchableOpacity 
-          style={[styles.continueButton, (!climateData || !climateData.success) && styles.disabledButton]}
+        <TouchableOpacity
+          style={[styles.continueButton, (loading || !zoneInfo) && styles.disabledButton]}
           onPress={handleContinue}
-          disabled={!climateData || !climateData.success}
+          disabled={loading || !zoneInfo}
         >
           <Text style={styles.continueButtonText}>Start Gardening!</Text>
         </TouchableOpacity>
@@ -164,44 +180,46 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 3,
+    minHeight: 150,
+    justifyContent: 'center',
   },
   cardTitle: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#333',
-    marginBottom: 5,
-  },
-  description: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 20,
-  },
-  pickerContainer: {
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
     marginBottom: 15,
-    backgroundColor: '#f9f9f9',
+    textAlign: 'center'
   },
-  picker: {
-    height: 50,
-    width: '100%',
+  loadingContainer: {
+    alignItems: 'center',
+  },
+  loadingText: {
+    marginTop: 10,
+    fontSize: 16,
+    color: '#333',
+    textAlign: 'center'
+  },
+  errorText: {
+      fontSize: 16,
+      color: 'red',
+      textAlign: 'center'
   },
   zoneInfo: {
     backgroundColor: '#E8F5E8',
     padding: 15,
     borderRadius: 8,
-    marginTop: 10,
   },
   zoneText: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
     color: '#2E7D32',
-    marginBottom: 5,
+    marginBottom: 8,
+    textAlign: 'center'
   },
   zoneDescription: {
     fontSize: 14,
     color: '#4CAF50',
+    textAlign: 'center'
   },
   continueButton: {
     backgroundColor: '#4CAF50',
