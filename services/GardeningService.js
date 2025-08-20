@@ -97,36 +97,20 @@ const ValidationUtils = {
   }
 };
 
-export const getHardinessZone = (tempCelsius) => {
-  // Hardiness zones based on average annual minimum winter temperature
-  const zones = [
-    { zone: '1a', temp: -51.1 }, { zone: '1b', temp: -48.3 },
-    { zone: '2a', temp: -45.6 }, { zone: '2b', temp: -42.8 },
-    { zone: '3a', temp: -40.0 }, { zone: '3b', temp: -37.2 },
-    { zone: '4a', temp: -34.4 }, { zone: '4b', temp: -31.7 },
-    { zone: '5a', temp: -28.9 }, { zone: '5b', temp: -26.1 },
-    { zone: '6a', temp: -23.3 }, { zone: '6b', temp: -20.6 },
-    { zone: '7a', temp: -17.8 }, { zone: '7b', temp: -15.0 },
-    { zone: '8a', temp: -12.2 }, { zone: '8b', temp: -9.4 },
-    { zone: '9a', temp: -6.7 },  { zone: '9b', temp: -3.9 },
-    { zone: '10a', temp: -1.1 }, { zone: '10b', temp: 1.7 },
-    { zone: '11a', temp: 4.4 },  { zone: '11b', temp: 7.2 },
-    { zone: '12a', temp: 10.0 }, { zone: '12b', temp: 12.8 },
-    { zone: '13a', temp: 15.6 }, { zone: '13b', temp: 18.3 },
-  ];
-
-  for (const z of zones) {
-    if (tempCelsius <= z.temp) {
-      return z.zone;
-    }
-  }
-  return '13b'; // Warmest zone if temp is higher than all ranges
+export const getHardinessZoneByLatitude = (latitude) => {
+  // Simplified mapping of latitude to hardiness zone for the Northern Hemisphere
+  const lat = Math.abs(latitude); // Use absolute value for simplicity
+  if (lat >= 45) return '4b';
+  if (lat >= 40) return '5b';
+  if (lat >= 35) return '6b';
+  if (lat >= 30) return '7b';
+  if (lat >= 25) return '8b';
+  return '9b'; // Default for lower latitudes
 };
 
 export const getFrostDates = (hardinessZone) => {
     const year = new Date().getFullYear();
     // Simplified mapping of hardiness zones to frost dates
-    // Using mid-point of ranges for simplicity
     const frostDates = {
         '1': { last: `05-28`, first: `08-28` },
         '2': { last: `05-18`, first: `09-04` },

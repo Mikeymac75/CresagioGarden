@@ -11,8 +11,7 @@ import {
 import { setItem as setSecureItem } from '../utils/SecureStorage';
 import * as Location from 'expo-location';
 import {
-  getWeatherForecast,
-  getHardinessZone,
+  getHardinessZoneByLatitude,
   getFrostDates,
 } from '../services/GardeningService';
 import { requestNotificationPermissions } from '../services/NotificationService';
@@ -42,21 +41,10 @@ export default function SetupScreen({ navigation }) {
         const location = await Location.getCurrentPositionAsync({});
         const { latitude, longitude } = location.coords;
 
-        // 3. Get weather forecast
-        const weather = await getWeatherForecast(latitude, longitude);
-        if (weather.error) {
-          throw new Error(weather.error);
-        }
+        // 3. Determine hardiness zone from latitude
+        const hardinessZone = getHardinessZoneByLatitude(latitude);
 
-        // 4. Find min temperature from the forecast
-        const minTemp = Math.min(
-          ...weather.hourlyForecast.map((h) => h.temperature)
-        );
-
-        // 5. Determine hardiness zone
-        const hardinessZone = getHardinessZone(minTemp);
-
-        // 6. Get frost dates
+        // 4. Get frost dates
         const climateData = getFrostDates(hardinessZone);
 
         setZoneInfo({
