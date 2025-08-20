@@ -97,55 +97,65 @@ const ValidationUtils = {
   }
 };
 
-export const REGIONS = {
-  "Select a Region": null,
-  "SWO, Ontario": {
-    zone: "6b",
-    lastFrostDate: "2023-05-15",
-    firstFrostDate: "2023-10-05",
-  },
-  "Southern California": {
-    zone: "10a",
-    lastFrostDate: "2023-01-30",
-    firstFrostDate: "2023-12-15",
-  },
-  "Northern Florida": {
-    zone: "8b",
-    lastFrostDate: "2023-03-01",
-    firstFrostDate: "2023-11-20",
-  },
-  "British Columbia (Coastal)": {
-    zone: "8b",
-    lastFrostDate: "2023-04-20",
-    firstFrostDate: "2023-10-25",
-  },
-  "Manitoba": {
-    zone: "3b",
-    lastFrostDate: "2023-05-24",
-    firstFrostDate: "2023-09-15",
+export const getHardinessZone = (tempCelsius) => {
+  // Hardiness zones based on average annual minimum winter temperature
+  const zones = [
+    { zone: '1a', temp: -51.1 }, { zone: '1b', temp: -48.3 },
+    { zone: '2a', temp: -45.6 }, { zone: '2b', temp: -42.8 },
+    { zone: '3a', temp: -40.0 }, { zone: '3b', temp: -37.2 },
+    { zone: '4a', temp: -34.4 }, { zone: '4b', temp: -31.7 },
+    { zone: '5a', temp: -28.9 }, { zone: '5b', temp: -26.1 },
+    { zone: '6a', temp: -23.3 }, { zone: '6b', temp: -20.6 },
+    { zone: '7a', temp: -17.8 }, { zone: '7b', temp: -15.0 },
+    { zone: '8a', temp: -12.2 }, { zone: '8b', temp: -9.4 },
+    { zone: '9a', temp: -6.7 },  { zone: '9b', temp: -3.9 },
+    { zone: '10a', temp: -1.1 }, { zone: '10b', temp: 1.7 },
+    { zone: '11a', temp: 4.4 },  { zone: '11b', temp: 7.2 },
+    { zone: '12a', temp: 10.0 }, { zone: '12b', temp: 12.8 },
+    { zone: '13a', temp: 15.6 }, { zone: '13b', temp: 18.3 },
+  ];
+
+  for (const z of zones) {
+    if (tempCelsius <= z.temp) {
+      return z.zone;
+    }
   }
+  return '13b'; // Warmest zone if temp is higher than all ranges
 };
 
-/**
- * Fetches climate data from the hardcoded list based on region.
- */
-export const fetchClimateData = (region) => {
-  if (!region || !REGIONS[region]) {
-    return { error: "Please select a valid region." };
-  }
-
-  try {
-    const regionData = REGIONS[region];
-    return {
-      hardinessZone: regionData.zone,
-      lastFrostDate: regionData.lastFrostDate,
-      firstFrostDate: regionData.firstFrostDate,
-      success: true,
+export const getFrostDates = (hardinessZone) => {
+    const year = new Date().getFullYear();
+    // Simplified mapping of hardiness zones to frost dates
+    // Using mid-point of ranges for simplicity
+    const frostDates = {
+        '1': { last: `05-28`, first: `08-28` },
+        '2': { last: `05-18`, first: `09-04` },
+        '3': { last: `05-08`, first: `09-11` },
+        '4': { last: `05-03`, first: `09-29` },
+        '5': { last: `04-18`, first: `10-17` },
+        '6': { last: `04-11`, first: `10-24` },
+        '7': { last: `03-28`, first: `11-07` },
+        '8': { last: `03-20`, first: `11-17` },
+        '9': { last: `02-17`, first: `12-04` },
+        '10': { last: `01-08`, first: `12-23` },
+        '11': { last: null, first: null },
+        '12': { last: null, first: null },
+        '13': { last: null, first: null },
     };
-  } catch (error) {
-    console.error("Error fetching climate data:", error);
-    return { error: "Failed to fetch climate data." };
-  }
+
+    const zone = hardinessZone.slice(0, hardinessZone.length -1);
+    const dates = frostDates[zone];
+
+    if (!dates || !dates.last) {
+        return { lastFrostDate: null, firstFrostDate: null, success: true, hardinessZone: hardinessZone };
+    }
+
+    return {
+        hardinessZone: hardinessZone,
+        lastFrostDate: `${year}-${dates.last}`,
+        firstFrostDate: `${year}-${dates.first}`,
+        success: true,
+    };
 };
 
 /**
