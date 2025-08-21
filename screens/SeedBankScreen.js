@@ -8,22 +8,21 @@ import {
   TextInput,
   ActivityIndicator,
 } from 'react-native';
-import { PLANTS } from '../data/plants';
 import { Ionicons } from '@expo/vector-icons';
 import useSeedBank from '../hooks/useSeedBank';
 
 export default function SeedBankScreen() {
-  const { seedBank, isLoading, toggleSeedInBank } = useSeedBank();
+  const { seedBank, allPlants, isLoading, toggleSeedInBank } = useSeedBank();
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredPlants = useMemo(() => {
     if (!searchQuery) {
-      return PLANTS;
+      return allPlants;
     }
-    return PLANTS.filter(plant =>
+    return allPlants.filter(plant =>
       plant.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  }, [searchQuery]);
+  }, [searchQuery, allPlants]);
 
   const renderPlantItem = ({ item }) => {
     const isSelected = seedBank.has(item.id);
