@@ -7,6 +7,7 @@ import {
   Alert,
   ScrollView,
   ActivityIndicator,
+  Platform,
 } from 'react-native';
 import { setItem as setSecureItem } from '../utils/SecureStorage';
 import * as Location from 'expo-location';
@@ -16,35 +17,39 @@ import {
 } from '../services/GardeningService';
 import { requestNotificationPermissions } from '../services/NotificationService';
 import PropTypes from 'prop-types';
+import { Picker } from '@react-native-picker/picker';
+
+const HARDINESS_ZONES_LIST = [
+  '1a', '1b', '2a', '2b', '3a', '3b', '4a', '4b', '5a', '5b', '6a', '6b',
+  '7a', '7b', '8a', '8b', '9a', '9b', '10a', '10b', '11a', '11b', '12a', '12b'
+];
 
 export default function SetupScreen({ navigation }) {
   const [loading, setLoading] = useState(true);
   const [zoneInfo, setZoneInfo] = useState(null);
+  const [isPickerVisible, setIsPickerVisible] = useState(false);
 
   useEffect(() => {
     const determineZone = async () => {
       setLoading(true);
 
-      // 1. Request location permissions
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
         Alert.alert(
           'Permission Denied',
-          'Location is required to determine your hardiness zone. Please grant permission in your device settings.',
+          'Location is required to automatically determine your hardiness zone. You can set it manually if you prefer.',
           [{ text: 'OK', onPress: () => setLoading(false) }]
         );
+        // Default to a common zone if permission is denied
+        const climateData = getFrostDates('5b');
+        setZoneInfo({ ...climateData });
         return;
       }
 
       try {
-        // 2. Get location
         const location = await Location.getCurrentPositionAsync({});
         const { latitude, longitude } = location.coords;
-
-        // 3. Determine hardiness zone from latitude
         const hardinessZone = getHardinessZoneByLatitude(latitude);
-
-        // 4. Get frost dates
         const climateData = getFrostDates(hardinessZone);
 
         setZoneInfo({
@@ -53,7 +58,9 @@ export default function SetupScreen({ navigation }) {
           ...climateData,
         });
       } catch (error) {
-        Alert.alert('Error', 'Could not determine your hardiness zone. ' + error.message);
+        Alert.alert('Error', 'Could not determine your location. ' + error.message);
+        const climateData = getFrostDates('5b');
+        setZoneInfo({ ...climateData });
       } finally {
         setLoading(false);
       }
@@ -62,13 +69,23 @@ export default function SetupScreen({ navigation }) {
     determineZone();
   }, []);
 
+  const handleZoneChange = (newZone) => {
+    const newClimateData = getFrostDates(newZone);
+    setZoneInfo(prevInfo => ({
+      ...prevInfo,
+      ...newClimateData,
+    }));
+    if (Platform.OS === 'android') {
+      setIsPickerVisible(false);
+    }
+  };
+
   const handleContinue = async () => {
     if (!zoneInfo) {
       Alert.alert('Error', 'Could not determine climate data. Please try again.');
       return;
     }
 
-    // Request notification permissions
     await requestNotificationPermissions();
 
     const userData = {
@@ -95,35 +112,52 @@ export default function SetupScreen({ navigation }) {
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Your Growing Zone</Text>
           {loading ? (
-            <View style={styles.loadingContainer}>
-              <ActivityIndicator size="large" color="#4CAF50" />
-              <Text style={styles.loadingText}>
-                Determining your hardiness zone based on your location...
-              </Text>
-            </View>
+            <ActivityIndicator size="large" color="#4CAF50" />
           ) : zoneInfo ? (
-            <View style={styles.zoneInfo}>
-              <Text style={styles.zoneText}>
-                📍 Hardiness Zone: {zoneInfo.hardinessZone}
-              </Text>
-              <Text style={styles.zoneDescription}>
-                Estimated Last Frost: {zoneInfo.lastFrostDate ? new Date(zoneInfo.lastFrostDate + 'T00:00:00').toLocaleDateString() : 'N/A'}
-              </Text>
-              <Text style={styles.zoneDescription}>
-                Estimated First Frost: {zoneInfo.firstFrostDate ? new Date(zoneInfo.firstFrostDate + 'T00:00:00').toLocaleDateString() : 'N/A'}
-              </Text>
-            </View>
+            <>
+              <View style={styles.zoneDisplay}>
+                <Text style={styles.zoneText}>
+                  📍 Zone: {zoneInfo.hardinessZone}
+                </Text>
+                <TouchableOpacity onPress={() => setIsPickerVisible(!isPickerVisible)}>
+                  <Text style={styles.changeButtonText}>
+                    {isPickerVisible ? 'Done' : 'Change'}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              {!isPickerVisible && (
+                 <View style={styles.frostInfo}>
+                    <Text style={styles.zoneDescription}>
+                      Last Frost: {zoneInfo.lastFrostDate ? new Date(zoneInfo.lastFrostDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric' }) : 'N/A'}
+                    </Text>
+                    <Text style={styles.zoneDescription}>
+                      First Frost: {zoneInfo.firstFrostDate ? new Date(zoneInfo.firstFrostDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric' }) : 'N/A'}
+                    </Text>
+                </View>
+              )}
+            </>
           ) : (
             <Text style={styles.errorText}>
-              Could not determine your zone. Please ensure location services are enabled and try again.
+              Could not determine your zone. Please set it manually.
             </Text>
+          )}
+
+          {isPickerVisible && (
+            <Picker
+              selectedValue={zoneInfo.hardinessZone}
+              onValueChange={(itemValue) => handleZoneChange(itemValue)}
+            >
+              {HARDINESS_ZONES_LIST.map(zone => (
+                <Picker.Item key={zone} label={zone} value={zone} />
+              ))}
+            </Picker>
           )}
         </View>
 
         <TouchableOpacity
-          style={[styles.continueButton, (loading || !zoneInfo) && styles.disabledButton]}
+          style={[styles.continueButton, loading && styles.disabledButton]}
           onPress={handleContinue}
-          disabled={loading || !zoneInfo}
+          disabled={loading}
         >
           <Text style={styles.continueButtonText}>Start Gardening!</Text>
         </TouchableOpacity>
@@ -178,21 +212,15 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center'
   },
-  loadingContainer: {
-    alignItems: 'center',
-  },
-  loadingText: {
-    marginTop: 10,
+  errorText: {
     fontSize: 16,
-    color: '#333',
+    color: 'red',
     textAlign: 'center'
   },
-  errorText: {
-      fontSize: 16,
-      color: 'red',
-      textAlign: 'center'
-  },
-  zoneInfo: {
+  zoneDisplay: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     backgroundColor: '#E8F5E8',
     padding: 15,
     borderRadius: 8,
@@ -201,13 +229,19 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: '#2E7D32',
-    marginBottom: 8,
-    textAlign: 'center'
+  },
+  changeButtonText: {
+    fontSize: 16,
+    color: '#4CAF50',
+    fontWeight: 'bold',
+  },
+  frostInfo: {
+    marginTop: 10,
+    alignItems: 'center',
   },
   zoneDescription: {
     fontSize: 14,
     color: '#4CAF50',
-    textAlign: 'center'
   },
   continueButton: {
     backgroundColor: '#4CAF50',
