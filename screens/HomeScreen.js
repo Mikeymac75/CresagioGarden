@@ -90,17 +90,25 @@ const HomeScreen = ({ navigation }) => {
         rangeStart.setDate(today.getDate() - 3); // 3 is MISSED_TASK_DAYS
         rangeStart.setHours(0, 0, 0, 0);
 
-        const wateringRangeStart = new Date();
-        wateringRangeStart.setDate(today.getDate() - 7);
-        wateringRangeStart.setHours(0, 0, 0, 0);
+        const wateringPastLimit = new Date(); // for incomplete watering tasks
+        wateringPastLimit.setDate(today.getDate() - 7);
+        wateringPastLimit.setHours(0, 0, 0, 0);
 
         const filteredAndSortedTasks = allUpcomingItems
           .filter(task => {
             const taskDate = new Date(task.date);
+            taskDate.setHours(0, 0, 0, 0);
+
 
             if (task.type === 'water') {
-              // For watering tasks, only show them if they are from the last 7 days.
-              return taskDate >= wateringRangeStart;
+              const isCompleted = loadedCompletedTasks.has(task.id);
+              if (isCompleted) {
+                // Keep completed watering tasks only if their date is today or in the future.
+                return taskDate >= today;
+              } else {
+                // Keep incomplete watering tasks if they are within the last 7 days (or in the future).
+                return taskDate >= wateringPastLimit;
+              }
             }
 
             // For all other tasks, keep future tasks, or past tasks that are within the missed window and not completed
