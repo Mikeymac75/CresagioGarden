@@ -1,0 +1,34 @@
+[
+  {
+    "id": "seasonal-1",
+    "name": "Prepare Garden Beds",
+    "description": "Amend the soil with compost and other nutrients to prepare for spring planting.",
+    "timing": {
+      "weeksBeforeLastFrost": 4
+    }
+  },
+  {
+    "id": "seasonal-2",
+    "name": "Clean Up Garden",
+    "description": "Remove dead plants and debris from the garden to prevent pests and diseases over winter.",
+    "timing": {
+      "weeksAfterFirstFrost": 2
+    }
+  },
+  {
+    "id": "seasonal-3",
+    "name": "Mulch Perennials",
+    "description": "Apply a layer of mulch around perennial plants to protect them from the cold.",
+    "timing": {
+      "weeksAfterFirstFrost": 4
+    }
+  },
+  {
+    "id": "seasonal-4",
+    "name": "Test Soil pH",
+    "description": "Test the soil pH to determine if any amendments are needed for the upcoming season.",
+    "timing": {
+      "weeksBeforeLastFrost": 8
+    }
+  }
+]

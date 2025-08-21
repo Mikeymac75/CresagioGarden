@@ -2,6 +2,7 @@ import { DateUtils } from './utils/DateUtils';
 import { ValidationUtils } from './utils/ValidationUtils';
 import PLANTS from './PlantService';
 import { TASK_TYPES, CONFIG } from './constants';
+import SEASONAL_TASKS from '../data/seasonal_tasks.json';
 
 /**
  * Enhanced task generation with better organization
@@ -245,6 +246,45 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate, firstFro
     return allTasks.sort((a, b) => new Date(a.date) - new Date(b.date));
   } catch (error) {
     console.error('Error generating all garden tasks:', error);
+    return [];
+  }
+};
+
+/**
+ * Generates seasonal tasks based on frost dates
+ */
+export const getSeasonalTasks = (lastFrostDate, firstFrostDate) => {
+  if (!ValidationUtils.isValidDate(lastFrostDate) || !ValidationUtils.isValidDate(firstFrostDate)) {
+    return [];
+  }
+
+  try {
+    const lastFrost = DateUtils.createDate(lastFrostDate);
+    const firstFrost = DateUtils.createDate(firstFrostDate);
+    const seasonalTasks = [];
+
+    SEASONAL_TASKS.forEach(task => {
+      let taskDate;
+      if (task.timing.weeksBeforeLastFrost) {
+        taskDate = DateUtils.addDays(lastFrost, -task.timing.weeksBeforeLastFrost * 7);
+      } else if (task.timing.weeksAfterFirstFrost) {
+        taskDate = DateUtils.addDays(firstFrost, task.timing.weeksAfterFirstFrost * 7);
+      }
+
+      if (taskDate) {
+        seasonalTasks.push({
+          id: task.id,
+          task: `🗓️ ${task.name}`,
+          description: task.description,
+          date: taskDate.toISOString(),
+          type: 'seasonal',
+        });
+      }
+    });
+
+    return seasonalTasks;
+  } catch (error) {
+    console.error('Error generating seasonal tasks:', error);
     return [];
   }
 };

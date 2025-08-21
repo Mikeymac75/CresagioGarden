@@ -121,6 +121,7 @@ const WeatherService = {
         type: ALERT_TYPES.RAIN,
         message: `🌧️ Heavy rain expected (${Math.round(totalRainNext24h)}mm). Skip watering.`,
         date: now.toISOString(),
+        modifiesTasks: 'water',
       });
     }
 
@@ -224,9 +225,15 @@ export const generateDynamicAlerts = (weatherData, myGarden) => {
 
         if (sensitivePlants.length > 0) {
           const uniquePlants = [...new Set(sensitivePlants)];
-          const plantList = uniquePlants.slice(0, 2).join(' and ');
-          const moreText = uniquePlants.length > 2 ? ` and ${uniquePlants.length - 2} others` : '';
-          message = `❄️ Frost Alert! Protect ${plantList}${moreText}.`;
+          let plantList;
+          if (uniquePlants.length === 1) {
+            plantList = uniquePlants[0];
+          } else if (uniquePlants.length === 2) {
+            plantList = uniquePlants.join(' and ');
+          } else {
+            plantList = `${uniquePlants.slice(0, 2).join(', ')}, and ${uniquePlants.length - 2} others`;
+          }
+          message = `Frost Alert! Protect your ${plantList}.`;
         }
       }
 

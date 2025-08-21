@@ -8,7 +8,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { getItem as getSecureItem } from '../utils/SecureStorage';
-import { getAllUpcomingTasksForMyGarden } from '../services/TaskService';
+import { getAllUpcomingTasksForMyGarden, getSeasonalTasks } from '../services/TaskService';
 import { useFocusEffect } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 
@@ -17,12 +17,13 @@ export default function AllTasksCalendarScreen({ navigation }) {
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState(null);
   const [allTasks, setAllTasks] = useState([]);
-  const [activeFilters, setActiveFilters] = useState(['water', 'care', 'harvest']);
+  const [activeFilters, setActiveFilters] = useState(['water', 'care', 'harvest', 'seasonal']);
 
   const filterOptions = {
     'water': '💧',
     'care': '🔧',
-    'harvest': '🥕'
+    'harvest': '🥕',
+    'seasonal': '🗓️'
   };
 
   useFocusEffect(
@@ -41,9 +42,13 @@ export default function AllTasksCalendarScreen({ navigation }) {
             setUserData(parsedUserData);
             
             if (parsedUserData.lastFrostDate) {
-              const fetchedTasks = getAllUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate);
-              setAllTasks(fetchedTasks);
-              const groupedTasks = groupTasksByMonth(fetchedTasks.filter(task => activeFilters.includes(task.type)));
+              const [fetchedTasks, seasonalTasks] = await Promise.all([
+                getAllUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
+                getSeasonalTasks(parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
+              ]);
+              const allTasks = [...fetchedTasks, ...seasonalTasks];
+              setAllTasks(allTasks);
+              const groupedTasks = groupTasksByMonth(allTasks.filter(task => activeFilters.includes(task.type)));
               setTasks(groupedTasks);
             }
           }
