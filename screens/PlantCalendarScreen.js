@@ -8,7 +8,7 @@ import {
   ActivityIndicator
 } from 'react-native';
 import { getItem as getSecureItem } from '../utils/SecureStorage';
-import { getTasksForMonth } from '../services/GardeningService';
+import { getTasksForMonth } from '../services/TaskService';
 
 export default function PlantCalendarScreen() {
   const [userData, setUserData] = useState(null);

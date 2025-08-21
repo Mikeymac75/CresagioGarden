@@ -12,12 +12,9 @@ import {
   setItem as setSecureItem,
   removeItem as removeSecureItem,
 } from '../utils/SecureStorage';
-import {
-  getPlantableNow,
-  getUpcomingTasksForMyGarden,
-  getWeatherForecast,
-  generateDynamicAlerts,
-} from '../services/GardeningService';
+import { getPlantableNow } from '../services/GardeningService';
+import { getUpcomingTasksForMyGarden } from '../services/TaskService';
+import { getWeatherForecast, generateDynamicAlerts } from '../services/WeatherService';
 import { useFocusEffect } from '@react-navigation/native';
 import WeatherWidget from '../components/WeatherWidget';
 import { StatsCardSkeleton, TaskCardSkeleton } from '../components/SkeletonLoader';
