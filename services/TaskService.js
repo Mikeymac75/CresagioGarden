@@ -1,6 +1,6 @@
 import { DateUtils } from './utils/DateUtils';
 import { ValidationUtils } from './utils/ValidationUtils';
-import { PLANTS } from '../data/plants';
+import PLANTS from '../data/free_plants.json';
 import { TASK_TYPES, CONFIG } from './constants';
 
 /**
@@ -95,38 +95,6 @@ const TaskGenerator = {
           }
         }
       });
-    }
-
-    return tasks;
-  },
-
-  /**
-   * Generates watering tasks
-   */
-  generateWateringTasks: (gardenEntry, plantDetails, harvestDate, firstFrost = null) => {
-    const tasks = [];
-    const plantedDate = new Date(gardenEntry.plantedDate);
-    const displayName = gardenEntry.nickname ?
-      `${plantDetails.name} (${gardenEntry.nickname})` : plantDetails.name;
-
-    if (plantDetails.wateringFrequencyDays) {
-      let waterDate = new Date(plantedDate);
-
-      while (waterDate <= harvestDate) {
-        if (TaskGenerator.shouldSkipTask(waterDate, firstFrost, plantDetails.frostTolerant)) {
-          break;
-        }
-
-        tasks.push({
-          id: `${gardenEntry.id}-water-${waterDate.toISOString()}`,
-          plantName: displayName,
-          task: `💧 Water ${displayName}`,
-          date: waterDate.toISOString(),
-          type: TASK_TYPES.WATER
-        });
-
-        waterDate = DateUtils.addDays(waterDate, plantDetails.wateringFrequencyDays);
-      }
     }
 
     return tasks;
@@ -259,10 +227,6 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate, firstFro
         gardenEntry, plantDetails, harvestDate, firstFrost
       );
 
-      const wateringTasks = TaskGenerator.generateWateringTasks(
-        gardenEntry, plantDetails, harvestDate, firstFrost
-      );
-
       // Add harvest task
       const harvestTask = {
         id: `${gardenEntry.id}-harvest-${harvestDate.toISOString()}`,
@@ -272,7 +236,7 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate, firstFro
         type: TASK_TYPES.HARVEST
       };
 
-      allTasks.push(...criticalTasks, ...careTasks, ...wateringTasks, harvestTask);
+      allTasks.push(...criticalTasks, ...careTasks, harvestTask);
     });
 
     return allTasks.sort((a, b) => new Date(a.date) - new Date(b.date));

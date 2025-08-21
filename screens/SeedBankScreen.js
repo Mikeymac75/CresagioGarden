@@ -8,7 +8,7 @@ import {
   TextInput,
   ActivityIndicator,
 } from 'react-native';
-import { PLANTS } from '../data/plants';
+import PLANTS from '../data/free_plants.json';
 import { Ionicons } from '@expo/vector-icons';
 import useSeedBank from '../hooks/useSeedBank';
 
