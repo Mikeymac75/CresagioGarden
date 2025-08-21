@@ -1,0 +1,45 @@
+[
+  {
+    "id": 20,
+    "name": "Sweet Corn",
+    "category": "Grain",
+    "harvestType": "single",
+    "daysToMaturity": 80,
+    "spacing": "12 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": 2,
+    "wateringNeeds": "Deep watering, especially during silking and tasseling",
+    "wateringFrequencyDays": 5,
+    "frostTolerant": false,
+    "description": "A tall, warm-season crop that needs space and wind for pollination.",
+    "tips": "Plant in blocks rather than rows for better pollination. Harvest when silks turn brown and kernels are plump and milky.",
+    "careTasks": [
+      {
+        "name": "Side-dress with nitrogen when knee-high",
+        "daysAfterPlanting": 35,
+        "recurring": null,
+        "description": "Perform the task: Side-dress with nitrogen when knee-high."
+      },
+      {
+        "name": "Check for corn earworm",
+        "daysAfterPlanting": 60,
+        "recurring": 5,
+        "description": "Perform the task: Check for corn earworm."
+      },
+      {
+        "name": "Begin checking ears for ripeness",
+        "daysAfterPlanting": 75,
+        "recurring": 2,
+        "description": "Perform the task: Begin checking ears for ripeness."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Sweet Corn consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 5
+      }
+    ]
+  }
+]

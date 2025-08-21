@@ -1,0 +1,242 @@
+[
+  {
+    "id": 2,
+    "name": "Lettuce (Loose Leaf)",
+    "category": "Leafy Green",
+    "harvestType": "continuous",
+    "daysToMaturity": 45,
+    "spacing": "6-8 inches",
+    "sunRequirement": "Full sun to partial shade",
+    "startIndoorsWeeksBefore": 4,
+    "transplantWeeksAfterLastFrost": -2,
+    "directSowWeeksAfterLastFrost": -2,
+    "wateringNeeds": "Consistent moisture, shallow roots",
+    "wateringFrequencyDays": 2,
+    "frostTolerant": true,
+    "description": "A cool-season crop that grows quickly. Tends to bolt in hot weather.",
+    "tips": "Plant every 2 weeks for a continuous harvest. Prefers cooler soil and appreciates afternoon shade in summer.",
+    "careTasks": [
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 21,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+      },
+      {
+        "name": "Thin direct-sown seedlings",
+        "daysAfterPlanting": 21,
+        "recurring": null,
+        "description": "Remove weaker seedlings to ensure proper spacing (6-8 inches) for healthy growth."
+      },
+      {
+        "name": "Start harvesting outer leaves",
+        "daysAfterPlanting": 40,
+        "recurring": 5,
+        "description": "Harvest your Lettuce (Loose Leaf) when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Lettuce (Loose Leaf) consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 2
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Spinach",
+    "category": "Leafy Green",
+    "harvestType": "continuous",
+    "daysToMaturity": 40,
+    "spacing": "4-6 inches",
+    "sunRequirement": "Full sun to partial shade",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": -4,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 2,
+    "frostTolerant": true,
+    "description": "A very cold-hardy, cool-season crop. Plant in early spring and fall.",
+    "tips": "Bolts quickly in heat. Provide afternoon shade to extend the harvest. Can be sown in late summer for a fall crop.",
+    "careTasks": [
+      {
+        "name": "Thin seedlings",
+        "daysAfterPlanting": 14,
+        "recurring": null,
+        "description": "Remove weaker seedlings to ensure proper spacing (4-6 inches) for healthy growth."
+      },
+      {
+        "name": "Begin harvesting outer leaves",
+        "daysAfterPlanting": 35,
+        "recurring": 5,
+        "description": "Harvest your Spinach when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Spinach consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 2
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Kale",
+    "category": "Leafy Green",
+    "harvestType": "continuous",
+    "daysToMaturity": 60,
+    "spacing": "12-18 inches",
+    "sunRequirement": "Full sun to partial shade",
+    "startIndoorsWeeksBefore": 6,
+    "transplantWeeksAfterLastFrost": -2,
+    "directSowWeeksAfterLastFrost": -4,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 3,
+    "frostTolerant": true,
+    "description": "Hardy cool-season green that gets sweeter after a light frost.",
+    "tips": "Harvest outer leaves to allow the center to keep producing. Very cold tolerant and can often be harvested into winter.",
+    "careTasks": [
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 35,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+      },
+      {
+        "name": "Check for cabbage worms",
+        "daysAfterPlanting": 40,
+        "recurring": 7,
+        "description": "Inspect leaves for small green caterpillars and their droppings. Remove them by hand or use an appropriate organic pesticide."
+      },
+      {
+        "name": "Begin harvesting outer leaves",
+        "daysAfterPlanting": 55,
+        "recurring": 7,
+        "description": "Harvest your Kale when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Kale consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Swiss Chard",
+    "category": "Leafy Green",
+    "harvestType": "continuous",
+    "daysToMaturity": 55,
+    "spacing": "6-8 inches",
+    "sunRequirement": "Full sun to partial shade",
+    "startIndoorsWeeksBefore": 4,
+    "transplantWeeksAfterLastFrost": -2,
+    "directSowWeeksAfterLastFrost": -2,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 3,
+    "frostTolerant": true,
+    "description": "A heat-tolerant leafy green that produces all season long.",
+    "tips": "Harvest outer leaves regularly to encourage continued growth. Both leaves and stems are edible.",
+    "careTasks": [
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 21,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+      },
+      {
+        "name": "Thin direct-sown seedlings",
+        "daysAfterPlanting": 21,
+        "recurring": null,
+        "description": "Remove weaker seedlings to ensure proper spacing (6-8 inches) for healthy growth."
+      },
+      {
+        "name": "Begin harvesting outer leaves",
+        "daysAfterPlanting": 50,
+        "recurring": 7,
+        "description": "Harvest your Swiss Chard when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Swiss Chard consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Arugula",
+    "category": "Leafy Green",
+    "harvestType": "continuous",
+    "daysToMaturity": 35,
+    "spacing": "4-6 inches",
+    "sunRequirement": "Full sun to partial shade",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": -4,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 2,
+    "frostTolerant": true,
+    "description": "A fast-growing, peppery cool-season green that bolts quickly in heat.",
+    "tips": "Succession plant every 2 weeks. Harvest leaves when young and tender for mildest flavor.",
+    "careTasks": [
+      {
+        "name": "Thin seedlings",
+        "daysAfterPlanting": 14,
+        "recurring": null,
+        "description": "Remove weaker seedlings to ensure proper spacing (4-6 inches) for healthy growth."
+      },
+      {
+        "name": "Begin harvesting leaves",
+        "daysAfterPlanting": 30,
+        "recurring": 5,
+        "description": "Harvest your Arugula when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Arugula consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 2
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Collard Greens",
+    "category": "Leafy Green",
+    "harvestType": "continuous",
+    "daysToMaturity": 65,
+    "spacing": "18-24 inches",
+    "sunRequirement": "Full sun to partial shade",
+    "startIndoorsWeeksBefore": 6,
+    "transplantWeeksAfterLastFrost": -2,
+    "directSowWeeksAfterLastFrost": -4,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 4,
+    "frostTolerant": true,
+    "description": "A very cold-hardy leafy green that sweetens after frost.",
+    "tips": "Harvest outer leaves regularly. Can produce through winter in mild climates.",
+    "careTasks": [
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 35,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+      },
+      {
+        "name": "Begin harvesting outer leaves",
+        "daysAfterPlanting": 60,
+        "recurring": 7,
+        "description": "Harvest your Collard Greens when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Collard Greens consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 4
+      }
+    ]
+  }
+]

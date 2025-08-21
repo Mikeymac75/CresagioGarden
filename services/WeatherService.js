@@ -1,7 +1,7 @@
 import { DateUtils } from './utils/DateUtils';
 import { ValidationUtils } from './utils/ValidationUtils';
 import { ALERT_TYPES, CONFIG } from './constants';
-import PLANTS from '../data/free_plants.json';
+import PLANTS from './PlantService';
 import { weatherSchema } from '../utils/validationSchemas';
 
 /**

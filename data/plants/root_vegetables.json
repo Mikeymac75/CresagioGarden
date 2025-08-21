@@ -1,0 +1,370 @@
+[
+  {
+    "id": 4,
+    "name": "Carrots",
+    "category": "Root Vegetable",
+    "harvestType": "single",
+    "daysToMaturity": 70,
+    "spacing": "2-3 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": -3,
+    "wateringNeeds": "Consistent moisture to prevent splitting",
+    "wateringFrequencyDays": 2,
+    "frostTolerant": true,
+    "description": "A cool-season root crop that needs loose, sandy soil to grow straight.",
+    "tips": "Thin seedlings to prevent crowding and misshapen roots. Keep soil consistently moist and weed-free.",
+    "conditionalAlerts": [
+      {
+        "condition": "HARD_FREEZE_WARNING",
+        "message": "Consider harvesting carrots. A light frost can make them sweeter, but a hard freeze can damage roots."
+      }
+    ],
+    "careTasks": [
+      {
+        "name": "Thin seedlings to 2-3 inches apart",
+        "daysAfterPlanting": 21,
+        "recurring": null,
+        "description": "Remove weaker seedlings to ensure proper spacing (2-3 inches) for healthy growth."
+      },
+      {
+        "name": "Begin checking for harvest-size roots",
+        "daysAfterPlanting": 65,
+        "recurring": 7,
+        "description": "Harvest your Carrots when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Carrots consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 2
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Radishes",
+    "category": "Root Vegetable",
+    "harvestType": "single",
+    "daysToMaturity": 25,
+    "spacing": "1-2 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": -4,
+    "wateringNeeds": "Very consistent moisture",
+    "wateringFrequencyDays": 1,
+    "frostTolerant": true,
+    "description": "A very fast-growing, cool-season crop perfect for filling in garden gaps.",
+    "tips": "Ready to harvest in as little as 3-4 weeks. Inconsistent watering can cause them to split or become woody. Plant in succession for a steady supply.",
+    "conditionalAlerts": [
+      {
+        "condition": "HARD_FREEZE_WARNING",
+        "message": "Consider harvesting radishes. A light frost is okay, but a hard freeze can damage the roots."
+      }
+    ],
+    "careTasks": [
+      {
+        "name": "Thin seedlings to 1-2 inches apart",
+        "daysAfterPlanting": 10,
+        "recurring": null,
+        "description": "Remove weaker seedlings to ensure proper spacing (1-2 inches) for healthy growth."
+      },
+      {
+        "name": "Begin harvesting roots",
+        "daysAfterPlanting": 22,
+        "recurring": 3,
+        "description": "Harvest your Radishes when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Radishes consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 1
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Potato",
+    "category": "Root Vegetable",
+    "harvestType": "single",
+    "daysToMaturity": 90,
+    "spacing": "12 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": -4,
+    "wateringNeeds": "Consistent moisture, especially when tubers form",
+    "wateringFrequencyDays": 4,
+    "frostTolerant": false,
+    "description": "Planted as \"seed potatoes\". The underground tubers are the harvested crop.",
+    "tips": "\"Hill\" the plants by mounding soil up the stems as they grow to protect tubers from sunlight, which can turn them green and toxic.",
+    "careTasks": [
+      {
+        "name": "Hill up soil around stems (first time)",
+        "daysAfterPlanting": 21,
+        "recurring": null,
+        "description": "Mound soil up around the base of the plant stems to protect developing tubers from sunlight and encourage more growth."
+      },
+      {
+        "name": "Hill up soil around stems (second time)",
+        "daysAfterPlanting": 35,
+        "recurring": null,
+        "description": "Mound soil up around the base of the plant stems to protect developing tubers from sunlight and encourage more growth."
+      },
+      {
+        "name": "Watch for Colorado potato beetles",
+        "daysAfterPlanting": 30,
+        "recurring": 5,
+        "description": "Perform the task: Watch for Colorado potato beetles."
+      },
+      {
+        "name": "Stop watering 1-2 weeks before harvest to help skins cure",
+        "daysAfterPlanting": 76,
+        "recurring": null,
+        "description": "Harvest your Potato when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Harvest new potatoes",
+        "daysAfterPlanting": 70,
+        "recurring": null,
+        "description": "Harvest your Potato when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Harvest main crop after foliage dies back",
+        "daysAfterPlanting": 90,
+        "recurring": null,
+        "description": "Harvest your Potato when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Potato consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 4
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Garlic",
+    "category": "Root Vegetable",
+    "harvestType": "single",
+    "daysToMaturity": 240,
+    "spacing": "4-6 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": -24,
+    "wateringNeeds": "Moderate, stop when leaves yellow",
+    "wateringFrequencyDays": 7,
+    "frostTolerant": true,
+    "description": "Planted in the fall for a mid-summer harvest the following year.",
+    "tips": "Plant individual cloves, pointed end up. Mulch heavily after planting to protect through winter. Harvest when the lower leaves start to turn brown.",
+    "careTasks": [
+      {
+        "name": "Mulch bed heavily for winter protection",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Perform the task: Mulch bed heavily for winter protection."
+      },
+      {
+        "name": "Cut off flower scapes to direct energy to the bulb",
+        "daysAfterPlanting": 210,
+        "recurring": null,
+        "description": "Perform the task: Cut off flower scapes to direct energy to the bulb."
+      },
+      {
+        "name": "Stop watering",
+        "daysAfterPlanting": 225,
+        "recurring": null,
+        "description": "Reduce watering to allow the skins to cure and toughen up before harvesting, which improves storage life."
+      },
+      {
+        "name": "Harvest bulbs when lower leaves are yellow",
+        "daysAfterPlanting": 240,
+        "recurring": null,
+        "description": "Harvest your Garlic when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Garlic consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 7
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Onions",
+    "category": "Root Vegetable",
+    "harvestType": "single",
+    "daysToMaturity": 120,
+    "spacing": "4-6 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 10,
+    "transplantWeeksAfterLastFrost": -4,
+    "directSowWeeksAfterLastFrost": -6,
+    "wateringNeeds": "Consistent moisture until bulbing begins",
+    "wateringFrequencyDays": 4,
+    "frostTolerant": true,
+    "description": "A long-season cool-weather crop. Day-length sensitive for bulb formation.",
+    "tips": "Choose varieties suited to your latitude. Stop watering when tops begin to fall over naturally. Cure bulbs in a dry, ventilated area.",
+    "careTasks": [
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 56,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+      },
+      {
+        "name": "Weed carefully around shallow roots",
+        "daysAfterPlanting": 70,
+        "recurring": 14,
+        "description": "Perform the task: Weed carefully around shallow roots."
+      },
+      {
+        "name": "Stop watering when tops fall over",
+        "daysAfterPlanting": 105,
+        "recurring": null,
+        "description": "Reduce watering to allow the skins to cure and toughen up before harvesting, which improves storage life."
+      },
+      {
+        "name": "Harvest when tops are brown and dry",
+        "daysAfterPlanting": 120,
+        "recurring": null,
+        "description": "Harvest your Onions when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Onions consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 4
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Beets",
+    "category": "Root Vegetable",
+    "harvestType": "single",
+    "daysToMaturity": 55,
+    "spacing": "3-4 inches",
+    "sunRequirement": "Full sun to partial shade",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": -4,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 3,
+    "frostTolerant": true,
+    "description": "A cool-season crop grown for both roots and greens.",
+    "tips": "Thin seedlings and eat the thinnings as baby greens. Harvest roots when golf ball sized for best tenderness.",
+    "careTasks": [
+      {
+        "name": "Thin seedlings to 3-4 inches apart",
+        "daysAfterPlanting": 21,
+        "recurring": null,
+        "description": "Remove weaker seedlings to ensure proper spacing (3-4 inches) for healthy growth."
+      },
+      {
+        "name": "Begin harvesting baby greens from thinnings",
+        "daysAfterPlanting": 21,
+        "recurring": null,
+        "description": "Harvest your Beets when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Begin checking for harvest-size roots",
+        "daysAfterPlanting": 50,
+        "recurring": 7,
+        "description": "Harvest your Beets when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Beets consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Turnips",
+    "category": "Root Vegetable",
+    "harvestType": "single",
+    "daysToMaturity": 50,
+    "spacing": "4-6 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": -6,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 3,
+    "frostTolerant": true,
+    "description": "A cool-season root crop grown for both roots and greens.",
+    "tips": "Harvest roots when tennis ball sized or smaller for best flavor. Greens can be harvested earlier.",
+    "careTasks": [
+      {
+        "name": "Thin seedlings to 4-6 inches apart",
+        "daysAfterPlanting": 21,
+        "recurring": null,
+        "description": "Remove weaker seedlings to ensure proper spacing (4-6 inches) for healthy growth."
+      },
+      {
+        "name": "Begin harvesting greens",
+        "daysAfterPlanting": 35,
+        "recurring": 7,
+        "description": "Harvest your Turnips when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Begin checking root size",
+        "daysAfterPlanting": 45,
+        "recurring": 5,
+        "description": "Perform the task: Begin checking root size."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Turnips consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Rutabaga",
+    "category": "Root Vegetable",
+    "harvestType": "single",
+    "daysToMaturity": 90,
+    "spacing": "6-8 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": -10,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 4,
+    "frostTolerant": true,
+    "description": "A cool-season root crop that improves in flavor after frost.",
+    "tips": "Can be left in ground through winter in mild climates. Mulch heavily for protection.",
+    "careTasks": [
+      {
+        "name": "Thin seedlings to 6-8 inches apart",
+        "daysAfterPlanting": 28,
+        "recurring": null,
+        "description": "Remove weaker seedlings to ensure proper spacing (6-8 inches) for healthy growth."
+      },
+      {
+        "name": "Begin checking root size",
+        "daysAfterPlanting": 80,
+        "recurring": 10,
+        "description": "Perform the task: Begin checking root size."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Rutabaga consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 4
+      }
+    ]
+  }
+]

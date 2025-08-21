@@ -1,0 +1,107 @@
+[
+  {
+    "id": 3,
+    "name": "Basil",
+    "category": "Herb",
+    "harvestType": "continuous",
+    "daysToMaturity": 60,
+    "spacing": "8-12 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 6,
+    "transplantWeeksAfterLastFrost": 2,
+    "directSowWeeksAfterLastFrost": 2,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 3,
+    "frostTolerant": false,
+    "description": "A warm-season herb that is sensitive to frost. Great companion for tomatoes.",
+    "tips": "Pinch off flower heads as they appear to encourage leafy growth. Harvest often.",
+    "careTasks": [
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 35,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+      },
+      {
+        "name": "Pinch back tips to encourage branching",
+        "daysAfterPlanting": 50,
+        "recurring": 10,
+        "description": "Pinch the growing tips to encourage the plant to become bushier and produce more leaves."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Basil consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Cilantro",
+    "category": "Herb",
+    "harvestType": "continuous",
+    "daysToMaturity": 45,
+    "spacing": "4-6 inches",
+    "sunRequirement": "Full sun to partial shade",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": -2,
+    "wateringNeeds": "Regular moisture",
+    "wateringFrequencyDays": 3,
+    "frostTolerant": true,
+    "description": "A cool-season herb that bolts (goes to flower) very quickly in heat.",
+    "tips": "Sow seeds every 2-3 weeks for a continuous supply. Harvest leaves often to delay bolting. The flowers are edible and attract beneficial insects.",
+    "careTasks": [
+      {
+        "name": "Begin harvesting leaves",
+        "daysAfterPlanting": 30,
+        "recurring": 7,
+        "description": "Harvest your Cilantro when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Cilantro consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Parsley",
+    "category": "Herb",
+    "harvestType": "continuous",
+    "daysToMaturity": 75,
+    "spacing": "6-8 inches",
+    "sunRequirement": "Full sun to partial shade",
+    "startIndoorsWeeksBefore": 10,
+    "transplantWeeksAfterLastFrost": -2,
+    "directSowWeeksAfterLastFrost": -4,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 3,
+    "frostTolerant": true,
+    "description": "A biennial herb grown as annual. Very slow to germinate from seed.",
+    "tips": "Soak seeds overnight before planting to improve germination. Harvest outer stems regularly to encourage new growth.",
+    "careTasks": [
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 63,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+      },
+      {
+        "name": "Begin harvesting outer stems",
+        "daysAfterPlanting": 70,
+        "recurring": 7,
+        "description": "Harvest your Parsley when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Parsley consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  }
+]

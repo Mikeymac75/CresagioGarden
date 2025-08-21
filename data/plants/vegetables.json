@@ -1,0 +1,358 @@
+[
+  {
+    "id": 18,
+    "name": "Broccoli",
+    "category": "Vegetable",
+    "harvestType": "continuous",
+    "daysToMaturity": 70,
+    "spacing": "18 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 6,
+    "transplantWeeksAfterLastFrost": -2,
+    "directSowWeeksAfterLastFrost": -4,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 4,
+    "frostTolerant": true,
+    "description": "A cool-season crop that produces a large central head, followed by smaller side shoots.",
+    "tips": "Transplant into the garden before the weather gets too hot. Heat can cause it to bolt. Harvest the main head before the flowers open.",
+    "careTasks": [
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 35,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+      },
+      {
+        "name": "Fertilize 3 weeks after transplanting",
+        "daysAfterPlanting": 56,
+        "recurring": null,
+        "description": "Feed your Broccoli with a balanced fertilizer to support healthy growth and fruit development."
+      },
+      {
+        "name": "Check for cabbage worms",
+        "daysAfterPlanting": 50,
+        "recurring": 5,
+        "description": "Inspect leaves for small green caterpillars and their droppings. Remove them by hand or use an appropriate organic pesticide."
+      },
+      {
+        "name": "Harvest main head when buds are tight",
+        "daysAfterPlanting": 80,
+        "recurring": null,
+        "description": "Harvest your Broccoli when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Continue harvesting side shoots",
+        "daysAfterPlanting": 90,
+        "recurring": 7,
+        "description": "Harvest your Broccoli when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Broccoli consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 4
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Cabbage",
+    "category": "Vegetable",
+    "harvestType": "single",
+    "daysToMaturity": 80,
+    "spacing": "18-24 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 6,
+    "transplantWeeksAfterLastFrost": -2,
+    "directSowWeeksAfterLastFrost": -4,
+    "wateringNeeds": "Consistent, deep watering",
+    "wateringFrequencyDays": 4,
+    "frostTolerant": true,
+    "description": "A cool-season crop that forms dense heads. Can split if growth is too rapid.",
+    "tips": "Harvest when heads are firm and solid. Cut at base leaving roots to potentially produce small secondary heads.",
+    "careTasks": [
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 35,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+      },
+      {
+        "name": "Check for cabbage worms",
+        "daysAfterPlanting": 45,
+        "recurring": 7,
+        "description": "Inspect leaves for small green caterpillars and their droppings. Remove them by hand or use an appropriate organic pesticide."
+      },
+      {
+        "name": "Check heads for firmness",
+        "daysAfterPlanting": 75,
+        "recurring": 5,
+        "description": "Perform the task: Check heads for firmness."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Cabbage consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 4
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Cauliflower",
+    "category": "Vegetable",
+    "harvestType": "single",
+    "daysToMaturity": 75,
+    "spacing": "18-24 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 6,
+    "transplantWeeksAfterLastFrost": -2,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 3,
+    "frostTolerant": true,
+    "description": "A cool-season crop that requires steady temperatures. More finicky than cabbage.",
+    "tips": "Blanch heads by tying leaves over them when heads are 2-3 inches across to keep them white.",
+    "careTasks": [
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 35,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+      },
+      {
+        "name": "Tie leaves over developing heads to blanch",
+        "daysAfterPlanting": 60,
+        "recurring": null,
+        "description": "Perform the task: Tie leaves over developing heads to blanch."
+      },
+      {
+        "name": "Check for harvest readiness",
+        "daysAfterPlanting": 70,
+        "recurring": 3,
+        "description": "Harvest your Cauliflower when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Cauliflower consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Brussels Sprouts",
+    "category": "Vegetable",
+    "harvestType": "continuous",
+    "daysToMaturity": 100,
+    "spacing": "24 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 12,
+    "transplantWeeksAfterLastFrost": -4,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 4,
+    "frostTolerant": true,
+    "description": "A long-season cool-weather crop. Sprouts form along the tall stem.",
+    "tips": "Remove lower leaves as sprouts develop. Harvest from bottom up when sprouts are firm and 1-2 inches across.",
+    "careTasks": [
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 70,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+      },
+      {
+        "name": "Remove lower leaves to expose developing sprouts",
+        "daysAfterPlanting": 80,
+        "recurring": 14,
+        "description": "Perform the task: Remove lower leaves to expose developing sprouts."
+      },
+      {
+        "name": "Begin harvesting bottom sprouts",
+        "daysAfterPlanting": 95,
+        "recurring": 7,
+        "description": "Harvest your Brussels Sprouts when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Brussels Sprouts consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 4
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Leeks",
+    "category": "Vegetable",
+    "harvestType": "single",
+    "daysToMaturity": 120,
+    "spacing": "6 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 10,
+    "transplantWeeksAfterLastFrost": -2,
+    "directSowWeeksAfterLastFrost": -6,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 4,
+    "frostTolerant": true,
+    "description": "A long-season cool-weather crop related to onions, grown for thick white stems.",
+    "tips": "Hill soil around stems to blanch them white. Very cold hardy and can be harvested into winter.",
+    "careTasks": [
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 56,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+      },
+      {
+        "name": "Hill soil around stems",
+        "daysAfterPlanting": 70,
+        "recurring": 21,
+        "description": "Perform the task: Hill soil around stems."
+      },
+      {
+        "name": "Begin harvesting mature leeks",
+        "daysAfterPlanting": 115,
+        "recurring": 7,
+        "description": "Harvest your Leeks when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Leeks consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 4
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Asparagus",
+    "category": "Vegetable",
+    "harvestType": "continuous",
+    "daysToMaturity": 730,
+    "spacing": "18 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": -4,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Deep watering during growing season",
+    "wateringFrequencyDays": 7,
+    "frostTolerant": true,
+    "description": "A perennial vegetable that takes 2-3 years to establish but produces for decades.",
+    "tips": "Do not harvest in the first year. Allow ferns to grow to build root system. Harvest spears for 6-8 weeks in spring.",
+    "careTasks": [
+      {
+        "name": "Allow all spears to grow into ferns (Year 1)",
+        "daysAfterPlanting": 0,
+        "recurring": null,
+        "description": "Perform the task: Allow all spears to grow into ferns (Year 1)."
+      },
+      {
+        "name": "Begin light harvest (Year 2)",
+        "daysAfterPlanting": 365,
+        "recurring": null,
+        "description": "Harvest your Asparagus when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Cut back dead ferns in late fall",
+        "daysAfterPlanting": 240,
+        "recurring": 365,
+        "description": "Perform the task: Cut back dead ferns in late fall."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Asparagus consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 7
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Fennel (Bulbing)",
+    "category": "Vegetable",
+    "harvestType": "single",
+    "daysToMaturity": 85,
+    "spacing": "12 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 4,
+    "transplantWeeksAfterLastFrost": -2,
+    "directSowWeeksAfterLastFrost": -2,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 3,
+    "frostTolerant": true,
+    "description": "A cool-season crop grown for its swollen stem base with anise flavor.",
+    "tips": "Hill soil around bulbs as they develop to blanch them. Harvest when bulbs are tennis ball sized.",
+    "careTasks": [
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 21,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+      },
+      {
+        "name": "Hill soil around developing bulbs",
+        "daysAfterPlanting": 60,
+        "recurring": 14,
+        "description": "Perform the task: Hill soil around developing bulbs."
+      },
+      {
+        "name": "Check bulb size for harvest",
+        "daysAfterPlanting": 80,
+        "recurring": 5,
+        "description": "Harvest your Fennel (Bulbing) when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Fennel (Bulbing) consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Artichoke",
+    "category": "Vegetable",
+    "harvestType": "continuous",
+    "daysToMaturity": 180,
+    "spacing": "48 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 8,
+    "transplantWeeksAfterLastFrost": -2,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Deep, regular watering",
+    "wateringFrequencyDays": 5,
+    "frostTolerant": true,
+    "description": "A large perennial vegetable that needs mild winters or can be grown as annual.",
+    "tips": "Harvest buds before they open into flowers. Cut main bud first to encourage side shoots.",
+    "careTasks": [
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 49,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+      },
+      {
+        "name": "Check for developing buds",
+        "daysAfterPlanting": 160,
+        "recurring": 7,
+        "description": "Perform the task: Check for developing buds."
+      },
+      {
+        "name": "Harvest main bud when tight",
+        "daysAfterPlanting": 175,
+        "recurring": null,
+        "description": "Harvest your Artichoke when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Artichoke consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 5
+      }
+    ]
+  }
+]

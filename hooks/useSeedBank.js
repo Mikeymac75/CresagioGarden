@@ -4,7 +4,7 @@ import {
   getItem as getSecureItem,
   setItem as setSecureItem,
 } from '../utils/SecureStorage';
-import PLANTS from '../data/free_plants.json';
+import PLANTS from '../services/PlantService';
 import { useFocusEffect } from '@react-navigation/native';
 
 const SEED_BANK_KEY = 'userSeedBank';
