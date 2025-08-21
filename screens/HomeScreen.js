@@ -41,7 +41,7 @@ const HomeScreen = ({ navigation }) => {
   const [plantCount, setPlantCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [weatherData, setWeatherData] = useState(null);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isTaskModalVisible, setIsTaskModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
 
   const loadData = useCallback(async () => {
@@ -70,7 +70,7 @@ const HomeScreen = ({ navigation }) => {
           ? getWeatherForecast(parsedUserData.latitude, parsedUserData.longitude)
           : Promise.resolve(null);
 
-        const [weather, plantable, rawTasks, seasonalTasks] = await Promise.all([
+        const [weather, plantable, rawTasks, seasonal] = await Promise.all([
           weatherPromise,
           getPlantableNow(parsedUserData.firstFrostDate),
           getUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
@@ -79,24 +79,24 @@ const HomeScreen = ({ navigation }) => {
 
         if (weather) setWeatherData(weather);
         setPlantableNow(plantable);
-
-        let allUpcomingItems = [...rawTasks, ...seasonalTasks];
-
+        
+        let allUpcomingItems = [...rawTasks, ...seasonal];
+        
         if (weather) {
           const alerts = generateDynamicAlerts(weather, myGarden);
           allUpcomingItems = [...alerts, ...allUpcomingItems];
         }
 
-        // NEW FILTERING LOGIC STARTS HERE
+        // CORRECTED FILTERING LOGIC
         const today = new Date();
-        today.setHours(0, 0, 0, 0); // Normalize today's date to midnight for accurate comparisons
+        today.setHours(0, 0, 0, 0);
 
-        const rangeStart = new Date(); // for other incomplete tasks, 3 days
-        rangeStart.setDate(today.getDate() - 3);
+        const rangeStart = new Date();
+        rangeStart.setDate(today.getDate() - 3); // MISSED_TASK_DAYS
         rangeStart.setHours(0, 0, 0, 0);
-
-        const wateringPastLimit = new Date(); // for incomplete watering tasks, 7 days
-        wateringPastLimit.setDate(today.getDate() - 7);
+        
+        const wateringPastLimit = new Date();
+        wateringPastLimit.setDate(today.getDate() - 7); // Custom limit for watering
         wateringPastLimit.setHours(0, 0, 0, 0);
 
         const filteredAndSortedTasks = allUpcomingItems
@@ -105,16 +105,20 @@ const HomeScreen = ({ navigation }) => {
             taskDate.setHours(0, 0, 0, 0);
             const isCompleted = loadedCompletedTasks.has(task.id);
 
+            // Always show future tasks
+            if (taskDate >= today) {
+              return true;
+            }
+
+            // Handle past tasks
             if (isCompleted) {
-              // Rule for ALL completed tasks: Keep if date is today or in the future.
-              return taskDate >= today;
+              // Hide completed tasks that are in the past
+              return false;
             } else {
-              // Rules for INCOMPLETE tasks:
+              // For incomplete tasks, use different look-back windows
               if (task.type === 'water') {
-                // Keep incomplete watering tasks if they are within the last 7 days (or future).
                 return taskDate >= wateringPastLimit;
               } else {
-                // Keep other incomplete tasks if they are within the last 3 days (or future).
                 return taskDate >= rangeStart;
               }
             }
@@ -137,6 +141,13 @@ const HomeScreen = ({ navigation }) => {
     }, [loadData])
   );
 
+  const handleTaskPress = (task) => {
+    if (task.description) {
+      setSelectedTask(task);
+      setIsTaskModalVisible(true);
+    }
+  };
+  
   const handleChangeLocation = () => {
     Alert.alert(
       'Change Location',
@@ -170,16 +181,6 @@ const HomeScreen = ({ navigation }) => {
     setCompletedTasks(newCompletedTasks);
     await setSecureItem('completedTasks', JSON.stringify(Array.from(newCompletedTasks)));
   }, [completedTasks]);
-
-  const handleOpenModal = (task) => {
-    setSelectedTask(task);
-    setIsModalVisible(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalVisible(false);
-    setSelectedTask(null);
-  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -215,131 +216,110 @@ const HomeScreen = ({ navigation }) => {
     );
   }
 
-  const todayString = new Date().toDateString();
-  const rainAlertToday = upcomingTasks.find(
-    item => item.modifiesTasks === 'water' && new Date(item.date).toDateString() === todayString
-  );
-
   return (
-    <>
-      <ScrollView style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.welcomeText}>Welcome back! 🌱</Text>
-          <TouchableOpacity onLongPress={handleChangeLocation}>
-            <Text style={styles.locationText}>
-              📍 Zone {userData?.hardinessZone || 'N/A'}
-            </Text>
-          </TouchableOpacity>
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.welcomeText}>Welcome back! 🌱</Text>
+        <TouchableOpacity onLongPress={handleChangeLocation}>
+          <Text style={styles.locationText}>
+            📍 Zone {userData?.hardinessZone || 'N/A'}
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      <WeatherWidget
+        weatherData={weatherData}
+        locationAvailable={!!(userData?.latitude && userData?.longitude)}
+      />
+
+      <View style={styles.statsCard}>
+        <View style={styles.statItem}>
+          <Text style={styles.statNumber}>{plantCount}/10</Text>
+          <Text style={styles.statLabel}>Plants in Garden</Text>
         </View>
-
-        <WeatherWidget
-          weatherData={weatherData}
-          locationAvailable={!!(userData?.latitude && userData?.longitude)}
-        />
-
-        <View style={styles.statsCard}>
-          <View style={styles.statItem}>
-            <Text style={styles.statNumber}>{plantCount}/10</Text>
-            <Text style={styles.statLabel}>Plants in Garden</Text>
-          </View>
-          <View style={styles.statDivider} />
-          <View style={styles.statItem}>
-            <Text style={styles.statNumber}>{upcomingTasks.length}</Text>
-            <Text style={styles.statLabel}>Tasks This Week</Text>
-          </View>
+        <View style={styles.statDivider} />
+        <View style={styles.statItem}>
+          <Text style={styles.statNumber}>{upcomingTasks.length}</Text>
+          <Text style={styles.statLabel}>Tasks This Week</Text>
         </View>
+      </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>✅ This Week's Tasks</Text>
-          {upcomingTasks.length > 0 ? (
-            upcomingTasks.map((item) => {
-              const isCompleted = completedTasks.has(item.id);
-              const isAlert = item.type === 'alert';
-              const isCritical = item.type === 'critical';
-              const isSkipped = rainAlertToday && item.type === 'water' && new Date(item.date).toDateString() === todayString;
-              const canToggle = !isAlert && !isCritical && !isSkipped;
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>✅ This Week's Tasks</Text>
+        {upcomingTasks.length > 0 ? (
+          upcomingTasks.map((item) => {
+            const isCompleted = completedTasks.has(item.id);
+            const isAlert = item.type === 'alert';
+            const rainAlert = upcomingTasks.find(t => t.modifiesTasks === 'water' && formatDate(t.date) === 'Today');
+            const isSkipped = item.type === 'water' && rainAlert && formatDate(item.date) === 'Today';
+            const canToggle = !isAlert && !isSkipped;
 
-              if (isSkipped) {
-                return (
-                  <View key={item.id} style={[styles.taskCard, styles.skippedTaskCard]}>
-                    <Text style={styles.skippedTaskEmoji}>🌧️</Text>
-                    <View style={styles.taskDetails}>
-                      <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
-                      <Text style={[styles.taskText, styles.skippedTaskText]}>
-                        {item.task}
-                      </Text>
-                      <Text style={styles.skippedReasonText}>Skipped due to rain.</Text>
-                    </View>
-                  </View>
-                );
-              }
-
-              return (
-                <TouchableOpacity
-                  key={item.id}
-                  onPress={() => handleOpenModal(item)}
-                  disabled={!canToggle || !item.description}
-                >
-                  <View
-                    style={[
-                      styles.taskCard,
-                      isAlert && styles.alertCard,
-                      isCritical && styles.criticalCard,
-                    ]}
-                  >
-                    {canToggle ? (
-                      <Checkbox isChecked={isCompleted} onToggle={() => toggleTask(item.id)} />
-                    ) : (
-                      <View style={{ width: 24, height: 24, marginRight: 15 }} />
-                    )}
-                    <View style={styles.taskDetails}>
-                      <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
-                      <Text style={[styles.taskText, isCompleted && styles.completedTaskText]}>
-                        {item.task}
-                      </Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-              );
-            })
-          ) : (
-            <View style={styles.emptyState}><Text style={styles.emptyStateText}>You're all caught up!</Text></View>
-          )}
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>🌱 What You Can Still Plant</Text>
-          {plantableNow.length > 0 ? (
-            plantableNow.slice(0, 3).map(plant => (
-              <View key={plant.id} style={styles.plantCard}>
-                <Text style={styles.plantName}>{plant.name}</Text>
-                <Text style={styles.plantTip}>💡 Matures in ~{plant.daysToMaturity} days</Text>
-              </View>
-            ))
-          ) : (
-            <View style={styles.emptyState}><Text style={styles.emptyStateText}>It's likely too late in the season to plant new crops.</Text></View>
-          )}
-        </View>
-      </ScrollView>
-      {selectedTask && (
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={isModalVisible}
-          onRequestClose={handleCloseModal}
-        >
-          <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
-              <Text style={styles.modalTitle}>{selectedTask.task}</Text>
-              <Text style={styles.modalDescription}>{selectedTask.description}</Text>
-              <TouchableOpacity style={styles.modalCloseButton} onPress={handleCloseModal}>
-                <Text style={styles.modalCloseButtonText}>Close</Text>
+            return (
+              <TouchableOpacity
+                key={item.id}
+                style={[
+                  styles.taskCard,
+                  isAlert && styles.alertCard,
+                  isSkipped && styles.skippedCard,
+                ]}
+                onPress={() => handleTaskPress(item)}
+                disabled={!item.description || isAlert}
+              >
+                {canToggle ? (
+                  <Checkbox isChecked={isCompleted} onToggle={() => toggleTask(item.id)} />
+                ) : (
+                  <Text style={{width: 24, marginRight: 15, textAlign: 'center'}}>{isSkipped ? '🌧️' : '🔔'}</Text>
+                )}
+                <View style={styles.taskDetails}>
+                  <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
+                  <Text style={[styles.taskText, (isCompleted || isSkipped) && styles.completedTaskText]}>
+                    {item.task}
+                  </Text>
+                  {isSkipped && <Text style={styles.skippedText}>Skipped due to rain</Text>}
+                </View>
               </TouchableOpacity>
+            );
+          })
+        ) : (
+          <View style={styles.emptyState}><Text style={styles.emptyStateText}>You're all caught up!</Text></View>
+        )}
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>🌱 What You Can Still Plant</Text>
+        {plantableNow.length > 0 ? (
+          plantableNow.slice(0, 3).map(plant => (
+            <View key={plant.id} style={styles.plantCard}>
+              <Text style={styles.plantName}>{plant.name}</Text>
+              <Text style={styles.plantTip}>💡 Matures in ~{plant.daysToMaturity} days</Text>
             </View>
+          ))
+        ) : (
+          <View style={styles.emptyState}><Text style={styles.emptyStateText}>It's likely too late in the season to plant new crops.</Text></View>
+        )}
+      </View>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isTaskModalVisible}
+        onRequestClose={() => {
+          setIsTaskModalVisible(!isTaskModalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalTitle}>{selectedTask?.task}</Text>
+            <Text style={styles.modalText}>{selectedTask?.description}</Text>
+            <TouchableOpacity
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setIsTaskModalVisible(!isTaskModalVisible)}
+            >
+              <Text style={styles.textStyle}>Close</Text>
+            </TouchableOpacity>
           </View>
-        </Modal>
-      )}
-    </>
+        </View>
+      </Modal>
+    </ScrollView>
   );
 };
 
@@ -350,54 +330,6 @@ HomeScreen.propTypes = {
 export default React.memo(HomeScreen);
 
 const styles = StyleSheet.create({
-    modalContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    },
-    modalContent: {
-        backgroundColor: 'white',
-        padding: 22,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 10,
-        borderColor: 'rgba(0, 0, 0, 0.1)',
-        width: '85%',
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
-    },
-    modalTitle: {
-        fontSize: 22,
-        fontWeight: 'bold',
-        marginBottom: 15,
-        textAlign: 'center',
-    },
-    modalDescription: {
-        fontSize: 16,
-        textAlign: 'center',
-        marginBottom: 25,
-        color: '#333'
-    },
-    modalCloseButton: {
-        backgroundColor: '#4CAF50',
-        borderRadius: 8,
-        paddingVertical: 12,
-        paddingHorizontal: 30,
-        elevation: 2,
-    },
-    modalCloseButtonText: {
-        color: 'white',
-        fontWeight: 'bold',
-        textAlign: 'center',
-        fontSize: 16
-    },
     container: { flex: 1, backgroundColor: '#f5f5f5' },
     center: { justifyContent: 'center', alignItems: 'center', flex: 1 },
     header: { backgroundColor: '#4CAF50', padding: 20, paddingBottom: 40, paddingTop: 50 },
@@ -416,33 +348,19 @@ const styles = StyleSheet.create({
       borderColor: '#0288D1',
       borderWidth: 1,
     },
-    criticalCard: {
-      backgroundColor: '#FFF3E0', // Light orange
-      borderColor: '#F57C00',
-      borderWidth: 1,
+    skippedCard: {
+      backgroundColor: '#E3F2FD',
+      opacity: 0.7,
     },
     taskDetails: { flex: 1 },
     taskDate: { fontSize: 12, fontWeight: 'bold', color: '#666', marginBottom: 4 },
     taskText: { fontSize: 16, color: '#333' },
     completedTaskText: { textDecorationLine: 'line-through', color: '#aaa' },
-    skippedTaskCard: {
-      backgroundColor: '#E0E0E0',
-      borderColor: '#BDBDBD',
-      borderWidth: 1,
-    },
-    skippedTaskText: {
-      textDecorationLine: 'line-through',
-      color: '#9E9E9E',
-    },
-    skippedReasonText: {
+    skippedText: {
       fontSize: 12,
-      color: '#757575',
+      color: '#0D47A1',
       fontStyle: 'italic',
       marginTop: 4,
-    },
-    skippedTaskEmoji: {
-      fontSize: 20,
-      marginRight: 15,
     },
     plantCard: { backgroundColor: 'white', padding: 15, borderRadius: 8, marginBottom: 10 },
     plantName: { fontSize: 16, fontWeight: 'bold', color: '#333', marginBottom: 5 },
@@ -452,4 +370,51 @@ const styles = StyleSheet.create({
     checkboxBase: { width: 24, height: 24, justifyContent: 'center', alignItems: 'center', borderRadius: 4, borderWidth: 2, borderColor: '#4CAF50', marginRight: 15 },
     checkboxChecked: { backgroundColor: '#4CAF50' },
     checkmark: { color: 'white', fontWeight: 'bold' },
+    centeredView: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: 22,
+      backgroundColor: 'rgba(0,0,0,0.5)'
+    },
+    modalView: {
+      margin: 20,
+      backgroundColor: "white",
+      borderRadius: 20,
+      padding: 35,
+      alignItems: "center",
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5
+    },
+    button: {
+      borderRadius: 20,
+      padding: 10,
+      elevation: 2,
+      marginTop: 15,
+    },
+    buttonClose: {
+      backgroundColor: "#2196F3",
+    },
+    textStyle: {
+      color: "white",
+      fontWeight: "bold",
+      textAlign: "center"
+    },
+    modalTitle: {
+      marginBottom: 15,
+      textAlign: "center",
+      fontSize: 20,
+      fontWeight: 'bold'
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: "center",
+        fontSize: 16
+    }
 });
