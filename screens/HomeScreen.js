@@ -90,10 +90,20 @@ const HomeScreen = ({ navigation }) => {
         rangeStart.setDate(today.getDate() - 3); // 3 is MISSED_TASK_DAYS
         rangeStart.setHours(0, 0, 0, 0);
 
+        const wateringRangeStart = new Date();
+        wateringRangeStart.setDate(today.getDate() - 7);
+        wateringRangeStart.setHours(0, 0, 0, 0);
+
         const filteredAndSortedTasks = allUpcomingItems
           .filter(task => {
             const taskDate = new Date(task.date);
-            // Keep future tasks, or past tasks that are within the missed window and not completed
+
+            if (task.type === 'water') {
+              // For watering tasks, only show them if they are from the last 7 days.
+              return taskDate >= wateringRangeStart;
+            }
+
+            // For all other tasks, keep future tasks, or past tasks that are within the missed window and not completed
             return taskDate >= rangeStart || !loadedCompletedTasks.has(task.id);
           })
           .sort((a, b) => new Date(a.date) - new Date(b.date));
