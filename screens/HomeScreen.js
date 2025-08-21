@@ -77,23 +77,28 @@ const HomeScreen = ({ navigation }) => {
         if (weather) setWeatherData(weather);
         setPlantableNow(plantable);
 
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        let allUpcomingItems = [...rawTasks, ...seasonalTasks];
 
-        const filteredTasks = rawTasks.filter(task => {
-          const taskDate = new Date(task.date);
-          taskDate.setHours(0, 0, 0, 0);
-          return taskDate >= today || !loadedCompletedTasks.has(task.id);
-        });
-
-        let allUpcomingItems = [...filteredTasks, ...seasonalTasks];
         if (weather) {
           const alerts = generateDynamicAlerts(weather, myGarden);
           allUpcomingItems = [...alerts, ...allUpcomingItems];
         }
 
-        allUpcomingItems.sort((a, b) => new Date(a.date) - new Date(b.date));
-        setUpcomingTasks(allUpcomingItems);
+        // NEW FILTERING LOGIC STARTS HERE
+        const today = new Date();
+        const rangeStart = new Date();
+        rangeStart.setDate(today.getDate() - 3); // 3 is MISSED_TASK_DAYS
+        rangeStart.setHours(0, 0, 0, 0);
+
+        const filteredAndSortedTasks = allUpcomingItems
+          .filter(task => {
+            const taskDate = new Date(task.date);
+            // Keep future tasks, or past tasks that are within the missed window and not completed
+            return taskDate >= rangeStart || !loadedCompletedTasks.has(task.id);
+          })
+          .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        setUpcomingTasks(filteredAndSortedTasks);
       }
     } catch (error) {
       console.error('Error loading data:', error);

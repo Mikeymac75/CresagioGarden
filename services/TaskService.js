@@ -183,16 +183,7 @@ export const getUpcomingTasksForMyGarden = (myGarden, lastFrostDate, firstFrostD
 
   try {
     const allTasks = getAllUpcomingTasksForMyGarden(myGarden, lastFrostDate, firstFrostDate);
-    const today = new Date();
-    const { start: rangeStart, end: rangeEnd } = DateUtils.getDateRange(
-      DateUtils.addDays(today, -CONFIG.MISSED_TASK_DAYS),
-      CONFIG.UPCOMING_TASK_DAYS + CONFIG.MISSED_TASK_DAYS
-    );
-
-    return allTasks.filter(task => {
-      const taskDate = new Date(task.date);
-      return DateUtils.isDateInRange(taskDate, rangeStart, rangeEnd);
-    });
+    return allTasks;
   } catch (error) {
     console.error('Error generating upcoming tasks:', error);
     return [];
@@ -273,7 +264,7 @@ export const getSeasonalTasks = (lastFrostDate, firstFrostDate) => {
 
       if (taskDate) {
         seasonalTasks.push({
-          id: task.id,
+          id: `${task.id}-${taskDate.getFullYear()}`,
           task: `🗓️ ${task.name}`,
           description: task.description,
           date: taskDate.toISOString(),
