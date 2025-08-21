@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   View,
   Text,
@@ -14,7 +14,6 @@ import {
   getItem as getSecureItem,
   setItem as setSecureItem,
 } from '../utils/SecureStorage';
-import { PLANTS } from '../data/plants';
 import { useFocusEffect } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {
@@ -27,7 +26,7 @@ import useSeedBank from '../hooks/useSeedBank';
 
 export default function MyGardenScreen({ navigation }) {
   const [myGarden, setMyGarden] = useState([]);
-  const { availablePlants } = useSeedBank();
+  const { availablePlants, allPlants } = useSeedBank();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modalStep, setModalStep] = useState('list'); // 'list', 'date', 'name'
   const [selectedPlant, setSelectedPlant] = useState(null);
@@ -122,9 +121,19 @@ export default function MyGardenScreen({ navigation }) {
     );
   };
 
+  const plantsById = useMemo(() => {
+    return new Map(allPlants.map(p => [p.id, p]));
+  }, [allPlants]);
+
   const renderPlantEntry = ({ item }) => {
     if (item.status === 'harvested') return null;
-    const plantInfo = PLANTS.find(p => p.id === item.plantId);
+    const plantInfo = plantsById.get(item.plantId);
+
+    // It's possible the plant info is not available yet if the data is still loading
+    if (!plantInfo) {
+      return null;
+    }
+
     const daysUntilHarvest = getDaysUntilHarvest(
       item.plantedDate,
       plantInfo.daysToMaturity
