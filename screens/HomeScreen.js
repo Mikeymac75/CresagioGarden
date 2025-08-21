@@ -13,7 +13,7 @@ import {
   removeItem as removeSecureItem,
 } from '../utils/SecureStorage';
 import { getPlantableNow } from '../services/GardeningService';
-import { getUpcomingTasksForMyGarden } from '../services/TaskService';
+import { getUpcomingTasksForMyGarden, getSeasonalTasks } from '../services/TaskService';
 import { getWeatherForecast, generateDynamicAlerts } from '../services/WeatherService';
 import { useFocusEffect } from '@react-navigation/native';
 import WeatherWidget from '../components/WeatherWidget';
@@ -67,10 +67,11 @@ const HomeScreen = ({ navigation }) => {
           ? getWeatherForecast(parsedUserData.latitude, parsedUserData.longitude)
           : Promise.resolve(null);
 
-        const [weather, plantable, rawTasks] = await Promise.all([
+        const [weather, plantable, rawTasks, seasonalTasks] = await Promise.all([
           weatherPromise,
           getPlantableNow(parsedUserData.firstFrostDate),
           getUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
+          getSeasonalTasks(parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
         ]);
 
         if (weather) setWeatherData(weather);
@@ -85,7 +86,7 @@ const HomeScreen = ({ navigation }) => {
           return taskDate >= today || !loadedCompletedTasks.has(task.id);
         });
 
-        let allUpcomingItems = [...filteredTasks];
+        let allUpcomingItems = [...filteredTasks, ...seasonalTasks];
         if (weather) {
           const alerts = generateDynamicAlerts(weather, myGarden);
           allUpcomingItems = [...alerts, ...allUpcomingItems];
@@ -176,6 +177,11 @@ const HomeScreen = ({ navigation }) => {
     );
   }
 
+  const todayString = new Date().toDateString();
+  const rainAlertToday = upcomingTasks.find(
+    item => item.modifiesTasks === 'water' && new Date(item.date).toDateString() === todayString
+  );
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
@@ -211,7 +217,23 @@ const HomeScreen = ({ navigation }) => {
             const isCompleted = completedTasks.has(item.id);
             const isAlert = item.type === 'alert';
             const isCritical = item.type === 'critical';
-            const canToggle = !isAlert && !isCritical;
+            const isSkipped = rainAlertToday && item.type === 'water' && new Date(item.date).toDateString() === todayString;
+            const canToggle = !isAlert && !isCritical && !isSkipped;
+
+            if (isSkipped) {
+              return (
+                <View key={item.id} style={[styles.taskCard, styles.skippedTaskCard]}>
+                  <Text style={styles.skippedTaskEmoji}>🌧️</Text>
+                  <View style={styles.taskDetails}>
+                    <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
+                    <Text style={[styles.taskText, styles.skippedTaskText]}>
+                      {item.task}
+                    </Text>
+                    <Text style={styles.skippedReasonText}>Skipped due to rain.</Text>
+                  </View>
+                </View>
+              );
+            }
 
             return (
               <View
@@ -292,6 +314,25 @@ const styles = StyleSheet.create({
     taskDate: { fontSize: 12, fontWeight: 'bold', color: '#666', marginBottom: 4 },
     taskText: { fontSize: 16, color: '#333' },
     completedTaskText: { textDecorationLine: 'line-through', color: '#aaa' },
+    skippedTaskCard: {
+      backgroundColor: '#E0E0E0',
+      borderColor: '#BDBDBD',
+      borderWidth: 1,
+    },
+    skippedTaskText: {
+      textDecorationLine: 'line-through',
+      color: '#9E9E9E',
+    },
+    skippedReasonText: {
+      fontSize: 12,
+      color: '#757575',
+      fontStyle: 'italic',
+      marginTop: 4,
+    },
+    skippedTaskEmoji: {
+      fontSize: 20,
+      marginRight: 15,
+    },
     plantCard: { backgroundColor: 'white', padding: 15, borderRadius: 8, marginBottom: 10 },
     plantName: { fontSize: 16, fontWeight: 'bold', color: '#333', marginBottom: 5 },
     plantTip: { fontSize: 12, color: '#2E7D32', fontStyle: 'italic' },
