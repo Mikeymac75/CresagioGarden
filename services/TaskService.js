@@ -1,6 +1,6 @@
 import { DateUtils } from './utils/DateUtils';
 import { ValidationUtils } from './utils/ValidationUtils';
-import PLANTS from '../data/free_plants.json';
+import PLANTS from './PlantService';
 import { TASK_TYPES, CONFIG } from './constants';
 
 /**

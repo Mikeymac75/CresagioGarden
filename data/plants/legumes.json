@@ -1,0 +1,70 @@
+[
+  {
+    "id": 5,
+    "name": "Green Beans (Bush)",
+    "category": "Legume",
+    "harvestType": "continuous",
+    "daysToMaturity": 55,
+    "spacing": "4-6 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": 1,
+    "wateringNeeds": "Moderate, consistent watering",
+    "wateringFrequencyDays": 3,
+    "frostTolerant": false,
+    "description": "A warm-season crop that produces abundantly. Does not require a trellis.",
+    "tips": "Plant after all danger of frost has passed. Avoid over-fertilizing with nitrogen. Sow every 2 weeks for continuous harvest.",
+    "careTasks": [
+      {
+        "name": "Begin harvesting beans",
+        "daysAfterPlanting": 50,
+        "recurring": 3,
+        "description": "Harvest your Green Beans (Bush) when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Green Beans (Bush) consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Peas",
+    "category": "Legume",
+    "harvestType": "continuous",
+    "daysToMaturity": 60,
+    "spacing": "2-4 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": -6,
+    "wateringNeeds": "Consistent moisture, especially during flowering and pod set",
+    "wateringFrequencyDays": 3,
+    "frostTolerant": true,
+    "description": "One of the first crops to be planted in spring. Does not like heat.",
+    "tips": "Provide a trellis for vining varieties. Harvest pods when they are plump and sweet for best flavor. Pods left too long become starchy.",
+    "careTasks": [
+      {
+        "name": "Install trellis at time of planting",
+        "daysAfterPlanting": 0,
+        "recurring": null,
+        "description": "Set up a trellis or other support at planting time to give the vines a structure to climb on."
+      },
+      {
+        "name": "Begin harvesting pods",
+        "daysAfterPlanting": 55,
+        "recurring": 3,
+        "description": "Harvest your Peas when they reach a mature size and color. Regular harvesting can encourage more production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water your Peas consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  }
+]
