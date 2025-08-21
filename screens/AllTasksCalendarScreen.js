@@ -8,7 +8,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { getItem as getSecureItem } from '../utils/SecureStorage';
-import { getAllUpcomingTasksForMyGarden } from '../services/GardeningService';
+import { getAllUpcomingTasksForMyGarden } from '../services/TaskService';
 import { useFocusEffect } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 
