@@ -86,11 +86,13 @@ const HomeScreen = ({ navigation }) => {
 
         // NEW FILTERING LOGIC STARTS HERE
         const today = new Date();
-        const rangeStart = new Date();
-        rangeStart.setDate(today.getDate() - 3); // 3 is MISSED_TASK_DAYS
+        today.setHours(0, 0, 0, 0); // Normalize today's date to midnight for accurate comparisons
+
+        const rangeStart = new Date(); // for other incomplete tasks, 3 days
+        rangeStart.setDate(today.getDate() - 3);
         rangeStart.setHours(0, 0, 0, 0);
 
-        const wateringPastLimit = new Date(); // for incomplete watering tasks
+        const wateringPastLimit = new Date(); // for incomplete watering tasks, 7 days
         wateringPastLimit.setDate(today.getDate() - 7);
         wateringPastLimit.setHours(0, 0, 0, 0);
 
@@ -98,21 +100,21 @@ const HomeScreen = ({ navigation }) => {
           .filter(task => {
             const taskDate = new Date(task.date);
             taskDate.setHours(0, 0, 0, 0);
+            const isCompleted = loadedCompletedTasks.has(task.id);
 
-
-            if (task.type === 'water') {
-              const isCompleted = loadedCompletedTasks.has(task.id);
-              if (isCompleted) {
-                // Keep completed watering tasks only if their date is today or in the future.
-                return taskDate >= today;
-              } else {
-                // Keep incomplete watering tasks if they are within the last 7 days (or in the future).
+            if (isCompleted) {
+              // Rule for ALL completed tasks: Keep if date is today or in the future.
+              return taskDate >= today;
+            } else {
+              // Rules for INCOMPLETE tasks:
+              if (task.type === 'water') {
+                // Keep incomplete watering tasks if they are within the last 7 days (or future).
                 return taskDate >= wateringPastLimit;
+              } else {
+                // Keep other incomplete tasks if they are within the last 3 days (or future).
+                return taskDate >= rangeStart;
               }
             }
-
-            // For all other tasks, keep future tasks, or past tasks that are within the missed window and not completed
-            return taskDate >= rangeStart || !loadedCompletedTasks.has(task.id);
           })
           .sort((a, b) => new Date(a.date) - new Date(b.date));
 
