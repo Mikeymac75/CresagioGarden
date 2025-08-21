@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Alert,
+  Modal,
 } from 'react-native';
 import {
   getItem as getSecureItem,
@@ -40,6 +41,8 @@ const HomeScreen = ({ navigation }) => {
   const [plantCount, setPlantCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [weatherData, setWeatherData] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
 
   const loadData = useCallback(async () => {
     setLoading(true);
@@ -168,6 +171,16 @@ const HomeScreen = ({ navigation }) => {
     await setSecureItem('completedTasks', JSON.stringify(Array.from(newCompletedTasks)));
   }, [completedTasks]);
 
+  const handleOpenModal = (task) => {
+    setSelectedTask(task);
+    setIsModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
+    setSelectedTask(null);
+  };
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const today = new Date();
@@ -208,100 +221,125 @@ const HomeScreen = ({ navigation }) => {
   );
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.welcomeText}>Welcome back! 🌱</Text>
-        <TouchableOpacity onLongPress={handleChangeLocation}>
-          <Text style={styles.locationText}>
-            📍 Zone {userData?.hardinessZone || 'N/A'}
-          </Text>
-        </TouchableOpacity>
-      </View>
-
-      <WeatherWidget
-        weatherData={weatherData}
-        locationAvailable={!!(userData?.latitude && userData?.longitude)}
-      />
-
-      <View style={styles.statsCard}>
-        <View style={styles.statItem}>
-          <Text style={styles.statNumber}>{plantCount}/10</Text>
-          <Text style={styles.statLabel}>Plants in Garden</Text>
+    <>
+      <ScrollView style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.welcomeText}>Welcome back! 🌱</Text>
+          <TouchableOpacity onLongPress={handleChangeLocation}>
+            <Text style={styles.locationText}>
+              📍 Zone {userData?.hardinessZone || 'N/A'}
+            </Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.statDivider} />
-        <View style={styles.statItem}>
-          <Text style={styles.statNumber}>{upcomingTasks.length}</Text>
-          <Text style={styles.statLabel}>Tasks This Week</Text>
+
+        <WeatherWidget
+          weatherData={weatherData}
+          locationAvailable={!!(userData?.latitude && userData?.longitude)}
+        />
+
+        <View style={styles.statsCard}>
+          <View style={styles.statItem}>
+            <Text style={styles.statNumber}>{plantCount}/10</Text>
+            <Text style={styles.statLabel}>Plants in Garden</Text>
+          </View>
+          <View style={styles.statDivider} />
+          <View style={styles.statItem}>
+            <Text style={styles.statNumber}>{upcomingTasks.length}</Text>
+            <Text style={styles.statLabel}>Tasks This Week</Text>
+          </View>
         </View>
-      </View>
 
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>✅ This Week's Tasks</Text>
-        {upcomingTasks.length > 0 ? (
-          upcomingTasks.map((item) => {
-            const isCompleted = completedTasks.has(item.id);
-            const isAlert = item.type === 'alert';
-            const isCritical = item.type === 'critical';
-            const isSkipped = rainAlertToday && item.type === 'water' && new Date(item.date).toDateString() === todayString;
-            const canToggle = !isAlert && !isCritical && !isSkipped;
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>✅ This Week's Tasks</Text>
+          {upcomingTasks.length > 0 ? (
+            upcomingTasks.map((item) => {
+              const isCompleted = completedTasks.has(item.id);
+              const isAlert = item.type === 'alert';
+              const isCritical = item.type === 'critical';
+              const isSkipped = rainAlertToday && item.type === 'water' && new Date(item.date).toDateString() === todayString;
+              const canToggle = !isAlert && !isCritical && !isSkipped;
 
-            if (isSkipped) {
-              return (
-                <View key={item.id} style={[styles.taskCard, styles.skippedTaskCard]}>
-                  <Text style={styles.skippedTaskEmoji}>🌧️</Text>
-                  <View style={styles.taskDetails}>
-                    <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
-                    <Text style={[styles.taskText, styles.skippedTaskText]}>
-                      {item.task}
-                    </Text>
-                    <Text style={styles.skippedReasonText}>Skipped due to rain.</Text>
+              if (isSkipped) {
+                return (
+                  <View key={item.id} style={[styles.taskCard, styles.skippedTaskCard]}>
+                    <Text style={styles.skippedTaskEmoji}>🌧️</Text>
+                    <View style={styles.taskDetails}>
+                      <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
+                      <Text style={[styles.taskText, styles.skippedTaskText]}>
+                        {item.task}
+                      </Text>
+                      <Text style={styles.skippedReasonText}>Skipped due to rain.</Text>
+                    </View>
                   </View>
-                </View>
+                );
+              }
+
+              return (
+                <TouchableOpacity
+                  key={item.id}
+                  onPress={() => handleOpenModal(item)}
+                  disabled={!canToggle || !item.description}
+                >
+                  <View
+                    style={[
+                      styles.taskCard,
+                      isAlert && styles.alertCard,
+                      isCritical && styles.criticalCard,
+                    ]}
+                  >
+                    {canToggle ? (
+                      <Checkbox isChecked={isCompleted} onToggle={() => toggleTask(item.id)} />
+                    ) : (
+                      <View style={{ width: 24, height: 24, marginRight: 15 }} />
+                    )}
+                    <View style={styles.taskDetails}>
+                      <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
+                      <Text style={[styles.taskText, isCompleted && styles.completedTaskText]}>
+                        {item.task}
+                      </Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
               );
-            }
+            })
+          ) : (
+            <View style={styles.emptyState}><Text style={styles.emptyStateText}>You're all caught up!</Text></View>
+          )}
+        </View>
 
-            return (
-              <View
-                key={item.id}
-                style={[
-                  styles.taskCard,
-                  isAlert && styles.alertCard,
-                  isCritical && styles.criticalCard,
-                ]}
-              >
-                {canToggle ? (
-                  <Checkbox isChecked={isCompleted} onToggle={() => toggleTask(item.id)} />
-                ) : (
-                  <View style={{ width: 24, height: 24, marginRight: 15 }} />
-                )}
-                <View style={styles.taskDetails}>
-                  <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
-                  <Text style={[styles.taskText, isCompleted && styles.completedTaskText]}>
-                    {item.task}
-                  </Text>
-                </View>
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>🌱 What You Can Still Plant</Text>
+          {plantableNow.length > 0 ? (
+            plantableNow.slice(0, 3).map(plant => (
+              <View key={plant.id} style={styles.plantCard}>
+                <Text style={styles.plantName}>{plant.name}</Text>
+                <Text style={styles.plantTip}>💡 Matures in ~{plant.daysToMaturity} days</Text>
               </View>
-            );
-          })
-        ) : (
-          <View style={styles.emptyState}><Text style={styles.emptyStateText}>You're all caught up!</Text></View>
-        )}
-      </View>
-
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>🌱 What You Can Still Plant</Text>
-        {plantableNow.length > 0 ? (
-          plantableNow.slice(0, 3).map(plant => (
-            <View key={plant.id} style={styles.plantCard}>
-              <Text style={styles.plantName}>{plant.name}</Text>
-              <Text style={styles.plantTip}>💡 Matures in ~{plant.daysToMaturity} days</Text>
+            ))
+          ) : (
+            <View style={styles.emptyState}><Text style={styles.emptyStateText}>It's likely too late in the season to plant new crops.</Text></View>
+          )}
+        </View>
+      </ScrollView>
+      {selectedTask && (
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={isModalVisible}
+          onRequestClose={handleCloseModal}
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <Text style={styles.modalTitle}>{selectedTask.task}</Text>
+              <Text style={styles.modalDescription}>{selectedTask.description}</Text>
+              <TouchableOpacity style={styles.modalCloseButton} onPress={handleCloseModal}>
+                <Text style={styles.modalCloseButtonText}>Close</Text>
+              </TouchableOpacity>
             </View>
-          ))
-        ) : (
-          <View style={styles.emptyState}><Text style={styles.emptyStateText}>It's likely too late in the season to plant new crops.</Text></View>
-        )}
-      </View>
-    </ScrollView>
+          </View>
+        </Modal>
+      )}
+    </>
   );
 };
 
@@ -312,6 +350,54 @@ HomeScreen.propTypes = {
 export default React.memo(HomeScreen);
 
 const styles = StyleSheet.create({
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        padding: 22,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        borderColor: 'rgba(0, 0, 0, 0.1)',
+        width: '85%',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+    modalTitle: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        marginBottom: 15,
+        textAlign: 'center',
+    },
+    modalDescription: {
+        fontSize: 16,
+        textAlign: 'center',
+        marginBottom: 25,
+        color: '#333'
+    },
+    modalCloseButton: {
+        backgroundColor: '#4CAF50',
+        borderRadius: 8,
+        paddingVertical: 12,
+        paddingHorizontal: 30,
+        elevation: 2,
+    },
+    modalCloseButtonText: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 16
+    },
     container: { flex: 1, backgroundColor: '#f5f5f5' },
     center: { justifyContent: 'center', alignItems: 'center', flex: 1 },
     header: { backgroundColor: '#4CAF50', padding: 20, paddingBottom: 40, paddingTop: 50 },
