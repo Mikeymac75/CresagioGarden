@@ -65,6 +65,9 @@ const TaskGenerator = {
     if (plantDetails.careTasks) {
       plantDetails.careTasks.forEach(careTask => {
         let taskDate = DateUtils.addDays(plantedDate, careTask.daysAfterPlanting);
+        const isWateringTask = careTask.name.toLowerCase() === 'watering';
+        const taskType = isWateringTask ? TASK_TYPES.WATER : TASK_TYPES.CARE;
+        const taskEmoji = isWateringTask ? '💧' : '🔧';
         const baseTaskDescription = careTask.name.replace(plantDetails.name, '').trim();
 
         if (careTask.recurring) {
@@ -76,9 +79,9 @@ const TaskGenerator = {
             tasks.push({
               id: `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`,
               plantName: displayName,
-              task: `🔧 ${baseTaskDescription} for ${displayName}`,
+              task: `${taskEmoji} ${baseTaskDescription} ${displayName}`,
               date: taskDate.toISOString(),
-              type: TASK_TYPES.CARE
+              type: taskType
             });
 
             taskDate = DateUtils.addDays(taskDate, careTask.recurring);
@@ -88,9 +91,9 @@ const TaskGenerator = {
             tasks.push({
               id: `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`,
               plantName: displayName,
-              task: `🔧 ${baseTaskDescription} for ${displayName}`,
+              task: `${taskEmoji} ${baseTaskDescription} for ${displayName}`,
               date: taskDate.toISOString(),
-              type: TASK_TYPES.CARE
+              type: taskType
             });
           }
         }
