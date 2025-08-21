@@ -1,38 +1,30 @@
-import React, { useState, useMemo, useCallback, useEffect } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { Alert } from 'react-native';
 import {
   getItem as getSecureItem,
   setItem as setSecureItem,
 } from '../utils/SecureStorage';
-import { getAllPlants } from '../services/DatabaseService';
+import { PLANTS } from '../data/plants';
 import { useFocusEffect } from '@react-navigation/native';
 
 const SEED_BANK_KEY = 'userSeedBank';
 
 export default function useSeedBank() {
   const [seedBank, setSeedBank] = useState(new Set());
-  const [allPlants, setAllPlants] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const loadData = useCallback(async () => {
+  const loadSeedBank = useCallback(async () => {
     setIsLoading(true);
     try {
-      // Fetch plants and seed bank in parallel
-      const [plants, storedSeedBank] = await Promise.all([
-        getAllPlants(),
-        getSecureItem(SEED_BANK_KEY)
-      ]);
-
-      setAllPlants(plants);
-
+      const storedSeedBank = await getSecureItem(SEED_BANK_KEY);
       if (storedSeedBank) {
         setSeedBank(new Set(JSON.parse(storedSeedBank)));
       } else {
         setSeedBank(new Set());
       }
     } catch (error) {
-      Alert.alert('Error', 'Could not load your data.');
-      console.error('Error loading data:', error);
+      Alert.alert('Error', 'Could not load your seed bank.');
+      console.error('Error loading seed bank:', error);
     } finally {
       setIsLoading(false);
     }
@@ -40,8 +32,8 @@ export default function useSeedBank() {
 
   useFocusEffect(
     useCallback(() => {
-      loadData();
-    }, [loadData])
+      loadSeedBank();
+    }, [loadSeedBank])
   );
 
   const toggleSeedInBank = async (plantId) => {
@@ -59,13 +51,19 @@ export default function useSeedBank() {
       Alert.alert('Error', 'Could not update your seed bank.');
       console.error('Error saving seed bank:', error);
       // Revert state on error
-      setSeedBank(seedBank); // Revert to the old state
+      const revertedSeedBank = new Set(seedBank);
+      if (revertedSeedBank.has(plantId)) {
+        revertedSeedBank.delete(plantId);
+      } else {
+        revertedSeedBank.add(plantId);
+      }
+      setSeedBank(revertedSeedBank);
     }
   };
 
   const availablePlants = useMemo(() => {
-    return allPlants.filter(plant => seedBank.has(plant.id));
-  }, [seedBank, allPlants]);
+    return PLANTS.filter(plant => seedBank.has(plant.id));
+  }, [seedBank]);
 
-  return { seedBank, allPlants, availablePlants, isLoading, toggleSeedInBank, loadData };
+  return { seedBank, availablePlants, isLoading, toggleSeedInBank, loadSeedBank };
 }
