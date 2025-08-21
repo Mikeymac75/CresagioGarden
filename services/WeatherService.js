@@ -9,7 +9,7 @@ import { weatherSchema } from '../utils/validationSchemas';
  */
 const WeatherService = {
   cache: new Map(),
-  cacheExpiry: 30 * 60 * 1000, // 30 minutes
+  cacheExpiry: 60 * 60 * 1000, // 60 minutes
 
   /**
    * Gets cached weather data if available and not expired
