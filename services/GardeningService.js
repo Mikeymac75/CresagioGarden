@@ -1,4 +1,4 @@
-import { PLANTS, HARDINESS_ZONES } from '../data/plants';
+import PLANTS from '../data/free_plants.json';
 import { gardenEntrySchema, weatherSchema } from '../utils/validationSchemas';
 
 import { TASK_TYPES, ALERT_TYPES, CONFIG } from './constants';
