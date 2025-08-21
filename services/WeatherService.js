@@ -1,7 +1,7 @@
 import { DateUtils } from './utils/DateUtils';
 import { ValidationUtils } from './utils/ValidationUtils';
 import { ALERT_TYPES, CONFIG } from './constants';
-import { PLANTS } from '../data/plants';
+import PLANTS from '../data/free_plants.json';
 import { weatherSchema } from '../utils/validationSchemas';
 
 /**
@@ -234,7 +234,7 @@ export const generateDynamicAlerts = (weatherData, myGarden) => {
         id: `alert-${alert.type}-${Date.now()}`,
         task: message,
         date: alert.date,
-        type: TASK_TYPES.ALERT,
+        type: 'alert',
         priority: alert.type === ALERT_TYPES.FROST ? 'high' : 'medium'
       });
     });
@@ -250,7 +250,7 @@ export const generateDynamicAlerts = (weatherData, myGarden) => {
                 id: `alert-hardfreeze-${plantDetails.id}-${Date.now()}`,
                 task: `🥶 ${condAlert.message}`,
                 date: now,
-                type: TASK_TYPES.ALERT,
+                type: 'alert',
                 priority: 'high'
               });
             }
