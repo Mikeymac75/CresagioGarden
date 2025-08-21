@@ -5,7 +5,8 @@ import {
   StyleSheet,
   ScrollView,
   ActivityIndicator,
-  TouchableOpacity
+  TouchableOpacity,
+  Modal
 } from 'react-native';
 import { getItem as getSecureItem } from '../utils/SecureStorage';
 import { getAllUpcomingTasksForMyGarden, getSeasonalTasks } from '../services/TaskService';
@@ -18,6 +19,8 @@ export default function AllTasksCalendarScreen({ navigation }) {
   const [userData, setUserData] = useState(null);
   const [allTasks, setAllTasks] = useState([]);
   const [activeFilters, setActiveFilters] = useState(['water', 'care', 'harvest', 'seasonal']);
+  const [isTaskModalVisible, setIsTaskModalVisible] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
 
   const filterOptions = {
     'water': '💧',
@@ -77,6 +80,13 @@ export default function AllTasksCalendarScreen({ navigation }) {
         return [...prevFilters, filter];
       }
     });
+  };
+
+  const handleTaskPress = (task) => {
+    if (task.description) {
+      setSelectedTask(task);
+      setIsTaskModalVisible(true);
+    }
   };
 
   const groupTasksByMonth = (tasks) => {
@@ -141,10 +151,10 @@ export default function AllTasksCalendarScreen({ navigation }) {
           <View key={month} style={styles.monthSection}>
             <Text style={styles.monthTitle}>{month}</Text>
             {tasks[month].map((item, index) => (
-              <View key={index} style={styles.taskCard}>
+              <TouchableOpacity key={index} style={styles.taskCard} onPress={() => handleTaskPress(item)} disabled={!item.description}>
                 <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
                 <Text style={styles.taskText}>{item.task}</Text>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
         ))
@@ -155,6 +165,27 @@ export default function AllTasksCalendarScreen({ navigation }) {
           </Text>
         </View>
       )}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isTaskModalVisible}
+        onRequestClose={() => {
+          setIsTaskModalVisible(!isTaskModalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalTitle}>{selectedTask?.task}</Text>
+            <Text style={styles.modalText}>{selectedTask?.description}</Text>
+            <TouchableOpacity
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setIsTaskModalVisible(!isTaskModalVisible)}
+            >
+              <Text style={styles.textStyle}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </ScrollView>
   );
 }
@@ -250,4 +281,51 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+    backgroundColor: 'rgba(0,0,0,0.5)'
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    marginTop: 15,
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalTitle: {
+    marginBottom: 15,
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  modalText: {
+      marginBottom: 15,
+      textAlign: "center",
+      fontSize: 16
+  }
 });
