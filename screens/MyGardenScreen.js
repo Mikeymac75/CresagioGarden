@@ -14,7 +14,7 @@ import {
   getItem as getSecureItem,
   setItem as setSecureItem,
 } from '../utils/SecureStorage';
-import PLANTS from '../services/PlantService';
+import { loadPlants, getPlants } from '../services/PlantService';
 import { useFocusEffect } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {
@@ -37,6 +37,7 @@ export default function MyGardenScreen({ navigation }) {
   useFocusEffect(
     React.useCallback(() => {
       loadMyGarden();
+      loadPlants();
     }, [])
   );
 
@@ -124,7 +125,17 @@ export default function MyGardenScreen({ navigation }) {
 
   const renderPlantEntry = ({ item }) => {
     if (item.status === 'harvested') return null;
-    const plantInfo = PLANTS.find(p => p.id === item.plantId);
+    const plantInfo = getPlants().find(p => p.id === item.plantId);
+    if (!plantInfo) {
+      // This can happen if a custom plant was deleted but is still in the garden.
+      // Or if the plant list hasn't loaded yet.
+      return (
+        <View style={styles.plantEntry}>
+          <Text style={styles.plantName}>{item.nickname}</Text>
+          <Text style={styles.plantDetail}>Plant data not found. It may have been deleted.</Text>
+        </View>
+      );
+    }
     const daysUntilHarvest = getDaysUntilHarvest(
       item.plantedDate,
       plantInfo.daysToMaturity
@@ -227,11 +238,23 @@ export default function MyGardenScreen({ navigation }) {
           </View>
 
           {modalStep === 'list' && (
-            <FlatList
-              data={availablePlants}
-              renderItem={renderAvailablePlant}
-              keyExtractor={item => item.id.toString()}
-              style={styles.plantList}
+            <>
+              <TouchableOpacity
+                style={styles.createCustomButton}
+                onPress={() => {
+                  resetAddPlantState();
+                  navigation.navigate('CustomPlant');
+                }}
+              >
+                <Text style={styles.createCustomButtonText}>
+                  + Create a Custom Plant
+                </Text>
+              </TouchableOpacity>
+              <FlatList
+                data={availablePlants}
+                renderItem={renderAvailablePlant}
+                keyExtractor={item => item.id.toString()}
+                style={styles.plantList}
               ListEmptyComponent={() => (
                 <View style={styles.emptyListContainer}>
                   <Text style={styles.emptyListText}>
@@ -394,6 +417,20 @@ const styles = StyleSheet.create({
   },
   availablePlantName: { fontSize: 16, fontWeight: 'bold' },
   availablePlantCategory: { fontSize: 14, color: '#666' },
+  createCustomButton: {
+    backgroundColor: '#007bff',
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginHorizontal: 10,
+    marginTop: 10,
+    marginBottom: 5,
+  },
+  createCustomButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
   stepContainer: { flex: 1, justifyContent: 'center', padding: 20 },
   stepTitle: {
     fontSize: 22,

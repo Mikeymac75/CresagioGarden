@@ -9,6 +9,7 @@ import SetupScreen from './screens/SetupScreen';
 import HomeScreen from './screens/HomeScreen';
 import MyGardenScreen from './screens/MyGardenScreen';
 import SeedBankScreen from './screens/SeedBankScreen';
+import CustomPlantScreen from './screens/CustomPlantScreen';
 import PlantCalendarScreen from './screens/PlantCalendarScreen';
 import GardenJournalScreen from './screens/GardenJournalScreen';
 import AllTasksCalendarScreen from './screens/AllTasksCalendarScreen';
@@ -38,6 +39,11 @@ function GardenStackNavigator() {
         name="SeedBank"
         component={SeedBankScreen}
         options={{ title: 'Seed Bank' }}
+      />
+      <GardenStack.Screen
+        name="CustomPlant"
+        component={CustomPlantScreen}
+        options={{ title: 'Create Custom Plant' }}
       />
     </GardenStack.Navigator>
   );
