@@ -33,7 +33,9 @@ export default function SeedBankScreen() {
         onPress={() => toggleSeedInBank(item.id)}
       >
         <View style={styles.plantInfo}>
-          <Text style={styles.plantName}>{item.name}</Text>
+          <Text style={styles.plantName}>
+            {item.name} (approx. {item.daysToMaturity} days)
+          </Text>
           <Text style={styles.plantCategory}>{item.category}</Text>
         </View>
         <Ionicons
