@@ -65,8 +65,8 @@
         "description": "Harvest tomatoes when they are fully colored and firm. Gently twist to remove from the vine."
       },
       {
-        "name": "Water deeply at base",
-        "description": "Water consistently, providing about 1-2 inches per week. Water the soil, not the leaves, to prevent disease.",
+        "name": "Watering",
+        "description": "Water deeply and consistently at the base, providing about 1-2 inches per week. Water the soil, not the leaves, to prevent disease.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -133,7 +133,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water your Bell Pepper consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water consistently, providing about 1-2 inches of water per week, adjusting for rainfall.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -193,8 +193,8 @@
         "description": "Harvest zucchini when 6-8 inches long for best flavor and texture. Regular harvesting is key to continuous production."
       },
       {
-        "name": "Water deeply",
-        "description": "Water consistently at the base of the plant to keep leaves dry and discourage mildew. Provide about 1-2 inches of water per week.",
+        "name": "Watering",
+        "description": "Water deeply and consistently at the base of the plant to keep leaves dry and discourage mildew. Provide about 1-2 inches of water per week.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -260,7 +260,7 @@
         "description": "Harvest for pickling when small (3-4 inches) and for slicing at 6-8 inches. Regular picking encourages more fruit."
       },
       {
-        "name": "Water consistently",
+        "name": "Watering",
         "description": "Provide at least 1-2 inches of water per week. Water deeply at the soil level to prevent leaf diseases.",
         "daysAfterPlanting": 0,
         "recurring": 2
@@ -400,8 +400,8 @@
         "description": "Harvest when the pumpkin is a deep, uniform color and the rind is hard. Leave 3-4 inches of stem attached."
       },
       {
-        "name": "Water deeply",
-        "description": "Water consistently, especially during pollination and fruit set. Reduce watering as fruit matures.",
+        "name": "Watering",
+        "description": "Water deeply and consistently, especially during pollination and fruit set. Reduce watering as fruit matures.",
         "daysAfterPlanting": 0,
         "recurring": 5
       }

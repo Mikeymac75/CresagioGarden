@@ -53,7 +53,7 @@
         "description": "Pinch off flower heads as soon as they appear. If the plant flowers, its leaf production slows and the flavor can change."
       },
       {
-        "name": "Water at base",
+        "name": "Watering",
         "description": "Water consistently at the base of the plant to keep leaves dry and prevent fungal issues. Basil dislikes waterlogged soil.",
         "daysAfterPlanting": 0,
         "recurring": 3
@@ -115,7 +115,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water your Cilantro consistently to keep the soil moist, which can help prevent premature bolting.",
+        "description": "Water consistently to keep the soil moist, which can help prevent premature bolting.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -176,7 +176,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water your Parsley consistently, ensuring the soil doesn't dry out completely.",
+        "description": "Water consistently, ensuring the soil doesn't dry out completely.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }

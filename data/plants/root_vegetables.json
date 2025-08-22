@@ -243,7 +243,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water during active growth in the spring. Garlic has relatively shallow roots and appreciates consistent moisture.",
+        "description": "Water during active growth in the spring. Garlic has relatively shallow roots and appreciates consistent moisture. Stop watering when leaves begin to yellow.",
         "daysAfterPlanting": 0,
         "recurring": 7
       }
@@ -432,7 +432,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water your Turnips consistently. Provide about 1 inch of water per week to ensure they grow quickly and remain tender.",
+        "description": "Water consistently. Provide about 1 inch of water per week to ensure they grow quickly and remain tender.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }

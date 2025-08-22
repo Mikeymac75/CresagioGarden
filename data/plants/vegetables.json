@@ -71,8 +71,8 @@
         "description": "After harvesting the main head, continue to harvest smaller side shoots every 5-7 days to encourage continuous production."
       },
       {
-        "name": "Water deeply",
-        "description": "Water consistently, providing about 1-1.5 inches of water per week. Water at the base of the plant to keep the developing heads dry and prevent rot.",
+        "name": "Watering",
+        "description": "Water deeply and consistently, providing about 1-1.5 inches of water per week. Water at the base of the plant to keep the developing heads dry and prevent rot.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -138,8 +138,8 @@
         "description": "Harvest cabbage when the head is firm to the touch and has reached a desirable size. Cut the stem at the base of the plant."
       },
       {
-        "name": "Water consistently",
-        "description": "Water your Cabbage consistently to encourage steady growth and prevent splitting. Provide about 1-1.5 inches of water per week.",
+        "name": "Watering",
+        "description": "Water consistently to encourage steady growth and prevent splitting. Provide about 1-1.5 inches of water per week.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -199,8 +199,8 @@
         "description": "Harvest when the head is 6-8 inches in diameter, firm, and the curds are still smooth. If it starts to look 'ricey', harvest immediately."
       },
       {
-        "name": "Water consistently",
-        "description": "Water your Cauliflower consistently. Provide about 1.5 inches of water per week, especially as the head develops.",
+        "name": "Watering",
+        "description": "Water consistently. Provide about 1.5 inches of water per week, especially as the head develops.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -267,7 +267,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water your Brussels Sprouts consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -334,7 +334,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water your Leeks consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -468,7 +468,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water your Fennel consistently. Provide about 1-1.5 inches of water per week to prevent bolting.",
+        "description": "Water consistently. Provide about 1-1.5 inches of water per week to prevent bolting.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -546,7 +546,7 @@
         "description": "In the fall, cut the entire plant back to about 6 inches and cover the crown with a thick layer of mulch to protect it from frost."
       },
       {
-        "name": "Water deeply",
+        "name": "Watering",
         "description": "Water deeply and regularly, especially during bud development, to produce tender, fleshy buds.",
         "daysAfterPlanting": 0,
         "recurring": 5
