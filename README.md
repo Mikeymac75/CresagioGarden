@@ -14,6 +14,7 @@ Garden Command is a mobile application designed to help gardeners of all levels 
 *   **Real-Time Weather Integration & Alerts:** The app now fetches real-time weather forecasts to provide actionable alerts.
     *   **Dynamic Alerts:** Get warnings for frost, heatwaves, and heavy rain.
     *   **Smart Suggestions:** The app advises you to protect sensitive plants based on frost alerts and to skip watering when heavy rain is expected.
+*   **Interactive Modals:** Get more details about tasks and plants by clicking on them.
 
 ## Getting Started
 
@@ -52,21 +53,24 @@ This project is built with [React Native](https://reactnative.dev/) and [Expo](h
 
 ```
 .
-├── assets/             # Images and icons
-├── data/               # Static data for plants and hardiness zones
-│   └── plants.js
-├── screens/            # React components for each app screen
-│   ├── AllTasksCalendarScreen.js
-│   ├── GardenJournalScreen.js
-│   ├── HomeScreen.js
-│   ├── MyGardenScreen.js
-│   ├── PlantCalendarScreen.js
-│   └── SetupScreen.js
-├── services/           # Core business logic
-│   ├── GardeningService.js # Handles climate data, task generation, etc.
-│   └── NotificationService.js # Manages local task notifications.
-├── utils/              # Utility functions
-│   └── scheduleGenerator.js
+├── assets/             # Images, icons, and other static assets
+├── components/         # Reusable React Native components (e.g., WeatherWidget, SkeletonLoader)
+├── data/               # Static JSON data for the application
+│   └── plants/         # Plant data categorized by type (fruits, vegetables, etc.)
+├── hooks/              # Custom React hooks (e.g., useSeedBank)
+├── screens/            # Components for each screen of the app
+├── services/           # Core business logic and API interactions
+│   ├── utils/          # Utility functions for services
+│   ├── GardeningService.js # Logic for hardiness zones, frost dates, and plantability
+│   ├── NotificationService.js # Manages local notifications
+│   ├── PlantService.js # Aggregates plant data
+│   ├── TaskService.js  # Generates tasks for the user's garden
+│   ├── WeatherService.js # Fetches and processes weather data
+│   ├── constants.js    # Application-wide constants
+├── utils/              # General utility functions
+│   ├── SecureStorage.js # Wrapper for Expo's SecureStore
+│   ├── scheduleGenerator.js
+│   └── validationSchemas.js # Yup validation schemas
 ├── App.js              # Main app component and navigation setup
 ├── package.json        # Project dependencies and scripts
 └── README.md
@@ -79,8 +83,8 @@ This app is just getting started! Here are some ideas for future upgrades:
 *   **UI/UX Refresh:**
     *   Implement a more dynamic and visually appealing home screen dashboard.
     *   Improve the calendar views with better filtering and visualization of tasks.
-    *   Create a more engaging and intuitive "My Garden" view, perhaps with a visual layout tool.
-*   **Expanded Plant Database:** Add more plants, including flowers, herbs, and native species. Include more detailed information like pest and disease control, companion planting, and specific nutrient needs.
+    *   Create a more engaging and "My Garden" view, perhaps with a visual layout tool.
+*   **Expanded Plant Database:** Add more plants, including flowers and native species. Include more detailed information like pest and disease control, companion planting, and specific nutrient needs.
 *   **Photo Journal:** Enable users to upload photos to their garden journal entries to visually track plant growth and garden changes.
 *   **User Accounts & Cloud Sync:** Allow users to create accounts and sync their garden data across multiple devices. This would also enable true **Push Notifications** to sync tasks across devices.
 *   **Community Features:** Create a space for users to share tips, ask questions, and show off their gardens.
