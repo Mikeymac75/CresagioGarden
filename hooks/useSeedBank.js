@@ -4,16 +4,17 @@ import {
   getItem as getSecureItem,
   setItem as setSecureItem,
 } from '../utils/SecureStorage';
-import PLANTS from '../services/PlantService';
+import { loadPlants } from '../services/PlantService';
 import { useFocusEffect } from '@react-navigation/native';
 
 const SEED_BANK_KEY = 'userSeedBank';
 
 export default function useSeedBank() {
   const [seedBank, setSeedBank] = useState(new Set());
+  const [plants, setPlants] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const loadSeedBank = useCallback(async () => {
+  const loadData = useCallback(async () => {
     setIsLoading(true);
     try {
       const storedSeedBank = await getSecureItem(SEED_BANK_KEY);
@@ -22,9 +23,11 @@ export default function useSeedBank() {
       } else {
         setSeedBank(new Set());
       }
+      const loadedPlants = await loadPlants();
+      setPlants(loadedPlants);
     } catch (error) {
-      Alert.alert('Error', 'Could not load your seed bank.');
-      console.error('Error loading seed bank:', error);
+      Alert.alert('Error', 'Could not load your seed bank or plant data.');
+      console.error('Error loading data:', error);
     } finally {
       setIsLoading(false);
     }
@@ -32,8 +35,8 @@ export default function useSeedBank() {
 
   useFocusEffect(
     useCallback(() => {
-      loadSeedBank();
-    }, [loadSeedBank])
+      loadData();
+    }, [loadData])
   );
 
   const toggleSeedInBank = async (plantId) => {
@@ -62,8 +65,8 @@ export default function useSeedBank() {
   };
 
   const availablePlants = useMemo(() => {
-    return PLANTS.filter(plant => seedBank.has(plant.id));
-  }, [seedBank]);
+    return plants.filter(plant => seedBank.has(plant.id));
+  }, [seedBank, plants]);
 
-  return { seedBank, availablePlants, isLoading, toggleSeedInBank, loadSeedBank };
+  return { seedBank, allPlants: plants, availablePlants, isLoading, toggleSeedInBank, loadSeedBank: loadData };
 }
