@@ -12,7 +12,6 @@
     "directSowWeeksAfterLastFrost": 1,
     "wateringNeeds": "Moderate, consistent watering",
     "wateringFrequencyDays": 3,
-    "frostTolerant": false,
     "description": "A warm-season crop that produces an abundant harvest of tender pods over a few weeks. Bush varieties are compact and do not require a trellis.",
     "tips": "After the soil has warmed, plant seeds directly in the garden. Avoid disturbing the roots. Water at the base to prevent leaf diseases.",
     "succession": "Sow new seeds every 2-3 weeks until mid-summer for a continuous harvest throughout the season.",
@@ -25,8 +24,16 @@
     "temperature": {
       "optimalLowF": 65,
       "optimalHighF": 85,
+      "absoluteMinF": 40,
       "notes": "A warm-season crop. Do not plant until soil has warmed and all danger of frost has passed. Flowers may drop in extreme heat."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Corn", "Carrots", "Cucumbers", "Strawberries", "Rosemary"],
     "storage": {
       "method": "Refrigerate",
@@ -73,7 +80,6 @@
     "directSowWeeksAfterLastFrost": -6,
     "wateringNeeds": "Consistent moisture, especially during flowering and pod set",
     "wateringFrequencyDays": 3,
-    "frostTolerant": true,
     "description": "A classic cool-season crop and one of the first to be planted in spring. Varieties include shelling peas, edible-podded snow peas, and crisp snap peas.",
     "tips": "Harvest pods when they are plump and sweet for best flavor. Pods left on the vine too long become starchy and tough.",
     "succession": "Make 2-3 sowings 10-14 days apart in early spring for a longer harvest. Can also be planted in late summer for a fall crop.",
@@ -86,8 +92,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 75,
+      "absoluteMinF": 32,
       "notes": "A cool-season crop. Plant as soon as the soil can be worked in spring. Dislikes summer heat, which stops pod production."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Peas can tolerate a light frost, but cover if a hard freeze is expected to protect blossoms and young pods.",
+        "priority": "medium"
+      }
+    ],
     "companionPlants": ["Carrots", "Radishes", "Cucumbers", "Turnips", "Beans"],
     "storage": {
       "method": "Refrigerate",

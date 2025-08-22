@@ -6,7 +6,6 @@ export const CONFIG = {
   HEAVY_RAIN_THRESHOLD_MM: 10,
   HEATWAVE_TEMP_CELSIUS: 30,
   HARD_FREEZE_TEMP_CELSIUS: -2,
-  FROST_TEMP_CELSIUS: 0,
   USER_AGENT: "GardenCommand/1.0 https://github.com/your-username/garden-command",
   WEATHER_API_BASE_URL: "https://api.met.no/weatherapi/locationforecast/2.0/compact",
   WEATHER_API_TIMEOUT: 15000, // 15 seconds
@@ -29,7 +28,6 @@ export const TASK_TYPES = {
 
 // Alert type constants
 export const ALERT_TYPES = {
-  FROST: 'FROST',
   HEATWAVE: 'HEATWAVE',
   RAIN: 'RAIN',
   HARD_FREEZE: 'HARD_FREEZE_WARNING'

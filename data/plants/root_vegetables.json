@@ -12,7 +12,6 @@
     "directSowWeeksAfterLastFrost": -3,
     "wateringNeeds": "Consistent moisture to prevent splitting",
     "wateringFrequencyDays": 2,
-    "frostTolerant": true,
     "description": "A popular cool-season root crop. For straight roots, they need loose, sandy soil free of stones.",
     "tips": "Keep the soil consistently moist to prevent roots from splitting. Cover the shoulders of roots with soil or mulch to prevent them from turning green.",
     "succession": "Sow a new batch every 2-3 weeks from early spring until mid-summer for a continuous harvest.",
@@ -25,8 +24,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 70,
+      "absoluteMinF": 30,
       "notes": "A cool-season crop. Germination is slow in cold soil. Light frost can improve sweetness."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Carrots are frost tolerant and their flavor can improve with a light frost. No action needed for light frost.",
+        "priority": "low"
+      }
+    ],
     "companionPlants": ["Lettuce", "Onions", "Rosemary", "Sage", "Radishes"],
     "storage": {
       "method": "Refrigerate or store in sand",
@@ -79,7 +86,6 @@
     "directSowWeeksAfterLastFrost": -4,
     "wateringNeeds": "Very consistent moisture",
     "wateringFrequencyDays": 1,
-    "frostTolerant": true,
     "description": "An extremely fast-growing, cool-season crop perfect for filling in garden gaps between slower plants.",
     "tips": "Harvest as soon as they reach a usable size. Radishes left in the ground too long become woody and unpleasantly spicy.",
     "succession": "Key to a steady supply. Plant a small batch every 7-10 days during cool weather in spring and fall.",
@@ -92,8 +98,16 @@
     "temperature": {
       "optimalLowF": 50,
       "optimalHighF": 65,
+      "absoluteMinF": 32,
       "notes": "Very fast-growing cool-season crop. Becomes woody and spicy (hot) if left too long or grown in heat."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Radishes can tolerate a light frost. No action needed.",
+        "priority": "low"
+      }
+    ],
     "companionPlants": ["Lettuce", "Cucumbers", "Peas", "Spinach"],
     "storage": {
       "method": "Refrigerate",
@@ -140,7 +154,6 @@
     "directSowWeeksAfterLastFrost": -4,
     "wateringNeeds": "Consistent moisture, especially when tubers form",
     "wateringFrequencyDays": 4,
-    "frostTolerant": false,
     "description": "Grown from \"seed potatoes\" (small tubers), not actual seeds. The harvested crop is the underground tubers.",
     "tips": "Hill plants by mounding soil up the stems as they grow. This protects developing tubers from sunlight, which can turn them green and toxic.",
     "succession": "Not applicable. Plant main crop at once. You can plant an early variety for new potatoes and a main storage variety.",
@@ -153,8 +166,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 70,
+      "absoluteMinF": 38,
       "notes": "A cool-season crop. Tubers form best in cool soil. The foliage is very sensitive to frost."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Potato foliage is very sensitive to frost. Cover plants to protect leaves and ensure tuber growth.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Beans", "Corn", "Cabbage family", "Marigolds", "Horseradish"],
     "storage": {
       "method": "Cure then store",
@@ -213,7 +234,6 @@
     "directSowWeeksAfterLastFrost": -24,
     "wateringNeeds": "Moderate, stop when leaves yellow",
     "wateringFrequencyDays": 7,
-    "frostTolerant": true,
     "description": "Typically planted in the fall for a mid-summer harvest the following year. Each clove planted will grow into a full bulb.",
     "tips": "Plant individual cloves, pointed end up. Mulch heavily after planting to protect cloves through winter and suppress weeds in spring.",
     "succession": "Not applicable. Plant in fall for a single harvest the following summer.",
@@ -226,8 +246,16 @@
     "temperature": {
       "optimalLowF": 50,
       "optimalHighF": 75,
+      "absoluteMinF": 15,
       "notes": "Requires a cold period (vernalization) of at least 4-6 weeks at temperatures below 40°F to properly form bulbs."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Garlic is extremely frost hardy. No action needed.",
+        "priority": "low"
+      }
+    ],
     "companionPlants": ["Roses", "Fruit trees", "Tomatoes", "Cabbage"],
     "storage": {
       "method": "Cure then store",
@@ -286,7 +314,6 @@
     "directSowWeeksAfterLastFrost": -6,
     "wateringNeeds": "Consistent moisture until bulbing begins",
     "wateringFrequencyDays": 4,
-    "frostTolerant": true,
     "description": "A long-season cool-weather crop. Bulb formation is triggered by day length, so choosing the right variety for your region is critical.",
     "tips": "Long-day varieties for the North, short-day for the South. Stop watering when tops begin to fall over naturally. This signals the start of the curing process.",
     "succession": "Not typical for storage onions. Green onions (scallions) can be succession planted every few weeks.",
@@ -299,8 +326,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 75,
+      "absoluteMinF": 30,
       "notes": "Bulbing is triggered by day length, not just temperature. Cool weather is best for top growth, and warmer weather for bulb development."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Onions are frost tolerant. No action needed for light frost.",
+        "priority": "low"
+      }
+    ],
     "companionPlants": ["Carrots", "Lettuce", "Cabbage family", "Chamomile"],
     "storage": {
       "method": "Cure then store",
@@ -359,7 +394,6 @@
     "directSowWeeksAfterLastFrost": -4,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
-    "frostTolerant": true,
     "description": "A cool-season crop grown for both its sweet, earthy roots and its nutritious, edible greens.",
     "tips": "Each beet 'seed' is a cluster of several seeds, so thinning is essential. Harvest roots when they are between golf ball and tennis ball size for best tenderness.",
     "succession": "Sow every 2-3 weeks from spring through early fall for a continuous harvest of both roots and greens.",
@@ -372,8 +406,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 70,
+      "absoluteMinF": 30,
       "notes": "A cool-season crop. Can tolerate light frost, which can improve the flavor of the roots."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Beets are frost tolerant and flavor can improve with a light frost. No action needed for light frost.",
+        "priority": "low"
+      }
+    ],
     "companionPlants": ["Onions", "Cabbage family", "Lettuce", "Bush Beans"],
     "storage": {
       "method": "Refrigerate",
@@ -403,7 +445,7 @@
         "name": "Harvest roots",
         "daysAfterPlanting": 50,
         "recurring": 7,
-        "description": "Begin harvesting roots when they are 1.5 inches in diameter. They are most tender when between 2-3 inches across."
+        "description": "Begin harvesting when roots are 1.5 inches in diameter. They are most tender when between 2-3 inches across."
       },
       {
         "name": "Watering",
@@ -426,7 +468,6 @@
     "directSowWeeksAfterLastFrost": -6,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
-    "frostTolerant": true,
     "description": "A fast-growing, cool-season root crop grown for both its peppery roots and its nutritious greens.",
     "tips": "Harvest roots when they are about the size of a tennis ball or smaller for the best flavor and texture. Hot weather makes them woody.",
     "succession": "Plant in early spring for a summer harvest and again in late summer for a fall crop, which is often sweeter.",
@@ -439,8 +480,16 @@
     "temperature": {
       "optimalLowF": 50,
       "optimalHighF": 65,
+      "absoluteMinF": 28,
       "notes": "A cool-season crop. The flavor of the roots improves after a light frost. Becomes woody and bitter in heat."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Turnips are frost tolerant and flavor improves with a light frost. No action needed for light frost.",
+        "priority": "low"
+      }
+    ],
     "companionPlants": ["Peas", "Beans"],
     "storage": {
       "method": "Refrigerate or root cellar",
@@ -493,7 +542,6 @@
     "directSowWeeksAfterLastFrost": -10,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 4,
-    "frostTolerant": true,
     "description": "A large, sweet, cool-season root crop that is a cross between a cabbage and a turnip. Flavor improves significantly after frost.",
     "tips": "Often called 'Swedes'. They can be left in the ground through winter in mild climates if heavily mulched for protection and easier harvesting.",
     "succession": "Not typical due to its longer growing season. Plant once in early summer for a fall/winter harvest.",
@@ -506,8 +554,16 @@
     "temperature": {
       "optimalLowF": 50,
       "optimalHighF": 65,
+      "absoluteMinF": 25,
       "notes": "A cool-season crop that requires a longer season than turnips. Flavor is much improved by several frosts."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Rutabagas are very frost tolerant and flavor improves with frost. No action needed.",
+        "priority": "low"
+      }
+    ],
     "companionPlants": ["Onions", "Peas"],
     "storage": {
       "method": "Root cellar or refrigerate",

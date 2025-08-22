@@ -12,7 +12,6 @@
     "directSowWeeksAfterLastFrost": 2,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
-    "frostTolerant": false,
     "description": "A fragrant, warm-season herb that is a staple in many cuisines, especially Italian. Very sensitive to frost.",
     "tips": "Harvest often by pinching stems just above a pair of leaves. This encourages the plant to become bushier and more productive.",
     "succession": "Sow seeds every 2-3 weeks for a continuous supply of young, tender leaves throughout the summer.",
@@ -25,8 +24,16 @@
     "temperature": {
       "optimalLowF": 70,
       "optimalHighF": 90,
+      "absoluteMinF": 45,
       "notes": "Very sensitive to frost and cool temperatures. Prefers warm days and nights (above 60°F)."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Tomato", "Peppers", "Asparagus", "Petunias"],
     "storage": {
       "method": "Fresh in water or frozen",
@@ -79,7 +86,6 @@
     "directSowWeeksAfterLastFrost": -2,
     "wateringNeeds": "Regular moisture",
     "wateringFrequencyDays": 3,
-    "frostTolerant": true,
     "description": "A fast-growing, cool-season herb. The leaves are called cilantro, and its seeds are known as coriander.",
     "tips": "Tends to bolt (go to flower) very quickly in heat. Provide afternoon shade in warmer climates to prolong the leaf harvest.",
     "succession": "Essential for a continuous supply. Sow new seeds every 2 weeks from spring until early fall, as plants bolt quickly.",
@@ -92,8 +98,16 @@
     "temperature": {
       "optimalLowF": 50,
       "optimalHighF": 75,
+      "absoluteMinF": 32,
       "notes": "A cool-season herb. Bolts rapidly in temperatures above 85°F. Can tolerate a light frost."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cilantro can tolerate a light frost, but cover if a hard freeze is expected to extend the harvest.",
+        "priority": "medium"
+      }
+    ],
     "companionPlants": ["Anise", "Potatoes", "Dill", "Spinach"],
     "storage": {
       "method": "Refrigerate or freeze leaves; dry store seeds",
@@ -146,7 +160,6 @@
     "directSowWeeksAfterLastFrost": -4,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
-    "frostTolerant": true,
     "description": "A biennial herb typically grown as an annual, available in curly-leaf and flat-leaf (Italian) varieties.",
     "tips": "Soak seeds overnight before planting to speed up the notoriously slow germination. Parsley is a host plant for the black swallowtail butterfly caterpillar.",
     "succession": "Not typically needed as plants are productive all season long. Plant once in spring for a season-long harvest.",
@@ -159,8 +172,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 80,
+      "absoluteMinF": 30,
       "notes": "Very cold-hardy and can often be harvested after a light frost, and sometimes into the winter in mild climates."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Parsley is cold-hardy, but cover if a hard freeze is expected to extend the harvest.",
+        "priority": "medium"
+      }
+    ],
     "companionPlants": ["Tomato", "Asparagus", "Roses", "Carrots"],
     "storage": {
       "method": "Refrigerate or freeze",

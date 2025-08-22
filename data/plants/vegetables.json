@@ -12,7 +12,6 @@
     "directSowWeeksAfterLastFrost": -4,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 4,
-    "frostTolerant": true,
     "description": "A cool-season crop that produces a large central head, followed by smaller side shoots after the main harvest.",
     "tips": "For a fall harvest, start seeds indoors in mid-summer. Plant when soil temperature is consistently between 60-75°F. Heat can cause premature flowering (bolting).",
     "succession": "For a continuous harvest, plant new seedlings every 2-3 weeks.",
@@ -25,8 +24,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 75,
+      "absoluteMinF": 28,
       "notes": "Growth slows and flavor can become bitter in temperatures above 80°F."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Broccoli is frost tolerant, but cover if a hard freeze is expected to protect developing heads.",
+        "priority": "medium"
+      }
+    ],
     "companionPlants": ["Rosemary", "Chamomile", "Marigold", "Onion"],
     "storage": {
       "method": "Refrigerate",
@@ -97,7 +104,6 @@
     "directSowWeeksAfterLastFrost": -4,
     "wateringNeeds": "Consistent, deep watering",
     "wateringFrequencyDays": 4,
-    "frostTolerant": true,
     "description": "A cool-season crop that forms dense heads of tightly packed leaves. Comes in green, red, and savoy varieties.",
     "tips": "Provide consistent moisture to prevent heads from splitting. Rotate crops to avoid soil-borne diseases.",
     "succession": "For a continuous harvest, plant new seedlings every 2-3 weeks, choosing varieties with different maturity dates.",
@@ -110,8 +116,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 70,
+      "absoluteMinF": 28,
       "notes": "Can tolerate light frost, which can sweeten the flavor. Excessive heat can cause bolting."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cabbage is frost tolerant and flavor improves with a light frost. Cover only if a severe freeze is expected.",
+        "priority": "low"
+      }
+    ],
     "companionPlants": ["Dill", "Celery", "Onion", "Thyme"],
     "storage": {
       "method": "Refrigerate or root cellar",
@@ -170,7 +184,6 @@
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
-    "frostTolerant": true,
     "description": "A cool-season crop that requires steady, cool temperatures to form a dense head of flower buds.",
     "tips": "Cauliflower is more sensitive to temperature changes than its cabbage-family relatives. Avoid disturbing roots when transplanting.",
     "succession": "Succession planting is possible but challenging due to its sensitivity to temperature. Best to focus on a spring and fall crop.",
@@ -183,8 +196,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 70,
+      "absoluteMinF": 32,
       "notes": "Very sensitive to temperature swings. Protect from both frost and heat to prevent 'buttoning' (forming tiny heads)."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cauliflower is sensitive to frost. Cover plants to protect developing heads.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Beans", "Celery", "Peas"],
     "storage": {
       "method": "Refrigerate",
@@ -237,7 +258,6 @@
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 4,
-    "frostTolerant": true,
     "description": "A long-season, cool-weather crop where edible sprouts form in the leaf axils along a tall, central stem.",
     "tips": "A light frost improves the sprouts' flavor, making them sweeter. Provide support or staking in windy areas.",
     "succession": "Not typically succession planted due to its long growing season. Plant once for a late fall/early winter harvest.",
@@ -250,8 +270,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 70,
+      "absoluteMinF": 25,
       "notes": "Requires a long, cool growing season. Hot weather can cause sprouts to be bitter or loose."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Brussels Sprouts are very frost tolerant and flavor improves with frost. No action needed for light frost.",
+        "priority": "low"
+      }
+    ],
     "companionPlants": ["Marigold", "Nasturtium", "Rosemary"],
     "storage": {
       "method": "Refrigerate or on the stalk",
@@ -310,7 +338,6 @@
     "directSowWeeksAfterLastFrost": -6,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 4,
-    "frostTolerant": true,
     "description": "A member of the onion family with a mild, sweet flavor, grown for its thick, white edible stem.",
     "tips": "Plant in trenches and gradually fill in soil to blanch the stems (keep them white and tender).",
     "succession": "Can be succession planted every 2-3 weeks for a continuous harvest from late summer through winter.",
@@ -323,8 +350,16 @@
     "temperature": {
       "optimalLowF": 55,
       "optimalHighF": 75,
+      "absoluteMinF": 20,
       "notes": "Very cold-hardy and can be harvested even after the ground freezes lightly. Flavor improves with cool weather."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Leeks are very cold hardy. No action needed for frost.",
+        "priority": "low"
+      }
+    ],
     "companionPlants": ["Carrot", "Celery", "Onion family"],
     "storage": {
       "method": "Refrigerate or leave in ground",
@@ -383,7 +418,6 @@
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Deep watering during growing season",
     "wateringFrequencyDays": 7,
-    "frostTolerant": true,
     "description": "A perennial vegetable that, once established, will produce tender spears for up to 20 years. Requires patience.",
     "tips": "Plant 1-year-old crowns for a faster harvest. Avoid harvesting any spears in the first year to allow strong root systems to develop.",
     "succession": "Not applicable; it is a perennial that produces for many years from the same root system.",
@@ -396,8 +430,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 75,
+      "absoluteMinF": 32,
       "notes": "Emerging spears are sensitive to hard frost. The plant goes dormant in winter and requires a chilling period."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Emerging asparagus spears are sensitive to frost. Cover the bed if frost is expected during harvest time.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Tomato", "Parsley", "Basil", "Marigold"],
     "storage": {
       "method": "Refrigerate",
@@ -456,7 +498,6 @@
     "directSowWeeksAfterLastFrost": -2,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
-    "frostTolerant": true,
     "description": "A cool-season crop grown for its swollen, licorice-flavored stem base, known as a bulb.",
     "tips": "Consistent watering is crucial; dry soil can cause the plant to bolt (flower prematurely) instead of forming a bulb.",
     "succession": "Sow every 2-3 weeks for a continuous harvest in cool weather. Avoid planting in the heat of summer.",
@@ -469,8 +510,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 70,
+      "absoluteMinF": 32,
       "notes": "A cool-season crop. Hot weather or a sudden drop in temperature will cause it to bolt before a bulb forms."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Fennel can be sensitive to frost. Cover plants to protect from frost damage.",
+        "priority": "medium"
+      }
+    ],
     "companionPlants": ["Mint", "Sage"],
     "storage": {
       "method": "Refrigerate",
@@ -523,7 +572,6 @@
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Deep, regular watering",
     "wateringFrequencyDays": 5,
-    "frostTolerant": true,
     "description": "A large, thistle-like perennial plant that produces edible flower buds. Can be grown as an annual in colder climates.",
     "tips": "Artichokes are heavy feeders and require ample space, water, and nutrients to thrive.",
     "succession": "Not applicable; grown as a perennial in warm climates or an annual in colder zones.",
@@ -536,8 +584,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 75,
+      "absoluteMinF": 28,
       "notes": "Requires a period of cool weather (vernalization, below 50°F) to trigger budding. Protect crowns from hard frost with heavy mulch."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Protect artichoke crowns from hard frost with a heavy layer of mulch.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Peas", "Cabbage", "Sunflowers", "Tarragon"],
     "storage": {
       "method": "Refrigerate",

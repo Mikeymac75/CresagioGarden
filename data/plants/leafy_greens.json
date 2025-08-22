@@ -12,7 +12,6 @@
     "directSowWeeksAfterLastFrost": -2,
     "wateringNeeds": "Consistent moisture, shallow roots",
     "wateringFrequencyDays": 2,
-    "frostTolerant": true,
     "description": "A fast-growing, cool-season crop. Loose-leaf varieties allow for a continuous 'cut-and-come-again' harvest.",
     "tips": "Provide afternoon shade in warmer weather to prevent bolting (going to seed) and extend the harvest season.",
     "succession": "Essential for a steady supply. Sow new seeds every 2 weeks throughout the growing season.",
@@ -25,8 +24,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 70,
+      "absoluteMinF": 32,
       "notes": "A cool-season crop. Will bolt and become bitter in hot weather (above 80°F). Appreciates afternoon shade."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Lettuce can tolerate a light frost, but cover if a hard freeze is expected to extend the harvest.",
+        "priority": "medium"
+      }
+    ],
     "companionPlants": ["Carrots", "Radishes", "Strawberries", "Cucumbers"],
     "storage": {
       "method": "Refrigerate",
@@ -79,7 +86,6 @@
     "directSowWeeksAfterLastFrost": -4,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 2,
-    "frostTolerant": true,
     "description": "A very cold-hardy and nutritious, cool-season crop. Best planted in early spring and/or fall.",
     "tips": "Spinach bolts very quickly in response to heat and long day length. Choose bolt-resistant varieties for later plantings.",
     "succession": "Sow seeds every 2 weeks in early spring and again in late summer for a fall crop. Avoid sowing in late spring as heat causes rapid bolting.",
@@ -92,8 +98,16 @@
     "temperature": {
       "optimalLowF": 50,
       "optimalHighF": 65,
+      "absoluteMinF": 28,
       "notes": "Very cold-hardy and can be planted as soon as soil is workable in spring. Bolts quickly in heat."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Spinach is very frost tolerant and flavor can improve with a light frost. Cover only if a hard freeze is expected.",
+        "priority": "low"
+      }
+    ],
     "companionPlants": ["Strawberries", "Cabbage family", "Peas", "Radishes"],
     "storage": {
       "method": "Refrigerate",
@@ -140,7 +154,6 @@
     "directSowWeeksAfterLastFrost": -4,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
-    "frostTolerant": true,
     "description": "A hardy and productive cool-season green from the cabbage family. Its flavor famously gets sweeter after a light frost.",
     "tips": "Harvest outer leaves from the bottom up to allow the center of the plant to keep producing new leaves. Very cold tolerant and can often be harvested into winter.",
     "succession": "Not usually necessary as one planting provides a long harvest. Can plant a second crop in mid-summer for a fall/winter harvest.",
@@ -153,8 +166,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 75,
+      "absoluteMinF": 25,
       "notes": "Extremely hardy. Flavor is improved and sweetened by a light frost. Tolerates summer heat better than many other greens."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Kale is very frost tolerant and flavor improves with a light frost. Cover only if a severe freeze is expected.",
+        "priority": "low"
+      }
+    ],
     "companionPlants": ["Onions", "Beets", "Cucumbers", "Herbs like dill and rosemary"],
     "storage": {
       "method": "Refrigerate",
@@ -207,7 +228,6 @@
     "directSowWeeksAfterLastFrost": -2,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
-    "frostTolerant": true,
     "description": "A beautiful and productive leafy green from the beet family, grown for its tender leaves and crisp stems. More heat-tolerant than spinach.",
     "tips": "Harvest outer leaves regularly to encourage continued growth. Both the leaves and the colorful stems are edible.",
     "succession": "Not necessary. One planting provides a continuous harvest from late spring until a hard frost.",
@@ -220,8 +240,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 80,
+      "absoluteMinF": 32,
       "notes": "More heat-tolerant than spinach and will continue to produce through the summer in most climates. Also tolerates light frost."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Swiss Chard can tolerate a light frost, but cover if a hard freeze is expected to extend the harvest.",
+        "priority": "medium"
+      }
+    ],
     "companionPlants": ["Onions", "Cabbage family", "Beans", "Lettuce"],
     "storage": {
       "method": "Refrigerate",
@@ -280,7 +308,6 @@
     "directSowWeeksAfterLastFrost": -4,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 2,
-    "frostTolerant": true,
     "description": "A fast-growing, cool-season green with a peppery, nutty flavor. It bolts very quickly in warm weather.",
     "tips": "Harvest leaves when they are young and tender for the mildest flavor. The flowers are also edible and have a similar peppery taste.",
     "succession": "Sow every 2-3 weeks for a continuous supply. It grows so fast that succession planting is key to having it all season.",
@@ -293,8 +320,16 @@
     "temperature": {
       "optimalLowF": 50,
       "optimalHighF": 65,
+      "absoluteMinF": 32,
       "notes": "A cool-season green that bolts extremely quickly in heat, making the leaves very peppery or bitter. Provide afternoon shade in warm weather."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Arugula can tolerate a light frost, but cover if a hard freeze is expected to extend the harvest.",
+        "priority": "medium"
+      }
+    ],
     "companionPlants": ["Lettuce", "Onions", "Carrots", "Rosemary"],
     "storage": {
       "method": "Refrigerate",
@@ -347,7 +382,6 @@
     "directSowWeeksAfterLastFrost": -4,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 4,
-    "frostTolerant": true,
     "description": "A large-leafed, very cold-hardy green from the cabbage family, popular in Southern US cooking. Flavor improves after frost.",
     "tips": "Harvest outer leaves from the bottom up to allow the plant to grow and produce for a long period. Can produce well into the winter in mild climates.",
     "succession": "Not usually necessary as plants are very productive. A second planting in mid-summer can provide a tender fall crop.",
@@ -360,8 +394,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 75,
+      "absoluteMinF": 25,
       "notes": "Very heat and cold tolerant. Flavor is significantly improved and sweetened after a couple of light frosts."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Collard Greens are very frost tolerant and flavor improves with a light frost. Cover only if a severe freeze is expected.",
+        "priority": "low"
+      }
+    ],
     "companionPlants": ["Onions", "Potatoes", "Herbs like dill and sage"],
     "storage": {
       "method": "Refrigerate",

@@ -12,7 +12,6 @@
     "directSowWeeksAfterLastFrost": 2,
     "wateringNeeds": "Deep watering, especially during silking and tasseling",
     "wateringFrequencyDays": 5,
-    "frostTolerant": false,
     "description": "A tall, warm-season grass crop grown for its sweet, edible kernels. It is wind-pollinated.",
     "tips": "For successful wind pollination, plant corn in a block of at least 4x4 rows, not in a single long row. Harvest when silks have turned brown and kernels are plump and milky.",
     "succession": "For a longer harvest, plant an early, a mid-season, and a late-season variety, or make succession plantings of the same variety every 2 weeks.",
@@ -25,8 +24,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 95,
+      "absoluteMinF": 40,
       "notes": "A warm-season crop that requires warm soil (at least 60°F) to germinate and grow. Very sensitive to frost."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Beans", "Squash", "Cucumbers", "Peas", "Sunflowers"],
     "storage": {
       "method": "Refrigerate",
