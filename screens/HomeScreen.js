@@ -289,10 +289,15 @@ const HomeScreen = ({ navigation }) => {
         <Text style={styles.sectionTitle}>🌱 What You Can Still Plant</Text>
         {plantableNow.length > 0 ? (
           plantableNow.slice(0, 3).map(plant => (
-            <View key={plant.id} style={styles.plantCard}>
+            <TouchableOpacity
+              key={plant.id}
+              style={styles.plantCard}
+              onPress={() => handleTaskPress({ task: plant.name, description: plant.description })}
+              disabled={!plant.description}
+            >
               <Text style={styles.plantName}>{plant.name}</Text>
               <Text style={styles.plantTip}>💡 Matures in ~{plant.daysToMaturity} days</Text>
-            </View>
+            </TouchableOpacity>
           ))
         ) : (
           <View style={styles.emptyState}><Text style={styles.emptyStateText}>It's likely too late in the season to plant new crops.</Text></View>

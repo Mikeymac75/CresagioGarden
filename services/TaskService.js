@@ -81,6 +81,7 @@ const TaskGenerator = {
               id: `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`,
               plantName: displayName,
               task: `${taskEmoji} ${baseTaskDescription} ${displayName}`,
+              description: careTask.description,
               date: taskDate.toISOString(),
               type: taskType
             });
@@ -93,6 +94,7 @@ const TaskGenerator = {
               id: `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`,
               plantName: displayName,
               task: `${taskEmoji} ${baseTaskDescription} for ${displayName}`,
+              description: careTask.description,
               date: taskDate.toISOString(),
               type: taskType
             });
