@@ -35,6 +35,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Thin seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
@@ -54,7 +60,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water deeply and consistently, providing about 1 inch of water per week to encourage straight root growth.",
+        "description": "Consistent moisture is key for sweet, crack-free carrots. Water deeply when the top inch of soil is dry to encourage roots to grow downwards.",
         "daysAfterPlanting": 0,
         "recurring": 2
       }
@@ -96,6 +102,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Thin seedlings",
         "daysAfterPlanting": 10,
         "recurring": null,
@@ -109,7 +121,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water frequently and consistently. A lack of water will cause roots to crack or become woody.",
+        "description": "Radishes need consistent moisture to grow quickly and stay mild. Water whenever the top inch of soil feels dry. Dry soil will make them woody and spicy.",
         "daysAfterPlanting": 0,
         "recurring": 1
       }
@@ -151,6 +163,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Hill soil around stems",
         "daysAfterPlanting": 21,
         "recurring": 14,
@@ -176,7 +194,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently, especially from the time plants start flowering until the foliage begins to die back, as this is when tubers are actively growing.",
+        "description": "Potatoes need consistent moisture, especially when the plants are flowering, as this is the critical time for tuber development. Water when the top inch of soil is dry.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -218,6 +236,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Apply winter mulch",
         "daysAfterPlanting": 7,
         "recurring": null,
@@ -243,7 +267,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water during active growth in the spring. Garlic has relatively shallow roots and appreciates consistent moisture. Stop watering when leaves begin to yellow.",
+        "description": "Garlic needs consistent moisture during spring and early summer when it's actively growing. Water when the top inch of soil feels dry. Stop watering when the leaves begin to yellow and fall over to allow the bulbs to cure.",
         "daysAfterPlanting": 0,
         "recurring": 7
       }
@@ -285,6 +309,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 56,
         "recurring": null,
@@ -310,7 +340,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently to encourage large bulbs. Reduce water once the tops start to fall over.",
+        "description": "Onions have shallow roots and need a constant supply of moisture to grow large bulbs. Water when the top inch of soil feels dry. Reduce water when the tops start to fall over.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -352,6 +382,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Thin seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
@@ -371,7 +407,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently. Fluctuations in moisture can lead to cracked or woody roots.",
+        "description": "Beets need consistent moisture for tender roots. Water when the top inch of soil is dry. Inconsistent watering can lead to woody, cracked roots.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -413,6 +449,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Thin seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
@@ -432,7 +474,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently. Provide about 1 inch of water per week to ensure they grow quickly and remain tender.",
+        "description": "For sweet and tender turnips, ensure consistent moisture. Water whenever the top inch of soil feels dry. Mulch can help keep the soil cool and moist.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -474,6 +516,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Thin seedlings",
         "daysAfterPlanting": 28,
         "recurring": null,
@@ -493,7 +541,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently throughout the season. Provide about 1 inch of water per week.",
+        "description": "Rutabagas need consistent moisture for the best flavor and texture. Water when the top inch of soil feels dry. Mulching helps retain moisture.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }

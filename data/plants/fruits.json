@@ -35,6 +35,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 35,
         "recurring": null,
@@ -66,7 +72,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water deeply and consistently at the base, providing about 1-2 inches per week. Water the soil, not the leaves, to prevent disease.",
+        "description": "Water deeply to encourage a strong root system, as this helps prevent blossom-end rot. Check moisture by sticking your finger one inch into the soil; if it's dry, it's time to water. Water the base of the plant to keep foliage dry and prevent disease.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -108,6 +114,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 49,
         "recurring": null,
@@ -133,7 +145,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently, providing about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Aim for consistent moisture to produce thick-walled, juicy peppers. Water when the top inch of soil feels dry. Mulch helps retain moisture and keep the soil cool.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -175,6 +187,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Monitor for squash vine borer",
         "daysAfterPlanting": 14,
         "recurring": 7,
@@ -194,7 +212,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water deeply and consistently at the base of the plant to keep leaves dry and discourage mildew. Provide about 1-2 inches of water per week.",
+        "description": "Provide deep, consistent watering to fuel rapid growth. Water when the top inch of soil feels dry. Aim for the base of the plant to prevent powdery mildew on the leaves.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -236,6 +254,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
@@ -261,7 +285,7 @@
       },
       {
         "name": "Watering",
-        "description": "Provide at least 1-2 inches of water per week. Water deeply at the soil level to prevent leaf diseases.",
+        "description": "Inconsistent watering leads to bitter cucumbers. Water deeply whenever the top inch of soil feels dry. Using a trellis and watering at the base helps prevent common leaf diseases.",
         "daysAfterPlanting": 0,
         "recurring": 2
       }
@@ -328,7 +352,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently, providing about 1-2 inches per week, especially from flowering through harvest.",
+        "description": "Strawberries have shallow roots and require consistent water, especially during fruit development. Water when the top inch of soil feels dry. Mulching with straw helps keep soil moist and berries clean.",
         "daysAfterPlanting": 0,
         "recurring": 2
       }
@@ -370,6 +394,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Thin seedlings to 2-3 per mound",
         "daysAfterPlanting": 14,
         "recurring": null,
@@ -401,7 +431,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water deeply and consistently, especially during pollination and fruit set. Reduce watering as fruit matures.",
+        "description": "The goal is to water deeply and infrequently to encourage strong root growth. Water when the top 1-2 inches of soil feel dry. Reduce watering as pumpkins mature to promote curing.",
         "daysAfterPlanting": 0,
         "recurring": 5
       }
@@ -443,6 +473,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 49,
         "recurring": null,
@@ -474,7 +510,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently, providing about 1-2 inches per week. Mulch to retain moisture.",
+        "description": "Eggplant requires consistent moisture for the best quality fruit. Water when the top inch of soil feels dry. Mulching helps retain soil moisture and suppress weeds.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -516,6 +552,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
@@ -541,7 +583,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water deeply and infrequently at the base of the plant. Reduce water as fruits ripen.",
+        "description": "Winter squash needs deep, infrequent watering to develop strong roots. Water when the top 1-2 inches of soil feel dry. Taper off watering as the fruit cures on the vine.",
         "daysAfterPlanting": 0,
         "recurring": 5
       }
@@ -583,6 +625,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
@@ -608,7 +656,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water deeply and consistently, especially during flowering and fruit set. Avoid overhead watering.",
+        "description": "Water deeply and consistently to produce sweet, juicy melons. Check moisture by sticking your finger 1-2 inches into the soil. Reduce watering as melons ripen to concentrate their sweetness.",
         "daysAfterPlanting": 0,
         "recurring": 5
       }
@@ -650,6 +698,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
@@ -675,7 +729,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently, especially during flowering and fruit set. Avoid wetting the leaves.",
+        "description": "Provide consistent water for the sweetest melons. Water when the top inch of soil feels dry. Reduce watering as the melon ripens and develops its netted skin.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -717,6 +771,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 35,
         "recurring": null,
@@ -742,7 +802,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water deeply during dry spells. Okra is relatively drought-tolerant once established but produces better with consistent moisture.",
+        "description": "Okra is drought-tolerant but produces best with consistent moisture. Water deeply when the top 1-2 inches of soil feel dry, especially during hot, dry spells.",
         "daysAfterPlanting": 0,
         "recurring": 5
       }
@@ -815,7 +875,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water deeply to encourage root growth, especially during dry periods in the summer.",
+        "description": "Rhubarb thrives with consistent moisture which helps produce tender stalks. Water when the top inch of soil feels dry, especially during hot, dry summer periods.",
         "daysAfterPlanting": 0,
         "recurring": 7
       }
