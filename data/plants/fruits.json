@@ -12,7 +12,6 @@
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Consistent, deep watering",
     "wateringFrequencyDays": 3,
-    "frostTolerant": false,
     "description": "A popular warm-season crop that loves heat and needs support. Varieties can be determinate (bush-like) or indeterminate (vining).",
     "tips": "Stake or cage indeterminate varieties for support. Water deeply and consistently at the base to prevent blossom end rot and foliage diseases.",
     "succession": "For indeterminate varieties, one planting is sufficient. For determinate (bush) types, plant a second crop 3-4 weeks after the first for a longer harvest window.",
@@ -25,8 +24,16 @@
     "temperature": {
       "optimalLowF": 65,
       "optimalHighF": 85,
+      "absoluteMinF": 40,
       "notes": "A warm-season crop. Fruit will not set at temperatures consistently below 55°F or above 90°F."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Basil", "Carrot", "Marigold", "Borage"],
     "storage": {
       "method": "Room temperature",
@@ -91,7 +98,6 @@
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
-    "frostTolerant": false,
     "description": "A long-season, warm-weather crop that produces sweet, blocky fruits. Part of the nightshade family along with tomatoes and eggplant.",
     "tips": "Wait for consistently warm weather and soil. Mulch to retain soil heat and moisture. Peppers can be harvested green or left to ripen to red, yellow, or orange for a sweeter flavor.",
     "succession": "Not typically needed due to continuous harvesting, but a second planting can extend the harvest in long-season climates.",
@@ -104,8 +110,16 @@
     "temperature": {
       "optimalLowF": 70,
       "optimalHighF": 85,
+      "absoluteMinF": 40,
       "notes": "Loves heat. Fruit set can be poor in cool temperatures (below 60°F) or extreme heat (above 90°F)."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Basil", "Carrots", "Onions", "Rosemary"],
     "storage": {
       "method": "Refrigerate",
@@ -164,7 +178,6 @@
     "directSowWeeksAfterLastFrost": 2,
     "wateringNeeds": "Deep, consistent watering",
     "wateringFrequencyDays": 3,
-    "frostTolerant": false,
     "description": "An incredibly productive warm-season summer squash. Its rampant growth means a few plants go a long way.",
     "tips": "Give it lots of space to sprawl. Harvest fruits when they are small and tender (6-8 inches) for the best flavor. Check under large leaves daily during peak season.",
     "succession": "Plant a second crop 3-4 weeks after the first to ensure a supply if squash vine borers damage the first planting.",
@@ -177,8 +190,16 @@
     "temperature": {
       "optimalLowF": 65,
       "optimalHighF": 75,
+      "absoluteMinF": 40,
       "notes": "Warm-season crop, very sensitive to frost. Production slows in intense heat."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Corn", "Beans", "Nasturtium", "Marigold"],
     "storage": {
       "method": "Refrigerate",
@@ -231,7 +252,6 @@
     "directSowWeeksAfterLastFrost": 2,
     "wateringNeeds": "Very consistent, deep watering",
     "wateringFrequencyDays": 2,
-    "frostTolerant": false,
     "description": "A vining plant that needs warm weather and consistent moisture to produce crisp, refreshing fruit. Can be grown on the ground or on a trellis.",
     "tips": "Grow on a trellis to save space, improve air circulation, and produce straighter, cleaner fruit. Inconsistent watering can lead to bitter-tasting cucumbers.",
     "succession": "Sow seeds every 2-3 weeks for a continuous supply throughout the summer.",
@@ -244,8 +264,16 @@
     "temperature": {
       "optimalLowF": 65,
       "optimalHighF": 85,
+      "absoluteMinF": 40,
       "notes": "Loves warm weather. Growth is stunted by cool temperatures and plants are very frost-sensitive."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Beans", "Peas", "Radish", "Dill", "Tansy"],
     "storage": {
       "method": "Refrigerate",
@@ -304,7 +332,6 @@
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Consistent moisture, especially during fruit development",
     "wateringFrequencyDays": 2,
-    "frostTolerant": true,
     "description": "A low-growing perennial fruit that establishes in year one and produces a large, concentrated crop for a few weeks in late spring or early summer of year two.",
     "tips": "Pinch off all flowers in the first year to encourage a strong root system and more runners. Mulch with straw to keep berries clean and suppress weeds.",
     "succession": "Not applicable. For a longer harvest season, plant a mix of June-bearing, everbearing, and day-neutral varieties.",
@@ -317,8 +344,16 @@
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 80,
+      "absoluteMinF": 32,
       "notes": "Plants are very frost-hardy, but blossoms are sensitive to late spring frosts. Cover if frost is predicted."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover blossoms to protect fruit production from frost.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Borage", "Lettuce", "Spinach", "Onion"],
     "storage": {
       "method": "Refrigerate",
@@ -371,7 +406,6 @@
     "directSowWeeksAfterLastFrost": 2,
     "wateringNeeds": "Deep, infrequent watering",
     "wateringFrequencyDays": 5,
-    "frostTolerant": false,
     "description": "A vining, warm-season crop that requires a lot of space and a long growing season to produce its iconic fall fruit.",
     "tips": "Water at the base of the plant to prevent powdery mildew. Place a board or straw under developing fruits to prevent rot from contact with wet soil.",
     "succession": "Not applicable due to the long season and space requirements.",
@@ -384,8 +418,16 @@
     "temperature": {
       "optimalLowF": 65,
       "optimalHighF": 95,
+      "absoluteMinF": 40,
       "notes": "Requires a long, warm growing season. Very sensitive to frost."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Corn", "Beans", "Marigold", "Oregano"],
     "storage": {
       "method": "Cure then store",
@@ -450,7 +492,6 @@
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
-    "frostTolerant": false,
     "description": "A heat-loving, warm-season crop that produces beautiful, glossy fruit. A staple in many cuisines.",
     "tips": "Wait for consistently warm weather (day and night) before transplanting. Harvest when skin is glossy and firm. Overripe fruits become seedy and bitter.",
     "succession": "Not typically needed, as plants produce continuously until frost.",
@@ -463,8 +504,16 @@
     "temperature": {
       "optimalLowF": 70,
       "optimalHighF": 90,
+      "absoluteMinF": 40,
       "notes": "Thrives in heat. Production will be poor if temperatures are too cool, especially at night."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Beans", "Peas", "Spinach", "Marigold"],
     "storage": {
       "method": "Refrigerate",
@@ -529,7 +578,6 @@
     "directSowWeeksAfterLastFrost": 2,
     "wateringNeeds": "Deep, infrequent watering",
     "wateringFrequencyDays": 5,
-    "frostTolerant": false,
     "description": "A vining, warm-season crop that produces hard-skinned squash that can be stored for months.",
     "tips": "Harvest when the rind is hard and cannot be easily dented with a fingernail. Leave a few inches of stem attached. Cure in the sun for 10 days before storing.",
     "succession": "Not applicable due to long growing season.",
@@ -542,8 +590,16 @@
     "temperature": {
       "optimalLowF": 65,
       "optimalHighF": 95,
+      "absoluteMinF": 40,
       "notes": "Requires a long, warm growing season. Very sensitive to frost."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Corn", "Beans", "Marigold"],
     "storage": {
       "method": "Cure then store",
@@ -602,7 +658,6 @@
     "directSowWeeksAfterLastFrost": 3,
     "wateringNeeds": "Deep, consistent watering until fruit sets",
     "wateringFrequencyDays": 5,
-    "frostTolerant": false,
     "description": "A sprawling, warm-season crop that needs a long, hot growing season to produce large, sweet fruit.",
     "tips": "Reduce watering as fruit ripens to concentrate sugars. Look for multiple signs of ripeness: the tendril closest to the fruit stem is dry and brown, the spot where it rests on the ground is yellow, and it sounds hollow when thumped.",
     "succession": "Not applicable due to long growing season and large space requirements.",
@@ -615,8 +670,16 @@
     "temperature": {
       "optimalLowF": 70,
       "optimalHighF": 90,
+      "absoluteMinF": 45,
       "notes": "Needs heat to thrive and develop sugars. Very frost sensitive."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Corn", "Marigold", "Nasturtium", "Radish"],
     "storage": {
       "method": "Refrigerate after cutting",
@@ -675,7 +738,6 @@
     "directSowWeeksAfterLastFrost": 2,
     "wateringNeeds": "Consistent moisture until fruit sets, then reduce",
     "wateringFrequencyDays": 4,
-    "frostTolerant": false,
     "description": "A warm-season vine crop that produces fragrant, sweet melons with a netted skin.",
     "tips": "A ripe cantaloupe will slip easily from the vine with gentle pressure and have a sweet, musky aroma at the blossom end.",
     "succession": "In long-season areas, a second planting can be made for a later harvest.",
@@ -688,8 +750,16 @@
     "temperature": {
       "optimalLowF": 70,
       "optimalHighF": 90,
+      "absoluteMinF": 40,
       "notes": "Needs heat to develop sugars. Very frost sensitive."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Corn", "Marigold", "Nasturtium"],
     "storage": {
       "method": "Refrigerate",
@@ -748,7 +818,6 @@
     "directSowWeeksAfterLastFrost": 3,
     "wateringNeeds": "Deep, infrequent watering",
     "wateringFrequencyDays": 5,
-    "frostTolerant": false,
     "description": "A heat-loving, warm-season crop that produces edible green pods and beautiful, hibiscus-like flowers.",
     "tips": "Harvest pods when they are young and tender (3-4 inches long). Wear gloves when harvesting, as some varieties have spines that can irritate the skin.",
     "succession": "Not necessary. Plants will produce continuously until the first frost if pods are picked regularly.",
@@ -761,8 +830,16 @@
     "temperature": {
       "optimalLowF": 75,
       "optimalHighF": 95,
+      "absoluteMinF": 40,
       "notes": "Thrives in heat and humidity. Wait for soil to be thoroughly warm before planting."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
     "companionPlants": ["Basil", "Peppers", "Sunflowers"],
     "storage": {
       "method": "Refrigerate",
@@ -821,7 +898,6 @@
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Deep watering, especially in dry spells",
     "wateringFrequencyDays": 7,
-    "frostTolerant": true,
     "description": "A perennial vegetable most often treated as a fruit. Known for its tart, edible stalks and very large leaves. Extremely cold hardy and long-lived.",
     "tips": "Never eat the leaves - they contain high levels of oxalic acid and are toxic. Harvest stalks by pulling and twisting at the base, not cutting.",
     "succession": "Not applicable. A perennial that will produce for 10+ years.",
@@ -834,8 +910,16 @@
     "temperature": {
       "optimalLowF": 40,
       "optimalHighF": 75,
+      "absoluteMinF": 28,
       "notes": "Requires a dormant period with temperatures below 40°F to stimulate spring growth. Dislikes intense summer heat."
     },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Rhubarb is very cold hardy, but a hard freeze can damage stalks. Cover if a hard freeze is expected.",
+        "priority": "medium"
+      }
+    ],
     "companionPlants": ["Beans", "Cabbage family", "Garlic"],
     "storage": {
       "method": "Refrigerate",

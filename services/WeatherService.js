@@ -74,15 +74,6 @@ const WeatherService = {
       const temp = parseFloat(item.data.instant.details.air_temperature);
 
       // Frost and freeze detection
-      if (!frostFound && temp <= CONFIG.FROST_TEMP_CELSIUS) {
-        alerts.push({
-          type: ALERT_TYPES.FROST,
-          message: `❄️ Frost Alert! Low of ${Math.round(temp)}°C expected. Protect sensitive plants.`,
-          date: item.time,
-        });
-        frostFound = true;
-      }
-
       if (!hardFreezeFound && temp <= CONFIG.HARD_FREEZE_TEMP_CELSIUS) {
         hardFreezeFound = true;
       }
@@ -204,67 +195,59 @@ export const getWeatherForecast = async (latitude, longitude) => {
 /**
  * Enhanced dynamic alerts with better customization
  */
-export const generateDynamicAlerts = (weatherData, myGarden) => {
-  if (!weatherData?.alerts || !Array.isArray(myGarden)) {
+export const generateDynamicAlerts = (weatherData, myGarden, allPlants) => {
+  if (!weatherData || !Array.isArray(myGarden) || !Array.isArray(allPlants)) {
     return [];
   }
 
   try {
     const dynamicAlerts = [];
-    const now = new Date().toISOString();
+    const now = new Date();
 
-    // Process weather alerts with plant-specific customization
-    weatherData.alerts.forEach(alert => {
-      let message = alert.message;
+    // --- New Frost Alert Logic ---
+    const forecastTemperatures = weatherData.hourlyForecast.map(f => f.temperature);
+    const minTempCelsius = Math.min(...forecastTemperatures);
+    const minTempFahrenheit = (minTempCelsius * 9/5) + 32;
 
-      if (alert.type === ALERT_TYPES.FROST) {
-        const sensitivePlants = myGarden
-          .map(entry => PLANTS.find(p => p.id === entry.plantId))
-          .filter(plant => plant && !plant.frostTolerant)
-          .map(plant => plant.name);
-
-        if (sensitivePlants.length > 0) {
-          const uniquePlants = [...new Set(sensitivePlants)];
-          let plantList;
-          if (uniquePlants.length === 1) {
-            plantList = uniquePlants[0];
-          } else if (uniquePlants.length === 2) {
-            plantList = uniquePlants.join(' and ');
-          } else {
-            plantList = `${uniquePlants.slice(0, 2).join(', ')}, and ${uniquePlants.length - 2} others`;
-          }
-          message = `Frost Alert! Protect your ${plantList}.`;
-        }
+    myGarden.forEach(entry => {
+      const plantDetails = allPlants.find(p => p.id === entry.plantId);
+      if (!plantDetails || !plantDetails.temperature?.absoluteMinF) {
+        return;
       }
 
-      dynamicAlerts.push({
-        id: `alert-${alert.type}-${Date.now()}`,
-        task: message,
-        date: alert.date,
-        type: 'alert',
-        priority: alert.type === ALERT_TYPES.FROST ? 'high' : 'medium'
-      });
+      if (minTempFahrenheit <= plantDetails.temperature.absoluteMinF) {
+        const frostAlert = plantDetails.environmentalAlerts?.find(
+          a => a.condition === 'FROST_WARNING'
+        );
+
+        if (frostAlert) {
+          dynamicAlerts.push({
+            id: `alert-frost-${plantDetails.id}-${now.getTime()}`,
+            task: `❄️ ${plantDetails.name}: ${frostAlert.message}`,
+            date: now.toISOString(),
+            type: 'alert',
+            priority: frostAlert.priority || 'high',
+          });
+        }
+      }
     });
 
-    // Process plant-specific conditional alerts
-    if (weatherData.hardFreezeWarning) {
-      myGarden.forEach(entry => {
-        const plantDetails = PLANTS.find(p => p.id === entry.plantId);
-        if (plantDetails?.conditionalAlerts) {
-          plantDetails.conditionalAlerts.forEach(condAlert => {
-            if (condAlert.condition === ALERT_TYPES.HARD_FREEZE) {
-              dynamicAlerts.push({
-                id: `alert-hardfreeze-${plantDetails.id}-${Date.now()}`,
-                task: `🥶 ${condAlert.message}`,
-                date: now,
-                type: 'alert',
-                priority: 'high'
-              });
-            }
+    // --- Retain Existing Heatwave and Rain Alerts ---
+    if (weatherData.alerts) {
+      weatherData.alerts.forEach(alert => {
+        if (alert.type === ALERT_TYPES.HEATWAVE || alert.type === ALERT_TYPES.RAIN) {
+          dynamicAlerts.push({
+            id: `alert-${alert.type}-${now.getTime()}`,
+            task: alert.message,
+            date: alert.date,
+            type: 'alert',
+            priority: 'medium',
+            modifiesTasks: alert.modifiesTasks
           });
         }
       });
     }
+
 
     // Remove duplicates and sort by priority
     const uniqueAlerts = Array.from(
@@ -273,7 +256,7 @@ export const generateDynamicAlerts = (weatherData, myGarden) => {
 
     return uniqueAlerts.sort((a, b) => {
       const priorityOrder = { high: 0, medium: 1, low: 2 };
-      return priorityOrder[a.priority] - priorityOrder[b.priority];
+      return (priorityOrder[a.priority] || 2) - (priorityOrder[b.priority] || 2);
     });
 
   } catch (error) {
