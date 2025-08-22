@@ -274,6 +274,7 @@ export default function MyGardenScreen({ navigation }) {
                 </View>
               )}
             />
+            </>
           )}
 
           {modalStep === 'date' && (
