@@ -13,18 +13,42 @@
     "wateringNeeds": "Moderate, consistent watering",
     "wateringFrequencyDays": 3,
     "frostTolerant": false,
-    "description": "A warm-season crop that produces abundantly. Does not require a trellis.",
-    "tips": "Plant after all danger of frost has passed. Avoid over-fertilizing with nitrogen. Sow every 2 weeks for continuous harvest.",
+    "description": "A warm-season crop that produces an abundant harvest of tender pods over a few weeks. Bush varieties are compact and do not require a trellis.",
+    "tips": "After the soil has warmed, plant seeds directly in the garden. Avoid disturbing the roots. Water at the base to prevent leaf diseases.",
+    "succession": "Sow new seeds every 2-3 weeks until mid-summer for a continuous harvest throughout the season.",
+    "yield": "Continuous harvest over several weeks. A 10-foot row can produce 3-5 lbs of beans.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Well-drained soil with moderate fertility.",
+      "notes": "Legumes fix their own nitrogen from the air. Avoid high-nitrogen fertilizers, which will result in excessive foliage and fewer beans."
+    },
+    "temperature": {
+      "optimalLowF": 65,
+      "optimalHighF": 85,
+      "notes": "A warm-season crop. Do not plant until soil has warmed and all danger of frost has passed. Flowers may drop in extreme heat."
+    },
+    "companionPlants": ["Corn", "Carrots", "Cucumbers", "Strawberries", "Rosemary"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1 week",
+      "notes": "Store unwashed in a plastic bag in the crisper drawer. For long-term storage, beans can be blanched and frozen, canned, or pickled."
+    },
     "careTasks": [
       {
-        "name": "Begin harvesting beans",
+        "name": "Monitor for Mexican bean beetles",
+        "daysAfterPlanting": 30,
+        "recurring": 7,
+        "description": "Check the undersides of leaves for yellow egg clusters and lacy, damaged foliage. Hand-pick adults and eggs."
+      },
+      {
+        "name": "Harvest beans regularly",
         "daysAfterPlanting": 50,
         "recurring": 3,
-        "description": "Harvest your Green Beans (Bush) when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Pick beans when they are firm, crisp, and about the thickness of a pencil. Harvest every few days to encourage the plant to produce more."
       },
       {
         "name": "Watering",
-        "description": "Water your Green Beans (Bush) consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water consistently, especially during flowering and pod development. Provide about 1 inch of water per week.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -44,24 +68,48 @@
     "wateringNeeds": "Consistent moisture, especially during flowering and pod set",
     "wateringFrequencyDays": 3,
     "frostTolerant": true,
-    "description": "One of the first crops to be planted in spring. Does not like heat.",
-    "tips": "Provide a trellis for vining varieties. Harvest pods when they are plump and sweet for best flavor. Pods left too long become starchy.",
+    "description": "A classic cool-season crop and one of the first to be planted in spring. Varieties include shelling peas, edible-podded snow peas, and crisp snap peas.",
+    "tips": "Harvest pods when they are plump and sweet for best flavor. Pods left on the vine too long become starchy and tough.",
+    "succession": "Make 2-3 sowings 10-14 days apart in early spring for a longer harvest. Can also be planted in late summer for a fall crop.",
+    "yield": "Harvest over 2-3 weeks. A 10-foot row can produce 2-4 lbs of shelled peas.",
+    "soil": {
+      "ph": "6.0-7.5",
+      "type": "Well-drained, fertile soil.",
+      "notes": "As legumes, peas fix their own nitrogen. Inoculating seeds with rhizobia bacteria at planting time can boost growth, especially in new gardens."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 75,
+      "notes": "A cool-season crop. Plant as soon as the soil can be worked in spring. Dislikes summer heat, which stops pod production."
+    },
+    "companionPlants": ["Carrots", "Radishes", "Cucumbers", "Turnips", "Beans"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "3-5 days",
+      "notes": "The sugars in peas quickly turn to starch after picking, so eat or preserve them as soon as possible. Store in a perforated plastic bag."
+    },
     "careTasks": [
       {
-        "name": "Install trellis at time of planting",
+        "name": "Inoculate seeds (optional)",
         "daysAfterPlanting": 0,
         "recurring": null,
-        "description": "Set up a trellis or other support at planting time to give the vines a structure to climb on."
+        "description": "Before planting, coat seeds with a rhizobial inoculant powder to help the plants fix nitrogen more effectively."
       },
       {
-        "name": "Begin harvesting pods",
+        "name": "Install trellis at planting",
+        "daysAfterPlanting": 0,
+        "recurring": null,
+        "description": "For vining varieties, set up a trellis or other support at planting time to give the vines a structure to climb on as they grow."
+      },
+      {
+        "name": "Harvest pods regularly",
         "daysAfterPlanting": 55,
         "recurring": 3,
-        "description": "Harvest your Peas when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest snow peas when pods are flat, snap peas when plump, and shelling peas when pods are rounded and full. Frequent picking encourages more production."
       },
       {
         "name": "Watering",
-        "description": "Water your Peas consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water consistently, especially when flowers and pods are forming, to ensure a good yield.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }

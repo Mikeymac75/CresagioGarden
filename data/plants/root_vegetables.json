@@ -13,30 +13,48 @@
     "wateringNeeds": "Consistent moisture to prevent splitting",
     "wateringFrequencyDays": 2,
     "frostTolerant": true,
-    "description": "A cool-season root crop that needs loose, sandy soil to grow straight.",
-    "tips": "Thin seedlings to prevent crowding and misshapen roots. Keep soil consistently moist and weed-free.",
-    "conditionalAlerts": [
-      {
-        "condition": "HARD_FREEZE_WARNING",
-        "message": "Consider harvesting carrots. A light frost can make them sweeter, but a hard freeze can damage roots."
-      }
-    ],
+    "description": "A popular cool-season root crop. For straight roots, they need loose, sandy soil free of stones.",
+    "tips": "Keep the soil consistently moist to prevent roots from splitting. Cover the shoulders of roots with soil or mulch to prevent them from turning green.",
+    "succession": "Sow a new batch every 2-3 weeks from early spring until mid-summer for a continuous harvest.",
+    "yield": "One root per plant. A 10-foot row can yield 8-10 lbs of carrots.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Loose, sandy, well-drained soil, free of stones.",
+      "notes": "Compacted or rocky soil will cause roots to be forked or stunted. Avoid high-nitrogen fertilizers, which can cause hairy, forked roots."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 70,
+      "notes": "A cool-season crop. Germination is slow in cold soil. Light frost can improve sweetness."
+    },
+    "companionPlants": ["Lettuce", "Onions", "Rosemary", "Sage", "Radishes"],
+    "storage": {
+      "method": "Refrigerate or store in sand",
+      "duration": "1-3 months",
+      "notes": "Remove green tops before storing to prevent moisture loss. Can be stored in the crisper drawer or in boxes of damp sand in a root cellar."
+    },
     "careTasks": [
       {
-        "name": "Thin seedlings to 2-3 inches apart",
+        "name": "Thin seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
-        "description": "Remove weaker seedlings to ensure proper spacing (2-3 inches) for healthy growth."
+        "description": "Carefully thin seedlings to stand 2-3 inches apart. Crowding leads to small or misshapen roots."
       },
       {
-        "name": "Begin checking for harvest-size roots",
+        "name": "Apply mulch",
+        "daysAfterPlanting": 35,
+        "recurring": null,
+        "description": "Apply a layer of mulch to keep the soil cool and moist, suppress weeds, and prevent green shoulders."
+      },
+      {
+        "name": "Harvest roots",
         "daysAfterPlanting": 65,
         "recurring": 7,
-        "description": "Harvest your Carrots when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Begin harvesting when roots reach a desirable size and color. Loosen the soil with a garden fork before pulling."
       },
       {
         "name": "Watering",
-        "description": "Water your Carrots consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water deeply and consistently, providing about 1 inch of water per week to encourage straight root growth.",
         "daysAfterPlanting": 0,
         "recurring": 2
       }
@@ -56,30 +74,42 @@
     "wateringNeeds": "Very consistent moisture",
     "wateringFrequencyDays": 1,
     "frostTolerant": true,
-    "description": "A very fast-growing, cool-season crop perfect for filling in garden gaps.",
-    "tips": "Ready to harvest in as little as 3-4 weeks. Inconsistent watering can cause them to split or become woody. Plant in succession for a steady supply.",
-    "conditionalAlerts": [
-      {
-        "condition": "HARD_FREEZE_WARNING",
-        "message": "Consider harvesting radishes. A light frost is okay, but a hard freeze can damage the roots."
-      }
-    ],
+    "description": "An extremely fast-growing, cool-season crop perfect for filling in garden gaps between slower plants.",
+    "tips": "Harvest as soon as they reach a usable size. Radishes left in the ground too long become woody and unpleasantly spicy.",
+    "succession": "Key to a steady supply. Plant a small batch every 7-10 days during cool weather in spring and fall.",
+    "yield": "One root per plant. Harvests quickly. A small patch provides plenty.",
+    "soil": {
+      "ph": "6.5-7.0",
+      "type": "Loose, well-drained soil with plenty of organic matter.",
+      "notes": "Consistent moisture is more important than high fertility. Rich soil can lead to lush tops and small roots."
+    },
+    "temperature": {
+      "optimalLowF": 50,
+      "optimalHighF": 65,
+      "notes": "Very fast-growing cool-season crop. Becomes woody and spicy (hot) if left too long or grown in heat."
+    },
+    "companionPlants": ["Lettuce", "Cucumbers", "Peas", "Spinach"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1-2 weeks",
+      "notes": "Remove greens and store roots in a plastic bag in the refrigerator. The peppery greens are also edible."
+    },
     "careTasks": [
       {
-        "name": "Thin seedlings to 1-2 inches apart",
+        "name": "Thin seedlings",
         "daysAfterPlanting": 10,
         "recurring": null,
-        "description": "Remove weaker seedlings to ensure proper spacing (1-2 inches) for healthy growth."
+        "description": "Thin seedlings to 1-2 inches apart to give roots room to swell."
       },
       {
-        "name": "Begin harvesting roots",
+        "name": "Harvest roots promptly",
         "daysAfterPlanting": 22,
         "recurring": 3,
-        "description": "Harvest your Radishes when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest radishes as soon as they are about 1 inch in diameter. Check a sample one before pulling the whole crop."
       },
       {
         "name": "Watering",
-        "description": "Water your Radishes consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water frequently and consistently. A lack of water will cause roots to crack or become woody.",
         "daysAfterPlanting": 0,
         "recurring": 1
       }
@@ -99,48 +129,54 @@
     "wateringNeeds": "Consistent moisture, especially when tubers form",
     "wateringFrequencyDays": 4,
     "frostTolerant": false,
-    "description": "Planted as \"seed potatoes\". The underground tubers are the harvested crop.",
-    "tips": "\"Hill\" the plants by mounding soil up the stems as they grow to protect tubers from sunlight, which can turn them green and toxic.",
+    "description": "Grown from \"seed potatoes\" (small tubers), not actual seeds. The harvested crop is the underground tubers.",
+    "tips": "Hill plants by mounding soil up the stems as they grow. This protects developing tubers from sunlight, which can turn them green and toxic.",
+    "succession": "Not applicable. Plant main crop at once. You can plant an early variety for new potatoes and a main storage variety.",
+    "yield": "5-10 lbs of potatoes for every 1 lb of seed potato planted.",
+    "soil": {
+      "ph": "4.8-5.5",
+      "type": "Well-drained, loose, sandy loam.",
+      "notes": "Prefers acidic soil, which helps prevent a common disease called potato scab. Avoid applying fresh manure."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 70,
+      "notes": "A cool-season crop. Tubers form best in cool soil. The foliage is very sensitive to frost."
+    },
+    "companionPlants": ["Beans", "Corn", "Cabbage family", "Marigolds", "Horseradish"],
+    "storage": {
+      "method": "Cure then store",
+      "duration": "4-6 months",
+      "notes": "After harvest, cure for 1-2 weeks in a dark, humid place. Then store in a cool, dark, well-ventilated location (45-50°F). Do not refrigerate."
+    },
     "careTasks": [
       {
-        "name": "Hill up soil around stems (first time)",
+        "name": "Hill soil around stems",
         "daysAfterPlanting": 21,
-        "recurring": null,
-        "description": "Mound soil up around the base of the plant stems to protect developing tubers from sunlight and encourage more growth."
+        "recurring": 14,
+        "description": "When plants are 8-10 inches tall, mound soil up around the stems, leaving the top few inches exposed. Repeat every 2-3 weeks until plants flower."
       },
       {
-        "name": "Hill up soil around stems (second time)",
-        "daysAfterPlanting": 35,
-        "recurring": null,
-        "description": "Mound soil up around the base of the plant stems to protect developing tubers from sunlight and encourage more growth."
-      },
-      {
-        "name": "Watch for Colorado potato beetles",
+        "name": "Monitor for Colorado potato beetles",
         "daysAfterPlanting": 30,
         "recurring": 5,
-        "description": "Perform the task: Watch for Colorado potato beetles."
+        "description": "Inspect plants for the distinctive orange and black beetles and their larvae. Hand-pick them into soapy water."
       },
       {
-        "name": "Stop watering 1-2 weeks before harvest to help skins cure",
-        "daysAfterPlanting": 76,
-        "recurring": null,
-        "description": "Harvest your Potato when they reach a mature size and color. Regular harvesting can encourage more production."
-      },
-      {
-        "name": "Harvest new potatoes",
+        "name": "Harvest 'new' potatoes",
         "daysAfterPlanting": 70,
         "recurring": null,
-        "description": "Harvest your Potato when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Carefully dig around the base of the plant to harvest small, tender 'new' potatoes about 2-3 weeks after the plant has finished flowering."
       },
       {
-        "name": "Harvest main crop after foliage dies back",
+        "name": "Harvest main crop",
         "daysAfterPlanting": 90,
         "recurring": null,
-        "description": "Harvest your Potato when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "For storage potatoes, wait until the foliage has completely died back. Dig carefully to avoid bruising the tubers."
       },
       {
         "name": "Watering",
-        "description": "Water your Potato consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water consistently, especially from the time plants start flowering until the foliage begins to die back, as this is when tubers are actively growing.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -160,36 +196,54 @@
     "wateringNeeds": "Moderate, stop when leaves yellow",
     "wateringFrequencyDays": 7,
     "frostTolerant": true,
-    "description": "Planted in the fall for a mid-summer harvest the following year.",
-    "tips": "Plant individual cloves, pointed end up. Mulch heavily after planting to protect through winter. Harvest when the lower leaves start to turn brown.",
+    "description": "Typically planted in the fall for a mid-summer harvest the following year. Each clove planted will grow into a full bulb.",
+    "tips": "Plant individual cloves, pointed end up. Mulch heavily after planting to protect cloves through winter and suppress weeds in spring.",
+    "succession": "Not applicable. Plant in fall for a single harvest the following summer.",
+    "yield": "One bulb per clove planted.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Well-drained, fertile soil with good organic matter.",
+      "notes": "Good drainage is critical to prevent bulbs from rotting over the winter."
+    },
+    "temperature": {
+      "optimalLowF": 50,
+      "optimalHighF": 75,
+      "notes": "Requires a cold period (vernalization) of at least 4-6 weeks at temperatures below 40°F to properly form bulbs."
+    },
+    "companionPlants": ["Roses", "Fruit trees", "Tomatoes", "Cabbage"],
+    "storage": {
+      "method": "Cure then store",
+      "duration": "6-8 months",
+      "notes": "After harvesting, cure bulbs by hanging them or laying them on racks in a shady, dry, well-ventilated area for 2-4 weeks. Then trim roots and tops and store."
+    },
     "careTasks": [
       {
-        "name": "Mulch bed heavily for winter protection",
+        "name": "Apply winter mulch",
         "daysAfterPlanting": 7,
         "recurring": null,
-        "description": "Perform the task: Mulch bed heavily for winter protection."
+        "description": "After planting in the fall, cover the bed with a thick layer of straw or shredded leaves to insulate the cloves over winter."
       },
       {
-        "name": "Cut off flower scapes to direct energy to the bulb",
+        "name": "Remove flower scapes (Hardneck garlic)",
         "daysAfterPlanting": 210,
         "recurring": null,
-        "description": "Perform the task: Cut off flower scapes to direct energy to the bulb."
+        "description": "In late spring, cut the curly flower stalks (scapes) that emerge from hardneck varieties. This directs energy to the bulb. Scapes are a delicious bonus harvest."
       },
       {
-        "name": "Stop watering",
+        "name": "Stop watering before harvest",
         "daysAfterPlanting": 225,
         "recurring": null,
-        "description": "Reduce watering to allow the skins to cure and toughen up before harvesting, which improves storage life."
+        "description": "Stop watering about 2 weeks before harvesting, when the lower leaves start to turn yellow. This allows the bulbs to start curing in the ground."
       },
       {
-        "name": "Harvest bulbs when lower leaves are yellow",
+        "name": "Harvest bulbs",
         "daysAfterPlanting": 240,
         "recurring": null,
-        "description": "Harvest your Garlic when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest when the lower 3-4 leaves have turned brown but the upper leaves are still green. Carefully loosen the soil and lift the bulbs."
       },
       {
         "name": "Watering",
-        "description": "Water your Garlic consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water during active growth in the spring. Garlic has relatively shallow roots and appreciates consistent moisture.",
         "daysAfterPlanting": 0,
         "recurring": 7
       }
@@ -209,8 +263,26 @@
     "wateringNeeds": "Consistent moisture until bulbing begins",
     "wateringFrequencyDays": 4,
     "frostTolerant": true,
-    "description": "A long-season cool-weather crop. Day-length sensitive for bulb formation.",
-    "tips": "Choose varieties suited to your latitude. Stop watering when tops begin to fall over naturally. Cure bulbs in a dry, ventilated area.",
+    "description": "A long-season cool-weather crop. Bulb formation is triggered by day length, so choosing the right variety for your region is critical.",
+    "tips": "Long-day varieties for the North, short-day for the South. Stop watering when tops begin to fall over naturally. This signals the start of the curing process.",
+    "succession": "Not typical for storage onions. Green onions (scallions) can be succession planted every few weeks.",
+    "yield": "One bulb per plant.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Well-drained, fertile sandy loam.",
+      "notes": "Onions are heavy feeders. Benefit from a balanced fertilizer, but reduce nitrogen once bulbing begins to encourage bulb growth over leaf growth."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 75,
+      "notes": "Bulbing is triggered by day length, not just temperature. Cool weather is best for top growth, and warmer weather for bulb development."
+    },
+    "companionPlants": ["Carrots", "Lettuce", "Cabbage family", "Chamomile"],
+    "storage": {
+      "method": "Cure then store",
+      "duration": "3-6 months",
+      "notes": "Cure for 1-2 weeks in a dry, well-ventilated spot until necks are dry and skins are papery. Store in a cool, dry, dark place."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -219,26 +291,26 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
-        "name": "Weed carefully around shallow roots",
+        "name": "Weed carefully",
         "daysAfterPlanting": 70,
         "recurring": 14,
-        "description": "Perform the task: Weed carefully around shallow roots."
+        "description": "Onions have shallow roots and do not compete well with weeds. Weed often but carefully to avoid disturbing the bulbs."
       },
       {
         "name": "Stop watering when tops fall over",
         "daysAfterPlanting": 105,
         "recurring": null,
-        "description": "Reduce watering to allow the skins to cure and toughen up before harvesting, which improves storage life."
+        "description": "When the green tops begin to yellow and fall over, this is a sign to stop watering and let the bulbs prepare for harvest."
       },
       {
-        "name": "Harvest when tops are brown and dry",
+        "name": "Harvest when tops are brown",
         "daysAfterPlanting": 120,
         "recurring": null,
-        "description": "Harvest your Onions when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Once the tops have completely withered and turned brown, gently pull or dig the bulbs on a sunny day."
       },
       {
         "name": "Watering",
-        "description": "Water your Onions consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water consistently to encourage large bulbs. Reduce water once the tops start to fall over.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -258,30 +330,48 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
     "frostTolerant": true,
-    "description": "A cool-season crop grown for both roots and greens.",
-    "tips": "Thin seedlings and eat the thinnings as baby greens. Harvest roots when golf ball sized for best tenderness.",
+    "description": "A cool-season crop grown for both its sweet, earthy roots and its nutritious, edible greens.",
+    "tips": "Each beet 'seed' is a cluster of several seeds, so thinning is essential. Harvest roots when they are between golf ball and tennis ball size for best tenderness.",
+    "succession": "Sow every 2-3 weeks from spring through early fall for a continuous harvest of both roots and greens.",
+    "yield": "One root per plant. A 10-foot row can yield 4-6 lbs.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Loose, well-drained soil.",
+      "notes": "Avoid high-nitrogen fertilizers which encourages leaf growth at the expense of roots. Consistent moisture is key for tender, non-woody roots."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 70,
+      "notes": "A cool-season crop. Can tolerate light frost, which can improve the flavor of the roots."
+    },
+    "companionPlants": ["Onions", "Cabbage family", "Lettuce", "Bush Beans"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "2-4 weeks",
+      "notes": "Cut off greens about an inch above the root to prevent moisture loss. Store greens and roots separately in plastic bags in the crisper."
+    },
     "careTasks": [
       {
-        "name": "Thin seedlings to 3-4 inches apart",
+        "name": "Thin seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
-        "description": "Remove weaker seedlings to ensure proper spacing (3-4 inches) for healthy growth."
+        "description": "Once seedlings are a few inches tall, thin them to 3-4 inches apart. The thinned greens are delicious."
       },
       {
-        "name": "Begin harvesting baby greens from thinnings",
-        "daysAfterPlanting": 21,
-        "recurring": null,
-        "description": "Harvest your Beets when they reach a mature size and color. Regular harvesting can encourage more production."
+        "name": "Harvest some greens",
+        "daysAfterPlanting": 35,
+        "recurring": 7,
+        "description": "You can harvest a few leaves from each plant while the root develops. Don't take more than 1-2 leaves per plant at a time."
       },
       {
-        "name": "Begin checking for harvest-size roots",
+        "name": "Harvest roots",
         "daysAfterPlanting": 50,
         "recurring": 7,
-        "description": "Harvest your Beets when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Begin harvesting roots when they are 1.5 inches in diameter. They are most tender when between 2-3 inches across."
       },
       {
         "name": "Watering",
-        "description": "Water your Beets consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water consistently. Fluctuations in moisture can lead to cracked or woody roots.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -301,30 +391,48 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
     "frostTolerant": true,
-    "description": "A cool-season root crop grown for both roots and greens.",
-    "tips": "Harvest roots when tennis ball sized or smaller for best flavor. Greens can be harvested earlier.",
+    "description": "A fast-growing, cool-season root crop grown for both its peppery roots and its nutritious greens.",
+    "tips": "Harvest roots when they are about the size of a tennis ball or smaller for the best flavor and texture. Hot weather makes them woody.",
+    "succession": "Plant in early spring for a summer harvest and again in late summer for a fall crop, which is often sweeter.",
+    "yield": "One root per plant. Greens can also be harvested throughout the season.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Light, well-drained soil.",
+      "notes": "Amend with compost before planting. Consistent water is essential to prevent woody, bitter roots."
+    },
+    "temperature": {
+      "optimalLowF": 50,
+      "optimalHighF": 65,
+      "notes": "A cool-season crop. The flavor of the roots improves after a light frost. Becomes woody and bitter in heat."
+    },
+    "companionPlants": ["Peas", "Beans"],
+    "storage": {
+      "method": "Refrigerate or root cellar",
+      "duration": "1-2 months",
+      "notes": "Remove greens and store roots in a cool, moist place like a crisper drawer or root cellar."
+    },
     "careTasks": [
       {
-        "name": "Thin seedlings to 4-6 inches apart",
+        "name": "Thin seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
-        "description": "Remove weaker seedlings to ensure proper spacing (4-6 inches) for healthy growth."
+        "description": "Thin seedlings to 4-6 inches apart to allow room for root development."
       },
       {
-        "name": "Begin harvesting greens",
+        "name": "Harvest some greens",
         "daysAfterPlanting": 35,
         "recurring": 7,
-        "description": "Harvest your Turnips when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "You can take a few of the outer leaves for cooking, but leave plenty to nourish the growing root."
       },
       {
-        "name": "Begin checking root size",
+        "name": "Harvest roots",
         "daysAfterPlanting": 45,
         "recurring": 5,
-        "description": "Perform the task: Begin checking root size."
+        "description": "Harvest roots when they are 2-3 inches in diameter. Don't let them get too large, as they can become tough."
       },
       {
         "name": "Watering",
-        "description": "Water your Turnips consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water your Turnips consistently. Provide about 1 inch of water per week to ensure they grow quickly and remain tender.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -344,24 +452,48 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 4,
     "frostTolerant": true,
-    "description": "A cool-season root crop that improves in flavor after frost.",
-    "tips": "Can be left in ground through winter in mild climates. Mulch heavily for protection.",
+    "description": "A large, sweet, cool-season root crop that is a cross between a cabbage and a turnip. Flavor improves significantly after frost.",
+    "tips": "Often called 'Swedes'. They can be left in the ground through winter in mild climates if heavily mulched for protection and easier harvesting.",
+    "succession": "Not typical due to its longer growing season. Plant once in early summer for a fall/winter harvest.",
+    "yield": "One large root per plant.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Rich, well-drained soil.",
+      "notes": "Requires more nutrients than turnips. Amend soil with compost and ensure consistent moisture."
+    },
+    "temperature": {
+      "optimalLowF": 50,
+      "optimalHighF": 65,
+      "notes": "A cool-season crop that requires a longer season than turnips. Flavor is much improved by several frosts."
+    },
+    "companionPlants": ["Onions", "Peas"],
+    "storage": {
+      "method": "Root cellar or refrigerate",
+      "duration": "2-4 months",
+      "notes": "Store in a cool, dark, moist place. Can be stored in the crisper drawer or a root cellar. Often coated in wax for commercial sale to extend shelf life."
+    },
     "careTasks": [
       {
-        "name": "Thin seedlings to 6-8 inches apart",
+        "name": "Thin seedlings",
         "daysAfterPlanting": 28,
         "recurring": null,
-        "description": "Remove weaker seedlings to ensure proper spacing (6-8 inches) for healthy growth."
+        "description": "Thin seedlings to stand 6-8 inches apart to allow the large roots room to develop."
       },
       {
-        "name": "Begin checking root size",
-        "daysAfterPlanting": 80,
+        "name": "Mulch to retain moisture",
+        "daysAfterPlanting": 40,
+        "recurring": null,
+        "description": "Apply a layer of mulch to keep the soil evenly moist and suppress weeds."
+      },
+      {
+        "name": "Harvest after frost",
+        "daysAfterPlanting": 90,
         "recurring": 10,
-        "description": "Perform the task: Begin checking root size."
+        "description": "Begin harvesting after the plants have experienced at least one or two hard frosts, which sweetens the roots. Loosen soil with a fork to harvest."
       },
       {
         "name": "Watering",
-        "description": "Water your Rutabaga consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water consistently throughout the season. Provide about 1 inch of water per week.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }

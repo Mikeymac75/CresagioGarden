@@ -13,30 +13,54 @@
     "wateringNeeds": "Deep watering, especially during silking and tasseling",
     "wateringFrequencyDays": 5,
     "frostTolerant": false,
-    "description": "A tall, warm-season crop that needs space and wind for pollination.",
-    "tips": "Plant in blocks rather than rows for better pollination. Harvest when silks turn brown and kernels are plump and milky.",
+    "description": "A tall, warm-season grass crop grown for its sweet, edible kernels. It is wind-pollinated.",
+    "tips": "For successful wind pollination, plant corn in a block of at least 4x4 rows, not in a single long row. Harvest when silks have turned brown and kernels are plump and milky.",
+    "succession": "For a longer harvest, plant an early, a mid-season, and a late-season variety, or make succession plantings of the same variety every 2 weeks.",
+    "yield": "Typically 1-2 ears per stalk.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Well-drained soil rich in organic matter.",
+      "notes": "Corn is a heavy feeder, especially of nitrogen. Amend soil well with compost or aged manure before planting."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 95,
+      "notes": "A warm-season crop that requires warm soil (at least 60°F) to germinate and grow. Very sensitive to frost."
+    },
+    "companionPlants": ["Beans", "Squash", "Cucumbers", "Peas", "Sunflowers"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1-3 days",
+      "notes": "The sugars in sweet corn begin converting to starch immediately after picking. For best flavor, eat, freeze, or can it as soon as possible. Store in the husk in the refrigerator."
+    },
     "careTasks": [
       {
-        "name": "Side-dress with nitrogen when knee-high",
+        "name": "Thin seedlings",
+        "daysAfterPlanting": 14,
+        "recurring": null,
+        "description": "Once seedlings are 4-5 inches tall, thin them to stand about 12 inches apart in each direction."
+      },
+      {
+        "name": "Side-dress with nitrogen",
         "daysAfterPlanting": 35,
         "recurring": null,
-        "description": "Perform the task: Side-dress with nitrogen when knee-high."
+        "description": "When plants are about knee-high, apply a nitrogen-rich fertilizer alongside the rows to fuel their rapid growth."
       },
       {
-        "name": "Check for corn earworm",
+        "name": "Monitor for corn earworm",
         "daysAfterPlanting": 60,
         "recurring": 5,
-        "description": "Perform the task: Check for corn earworm."
+        "description": "Check the silks for signs of the corn earworm caterpillar. A drop of mineral oil on the silks just after they pollinate can help deter them."
       },
       {
-        "name": "Begin checking ears for ripeness",
+        "name": "Check for ripeness",
         "daysAfterPlanting": 75,
         "recurring": 2,
-        "description": "Perform the task: Begin checking ears for ripeness."
+        "description": "Harvest about 20 days after silks first appear. Silks should be brown and dry. Puncture a kernel with a fingernail; if the juice is milky, it's ready."
       },
       {
         "name": "Watering",
-        "description": "Water your Sweet Corn consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water deeply, especially during the critical period of tasseling and silking, to ensure full, plump ears.",
         "daysAfterPlanting": 0,
         "recurring": 5
       }
