@@ -17,15 +17,11 @@ const basePlants = [
   ...vegetables,
 ];
 
-let allPlants = [...basePlants];
-
 export const loadPlants = async () => {
   try {
     const customPlantsString = await AsyncStorage.getItem('userCustomPlants');
     const customPlants = customPlantsString ? JSON.parse(customPlantsString) : [];
-    // Combine base plants with custom plants, ensuring no duplicates if this function is called multiple times.
-    allPlants = [...basePlants, ...customPlants];
-    return allPlants;
+    return [...basePlants, ...customPlants];
   } catch (error) {
     console.error('Failed to load custom plants:', error);
     // Return base plants if there's an error
@@ -33,15 +29,7 @@ export const loadPlants = async () => {
   }
 };
 
-// Initial load when the service is imported.
-loadPlants();
-
-// This function allows other parts of the app to get the currently loaded list of plants.
-export const getPlants = () => {
-    return allPlants;
-};
-
-
-// Export the array for any components that might still be using the static import.
-// This will be updated dynamically by loadPlants.
-export default allPlants;
+// For any legacy components that might still use a static import.
+// This is not ideal, but it's a safe fallback during refactoring.
+const PLANTS = [...basePlants];
+export default PLANTS;

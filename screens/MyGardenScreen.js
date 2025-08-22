@@ -14,7 +14,6 @@ import {
   getItem as getSecureItem,
   setItem as setSecureItem,
 } from '../utils/SecureStorage';
-import { loadPlants, getPlants } from '../services/PlantService';
 import { useFocusEffect } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {
@@ -27,7 +26,7 @@ import useSeedBank from '../hooks/useSeedBank';
 
 export default function MyGardenScreen({ navigation }) {
   const [myGarden, setMyGarden] = useState([]);
-  const { availablePlants } = useSeedBank();
+  const { availablePlants, allPlants } = useSeedBank();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modalStep, setModalStep] = useState('list'); // 'list', 'date', 'name'
   const [selectedPlant, setSelectedPlant] = useState(null);
@@ -37,7 +36,6 @@ export default function MyGardenScreen({ navigation }) {
   useFocusEffect(
     React.useCallback(() => {
       loadMyGarden();
-      loadPlants();
     }, [])
   );
 
@@ -125,7 +123,7 @@ export default function MyGardenScreen({ navigation }) {
 
   const renderPlantEntry = ({ item }) => {
     if (item.status === 'harvested') return null;
-    const plantInfo = getPlants().find(p => p.id === item.plantId);
+    const plantInfo = allPlants.find(p => p.id === item.plantId);
     if (!plantInfo) {
       // This can happen if a custom plant was deleted but is still in the garden.
       // Or if the plant list hasn't loaded yet.
