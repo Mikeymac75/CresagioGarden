@@ -39,7 +39,7 @@ export default function useSeedBank() {
     }, [loadData])
   );
 
-  const toggleSeedInBank = async (plantId) => {
+  const toggleSeedInBank = useCallback(async (plantId) => {
     const newSeedBank = new Set(seedBank);
     if (newSeedBank.has(plantId)) {
       newSeedBank.delete(plantId);
@@ -62,7 +62,7 @@ export default function useSeedBank() {
       }
       setSeedBank(revertedSeedBank);
     }
-  };
+  }, [seedBank]);
 
   const availablePlants = useMemo(() => {
     return plants.filter(plant => seedBank.has(plant.id));
