@@ -7,43 +7,96 @@ import {
   TouchableOpacity,
   TextInput,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
-import PLANTS from '../services/PlantService';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
 import useSeedBank from '../hooks/useSeedBank';
 
 export default function SeedBankScreen() {
-  const { seedBank, isLoading, toggleSeedInBank } = useSeedBank();
+  const { seedBank, allPlants, isLoading, toggleSeedInBank, loadSeedBank } = useSeedBank();
   const [searchQuery, setSearchQuery] = useState('');
+
+  // --- NEW FEATURE: Delete custom plant ---
+  const deleteCustomPlant = async (plantId) => {
+    Alert.alert(
+      'Delete Custom Plant',
+      'Are you sure you want to permanently delete this plant? This cannot be undone.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              const existingPlantsString = await AsyncStorage.getItem('userCustomPlants');
+              let existingPlants = existingPlantsString ? JSON.parse(existingPlantsString) : [];
+              existingPlants = existingPlants.filter(p => p.id !== plantId);
+              await AsyncStorage.setItem('userCustomPlants', JSON.stringify(existingPlants));
+              
+              // Also remove it from the seed bank if it's there
+              const newSeedBank = new Set(seedBank);
+              if (newSeedBank.has(plantId)) {
+                newSeedBank.delete(plantId);
+                await setSecureItem('userSeedBank', JSON.stringify([...newSeedBank]));
+              }
+
+              // Refresh the plant list
+              loadSeedBank();
+              Alert.alert('Success', 'Custom plant has been deleted.');
+            } catch (error) {
+              console.error('Failed to delete custom plant:', error);
+              Alert.alert('Error', 'Could not delete the plant.');
+            }
+          },
+        },
+      ]
+    );
+  };
+  // --- END FEATURE ---
 
   const filteredPlants = useMemo(() => {
     if (!searchQuery) {
-      return PLANTS;
+      return allPlants;
     }
-    return PLANTS.filter(plant =>
+    return allPlants.filter(plant =>
       plant.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  }, [searchQuery]);
+  }, [searchQuery, allPlants]);
 
   const renderPlantItem = ({ item }) => {
     const isSelected = seedBank.has(item.id);
+    const isCustom = item.category === 'Custom';
+
     return (
-      <TouchableOpacity
-        style={[styles.plantItem, isSelected && styles.plantItemSelected]}
-        onPress={() => toggleSeedInBank(item.id)}
-      >
-        <View style={styles.plantInfo}>
-          <Text style={styles.plantName}>
-            {item.name} (approx. {item.daysToMaturity} days)
-          </Text>
-          <Text style={styles.plantCategory}>{item.category}</Text>
-        </View>
-        <Ionicons
-          name={isSelected ? 'checkbox' : 'square-outline'}
-          size={24}
-          color={isSelected ? '#4CAF50' : '#ccc'}
-        />
-      </TouchableOpacity>
+      <View style={styles.plantItemContainer}>
+        <TouchableOpacity
+          style={[styles.plantItem, isSelected && styles.plantItemSelected]}
+          onPress={() => toggleSeedInBank(item.id)}
+        >
+          <View style={styles.plantInfo}>
+            <Text style={styles.plantName}>
+              {item.name} (approx. {item.daysToMaturity} days)
+            </Text>
+            <Text style={styles.plantCategory}>{item.category}</Text>
+          </View>
+          <Ionicons
+            name={isSelected ? 'checkbox' : 'square-outline'}
+            size={24}
+            color={isSelected ? '#4CAF50' : '#ccc'}
+          />
+        </TouchableOpacity>
+        {/* --- NEW FEATURE: Show delete button for custom plants --- */}
+        {isCustom && (
+          <TouchableOpacity
+            style={styles.deleteButton}
+            onPress={() => deleteCustomPlant(item.id)}
+          >
+            <Ionicons name="trash-outline" size={24} color="#ff4444" />
+          </TouchableOpacity>
+        )}
+        {/* --- END FEATURE --- */}
+      </View>
     );
   };
 
@@ -133,19 +186,28 @@ const styles = StyleSheet.create({
   listContent: {
     padding: 10,
   },
+  plantItemContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
   plantItem: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'white',
     padding: 16,
     borderRadius: 8,
-    marginBottom: 8,
     borderLeftWidth: 4,
     borderLeftColor: '#ccc',
   },
   plantItemSelected: {
     borderLeftColor: '#4CAF50',
+  },
+  deleteButton: {
+    padding: 10,
+    marginLeft: 8,
   },
   plantInfo: {
     flex: 1,

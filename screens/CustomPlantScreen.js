@@ -10,6 +10,8 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { setItem as setSecureItem, getItem as getSecureItem } from '../utils/SecureStorage';
+
 
 export default function CustomPlantScreen({ navigation }) {
   const [name, setName] = useState('');
@@ -17,6 +19,19 @@ export default function CustomPlantScreen({ navigation }) {
   const [wateringFrequencyDays, setWateringFrequencyDays] = useState('');
 
   const handleSave = async () => {
+    // --- THE FIX: Check for existing custom plants ---
+    const existingPlantsString = await AsyncStorage.getItem('userCustomPlants');
+    const existingPlants = existingPlantsString ? JSON.parse(existingPlantsString) : [];
+
+    if (existingPlants.length >= 1) {
+      Alert.alert(
+        'Limit Reached',
+        'You can only create one custom plant in the free version. Please upgrade to Pro for unlimited custom plants!'
+      );
+      return;
+    }
+    // --- END FIX ---
+
     if (!name.trim() || !daysToMaturity.trim() || !wateringFrequencyDays.trim()) {
       Alert.alert('Error', 'Please fill out all fields.');
       return;
@@ -44,7 +59,6 @@ export default function CustomPlantScreen({ navigation }) {
           recurring: frequency,
         },
       ],
-      // Add other default properties to match the main plant structure if needed
       harvestType: 'single',
       spacing: 'N/A',
       sunRequirement: 'Full sun',
@@ -58,12 +72,15 @@ export default function CustomPlantScreen({ navigation }) {
     };
 
     try {
-      const existingPlantsString = await AsyncStorage.getItem('userCustomPlants');
-      const existingPlants = existingPlantsString ? JSON.parse(existingPlantsString) : [];
       const updatedPlants = [...existingPlants, newPlant];
       await AsyncStorage.setItem('userCustomPlants', JSON.stringify(updatedPlants));
 
-      Alert.alert('Success', 'Plant saved! It will be available next time you open the app.');
+      const seedBankString = await getSecureItem('userSeedBank');
+      const seedBank = seedBankString ? new Set(JSON.parse(seedBankString)) : new Set();
+      seedBank.add(newPlant.id);
+      await setSecureItem('userSeedBank', JSON.stringify([...seedBank]));
+
+      Alert.alert('Success', `${newPlant.name} has been created and added to your seed bank!`);
       navigation.goBack();
     } catch (error) {
       console.error('Failed to save custom plant:', error);

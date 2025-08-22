@@ -1,4 +1,4 @@
-import PLANTS from './PlantService';
+import { loadPlants } from './PlantService';
 import { gardenEntrySchema, weatherSchema } from '../utils/validationSchemas';
 
 import { TASK_TYPES, ALERT_TYPES, CONFIG } from './constants';
@@ -60,7 +60,7 @@ export const getFrostDates = (hardinessZone) => {
 /**
  * Enhanced plantable now function with better safety margins
  */
-export const getPlantableNow = (firstFrostDate) => {
+export const getPlantableNow = async (firstFrostDate) => {
   if (!ValidationUtils.isValidDate(firstFrostDate)) {
     return [];
   }
@@ -68,8 +68,9 @@ export const getPlantableNow = (firstFrostDate) => {
   try {
     const today = new Date();
     const firstFrost = DateUtils.createDate(firstFrostDate);
+    const allPlants = await loadPlants();
 
-    return PLANTS.filter(plant => {
+    return allPlants.filter(plant => {
       if (!plant.daysToMaturity) return false;
       
       const expectedHarvest = DateUtils.addDays(today, 
@@ -92,10 +93,11 @@ export const getPlantableNow = (firstFrostDate) => {
 /**
  * Gets garden statistics
  */
-export const getGardenStatistics = (myGarden) => {
+export const getGardenStatistics = async (myGarden) => {
   if (!Array.isArray(myGarden)) return null;
 
   try {
+    const allPlants = await loadPlants();
     const stats = {
       totalPlants: myGarden.length,
       activeGrowth: myGarden.filter(entry => entry.status !== 'harvested').length,
@@ -108,7 +110,7 @@ export const getGardenStatistics = (myGarden) => {
     let totalMaturityDays = 0;
 
     myGarden.forEach(entry => {
-      const plantDetails = PLANTS.find(p => p.id === entry.plantId);
+      const plantDetails = allPlants.find(p => p.id === entry.plantId);
       if (plantDetails) {
         stats.plantTypes.add(plantDetails.name);
         
@@ -142,7 +144,8 @@ export const getGardenStatistics = (myGarden) => {
 export const validateGardenEntry = async (entry) => {
   try {
     await gardenEntrySchema.validate(entry, { abortEarly: false });
-    const plantExists = PLANTS.find(p => p.id === entry.plantId);
+    const allPlants = await loadPlants();
+    const plantExists = allPlants.find(p => p.id === entry.plantId);
     if (!plantExists) {
       return {
         isValid: false,

@@ -1,6 +1,6 @@
 import { DateUtils } from './utils/DateUtils';
 import { ValidationUtils } from './utils/ValidationUtils';
-import PLANTS from './PlantService';
+import { loadPlants } from './PlantService';
 import { TASK_TYPES, CONFIG } from './constants';
 import SEASONAL_TASKS from '../data/seasonal_tasks.json';
 
@@ -153,15 +153,16 @@ const TaskGenerator = {
 /**
  * Gets tasks for a specific month with better filtering
  */
-export const getTasksForMonth = (lastFrostDate, monthIndex) => {
+export const getTasksForMonth = async (lastFrostDate, monthIndex) => {
   if (!ValidationUtils.isValidDate(lastFrostDate) || monthIndex < 0 || monthIndex > 11) {
     return [];
   }
 
   try {
     let allTasks = [];
+    const allPlants = await loadPlants();
 
-    PLANTS.forEach(plant => {
+    allPlants.forEach(plant => {
       const plantTasks = TaskGenerator.generatePlantingTasks(plant, lastFrostDate);
       allTasks = [...allTasks, ...plantTasks];
     });
@@ -180,11 +181,11 @@ export const getTasksForMonth = (lastFrostDate, monthIndex) => {
 /**
  * Enhanced upcoming tasks function with better organization
  */
-export const getUpcomingTasksForMyGarden = (myGarden, lastFrostDate, firstFrostDate) => {
+export const getUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, firstFrostDate) => {
   if (!Array.isArray(myGarden)) return [];
 
   try {
-    const allTasks = getAllUpcomingTasksForMyGarden(myGarden, lastFrostDate, firstFrostDate);
+    const allTasks = await getAllUpcomingTasksForMyGarden(myGarden, lastFrostDate, firstFrostDate);
     return allTasks;
   } catch (error) {
     console.error('Error generating upcoming tasks:', error);
@@ -195,7 +196,7 @@ export const getUpcomingTasksForMyGarden = (myGarden, lastFrostDate, firstFrostD
 /**
  * Enhanced all tasks function with modular task generation
  */
-export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate, firstFrostDate) => {
+export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, firstFrostDate) => {
   if (!Array.isArray(myGarden) || myGarden.length === 0) {
     return [];
   }
@@ -203,11 +204,12 @@ export const getAllUpcomingTasksForMyGarden = (myGarden, lastFrostDate, firstFro
   try {
     const firstFrost = firstFrostDate ? DateUtils.createDate(firstFrostDate) : null;
     let allTasks = [];
+    const allPlants = await loadPlants();
 
     myGarden.forEach(gardenEntry => {
       if (gardenEntry.status === 'harvested') return;
 
-      const plantDetails = PLANTS.find(p => p.id === gardenEntry.plantId);
+      const plantDetails = allPlants.find(p => p.id === gardenEntry.plantId);
       if (!plantDetails) return;
 
       const plantedDate = new Date(gardenEntry.plantedDate);

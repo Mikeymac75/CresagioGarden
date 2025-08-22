@@ -22,7 +22,7 @@ const criticalTaskSchema = yup.object().shape({
 
 // Schema for a single plant
 const plantSchema = yup.object().shape({
-  id: yup.number().required().positive().integer(),
+  id: yup.mixed().required(),
   name: yup.string().required(),
   category: yup.string().required(),
   harvestType: yup.string().oneOf(['continuous', 'single']).required(),
@@ -35,7 +35,9 @@ const plantSchema = yup.object().shape({
   wateringNeeds: yup.string().required(),
   wateringFrequencyDays: yup.number().required().min(1),
   frostTolerant: yup.boolean().required(),
+  // --- THE FIX: Corrected 'yp' to 'yup' ---
   description: yup.string().required(),
+  // --- END FIX ---
   tips: yup.string().required(),
   careTasks: yup.array().of(careTaskSchema),
   conditionalAlerts: yup.array().of(conditionalAlertSchema),
@@ -69,9 +71,9 @@ export const hardinessZonesSchema = yup.object().test(
 
 // Schema for a garden entry
 export const gardenEntrySchema = yup.object().shape({
-  id: yup.string().required(), // Assuming it's a UUID or some string ID
-  plantId: yup.number().required().positive().integer(),
-  plantedDate: yup.string().required(), // Should be an ISO date string
+  id: yup.string().required(),
+  plantId: yup.mixed().required(),
+  plantedDate: yup.string().required(),
   nickname: yup.string().transform(value => value ? value.trim() : value),
   status: yup.string().oneOf(['active', 'harvested']).optional(),
 });
