@@ -13,8 +13,26 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
     "frostTolerant": false,
-    "description": "A warm-season herb that is sensitive to frost. Great companion for tomatoes.",
-    "tips": "Pinch off flower heads as they appear to encourage leafy growth. Harvest often.",
+    "description": "A fragrant, warm-season herb that is a staple in many cuisines, especially Italian. Very sensitive to frost.",
+    "tips": "Harvest often by pinching stems just above a pair of leaves. This encourages the plant to become bushier and more productive.",
+    "succession": "Sow seeds every 2-3 weeks for a continuous supply of young, tender leaves throughout the summer.",
+    "yield": "Continuous harvest of leaves. A few plants can provide a steady supply for a family.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Well-drained, rich soil.",
+      "notes": "Does not require heavy fertilization. A light feeding of compost mid-season is sufficient."
+    },
+    "temperature": {
+      "optimalLowF": 70,
+      "optimalHighF": 90,
+      "notes": "Very sensitive to frost and cool temperatures. Prefers warm days and nights (above 60°F)."
+    },
+    "companionPlants": ["Tomato", "Peppers", "Asparagus", "Petunias"],
+    "storage": {
+      "method": "Fresh in water or frozen",
+      "duration": "1 week (fresh), 6 months (frozen)",
+      "notes": "Keep fresh stems in a glass of water on the counter like a bouquet. Do not refrigerate, as leaves will turn black. Can be pureed with olive oil and frozen in ice cube trays."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -26,11 +44,17 @@
         "name": "Pinch back tips to encourage branching",
         "daysAfterPlanting": 50,
         "recurring": 10,
-        "description": "Pinch the growing tips to encourage the plant to become bushier and produce more leaves."
+        "description": "Once the plant has a few sets of leaves, pinch the top set off. This encourages the plant to grow bushy and full, maximizing your harvest."
       },
       {
-        "name": "Watering",
-        "description": "Water your Basil consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "name": "Remove flower buds",
+        "daysAfterPlanting": 60,
+        "recurring": 5,
+        "description": "Pinch off flower heads as soon as they appear. If the plant flowers, its leaf production slows and the flavor can change."
+      },
+      {
+        "name": "Water at base",
+        "description": "Water consistently at the base of the plant to keep leaves dry and prevent fungal issues. Basil dislikes waterlogged soil.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -50,18 +74,48 @@
     "wateringNeeds": "Regular moisture",
     "wateringFrequencyDays": 3,
     "frostTolerant": true,
-    "description": "A cool-season herb that bolts (goes to flower) very quickly in heat.",
-    "tips": "Sow seeds every 2-3 weeks for a continuous supply. Harvest leaves often to delay bolting. The flowers are edible and attract beneficial insects.",
+    "description": "A fast-growing, cool-season herb. The leaves are called cilantro, and its seeds are known as coriander.",
+    "tips": "Tends to bolt (go to flower) very quickly in heat. Provide afternoon shade in warmer climates to prolong the leaf harvest.",
+    "succession": "Essential for a continuous supply. Sow new seeds every 2 weeks from spring until early fall, as plants bolt quickly.",
+    "yield": "Continuous harvest of leaves for 4-6 weeks per planting, then coriander seeds.",
+    "soil": {
+      "ph": "6.2-6.8",
+      "type": "Well-drained, light soil.",
+      "notes": "Does not need overly rich soil, which can sometimes accelerate bolting."
+    },
+    "temperature": {
+      "optimalLowF": 50,
+      "optimalHighF": 75,
+      "notes": "A cool-season herb. Bolts rapidly in temperatures above 85°F. Can tolerate a light frost."
+    },
+    "companionPlants": ["Anise", "Potatoes", "Dill", "Spinach"],
+    "storage": {
+      "method": "Refrigerate or freeze leaves; dry store seeds",
+      "duration": "1 week (refrigerated leaves)",
+      "notes": "Store leaf stems in a jar of water in the fridge, loosely covered. Leaves can also be chopped and frozen. Dry coriander seeds completely and store in an airtight container."
+    },
     "careTasks": [
+      {
+        "name": "Thin seedlings",
+        "daysAfterPlanting": 14,
+        "recurring": null,
+        "description": "Thin seedlings to stand 4-6 inches apart to give them room to grow without overcrowding."
+      },
       {
         "name": "Begin harvesting leaves",
         "daysAfterPlanting": 30,
         "recurring": 7,
-        "description": "Harvest your Cilantro when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest outer leaves regularly, which can help delay bolting. Never remove more than one-third of the plant at a time."
+      },
+      {
+        "name": "Harvest coriander seeds (optional)",
+        "daysAfterPlanting": 60,
+        "recurring": null,
+        "description": "Once the plant bolts and flowers, allow the seeds to form and dry on the plant. Harvest when they turn brown, and store for culinary use."
       },
       {
         "name": "Watering",
-        "description": "Water your Cilantro consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water your Cilantro consistently to keep the soil moist, which can help prevent premature bolting.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -81,8 +135,26 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
     "frostTolerant": true,
-    "description": "A biennial herb grown as annual. Very slow to germinate from seed.",
-    "tips": "Soak seeds overnight before planting to improve germination. Harvest outer stems regularly to encourage new growth.",
+    "description": "A biennial herb typically grown as an annual, available in curly-leaf and flat-leaf (Italian) varieties.",
+    "tips": "Soak seeds overnight before planting to speed up the notoriously slow germination. Parsley is a host plant for the black swallowtail butterfly caterpillar.",
+    "succession": "Not typically needed as plants are productive all season long. Plant once in spring for a season-long harvest.",
+    "yield": "Continuous harvest of leaves. A few plants are usually sufficient for family use.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Rich, moist, well-drained soil.",
+      "notes": "Benefits from soil amended with plenty of compost. Consistent moisture is key for tender growth."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 80,
+      "notes": "Very cold-hardy and can often be harvested after a light frost, and sometimes into the winter in mild climates."
+    },
+    "companionPlants": ["Tomato", "Asparagus", "Roses", "Carrots"],
+    "storage": {
+      "method": "Refrigerate or freeze",
+      "duration": "1 week (refrigerated)",
+      "notes": "Place stems in a glass of water in the refrigerator, or wrap the bunch in a damp paper towel and place in a plastic bag. Freezes well when chopped."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -91,14 +163,20 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
-        "name": "Begin harvesting outer stems",
+        "name": "Harvest outer stems",
         "daysAfterPlanting": 70,
         "recurring": 7,
-        "description": "Harvest your Parsley when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest the larger, outer stems first by cutting them at the base. This encourages the plant to produce new growth from the center."
+      },
+      {
+        "name": "Monitor for swallowtail caterpillars",
+        "daysAfterPlanting": 80,
+        "recurring": 10,
+        "description": "Check for green, black, and yellow striped caterpillars. If you enjoy butterflies, consider planting extra parsley to share."
       },
       {
         "name": "Watering",
-        "description": "Water your Parsley consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water your Parsley consistently, ensuring the soil doesn't dry out completely.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }

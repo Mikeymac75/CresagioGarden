@@ -13,42 +13,60 @@
     "wateringNeeds": "Consistent, deep watering",
     "wateringFrequencyDays": 3,
     "frostTolerant": false,
-    "description": "A popular warm-season crop that loves heat and needs support.",
-    "tips": "Stake or cage for support. Water deeply and consistently to prevent blossom end rot. Mulch helps retain moisture.",
+    "description": "A popular warm-season crop that loves heat and needs support. Varieties can be determinate (bush-like) or indeterminate (vining).",
+    "tips": "Stake or cage indeterminate varieties for support. Water deeply and consistently at the base to prevent blossom end rot and foliage diseases.",
+    "succession": "For indeterminate varieties, one planting is sufficient. For determinate (bush) types, plant a second crop 3-4 weeks after the first for a longer harvest window.",
+    "yield": "Varies by type: 5-10 lbs for determinate, 10-30 lbs for indeterminate per plant.",
+    "soil": {
+      "ph": "6.2-6.8",
+      "type": "Well-drained, loamy soil rich in organic matter.",
+      "notes": "Avoid high-nitrogen fertilizers, which cause lush foliage but few fruits. Benefits from added calcium (e.g., crushed eggshells) to prevent blossom-end rot."
+    },
+    "temperature": {
+      "optimalLowF": 65,
+      "optimalHighF": 85,
+      "notes": "A warm-season crop. Fruit will not set at temperatures consistently below 55°F or above 90°F."
+    },
+    "companionPlants": ["Basil", "Carrot", "Marigold", "Borage"],
+    "storage": {
+      "method": "Room temperature",
+      "duration": "3-7 days",
+      "notes": "Store on the counter, not in the refrigerator, which can make them mealy. Can be canned, frozen, or dried for long-term storage."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 35,
         "recurring": null,
-        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+        "description": "Gradually expose seedlings to outdoor conditions over 7-10 days to prevent transplant shock."
       },
       {
-        "name": "Pinch off suckers",
+        "name": "Install stake or cage at transplant",
+        "daysAfterPlanting": 42,
+        "recurring": null,
+        "description": "Set up support systems early to avoid damaging roots later. As the plant grows, tie stems loosely to the support."
+      },
+      {
+        "name": "Prune suckers (indeterminate types)",
         "daysAfterPlanting": 56,
         "recurring": 7,
-        "description": "Remove small shoots that grow between the main stem and branches to focus energy on fruit production."
+        "description": "Remove small shoots (suckers) that grow in the 'V' between the main stem and branches to improve air circulation and focus energy on fruit."
       },
       {
-        "name": "Fertilize with tomato food",
+        "name": "Fertilize with low-nitrogen food",
         "daysAfterPlanting": 63,
         "recurring": 14,
-        "description": "Feed your Tomato with a balanced fertilizer to support healthy growth and fruit development."
+        "description": "Once fruit begins to set, feed with a fertilizer high in phosphorus and potassium to support fruit development, not excessive leaf growth."
       },
       {
-        "name": "Reduce watering as fruit begins to ripen to concentrate flavor",
-        "daysAfterPlanting": 85,
-        "recurring": null,
-        "description": "Perform the task: Reduce watering as fruit begins to ripen to concentrate flavor."
-      },
-      {
-        "name": "Begin checking for ripe fruit",
-        "daysAfterPlanting": 100,
+        "name": "Check for ripe fruit",
+        "daysAfterPlanting": 90,
         "recurring": 3,
-        "description": "Perform the task: Begin checking for ripe fruit."
+        "description": "Harvest tomatoes when they are fully colored and firm. Gently twist to remove from the vine."
       },
       {
-        "name": "Watering",
-        "description": "Water your Tomato consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "name": "Water deeply at base",
+        "description": "Water consistently, providing about 1-2 inches per week. Water the soil, not the leaves, to prevent disease.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -68,8 +86,26 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
     "frostTolerant": false,
-    "description": "A long-season, warm-weather crop that loves heat.",
-    "tips": "Wait for consistently warm weather. Mulch to retain soil heat and moisture. Peppers can be harvested green or left to ripen to red, yellow, or orange.",
+    "description": "A long-season, warm-weather crop that produces sweet, blocky fruits. Part of the nightshade family along with tomatoes and eggplant.",
+    "tips": "Wait for consistently warm weather and soil. Mulch to retain soil heat and moisture. Peppers can be harvested green or left to ripen to red, yellow, or orange for a sweeter flavor.",
+    "succession": "Not typically needed due to continuous harvesting, but a second planting can extend the harvest in long-season climates.",
+    "yield": "5-10+ peppers per plant, depending on variety and conditions.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Well-drained, sandy loam.",
+      "notes": "Prefers soil rich in organic matter. A dose of Epsom salts (magnesium sulfate) can help if leaves are yellowing."
+    },
+    "temperature": {
+      "optimalLowF": 70,
+      "optimalHighF": 85,
+      "notes": "Loves heat. Fruit set can be poor in cool temperatures (below 60°F) or extreme heat (above 90°F)."
+    },
+    "companionPlants": ["Basil", "Carrots", "Onions", "Rosemary"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1-2 weeks",
+      "notes": "Store unwashed in the crisper drawer. Can be sliced and frozen for long-term use in cooked dishes."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -78,16 +114,22 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
+        "name": "Apply mulch",
+        "daysAfterPlanting": 65,
+        "recurring": null,
+        "description": "Apply a layer of organic mulch to conserve water, suppress weeds, and keep the soil warm."
+      },
+      {
         "name": "Fertilize when first flowers appear",
         "daysAfterPlanting": 75,
         "recurring": 21,
-        "description": "Feed your Bell Pepper with a balanced fertilizer to support healthy growth and fruit development."
+        "description": "Feed with a balanced, low-nitrogen fertilizer to support fruit production."
       },
       {
-        "name": "Begin checking for harvestable peppers",
+        "name": "Harvest peppers",
         "daysAfterPlanting": 110,
         "recurring": 7,
-        "description": "Harvest your Bell Pepper when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest peppers by cutting the stem with scissors or pruners. Pulling can damage the plant. Regular harvesting encourages more fruit set."
       },
       {
         "name": "Watering",
@@ -111,30 +153,48 @@
     "wateringNeeds": "Deep, consistent watering",
     "wateringFrequencyDays": 3,
     "frostTolerant": false,
-    "description": "An incredibly productive warm-season crop. A few plants go a long way.",
-    "tips": "Give it lots of space to sprawl. Harvest fruits when they are small and tender for the best flavor. Check under large leaves daily during peak season.",
+    "description": "An incredibly productive warm-season summer squash. Its rampant growth means a few plants go a long way.",
+    "tips": "Give it lots of space to sprawl. Harvest fruits when they are small and tender (6-8 inches) for the best flavor. Check under large leaves daily during peak season.",
+    "succession": "Plant a second crop 3-4 weeks after the first to ensure a supply if squash vine borers damage the first planting.",
+    "yield": "Highly productive; 6-10 lbs of fruit per plant is common.",
+    "soil": {
+      "ph": "6.0-7.5",
+      "type": "Rich, well-drained soil.",
+      "notes": "Heavy feeder. Amend soil with plenty of compost or aged manure before planting."
+    },
+    "temperature": {
+      "optimalLowF": 65,
+      "optimalHighF": 75,
+      "notes": "Warm-season crop, very sensitive to frost. Production slows in intense heat."
+    },
+    "companionPlants": ["Corn", "Beans", "Nasturtium", "Marigold"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "5-7 days",
+      "notes": "Store unwashed in a perforated plastic bag. Do not store for long as it becomes watery. Can be shredded and frozen."
+    },
     "careTasks": [
       {
-        "name": "Check for squash vine borer eggs at base of stem",
+        "name": "Monitor for squash vine borer",
         "daysAfterPlanting": 14,
         "recurring": 7,
-        "description": "Inspect the base of the plant for small, brown eggs and remove them to prevent vine borer damage."
+        "description": "Inspect the base of the stem for small, brown eggs or signs of entry (a hole with 'frass'). Remove eggs and consider wrapping the stem base with foil."
       },
       {
-        "name": "Fertilize when blooms appear",
-        "daysAfterPlanting": 30,
-        "recurring": null,
-        "description": "Feed your Zucchini with a balanced fertilizer to support healthy growth and fruit development."
+        "name": "Check for powdery mildew",
+        "daysAfterPlanting": 35,
+        "recurring": 7,
+        "description": "Inspect leaves for white, powdery spots. Improve air circulation by pruning some leaves if necessary. Water at the soil level."
       },
       {
-        "name": "Begin harvesting fruit",
+        "name": "Harvest fruit regularly",
         "daysAfterPlanting": 45,
         "recurring": 2,
-        "description": "Harvest your Zucchini when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest zucchini when 6-8 inches long for best flavor and texture. Regular harvesting is key to continuous production."
       },
       {
-        "name": "Watering",
-        "description": "Water your Zucchini consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "name": "Water deeply",
+        "description": "Water consistently at the base of the plant to keep leaves dry and discourage mildew. Provide about 1-2 inches of water per week.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -154,8 +214,26 @@
     "wateringNeeds": "Very consistent, deep watering",
     "wateringFrequencyDays": 2,
     "frostTolerant": false,
-    "description": "Vining plant that needs warm weather and consistent moisture.",
-    "tips": "Grow on a trellis to save space and keep fruit clean. Water deeply to prevent bitterness. Mulching is highly recommended.",
+    "description": "A vining plant that needs warm weather and consistent moisture to produce crisp, refreshing fruit. Can be grown on the ground or on a trellis.",
+    "tips": "Grow on a trellis to save space, improve air circulation, and produce straighter, cleaner fruit. Inconsistent watering can lead to bitter-tasting cucumbers.",
+    "succession": "Sow seeds every 2-3 weeks for a continuous supply throughout the summer.",
+    "yield": "10-20 cucumbers per plant, depending on variety (slicing or pickling).",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Fertile, well-drained soil with lots of organic matter.",
+      "notes": "Cucumbers are heavy feeders. Side-dress with compost or a balanced fertilizer when vines begin to run."
+    },
+    "temperature": {
+      "optimalLowF": 65,
+      "optimalHighF": 85,
+      "notes": "Loves warm weather. Growth is stunted by cool temperatures and plants are very frost-sensitive."
+    },
+    "companionPlants": ["Beans", "Peas", "Radish", "Dill", "Tansy"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1 week",
+      "notes": "Wrap in plastic to retain moisture. Do not store near ethylene-producing fruits like apples or tomatoes, as it will cause them to yellow."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -164,20 +242,26 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
-        "name": "Fertilize with balanced fertilizer",
+        "name": "Set up trellis",
+        "daysAfterPlanting": 28,
+        "recurring": null,
+        "description": "Install a trellis at planting time. Gently guide vines onto the trellis as they grow."
+      },
+      {
+        "name": "Fertilize when vines develop",
         "daysAfterPlanting": 45,
         "recurring": 14,
-        "description": "Feed your Cucumber with a balanced fertilizer to support healthy growth and fruit development."
+        "description": "Feed with a balanced liquid fertilizer to support vigorous growth and fruit production."
       },
       {
-        "name": "Begin checking for harvestable cucumbers",
+        "name": "Harvest cucumbers regularly",
         "daysAfterPlanting": 55,
         "recurring": 2,
-        "description": "Harvest your Cucumber when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest for pickling when small (3-4 inches) and for slicing at 6-8 inches. Regular picking encourages more fruit."
       },
       {
-        "name": "Watering",
-        "description": "Water your Cucumber consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "name": "Water consistently",
+        "description": "Provide at least 1-2 inches of water per week. Water deeply at the soil level to prevent leaf diseases.",
         "daysAfterPlanting": 0,
         "recurring": 2
       }
@@ -197,24 +281,54 @@
     "wateringNeeds": "Consistent moisture, especially during fruit development",
     "wateringFrequencyDays": 2,
     "frostTolerant": true,
-    "description": "Perennial fruit that establishes in year one and produces heavily for a few weeks in year two.",
-    "tips": "Pinch off all flowers in the first year to encourage a strong root system for future harvests. Mulch with straw to keep berries clean.",
+    "description": "A low-growing perennial fruit that establishes in year one and produces a large, concentrated crop for a few weeks in late spring or early summer of year two.",
+    "tips": "Pinch off all flowers in the first year to encourage a strong root system and more runners. Mulch with straw to keep berries clean and suppress weeds.",
+    "succession": "Not applicable. For a longer harvest season, plant a mix of June-bearing, everbearing, and day-neutral varieties.",
+    "yield": "1-2 pints per plant per season.",
+    "soil": {
+      "ph": "5.5-6.5",
+      "type": "Well-drained, sandy loam with high organic matter.",
+      "notes": "Prefers slightly acidic soil. Avoid planting where tomatoes, peppers, or eggplant were previously grown to avoid verticillium wilt."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 80,
+      "notes": "Plants are very frost-hardy, but blossoms are sensitive to late spring frosts. Cover if frost is predicted."
+    },
+    "companionPlants": ["Borage", "Lettuce", "Spinach", "Onion"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "2-3 days",
+      "notes": "Store unwashed in a single layer in a covered container. Wash just before eating. Very perishable."
+    },
     "careTasks": [
       {
-        "name": "Pinch off flowers (first year only)",
+        "name": "Pinch off all flowers (First Year)",
         "daysAfterPlanting": 45,
         "recurring": 7,
-        "description": "Perform the task: Pinch off flowers (first year only)."
+        "description": "For the entire first season, remove any flowers that appear. This directs the plant's energy into developing a robust root system and healthy runners."
+      },
+      {
+        "name": "Apply mulch",
+        "daysAfterPlanting": 60,
+        "recurring": null,
+        "description": "Apply a thick layer of straw mulch around plants to keep berries off the soil, conserve moisture, and control weeds."
+      },
+      {
+        "name": "Harvest berries (Year 2+)",
+        "daysAfterPlanting": 380,
+        "recurring": 2,
+        "description": "Harvest when berries are fully red. Pick every couple of days as they ripen quickly. "
       },
       {
         "name": "Renovate bed after harvest (Year 2+)",
-        "daysAfterPlanting": 400,
-        "recurring": null,
-        "description": "Harvest your Strawberry (June-Bearing) when they reach a mature size and color. Regular harvesting can encourage more production."
+        "daysAfterPlanting": 410,
+        "recurring": 365,
+        "description": "After harvest is complete, mow the leaves, narrow the rows, remove weeds, and fertilize to prepare for the next season."
       },
       {
         "name": "Watering",
-        "description": "Water your Strawberry (June-Bearing) consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water consistently, providing about 1-2 inches per week, especially from flowering through harvest.",
         "daysAfterPlanting": 0,
         "recurring": 2
       }
@@ -234,43 +348,60 @@
     "wateringNeeds": "Deep, infrequent watering",
     "wateringFrequencyDays": 5,
     "frostTolerant": false,
-    "description": "A vining, warm-season crop that requires a lot of space and a long growing season.",
-    "tips": "Water at the base of the plant to prevent powdery mildew. Place a board or straw under developing fruits to keep them off wet soil.",
-    "criticalTasks": [
-      {
-        "condition": "LATE_PLANTING",
-        "daysAfterPlanting": 60,
-        "task": "Prune smaller fruit to focus energy on the largest pumpkins before frost."
-      }
-    ],
+    "description": "A vining, warm-season crop that requires a lot of space and a long growing season to produce its iconic fall fruit.",
+    "tips": "Water at the base of the plant to prevent powdery mildew. Place a board or straw under developing fruits to prevent rot from contact with wet soil.",
+    "succession": "Not applicable due to the long season and space requirements.",
+    "yield": "2-5 pumpkins per plant, depending on variety.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Rich, well-drained soil.",
+      "notes": "Very heavy feeder. Mix in generous amounts of compost or aged manure into the planting hill."
+    },
+    "temperature": {
+      "optimalLowF": 65,
+      "optimalHighF": 95,
+      "notes": "Requires a long, warm growing season. Very sensitive to frost."
+    },
+    "companionPlants": ["Corn", "Beans", "Marigold", "Oregano"],
+    "storage": {
+      "method": "Cure then store",
+      "duration": "2-3 months",
+      "notes": "Cure in the sun for 7-10 days, then store in a cool, dry place (50-55°F). Good air circulation is important."
+    },
     "careTasks": [
       {
-        "name": "Thin seedlings to the strongest one per mound",
+        "name": "Thin seedlings to 2-3 per mound",
         "daysAfterPlanting": 14,
         "recurring": null,
-        "description": "Remove weaker seedlings to ensure proper spacing (48-60 inches) for healthy growth."
+        "description": "Remove weaker seedlings to ensure the strongest plants have adequate space and resources."
       },
       {
-        "name": "Check for squash vine borer eggs",
+        "name": "Monitor for squash vine borer",
         "daysAfterPlanting": 21,
         "recurring": 7,
-        "description": "Inspect the base of the plant for small, brown eggs and remove them to prevent vine borer damage."
+        "description": "Inspect the base of the plant for small, brown eggs and signs of entry. Take preventive action if found."
       },
       {
         "name": "Fertilize when vines begin to run",
         "daysAfterPlanting": 35,
-        "recurring": null,
-        "description": "Feed your Pumpkin with a balanced fertilizer to support healthy growth and fruit development."
+        "recurring": 21,
+        "description": "Feed with a low-nitrogen, high-phosphorus fertilizer to encourage flowering and fruit set."
       },
       {
-        "name": "Harvest before first hard frost, when rind is hard",
+        "name": "Elevate developing fruit",
+        "daysAfterPlanting": 70,
+        "recurring": null,
+        "description": "Place a piece of cardboard, a board, or straw under each pumpkin to keep it dry and prevent rot."
+      },
+      {
+        "name": "Harvest before first hard frost",
         "daysAfterPlanting": 95,
         "recurring": null,
-        "description": "Harvest your Pumpkin when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest when the pumpkin is a deep, uniform color and the rind is hard. Leave 3-4 inches of stem attached."
       },
       {
-        "name": "Watering",
-        "description": "Water your Pumpkin consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "name": "Water deeply",
+        "description": "Water consistently, especially during pollination and fruit set. Reduce watering as fruit matures.",
         "daysAfterPlanting": 0,
         "recurring": 5
       }
@@ -290,8 +421,26 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
     "frostTolerant": false,
-    "description": "A heat-loving warm-season crop that needs a long growing season.",
-    "tips": "Wait for consistently warm weather before transplanting. Harvest when skin is glossy and firm. Overripe fruits become seedy and bitter.",
+    "description": "A heat-loving, warm-season crop that produces beautiful, glossy fruit. A staple in many cuisines.",
+    "tips": "Wait for consistently warm weather (day and night) before transplanting. Harvest when skin is glossy and firm. Overripe fruits become seedy and bitter.",
+    "succession": "Not typically needed, as plants produce continuously until frost.",
+    "yield": "4-8 fruits per plant, depending on variety.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Well-drained, fertile soil.",
+      "notes": "Heavy feeder. Amend soil with compost. Benefits from regular feeding throughout the season."
+    },
+    "temperature": {
+      "optimalLowF": 70,
+      "optimalHighF": 90,
+      "notes": "Thrives in heat. Production will be poor if temperatures are too cool, especially at night."
+    },
+    "companionPlants": ["Beans", "Peas", "Spinach", "Marigold"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "5-7 days",
+      "notes": "Store in the crisper drawer. Eggplant is sensitive to cold; do not store for too long."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -300,26 +449,32 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
-        "name": "Stake plants when flowers appear",
+        "name": "Stake or cage plants",
         "daysAfterPlanting": 70,
         "recurring": null,
-        "description": "Perform the task: Stake plants when flowers appear."
+        "description": "Provide support before the plant is heavy with fruit to prevent stems from breaking."
       },
       {
         "name": "Fertilize when first fruits set",
         "daysAfterPlanting": 80,
         "recurring": 21,
-        "description": "Feed your Eggplant with a balanced fertilizer to support healthy growth and fruit development."
+        "description": "Feed with a balanced liquid fertilizer to support healthy growth and continued fruit development."
       },
       {
-        "name": "Begin checking for harvestable fruits",
+        "name": "Monitor for flea beetles",
+        "daysAfterPlanting": 65,
+        "recurring": 7,
+        "description": "Check leaves for tiny holes, a sign of flea beetles. Use row covers on young plants for protection."
+      },
+      {
+        "name": "Harvest fruit",
         "daysAfterPlanting": 120,
         "recurring": 5,
-        "description": "Harvest your Eggplant when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest when fruits have reached a good size, their skin is glossy, and they are firm to the touch. Cut the stem with pruners."
       },
       {
         "name": "Watering",
-        "description": "Water your Eggplant consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water consistently, providing about 1-2 inches per week. Mulch to retain moisture.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -339,8 +494,26 @@
     "wateringNeeds": "Deep, infrequent watering",
     "wateringFrequencyDays": 5,
     "frostTolerant": false,
-    "description": "A vining warm-season crop that stores well through winter.",
-    "tips": "Harvest when rind is hard and cannot be dented with fingernail. Cure in sun for 10 days before storage.",
+    "description": "A vining, warm-season crop that produces hard-skinned squash that can be stored for months.",
+    "tips": "Harvest when the rind is hard and cannot be easily dented with a fingernail. Leave a few inches of stem attached. Cure in the sun for 10 days before storing.",
+    "succession": "Not applicable due to long growing season.",
+    "yield": "3-5 squash per plant.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Rich, well-drained soil.",
+      "notes": "Heavy feeder. Amend planting hills with generous amounts of compost or aged manure."
+    },
+    "temperature": {
+      "optimalLowF": 65,
+      "optimalHighF": 95,
+      "notes": "Requires a long, warm growing season. Very sensitive to frost."
+    },
+    "companionPlants": ["Corn", "Beans", "Marigold"],
+    "storage": {
+      "method": "Cure then store",
+      "duration": "3-6 months",
+      "notes": "After curing, store in a cool, dry, dark place with good air circulation (50-60°F)."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -349,26 +522,26 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
-        "name": "Check for squash vine borer eggs",
+        "name": "Monitor for squash bugs and vine borers",
         "daysAfterPlanting": 28,
         "recurring": 7,
-        "description": "Inspect the base of the plant for small, brown eggs and remove them to prevent vine borer damage."
+        "description": "Check leaves for squash bug eggs and the base of stems for vine borer damage."
       },
       {
-        "name": "Place boards under developing fruit",
+        "name": "Elevate developing fruit",
         "daysAfterPlanting": 70,
         "recurring": null,
-        "description": "Perform the task: Place boards under developing fruit."
+        "description": "Place a piece of cardboard, a board, or straw under each squash to keep it from direct contact with moist soil, preventing rot."
       },
       {
         "name": "Harvest before first hard frost",
         "daysAfterPlanting": 105,
         "recurring": null,
-        "description": "Harvest your Winter Squash (Butternut) when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest when squash has turned a deep, solid tan color and the rind is hard. Leave 2-3 inches of stem attached."
       },
       {
         "name": "Watering",
-        "description": "Water your Winter Squash (Butternut) consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water deeply and infrequently at the base of the plant. Reduce water as fruits ripen.",
         "daysAfterPlanting": 0,
         "recurring": 5
       }
@@ -388,8 +561,26 @@
     "wateringNeeds": "Deep, consistent watering until fruit sets",
     "wateringFrequencyDays": 5,
     "frostTolerant": false,
-    "description": "A sprawling warm-season crop that needs a long, hot growing season.",
-    "tips": "Reduce watering as fruit ripens to concentrate sugars. Check for ripeness by thumping - ripe melons sound hollow.",
+    "description": "A sprawling, warm-season crop that needs a long, hot growing season to produce large, sweet fruit.",
+    "tips": "Reduce watering as fruit ripens to concentrate sugars. Look for multiple signs of ripeness: the tendril closest to the fruit stem is dry and brown, the spot where it rests on the ground is yellow, and it sounds hollow when thumped.",
+    "succession": "Not applicable due to long growing season and large space requirements.",
+    "yield": "2-4 melons per vine.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Sandy, well-drained soil.",
+      "notes": "Heavy feeder. Amend soil with compost and a balanced fertilizer."
+    },
+    "temperature": {
+      "optimalLowF": 70,
+      "optimalHighF": 90,
+      "notes": "Needs heat to thrive and develop sugars. Very frost sensitive."
+    },
+    "companionPlants": ["Corn", "Marigold", "Nasturtium", "Radish"],
+    "storage": {
+      "method": "Refrigerate after cutting",
+      "duration": "1 week (cut), 2-3 weeks (uncut)",
+      "notes": "Uncut melons can be stored in a cool place. Once cut, wrap tightly and refrigerate."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -398,26 +589,26 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
-        "name": "Place cardboard under developing fruit",
+        "name": "Elevate developing melons",
         "daysAfterPlanting": 60,
         "recurring": null,
-        "description": "Perform the task: Place cardboard under developing fruit."
+        "description": "Place cardboard, straw, or a board under developing fruit to prevent rot and insect damage."
       },
       {
-        "name": "Reduce watering frequency",
+        "name": "Reduce watering for sweetness",
         "daysAfterPlanting": 75,
         "recurring": null,
-        "description": "Perform the task: Reduce watering frequency."
+        "description": "Once melons have reached full size, reduce watering to allow sugars to concentrate in the fruit."
       },
       {
-        "name": "Test for ripeness by thumping",
+        "name": "Check for ripeness",
         "daysAfterPlanting": 85,
         "recurring": 3,
-        "description": "Perform the task: Test for ripeness by thumping."
+        "description": "Check the ground spot (should be yellow), the tendril nearest the stem (should be dry), and the sound when thumped (should be hollow)."
       },
       {
         "name": "Watering",
-        "description": "Water your Watermelon consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water deeply and consistently, especially during flowering and fruit set. Avoid overhead watering.",
         "daysAfterPlanting": 0,
         "recurring": 5
       }
@@ -437,8 +628,26 @@
     "wateringNeeds": "Consistent moisture until fruit sets, then reduce",
     "wateringFrequencyDays": 4,
     "frostTolerant": false,
-    "description": "A warm-season vine crop that produces fragrant, sweet melons.",
-    "tips": "Ripe melons slip easily from the vine and have a sweet aroma at the blossom end.",
+    "description": "A warm-season vine crop that produces fragrant, sweet melons with a netted skin.",
+    "tips": "A ripe cantaloupe will slip easily from the vine with gentle pressure and have a sweet, musky aroma at the blossom end.",
+    "succession": "In long-season areas, a second planting can be made for a later harvest.",
+    "yield": "3-5 melons per vine.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Well-drained, fertile soil.",
+      "notes": "Heavy feeder. Amend soil with compost and feed regularly with a balanced fertilizer."
+    },
+    "temperature": {
+      "optimalLowF": 70,
+      "optimalHighF": 90,
+      "notes": "Needs heat to develop sugars. Very frost sensitive."
+    },
+    "companionPlants": ["Corn", "Marigold", "Nasturtium"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "5-7 days",
+      "notes": "Store in the refrigerator to slow ripening. The aroma will become stronger as it ripens."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -447,20 +656,26 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
-        "name": "Check for powdery mildew",
+        "name": "Monitor for powdery mildew",
         "daysAfterPlanting": 50,
         "recurring": 7,
-        "description": "Perform the task: Check for powdery mildew."
+        "description": "Inspect leaves for white, powdery spots. Ensure good air circulation and water at the soil level."
       },
       {
-        "name": "Test fruit for slip (easy removal from vine)",
+        "name": "Reduce watering for sweetness",
+        "daysAfterPlanting": 70,
+        "recurring": null,
+        "description": "Once melons have reached their full size, reduce watering to concentrate sugars in the fruit."
+      },
+      {
+        "name": "Check for ripeness (slip test)",
         "daysAfterPlanting": 80,
         "recurring": 2,
-        "description": "Perform the task: Test fruit for slip (easy removal from vine)."
+        "description": "Check for a crack forming at the stem attachment point. A ripe melon will detach ('slip') from the vine with very little effort."
       },
       {
         "name": "Watering",
-        "description": "Water your Cantaloupe consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water consistently, especially during flowering and fruit set. Avoid wetting the leaves.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -480,8 +695,26 @@
     "wateringNeeds": "Deep, infrequent watering",
     "wateringFrequencyDays": 5,
     "frostTolerant": false,
-    "description": "A heat-loving warm-season crop that thrives in hot, humid conditions.",
-    "tips": "Harvest pods when 3-4 inches long for best tenderness. Pick daily to keep plants producing.",
+    "description": "A heat-loving, warm-season crop that produces edible green pods and beautiful, hibiscus-like flowers.",
+    "tips": "Harvest pods when they are young and tender (3-4 inches long). Wear gloves when harvesting, as some varieties have spines that can irritate the skin.",
+    "succession": "Not necessary. Plants will produce continuously until the first frost if pods are picked regularly.",
+    "yield": "20-30+ pods per plant over the season.",
+    "soil": {
+      "ph": "6.5-7.0",
+      "type": "Well-drained, fertile soil.",
+      "notes": "Tolerant of various soil types but thrives with compost amendment. Does not need heavy feeding."
+    },
+    "temperature": {
+      "optimalLowF": 75,
+      "optimalHighF": 95,
+      "notes": "Thrives in heat and humidity. Wait for soil to be thoroughly warm before planting."
+    },
+    "companionPlants": ["Basil", "Peppers", "Sunflowers"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "2-3 days",
+      "notes": "Store dry and unwashed in a paper or perforated plastic bag. Use quickly as pods will darken and become slimy."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -490,14 +723,26 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
-        "name": "Begin harvesting pods",
+        "name": "Fertilize when pods form",
+        "daysAfterPlanting": 50,
+        "recurring": 30,
+        "description": "Side-dress with compost or a balanced fertilizer to support the long production season."
+      },
+      {
+        "name": "Harvest pods every 1-2 days",
         "daysAfterPlanting": 55,
         "recurring": 2,
-        "description": "Harvest your Okra when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest pods when they are 3-4 inches long. If they get too large, they become tough. Frequent picking is essential for continuous production."
+      },
+      {
+        "name": "Monitor for aphids",
+        "daysAfterPlanting": 45,
+        "recurring": 7,
+        "description": "Check new growth and the undersides of leaves for aphids. A strong spray of water can dislodge them."
       },
       {
         "name": "Watering",
-        "description": "Water your Okra consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water deeply during dry spells. Okra is relatively drought-tolerant once established but produces better with consistent moisture.",
         "daysAfterPlanting": 0,
         "recurring": 5
       }
@@ -517,24 +762,60 @@
     "wateringNeeds": "Deep watering, especially in dry spells",
     "wateringFrequencyDays": 7,
     "frostTolerant": true,
-    "description": "A perennial vegetable treated as fruit. Very cold hardy and long-lived.",
-    "tips": "Never eat the leaves - they are toxic. Harvest stalks by pulling, not cutting. Stop harvest in mid-summer.",
+    "description": "A perennial vegetable most often treated as a fruit. Known for its tart, edible stalks and very large leaves. Extremely cold hardy and long-lived.",
+    "tips": "Never eat the leaves - they contain high levels of oxalic acid and are toxic. Harvest stalks by pulling and twisting at the base, not cutting.",
+    "succession": "Not applicable. A perennial that will produce for 10+ years.",
+    "yield": "2-4 lbs of stalks per mature plant per season.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Deep, well-drained soil, rich in organic matter.",
+      "notes": "Heavy feeder. Top-dress with a thick layer of compost or aged manure each spring."
+    },
+    "temperature": {
+      "optimalLowF": 40,
+      "optimalHighF": 75,
+      "notes": "Requires a dormant period with temperatures below 40°F to stimulate spring growth. Dislikes intense summer heat."
+    },
+    "companionPlants": ["Beans", "Cabbage family", "Garlic"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1-2 weeks",
+      "notes": "Remove leaves, wrap stalks in plastic, and store in the crisper. Stalks can be chopped and frozen for long-term storage."
+    },
     "careTasks": [
       {
-        "name": "Begin light harvest (second year)",
+        "name": "Do not harvest (First Year)",
+        "daysAfterPlanting": 0,
+        "recurring": null,
+        "description": "Do not harvest any stalks in the first year to allow the plant to establish a strong root system."
+      },
+      {
+        "name": "Remove flower stalks",
+        "daysAfterPlanting": 380,
+        "recurring": 14,
+        "description": "Cut any large, round flower stalks that appear as soon as you see them. This directs the plant's energy into leaf and stalk growth."
+      },
+      {
+        "name": "Begin light harvest (Year 2)",
         "daysAfterPlanting": 365,
         "recurring": null,
-        "description": "Harvest your Rhubarb when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest a few of the thickest stalks for about 4 weeks. Leave at least two-thirds of the stalks on the plant."
+      },
+      {
+        "name": "Full harvest (Year 3+)",
+        "daysAfterPlanting": 730,
+        "recurring": null,
+        "description": "Harvest stalks for 8-10 weeks, but stop by mid-summer to allow the plant to store energy for next year. Never take more than half the stalks at once."
       },
       {
         "name": "Divide crowns every 5-7 years",
         "daysAfterPlanting": 1825,
         "recurring": null,
-        "description": "Perform the task: Divide crowns every 5-7 years."
+        "description": "In early spring or fall, dig up and divide large crowns to reinvigorate the plant and create new ones."
       },
       {
         "name": "Watering",
-        "description": "Water your Rhubarb consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water deeply to encourage root growth, especially during dry periods in the summer.",
         "daysAfterPlanting": 0,
         "recurring": 7
       }

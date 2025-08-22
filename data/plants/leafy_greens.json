@@ -13,8 +13,26 @@
     "wateringNeeds": "Consistent moisture, shallow roots",
     "wateringFrequencyDays": 2,
     "frostTolerant": true,
-    "description": "A cool-season crop that grows quickly. Tends to bolt in hot weather.",
-    "tips": "Plant every 2 weeks for a continuous harvest. Prefers cooler soil and appreciates afternoon shade in summer.",
+    "description": "A fast-growing, cool-season crop. Loose-leaf varieties allow for a continuous 'cut-and-come-again' harvest.",
+    "tips": "Provide afternoon shade in warmer weather to prevent bolting (going to seed) and extend the harvest season.",
+    "succession": "Essential for a steady supply. Sow new seeds every 2 weeks throughout the growing season.",
+    "yield": "Continuous harvest of outer leaves. 2-3 plants per person is usually sufficient at any one time.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Loose, well-drained soil with plenty of organic matter.",
+      "notes": "Lettuce has shallow roots, so consistent moisture near the surface is crucial. Benefits from a light feeding of nitrogen."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 70,
+      "notes": "A cool-season crop. Will bolt and become bitter in hot weather (above 80°F). Appreciates afternoon shade."
+    },
+    "companionPlants": ["Carrots", "Radishes", "Strawberries", "Cucumbers"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "5-10 days",
+      "notes": "Wash and dry leaves thoroughly. Store in a plastic bag or container with a paper towel to absorb excess moisture."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -26,17 +44,17 @@
         "name": "Thin direct-sown seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
-        "description": "Remove weaker seedlings to ensure proper spacing (6-8 inches) for healthy growth."
+        "description": "Thin seedlings to 6-8 inches apart. The thinnings are edible and can be used in salads."
       },
       {
-        "name": "Start harvesting outer leaves",
+        "name": "Harvest outer leaves",
         "daysAfterPlanting": 40,
         "recurring": 5,
-        "description": "Harvest your Lettuce (Loose Leaf) when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest the larger, outer leaves at the base of the plant, leaving the central leaves to continue growing. This 'cut-and-come-again' method prolongs the harvest."
       },
       {
-        "name": "Watering",
-        "description": "Water your Lettuce (Loose Leaf) consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "name": "Water consistently",
+        "description": "Water shallowly and frequently to keep the soil consistently moist but not waterlogged.",
         "daysAfterPlanting": 0,
         "recurring": 2
       }
@@ -56,24 +74,42 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 2,
     "frostTolerant": true,
-    "description": "A very cold-hardy, cool-season crop. Plant in early spring and fall.",
-    "tips": "Bolts quickly in heat. Provide afternoon shade to extend the harvest. Can be sown in late summer for a fall crop.",
+    "description": "A very cold-hardy and nutritious, cool-season crop. Best planted in early spring and/or fall.",
+    "tips": "Spinach bolts very quickly in response to heat and long day length. Choose bolt-resistant varieties for later plantings.",
+    "succession": "Sow seeds every 2 weeks in early spring and again in late summer for a fall crop. Avoid sowing in late spring as heat causes rapid bolting.",
+    "yield": "Continuous harvest of leaves. A 10-foot row can provide plenty for a family.",
+    "soil": {
+      "ph": "6.5-7.5",
+      "type": "Well-drained, fertile loam.",
+      "notes": "Prefers neutral to slightly alkaline soil. Requires ample nitrogen for lush, dark green leaves. Amend with compost or aged manure."
+    },
+    "temperature": {
+      "optimalLowF": 50,
+      "optimalHighF": 65,
+      "notes": "Very cold-hardy and can be planted as soon as soil is workable in spring. Bolts quickly in heat."
+    },
+    "companionPlants": ["Strawberries", "Cabbage family", "Peas", "Radishes"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "5-7 days",
+      "notes": "Store unwashed in a plastic bag in the crisper. Wash just before use to prevent premature decay. Also freezes well after blanching."
+    },
     "careTasks": [
       {
         "name": "Thin seedlings",
         "daysAfterPlanting": 14,
         "recurring": null,
-        "description": "Remove weaker seedlings to ensure proper spacing (4-6 inches) for healthy growth."
+        "description": "Thin seedlings to 4-6 inches apart to allow plants to fully develop without competition."
       },
       {
-        "name": "Begin harvesting outer leaves",
+        "name": "Harvest outer leaves",
         "daysAfterPlanting": 35,
         "recurring": 5,
-        "description": "Harvest your Spinach when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Once leaves are 3-4 inches long, begin harvesting the outer leaves, allowing the inner leaves to continue growing. "
       },
       {
         "name": "Watering",
-        "description": "Water your Spinach consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water consistently to maintain soil moisture and prevent stress, which can induce bolting.",
         "daysAfterPlanting": 0,
         "recurring": 2
       }
@@ -93,8 +129,26 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
     "frostTolerant": true,
-    "description": "Hardy cool-season green that gets sweeter after a light frost.",
-    "tips": "Harvest outer leaves to allow the center to keep producing. Very cold tolerant and can often be harvested into winter.",
+    "description": "A hardy and productive cool-season green from the cabbage family. Its flavor famously gets sweeter after a light frost.",
+    "tips": "Harvest outer leaves from the bottom up to allow the center of the plant to keep producing new leaves. Very cold tolerant and can often be harvested into winter.",
+    "succession": "Not usually necessary as one planting provides a long harvest. Can plant a second crop in mid-summer for a fall/winter harvest.",
+    "yield": "Continuous harvest of leaves over many months.",
+    "soil": {
+      "ph": "6.0-7.5",
+      "type": "Fertile, well-drained soil.",
+      "notes": "Tolerant of average soils but thrives with compost. Benefits from a side-dressing of nitrogen mid-season for best production."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 75,
+      "notes": "Extremely hardy. Flavor is improved and sweetened by a light frost. Tolerates summer heat better than many other greens."
+    },
+    "companionPlants": ["Onions", "Beets", "Cucumbers", "Herbs like dill and rosemary"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1-2 weeks",
+      "notes": "Store in a plastic bag in the crisper drawer. For best results, wash, dry, and then store. Can be blanched and frozen for long-term storage."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -103,20 +157,20 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
-        "name": "Check for cabbage worms",
+        "name": "Monitor for cabbage worms",
         "daysAfterPlanting": 40,
         "recurring": 7,
-        "description": "Inspect leaves for small green caterpillars and their droppings. Remove them by hand or use an appropriate organic pesticide."
+        "description": "Inspect leaves, especially the undersides, for small green caterpillars and their droppings. Use row covers or hand-pick pests."
       },
       {
         "name": "Begin harvesting outer leaves",
         "daysAfterPlanting": 55,
         "recurring": 7,
-        "description": "Harvest your Kale when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest the lowest, outermost leaves when they reach a usable size. This encourages new growth from the top-center of the plant."
       },
       {
         "name": "Watering",
-        "description": "Water your Kale consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water your Kale consistently. Provide about 1-1.5 inches of water per week for tender, sweet leaves.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -136,8 +190,26 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
     "frostTolerant": true,
-    "description": "A heat-tolerant leafy green that produces all season long.",
-    "tips": "Harvest outer leaves regularly to encourage continued growth. Both leaves and stems are edible.",
+    "description": "A beautiful and productive leafy green from the beet family, grown for its tender leaves and crisp stems. More heat-tolerant than spinach.",
+    "tips": "Harvest outer leaves regularly to encourage continued growth. Both the leaves and the colorful stems are edible.",
+    "succession": "Not necessary. One planting provides a continuous harvest from late spring until a hard frost.",
+    "yield": "Continuous harvest of leaves and stems all season long.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Well-drained soil rich in organic matter.",
+      "notes": "Tolerant of average soil but produces best with regular moisture and fertility. Amend with compost before planting."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 80,
+      "notes": "More heat-tolerant than spinach and will continue to produce through the summer in most climates. Also tolerates light frost."
+    },
+    "companionPlants": ["Onions", "Cabbage family", "Beans", "Lettuce"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1 week",
+      "notes": "Store unwashed in a plastic bag in the crisper. Stems and leaves can be stored separately if desired."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -149,17 +221,23 @@
         "name": "Thin direct-sown seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
-        "description": "Remove weaker seedlings to ensure proper spacing (6-8 inches) for healthy growth."
+        "description": "Thin seedlings to 6-8 inches apart. Use the tender thinnings in salads."
+      },
+      {
+        "name": "Monitor for leaf miners",
+        "daysAfterPlanting": 40,
+        "recurring": 10,
+        "description": "Inspect leaves for twisting trails, a sign of leaf miners. Remove and destroy affected leaves immediately to prevent spread."
       },
       {
         "name": "Begin harvesting outer leaves",
         "daysAfterPlanting": 50,
         "recurring": 7,
-        "description": "Harvest your Swiss Chard when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Cut the outer leaves at the base of the plant, leaving the inner leaves to grow. This provides a continuous harvest."
       },
       {
         "name": "Watering",
-        "description": "Water your Swiss Chard consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water your Swiss Chard consistently to promote lush, tender growth.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -179,24 +257,48 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 2,
     "frostTolerant": true,
-    "description": "A fast-growing, peppery cool-season green that bolts quickly in heat.",
-    "tips": "Succession plant every 2 weeks. Harvest leaves when young and tender for mildest flavor.",
+    "description": "A fast-growing, cool-season green with a peppery, nutty flavor. It bolts very quickly in warm weather.",
+    "tips": "Harvest leaves when they are young and tender for the mildest flavor. The flowers are also edible and have a similar peppery taste.",
+    "succession": "Sow every 2-3 weeks for a continuous supply. It grows so fast that succession planting is key to having it all season.",
+    "yield": "Continuous harvest of leaves. A small patch is often enough due to its fast growth.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Average, well-drained soil.",
+      "notes": "Does not require overly rich soil. Consistent water is more important to prevent bolting and keep flavor mild."
+    },
+    "temperature": {
+      "optimalLowF": 50,
+      "optimalHighF": 65,
+      "notes": "A cool-season green that bolts extremely quickly in heat, making the leaves very peppery or bitter. Provide afternoon shade in warm weather."
+    },
+    "companionPlants": ["Lettuce", "Onions", "Carrots", "Rosemary"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "2-4 days",
+      "notes": "Very perishable. Wash, dry thoroughly, and store in a plastic bag with a paper towel to absorb moisture."
+    },
     "careTasks": [
       {
         "name": "Thin seedlings",
         "daysAfterPlanting": 14,
         "recurring": null,
-        "description": "Remove weaker seedlings to ensure proper spacing (4-6 inches) for healthy growth."
+        "description": "Thin seedlings to 4-6 inches apart for best growth. Use the thinnings as microgreens."
+      },
+      {
+        "name": "Monitor for flea beetles",
+        "daysAfterPlanting": 15,
+        "recurring": 5,
+        "description": "Check leaves for tiny 'shot-hole' damage from flea beetles. Use row covers on young plants for protection."
       },
       {
         "name": "Begin harvesting leaves",
         "daysAfterPlanting": 30,
         "recurring": 5,
-        "description": "Harvest your Arugula when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest outer leaves when they are 2-3 inches long. Regular harvesting can delay bolting."
       },
       {
         "name": "Watering",
-        "description": "Water your Arugula consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water consistently. Dry soil will stress the plant, leading to premature bolting and a stronger, more bitter flavor.",
         "daysAfterPlanting": 0,
         "recurring": 2
       }
@@ -216,8 +318,26 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 4,
     "frostTolerant": true,
-    "description": "A very cold-hardy leafy green that sweetens after frost.",
-    "tips": "Harvest outer leaves regularly. Can produce through winter in mild climates.",
+    "description": "A large-leafed, very cold-hardy green from the cabbage family, popular in Southern US cooking. Flavor improves after frost.",
+    "tips": "Harvest outer leaves from the bottom up to allow the plant to grow and produce for a long period. Can produce well into the winter in mild climates.",
+    "succession": "Not usually necessary as plants are very productive. A second planting in mid-summer can provide a tender fall crop.",
+    "yield": "Continuous harvest of leaves. A few plants can provide a large harvest over a long season.",
+    "soil": {
+      "ph": "6.5-7.5",
+      "type": "Fertile, well-drained soil.",
+      "notes": "Benefits from soil rich in organic matter and a consistent supply of nitrogen to produce large, tender leaves."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 75,
+      "notes": "Very heat and cold tolerant. Flavor is significantly improved and sweetened after a couple of light frosts."
+    },
+    "companionPlants": ["Onions", "Potatoes", "Herbs like dill and sage"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1 week",
+      "notes": "Store unwashed in a plastic bag in the crisper drawer. Can be blanched and frozen for long-term preservation."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -226,14 +346,20 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
+        "name": "Monitor for cabbage worms and aphids",
+        "daysAfterPlanting": 45,
+        "recurring": 7,
+        "description": "Check leaves for caterpillars and clusters of aphids. Hand-pick or use insecticidal soap as needed."
+      },
+      {
         "name": "Begin harvesting outer leaves",
         "daysAfterPlanting": 60,
         "recurring": 7,
-        "description": "Harvest your Collard Greens when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest the lower leaves first, working your way up the stalk. This allows the plant to continue producing from its growing tip."
       },
       {
         "name": "Watering",
-        "description": "Water your Collard Greens consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water your Collard Greens consistently, with about 1 to 1.5 inches of water per week.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }

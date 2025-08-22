@@ -13,42 +13,66 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 4,
     "frostTolerant": true,
-    "description": "A cool-season crop that produces a large central head, followed by smaller side shoots.",
-    "tips": "Transplant into the garden before the weather gets too hot. Heat can cause it to bolt. Harvest the main head before the flowers open.",
+    "description": "A cool-season crop that produces a large central head, followed by smaller side shoots after the main harvest.",
+    "tips": "For a fall harvest, start seeds indoors in mid-summer. Plant when soil temperature is consistently between 60-75°F. Heat can cause premature flowering (bolting).",
+    "succession": "For a continuous harvest, plant new seedlings every 2-3 weeks.",
+    "yield": "1 large central head and multiple smaller side shoots per plant.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Well-drained, fertile loamy soil.",
+      "notes": "Prefers soil rich in organic matter. Add compost before planting."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 75,
+      "notes": "Growth slows and flavor can become bitter in temperatures above 80°F."
+    },
+    "companionPlants": ["Rosemary", "Chamomile", "Marigold", "Onion"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1-2 weeks",
+      "notes": "Store unwashed in a perforated plastic bag in the crisper drawer. Blanch and freeze for long-term storage."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 35,
         "recurring": null,
-        "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
+        "description": "Gradually expose seedlings to outdoor conditions over 7-10 days to prevent transplant shock."
       },
       {
-        "name": "Fertilize 3 weeks after transplanting",
+        "name": "Apply mulch",
+        "daysAfterPlanting": 45,
+        "recurring": null,
+        "description": "Apply a 2-3 inch layer of organic mulch (like straw or shredded leaves) to retain soil moisture, regulate soil temperature, and suppress weeds."
+      },
+      {
+        "name": "Fertilize with nitrogen",
         "daysAfterPlanting": 56,
         "recurring": null,
-        "description": "Feed your Broccoli with a balanced fertilizer to support healthy growth and fruit development."
+        "description": "Feed with a nitrogen-rich fertilizer (e.g., blood meal or a balanced liquid fertilizer) to encourage vigorous leaf growth."
       },
       {
-        "name": "Check for cabbage worms",
+        "name": "Monitor for cabbage worms and aphids",
         "daysAfterPlanting": 50,
-        "recurring": 5,
-        "description": "Inspect leaves for small green caterpillars and their droppings. Remove them by hand or use an appropriate organic pesticide."
+        "recurring": 7,
+        "description": "Inspect the undersides of leaves for small green caterpillars (cabbage worms) and clusters of aphids. Remove by hand or use insecticidal soap."
       },
       {
-        "name": "Harvest main head when buds are tight",
+        "name": "Harvest main head",
         "daysAfterPlanting": 80,
         "recurring": null,
-        "description": "Harvest your Broccoli when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest the main head when it is firm and tight, with densely packed green buds. Cut the stalk at an angle, leaving the plant to produce side shoots."
       },
       {
-        "name": "Continue harvesting side shoots",
+        "name": "Harvest side shoots",
         "daysAfterPlanting": 90,
         "recurring": 7,
-        "description": "Harvest your Broccoli when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "After harvesting the main head, continue to harvest smaller side shoots every 5-7 days to encourage continuous production."
       },
       {
-        "name": "Watering",
-        "description": "Water your Broccoli consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "name": "Water deeply",
+        "description": "Water consistently, providing about 1-1.5 inches of water per week. Water at the base of the plant to keep the developing heads dry and prevent rot.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -68,8 +92,26 @@
     "wateringNeeds": "Consistent, deep watering",
     "wateringFrequencyDays": 4,
     "frostTolerant": true,
-    "description": "A cool-season crop that forms dense heads. Can split if growth is too rapid.",
-    "tips": "Harvest when heads are firm and solid. Cut at base leaving roots to potentially produce small secondary heads.",
+    "description": "A cool-season crop that forms dense heads of tightly packed leaves. Comes in green, red, and savoy varieties.",
+    "tips": "Provide consistent moisture to prevent heads from splitting. Rotate crops to avoid soil-borne diseases.",
+    "succession": "For a continuous harvest, plant new seedlings every 2-3 weeks, choosing varieties with different maturity dates.",
+    "yield": "One primary head per plant; some varieties may produce smaller secondary heads.",
+    "soil": {
+      "ph": "6.0-7.5",
+      "type": "Well-drained, fertile soil.",
+      "notes": "Rich in organic matter. Sensitive to nutrient deficiencies, especially nitrogen."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 70,
+      "notes": "Can tolerate light frost, which can sweeten the flavor. Excessive heat can cause bolting."
+    },
+    "companionPlants": ["Dill", "Celery", "Onion", "Thyme"],
+    "storage": {
+      "method": "Refrigerate or root cellar",
+      "duration": "1-2 months",
+      "notes": "Store in a cool, moist place. Do not remove outer leaves until ready to use. Can be shredded for sauerkraut."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -78,20 +120,26 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
-        "name": "Check for cabbage worms",
+        "name": "Apply mulch",
+        "daysAfterPlanting": 45,
+        "recurring": null,
+        "description": "Apply mulch to maintain even soil moisture and suppress weeds."
+      },
+      {
+        "name": "Monitor for cabbage worms and slugs",
         "daysAfterPlanting": 45,
         "recurring": 7,
-        "description": "Inspect leaves for small green caterpillars and their droppings. Remove them by hand or use an appropriate organic pesticide."
+        "description": "Inspect leaves for small green caterpillars and signs of slugs. Use row covers or hand-pick pests."
       },
       {
-        "name": "Check heads for firmness",
+        "name": "Harvest when head is firm",
         "daysAfterPlanting": 75,
         "recurring": 5,
-        "description": "Perform the task: Check heads for firmness."
+        "description": "Harvest cabbage when the head is firm to the touch and has reached a desirable size. Cut the stem at the base of the plant."
       },
       {
-        "name": "Watering",
-        "description": "Water your Cabbage consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "name": "Water consistently",
+        "description": "Water your Cabbage consistently to encourage steady growth and prevent splitting. Provide about 1-1.5 inches of water per week.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -111,8 +159,26 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
     "frostTolerant": true,
-    "description": "A cool-season crop that requires steady temperatures. More finicky than cabbage.",
-    "tips": "Blanch heads by tying leaves over them when heads are 2-3 inches across to keep them white.",
+    "description": "A cool-season crop that requires steady, cool temperatures to form a dense head of flower buds.",
+    "tips": "Cauliflower is more sensitive to temperature changes than its cabbage-family relatives. Avoid disturbing roots when transplanting.",
+    "succession": "Succession planting is possible but challenging due to its sensitivity to temperature. Best to focus on a spring and fall crop.",
+    "yield": "One head per plant.",
+    "soil": {
+      "ph": "6.5-7.0",
+      "type": "Rich, well-drained, and moist soil.",
+      "notes": "Requires consistent supply of nutrients, especially boron, to prevent hollow stems. Side-dress with compost mid-season."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 70,
+      "notes": "Very sensitive to temperature swings. Protect from both frost and heat to prevent 'buttoning' (forming tiny heads)."
+    },
+    "companionPlants": ["Beans", "Celery", "Peas"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1-2 weeks",
+      "notes": "Store wrapped in plastic to retain moisture. Can be blanched and frozen for long-term preservation."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -121,20 +187,20 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
-        "name": "Tie leaves over developing heads to blanch",
+        "name": "Blanch the head",
         "daysAfterPlanting": 60,
         "recurring": null,
-        "description": "Perform the task: Tie leaves over developing heads to blanch."
+        "description": "When the head is 2-3 inches in diameter, tie the outer leaves over it to protect it from the sun and keep it white. Some varieties are self-blanching."
       },
       {
         "name": "Check for harvest readiness",
         "daysAfterPlanting": 70,
         "recurring": 3,
-        "description": "Harvest your Cauliflower when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest when the head is 6-8 inches in diameter, firm, and the curds are still smooth. If it starts to look 'ricey', harvest immediately."
       },
       {
-        "name": "Watering",
-        "description": "Water your Cauliflower consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "name": "Water consistently",
+        "description": "Water your Cauliflower consistently. Provide about 1.5 inches of water per week, especially as the head develops.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -154,8 +220,26 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 4,
     "frostTolerant": true,
-    "description": "A long-season cool-weather crop. Sprouts form along the tall stem.",
-    "tips": "Remove lower leaves as sprouts develop. Harvest from bottom up when sprouts are firm and 1-2 inches across.",
+    "description": "A long-season, cool-weather crop where edible sprouts form in the leaf axils along a tall, central stem.",
+    "tips": "A light frost improves the sprouts' flavor, making them sweeter. Provide support or staking in windy areas.",
+    "succession": "Not typically succession planted due to its long growing season. Plant once for a late fall/early winter harvest.",
+    "yield": "50-100 sprouts per plant, harvested over several weeks.",
+    "soil": {
+      "ph": "6.0-7.5",
+      "type": "Fertile, well-drained soil.",
+      "notes": "Benefits from soil amended with compost and a balanced fertilizer. Needs firm soil to anchor its tall stalk."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 70,
+      "notes": "Requires a long, cool growing season. Hot weather can cause sprouts to be bitter or loose."
+    },
+    "companionPlants": ["Marigold", "Nasturtium", "Rosemary"],
+    "storage": {
+      "method": "Refrigerate or on the stalk",
+      "duration": "2-4 weeks",
+      "notes": "Sprouts can be refrigerated, or the entire stalk can be cut and stored in a cool place, which keeps them fresh longer."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -164,16 +248,22 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
-        "name": "Remove lower leaves to expose developing sprouts",
+        "name": "Remove lower leaves",
         "daysAfterPlanting": 80,
         "recurring": 14,
-        "description": "Perform the task: Remove lower leaves to expose developing sprouts."
+        "description": "As sprouts begin to form, remove the lower 6-8 leaves to direct energy into sprout development and improve air circulation."
+      },
+      {
+        "name": "Top the plant (optional)",
+        "daysAfterPlanting": 90,
+        "recurring": null,
+        "description": "About a month before harvest, you can cut off the top growing point of the plant to encourage all sprouts to mature at once."
       },
       {
         "name": "Begin harvesting bottom sprouts",
         "daysAfterPlanting": 95,
         "recurring": 7,
-        "description": "Harvest your Brussels Sprouts when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest sprouts from the bottom of the stalk upwards when they are firm, green, and 1-2 inches in diameter. Twist or snap them off."
       },
       {
         "name": "Watering",
@@ -197,8 +287,26 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 4,
     "frostTolerant": true,
-    "description": "A long-season cool-weather crop related to onions, grown for thick white stems.",
-    "tips": "Hill soil around stems to blanch them white. Very cold hardy and can be harvested into winter.",
+    "description": "A member of the onion family with a mild, sweet flavor, grown for its thick, white edible stem.",
+    "tips": "Plant in trenches and gradually fill in soil to blanch the stems (keep them white and tender).",
+    "succession": "Can be succession planted every 2-3 weeks for a continuous harvest from late summer through winter.",
+    "yield": "One stalk per plant.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Rich, well-drained soil.",
+      "notes": "Prefers sandy or loamy soil. They are heavy feeders and benefit from compost-rich soil."
+    },
+    "temperature": {
+      "optimalLowF": 55,
+      "optimalHighF": 75,
+      "notes": "Very cold-hardy and can be harvested even after the ground freezes lightly. Flavor improves with cool weather."
+    },
+    "companionPlants": ["Carrot", "Celery", "Onion family"],
+    "storage": {
+      "method": "Refrigerate or leave in ground",
+      "duration": "2-4 weeks refrigerated; several months in ground",
+      "notes": "Can be stored in the refrigerator, or left in the garden and harvested as needed in mild climates. Do not wash until ready to use."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -207,16 +315,22 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
-        "name": "Hill soil around stems",
+        "name": "Hill soil around stems to blanch",
         "daysAfterPlanting": 70,
         "recurring": 21,
-        "description": "Perform the task: Hill soil around stems."
+        "description": "Gradually mound soil up around the stems every few weeks. This keeps the lower portion from turning green, resulting in a more tender, flavorful leek."
+      },
+      {
+        "name": "Fertilize mid-season",
+        "daysAfterPlanting": 90,
+        "recurring": null,
+        "description": "Side-dress with compost or a balanced liquid fertilizer to support their long growing season."
       },
       {
         "name": "Begin harvesting mature leeks",
         "daysAfterPlanting": 115,
         "recurring": 7,
-        "description": "Harvest your Leeks when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest leeks when they are about 1 inch in diameter. Loosen the soil with a fork and gently pull them up."
       },
       {
         "name": "Watering",
@@ -240,30 +354,60 @@
     "wateringNeeds": "Deep watering during growing season",
     "wateringFrequencyDays": 7,
     "frostTolerant": true,
-    "description": "A perennial vegetable that takes 2-3 years to establish but produces for decades.",
-    "tips": "Do not harvest in the first year. Allow ferns to grow to build root system. Harvest spears for 6-8 weeks in spring.",
+    "description": "A perennial vegetable that, once established, will produce tender spears for up to 20 years. Requires patience.",
+    "tips": "Plant 1-year-old crowns for a faster harvest. Avoid harvesting any spears in the first year to allow strong root systems to develop.",
+    "succession": "Not applicable; it is a perennial that produces for many years from the same root system.",
+    "yield": "0.5-1 lb of spears per plant per season, once established.",
+    "soil": {
+      "ph": "6.5-7.5",
+      "type": "Well-drained, sandy loam.",
+      "notes": "Requires deep, fertile soil free of weeds. Prepare the planting bed thoroughly as it is a long-term commitment."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 75,
+      "notes": "Emerging spears are sensitive to hard frost. The plant goes dormant in winter and requires a chilling period."
+    },
+    "companionPlants": ["Tomato", "Parsley", "Basil", "Marigold"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "5-7 days",
+      "notes": "For best results, stand fresh spears upright in a glass with an inch of water, or wrap the stem ends in a damp paper towel before refrigerating."
+    },
     "careTasks": [
       {
-        "name": "Allow all spears to grow into ferns (Year 1)",
+        "name": "Do not harvest (Year 1)",
         "daysAfterPlanting": 0,
         "recurring": null,
-        "description": "Perform the task: Allow all spears to grow into ferns (Year 1)."
+        "description": "Allow all spears to grow into ferns. This feeds the root system and builds energy for future years. Keep the bed well-weeded."
+      },
+      {
+        "name": "Fertilize in early spring",
+        "daysAfterPlanting": 365,
+        "recurring": 365,
+        "description": "Apply a balanced fertilizer or top-dress with compost each spring before spears emerge."
       },
       {
         "name": "Begin light harvest (Year 2)",
         "daysAfterPlanting": 365,
         "recurring": null,
-        "description": "Harvest your Asparagus when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "You can harvest a few spears per plant for 2-3 weeks. Stop when spear diameter decreases significantly."
       },
       {
-        "name": "Cut back dead ferns in late fall",
+        "name": "Full harvest season (Year 3+)",
+        "daysAfterPlanting": 730,
+        "recurring": 365,
+        "description": "Harvest all spears that are pencil-thick or larger for 6-8 weeks. Stop harvesting when ferns begin to open."
+      },
+      {
+        "name": "Cut back dead ferns in fall",
         "daysAfterPlanting": 240,
         "recurring": 365,
-        "description": "Perform the task: Cut back dead ferns in late fall."
+        "description": "After the ferns have turned yellow or brown in the fall, cut them back to the ground to prevent disease."
       },
       {
         "name": "Watering",
-        "description": "Water your Asparagus consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water deeply during the growing and fern seasons to encourage strong root growth. Reduce watering after ferns are cut back.",
         "daysAfterPlanting": 0,
         "recurring": 7
       }
@@ -283,8 +427,26 @@
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
     "frostTolerant": true,
-    "description": "A cool-season crop grown for its swollen stem base with anise flavor.",
-    "tips": "Hill soil around bulbs as they develop to blanch them. Harvest when bulbs are tennis ball sized.",
+    "description": "A cool-season crop grown for its swollen, licorice-flavored stem base, known as a bulb.",
+    "tips": "Consistent watering is crucial; dry soil can cause the plant to bolt (flower prematurely) instead of forming a bulb.",
+    "succession": "Sow every 2-3 weeks for a continuous harvest in cool weather. Avoid planting in the heat of summer.",
+    "yield": "One bulb per plant.",
+    "soil": {
+      "ph": "5.5-7.0",
+      "type": "Rich, well-drained soil.",
+      "notes": "Amend soil with compost before planting. Does not compete well with weeds."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 70,
+      "notes": "A cool-season crop. Hot weather or a sudden drop in temperature will cause it to bolt before a bulb forms."
+    },
+    "companionPlants": ["Mint", "Sage"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1 week",
+      "notes": "Store in a plastic bag in the crisper drawer. Use quickly as it loses its delicate flavor."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -296,17 +458,17 @@
         "name": "Hill soil around developing bulbs",
         "daysAfterPlanting": 60,
         "recurring": 14,
-        "description": "Perform the task: Hill soil around developing bulbs."
+        "description": "When the base of the stem begins to swell, mound soil up around it. This blanches the bulb, making it more tender and white."
       },
       {
-        "name": "Check bulb size for harvest",
+        "name": "Harvest when bulb is tennis-ball size",
         "daysAfterPlanting": 80,
         "recurring": 5,
-        "description": "Harvest your Fennel (Bulbing) when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest when the bulb is firm and about the size of a tennis ball. Cut the plant off at the soil line. Some may resprout smaller shoots."
       },
       {
         "name": "Watering",
-        "description": "Water your Fennel (Bulbing) consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Water your Fennel consistently. Provide about 1-1.5 inches of water per week to prevent bolting.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -326,8 +488,26 @@
     "wateringNeeds": "Deep, regular watering",
     "wateringFrequencyDays": 5,
     "frostTolerant": true,
-    "description": "A large perennial vegetable that needs mild winters or can be grown as annual.",
-    "tips": "Harvest buds before they open into flowers. Cut main bud first to encourage side shoots.",
+    "description": "A large, thistle-like perennial plant that produces edible flower buds. Can be grown as an annual in colder climates.",
+    "tips": "Artichokes are heavy feeders and require ample space, water, and nutrients to thrive.",
+    "succession": "Not applicable; grown as a perennial in warm climates or an annual in colder zones.",
+    "yield": "5-10 primary buds and several smaller secondary buds per plant.",
+    "soil": {
+      "ph": "6.5-7.5",
+      "type": "Deep, fertile, well-drained soil.",
+      "notes": "Amend soil generously with compost and manure before planting. They are heavy feeders."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 75,
+      "notes": "Requires a period of cool weather (vernalization, below 50°F) to trigger budding. Protect crowns from hard frost with heavy mulch."
+    },
+    "companionPlants": ["Peas", "Cabbage", "Sunflowers", "Tarragon"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1-2 weeks",
+      "notes": "Sprinkle buds with water and store in a perforated plastic bag in the refrigerator. Best when cooked soon after harvesting."
+    },
     "careTasks": [
       {
         "name": "Begin hardening off seedlings",
@@ -336,20 +516,38 @@
         "description": "Gradually expose seedlings to outdoor conditions over a week to prevent shock."
       },
       {
-        "name": "Check for developing buds",
-        "daysAfterPlanting": 160,
-        "recurring": 7,
-        "description": "Perform the task: Check for developing buds."
+        "name": "Apply mulch",
+        "daysAfterPlanting": 60,
+        "recurring": null,
+        "description": "Apply a thick layer of mulch to conserve moisture, suppress weeds, and keep roots cool."
       },
       {
-        "name": "Harvest main bud when tight",
+        "name": "Fertilize regularly",
+        "daysAfterPlanting": 90,
+        "recurring": 30,
+        "description": "Feed with a balanced liquid fertilizer every 3-4 weeks during the growing season."
+      },
+      {
+        "name": "Harvest main bud",
         "daysAfterPlanting": 175,
         "recurring": null,
-        "description": "Harvest your Artichoke when they reach a mature size and color. Regular harvesting can encourage more production."
+        "description": "Harvest the main, terminal bud when it is large, firm, and the bracts (scales) are still tightly closed. Cut the stem about 1-2 inches below the bud."
       },
       {
-        "name": "Watering",
-        "description": "Water your Artichoke consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "name": "Harvest side buds",
+        "daysAfterPlanting": 185,
+        "recurring": 7,
+        "description": "After the main bud is cut, the plant will produce smaller side buds. Harvest these when they reach a usable size."
+      },
+      {
+        "name": "Winterize the plant (perennials)",
+        "daysAfterPlanting": 240,
+        "recurring": 365,
+        "description": "In the fall, cut the entire plant back to about 6 inches and cover the crown with a thick layer of mulch to protect it from frost."
+      },
+      {
+        "name": "Water deeply",
+        "description": "Water deeply and regularly, especially during bud development, to produce tender, fleshy buds.",
         "daysAfterPlanting": 0,
         "recurring": 5
       }
