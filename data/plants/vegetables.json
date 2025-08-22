@@ -35,6 +35,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 35,
         "recurring": null,
@@ -72,7 +78,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water deeply and consistently, providing about 1-1.5 inches of water per week. Water at the base of the plant to keep the developing heads dry and prevent rot.",
+        "description": "Broccoli needs consistent moisture to produce large heads. Water when the top inch of soil is dry. Water at the base of the plant to keep the heads dry and prevent rot.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -114,6 +120,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 35,
         "recurring": null,
@@ -139,7 +151,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently to encourage steady growth and prevent splitting. Provide about 1-1.5 inches of water per week.",
+        "description": "Consistent watering is crucial for cabbage to form dense heads and prevent them from splitting. Water when the top inch of soil feels dry.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -181,6 +193,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 35,
         "recurring": null,
@@ -200,7 +218,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently. Provide about 1.5 inches of water per week, especially as the head develops.",
+        "description": "Cauliflower is fussy and needs consistent moisture to form a single, large head. Water when the top inch of soil is dry, especially as the head develops.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -242,6 +260,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 70,
         "recurring": null,
@@ -267,7 +291,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Consistent moisture is needed for a good harvest of Brussels sprouts. Water when the top 1-2 inches of soil feel dry.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -309,6 +333,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 56,
         "recurring": null,
@@ -334,7 +364,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently. Provide about 1-2 inches of water per week, adjusting for rainfall.",
+        "description": "Leeks need consistent moisture for long, tender stems. Water when the top inch of soil feels dry.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
@@ -407,7 +437,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water deeply during the growing and fern seasons to encourage strong root growth. Reduce watering after ferns are cut back.",
+        "description": "Asparagus needs deep watering to establish a strong perennial root system. Water when the top 1-2 inches of soil are dry during the growing season. It is fairly drought-tolerant once established.",
         "daysAfterPlanting": 0,
         "recurring": 7
       }
@@ -449,6 +479,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
@@ -468,7 +504,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently. Provide about 1-1.5 inches of water per week to prevent bolting.",
+        "description": "Consistent moisture is critical for fennel to form a bulb instead of bolting. Water whenever the top inch of soil feels dry.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -510,6 +546,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 49,
         "recurring": null,
@@ -547,7 +589,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water deeply and regularly, especially during bud development, to produce tender, fleshy buds.",
+        "description": "Artichokes are thirsty plants that need regular, deep watering to produce large, tender buds. Water when the top inch of soil feels dry, especially as the buds form.",
         "daysAfterPlanting": 0,
         "recurring": 5
       }

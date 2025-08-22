@@ -35,6 +35,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Thin seedlings",
         "daysAfterPlanting": 14,
         "recurring": null,
@@ -60,7 +66,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water deeply, especially during the critical period of tasseling and silking, to ensure full, plump ears.",
+        "description": "Corn is particularly thirsty during tasseling and silk development. The goal is to water deeply. Check for dryness by inserting your finger 1-2 inches into the soil. Consistent moisture is key for well-filled ears.",
         "daysAfterPlanting": 0,
         "recurring": 5
       }

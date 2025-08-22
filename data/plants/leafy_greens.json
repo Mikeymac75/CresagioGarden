@@ -35,6 +35,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
@@ -54,7 +60,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water shallowly and frequently to keep the soil consistently moist but not waterlogged.",
+        "description": "Lettuce has shallow roots and needs consistent, light watering. Water when the top inch of soil is dry to keep it from becoming bitter. Avoid waterlogging the soil.",
         "daysAfterPlanting": 0,
         "recurring": 2
       }
@@ -96,6 +102,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Thin seedlings",
         "daysAfterPlanting": 14,
         "recurring": null,
@@ -109,7 +121,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently to maintain soil moisture and prevent stress, which can induce bolting.",
+        "description": "Spinach needs consistent moisture for tender leaves and to prevent bolting. Water when the top inch of soil is dry. Mulch can help retain moisture.",
         "daysAfterPlanting": 0,
         "recurring": 2
       }
@@ -151,6 +163,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 35,
         "recurring": null,
@@ -170,7 +188,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently, providing about 1-1.5 inches of water per week for tender, sweet leaves.",
+        "description": "Kale produces best with consistent moisture. Water when the top inch of soil feels dry. Mulching helps keep the soil cool and moist.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -212,6 +230,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 21,
         "recurring": null,
@@ -237,7 +261,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently to promote lush, tender growth.",
+        "description": "Swiss chard needs consistent moisture for tender leaves and stems. Water when the top inch of soil feels dry.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -279,6 +303,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Thin seedlings",
         "daysAfterPlanting": 14,
         "recurring": null,
@@ -298,7 +328,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently. Dry soil will stress the plant, leading to premature bolting and a stronger, more bitter flavor.",
+        "description": "Consistent watering is key for mild-tasting arugula and to prevent bolting. Water when the top inch of soil feels dry.",
         "daysAfterPlanting": 0,
         "recurring": 2
       }
@@ -340,6 +370,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Begin hardening off seedlings",
         "daysAfterPlanting": 35,
         "recurring": null,
@@ -359,7 +395,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently, with about 1 to 1.5 inches of water per week.",
+        "description": "Collards are best when they grow fast and stay hydrated. Water when the top inch of soil feels dry to keep leaves from getting tough.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }

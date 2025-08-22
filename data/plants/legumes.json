@@ -35,6 +35,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Monitor for Mexican bean beetles",
         "daysAfterPlanting": 30,
         "recurring": 7,
@@ -48,7 +54,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently, especially during flowering and pod development. Provide about 1 inch of water per week.",
+        "description": "Beans need consistent moisture, especially when flowering and forming pods. Water when the top inch of soil is dry. Avoid overhead watering to prevent disease.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -90,6 +96,12 @@
     },
     "careTasks": [
       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist, like a damp sponge, to help seeds germinate. Avoid letting the soil dry out completely."
+      },
+      {
         "name": "Inoculate seeds (optional)",
         "daysAfterPlanting": 0,
         "recurring": null,
@@ -109,7 +121,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water consistently, especially when flowers and pods are forming, to ensure a good yield.",
+        "description": "Peas need cool, moist soil to thrive. Water consistently, especially as they begin to flower and form pods, to ensure a sweet, plump harvest. Water when the top inch of soil feels dry.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
