@@ -154,7 +154,9 @@ export default function MyGardenScreen({ navigation }) {
       style={styles.availablePlant}
       onPress={() => handlePlantSelection(item)}
     >
-      <Text style={styles.availablePlantName}>{item.name}</Text>
+      <Text style={styles.availablePlantName}>
+        {item.name} (approx. {item.daysToMaturity} days)
+      </Text>
       <Text style={styles.availablePlantCategory}>{item.category}</Text>
     </TouchableOpacity>
   );
