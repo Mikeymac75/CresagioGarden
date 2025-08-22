@@ -53,7 +53,7 @@
         "description": "Harvest the larger, outer leaves at the base of the plant, leaving the central leaves to continue growing. This 'cut-and-come-again' method prolongs the harvest."
       },
       {
-        "name": "Water consistently",
+        "name": "Watering",
         "description": "Water shallowly and frequently to keep the soil consistently moist but not waterlogged.",
         "daysAfterPlanting": 0,
         "recurring": 2
@@ -170,7 +170,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water your Kale consistently. Provide about 1-1.5 inches of water per week for tender, sweet leaves.",
+        "description": "Water consistently, providing about 1-1.5 inches of water per week for tender, sweet leaves.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -237,7 +237,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water your Swiss Chard consistently to promote lush, tender growth.",
+        "description": "Water consistently to promote lush, tender growth.",
         "daysAfterPlanting": 0,
         "recurring": 3
       }
@@ -336,7 +336,7 @@
     "storage": {
       "method": "Refrigerate",
       "duration": "1 week",
-      "notes": "Store unwashed in a plastic bag in the crisper drawer. Can be blanched and frozen for long-term preservation."
+      "notes": "Store unwashed in a plastic bag in the crisper. Can be blanched and frozen for long-term preservation."
     },
     "careTasks": [
       {
@@ -359,7 +359,7 @@
       },
       {
         "name": "Watering",
-        "description": "Water your Collard Greens consistently, with about 1 to 1.5 inches of water per week.",
+        "description": "Water consistently, with about 1 to 1.5 inches of water per week.",
         "daysAfterPlanting": 0,
         "recurring": 4
       }
