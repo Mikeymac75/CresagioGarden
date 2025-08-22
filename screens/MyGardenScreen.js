@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
@@ -18,11 +18,12 @@ import { useFocusEffect } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {
   validateGardenEntry,
-  getDaysUntilHarvest,
 } from '../services/GardeningService';
 import PropTypes from 'prop-types';
 import { Ionicons } from '@expo/vector-icons';
 import useSeedBank from '../hooks/useSeedBank';
+import GardenPlantListItem from '../components/GardenPlantListItem';
+import AvailablePlantListItem from '../components/AvailablePlantListItem';
 
 export default function MyGardenScreen({ navigation }) {
   const [myGarden, setMyGarden] = useState([]);
@@ -121,54 +122,24 @@ export default function MyGardenScreen({ navigation }) {
     );
   };
 
-  const renderPlantEntry = ({ item }) => {
+  const renderPlantEntry = useCallback(({ item }) => {
     if (item.status === 'harvested') return null;
     const plantInfo = allPlants.find(p => p.id === item.plantId);
-    if (!plantInfo) {
-      // This can happen if a custom plant was deleted but is still in the garden.
-      // Or if the plant list hasn't loaded yet.
-      return (
-        <View style={styles.plantEntry}>
-          <Text style={styles.plantName}>{item.nickname}</Text>
-          <Text style={styles.plantDetail}>Plant data not found. It may have been deleted.</Text>
-        </View>
-      );
-    }
-    const daysUntilHarvest = getDaysUntilHarvest(
-      item.plantedDate,
-      plantInfo.daysToMaturity
-    );
     return (
-      <View style={styles.plantEntry}>
-        <View style={styles.plantHeader}>
-          <Text style={styles.plantName}>{item.nickname}</Text>
-          <TouchableOpacity onPress={() => removePlant(item)}>
-            <Text style={styles.removeButton}>✕</Text>
-          </TouchableOpacity>
-        </View>
-        <Text style={styles.plantDetail}>Type: {plantInfo.name}</Text>
-        <Text style={styles.plantDetail}>
-          📅 Planted: {new Date(item.plantedDate).toLocaleDateString()}
-        </Text>
-        <Text style={styles.plantDetail}>
-          🌾 Harvest in:{' '}
-          {daysUntilHarvest > 0 ? `${daysUntilHarvest} days` : 'Ready!'}
-        </Text>
-      </View>
+      <GardenPlantListItem
+        item={item}
+        plantInfo={plantInfo}
+        onRemove={removePlant}
+      />
     );
-  };
+  }, [allPlants, removePlant]);
 
-  const renderAvailablePlant = ({ item }) => (
-    <TouchableOpacity
-      style={styles.availablePlant}
-      onPress={() => handlePlantSelection(item)}
-    >
-      <Text style={styles.availablePlantName}>
-        {item.name} (approx. {item.daysToMaturity} days)
-      </Text>
-      <Text style={styles.availablePlantCategory}>{item.category}</Text>
-    </TouchableOpacity>
-  );
+  const renderAvailablePlant = useCallback(({ item }) => (
+    <AvailablePlantListItem
+      item={item}
+      onSelect={handlePlantSelection}
+    />
+  ), [handlePlantSelection]);
 
   const activeGarden = myGarden.filter(p => p.status !== 'harvested');
 
@@ -377,22 +348,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  plantEntry: {
-    backgroundColor: 'white',
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 12,
-    elevation: 3,
-  },
-  plantHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
-  plantName: { fontSize: 18, fontWeight: 'bold', color: '#333' },
-  removeButton: { fontSize: 18, color: '#ff4444' },
-  plantDetail: { fontSize: 14, color: '#666', marginBottom: 4 },
   modalContainer: { flex: 1, backgroundColor: '#f9f9f9' },
   modalHeader: {
     flexDirection: 'row',
@@ -406,16 +361,6 @@ const styles = StyleSheet.create({
   modalTitle: { fontSize: 20, fontWeight: 'bold' },
   modalClose: { fontSize: 24, color: '#666' },
   plantList: { flex: 1, padding: 10 },
-  availablePlant: {
-    backgroundColor: 'white',
-    padding: 16,
-    borderRadius: 8,
-    marginBottom: 8,
-    borderLeftWidth: 4,
-    borderLeftColor: '#4CAF50',
-  },
-  availablePlantName: { fontSize: 16, fontWeight: 'bold' },
-  availablePlantCategory: { fontSize: 14, color: '#666' },
   createCustomButton: {
     backgroundColor: '#007bff',
     padding: 16,
