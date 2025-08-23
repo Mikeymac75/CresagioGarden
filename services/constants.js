@@ -28,6 +28,7 @@ export const TASK_TYPES = {
 
 // Alert type constants
 export const ALERT_TYPES = {
+  FROST_WARNING: 'FROST_WARNING',
   HEATWAVE: 'HEATWAVE',
   RAIN: 'RAIN',
   HARD_FREEZE: 'HARD_FREEZE_WARNING'

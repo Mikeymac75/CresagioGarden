@@ -16,6 +16,7 @@ import {
 import { getPlantableNow } from '../services/GardeningService';
 import { getUpcomingTasksForMyGarden, getSeasonalTasks } from '../services/TaskService';
 import { getWeatherForecast, generateDynamicAlerts } from '../services/WeatherService';
+import { loadPlants } from '../services/PlantService';
 import { useFocusEffect } from '@react-navigation/native';
 import WeatherWidget from '../components/WeatherWidget';
 import { StatsCardSkeleton, TaskCardSkeleton } from '../components/SkeletonLoader';
@@ -70,11 +71,12 @@ const HomeScreen = ({ navigation }) => {
           ? getWeatherForecast(parsedUserData.latitude, parsedUserData.longitude)
           : Promise.resolve(null);
 
-        const [weather, plantable, rawTasks, seasonal] = await Promise.all([
+        const [weather, plantable, rawTasks, seasonal, allPlants] = await Promise.all([
           weatherPromise,
           getPlantableNow(parsedUserData.firstFrostDate),
           getUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
           getSeasonalTasks(parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
+          loadPlants(),
         ]);
 
         if (weather) setWeatherData(weather);
@@ -83,7 +85,8 @@ const HomeScreen = ({ navigation }) => {
         let allUpcomingItems = [...rawTasks, ...seasonal];
         
         if (weather) {
-          const alerts = generateDynamicAlerts(weather, myGarden);
+          // Pass allPlants to the function
+          const alerts = generateDynamicAlerts(weather, myGarden, allPlants);
           allUpcomingItems = [...alerts, ...allUpcomingItems];
         }
 
