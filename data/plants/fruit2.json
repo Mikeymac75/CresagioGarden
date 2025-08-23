@@ -1,0 +1,224 @@
+[
+  {
+    "id": 38,
+    "name": "Cherry Tomato",
+    "category": "Fruit",
+    "harvestType": "continuous",
+    "daysToMaturity": 65,
+    "spacing": "18-24 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 6,
+    "transplantWeeksAfterLastFrost": 2,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Consistent, deep watering",
+    "wateringFrequencyDays": 3,
+    "description": "A small, sweet tomato variety that grows in clusters. Great for salads and snacking.",
+    "tips": "Provide sturdy support as they can grow quite large. Water consistently to prevent cracking.",
+    "succession": "Plant every 2-3 weeks for a continuous harvest.",
+    "yield": "High yield, can produce hundreds of tomatoes per plant.",
+    "soil": {
+      "ph": "6.2-6.8",
+      "type": "Well-drained, loamy soil rich in organic matter.",
+      "notes": "Benefits from added calcium to prevent blossom-end rot."
+    },
+    "temperature": {
+      "optimalLowF": 65,
+      "optimalHighF": 85,
+      "absoluteMinF": 40,
+      "notes": "A warm-season crop. Fruit will not set at temperatures consistently below 55°F or above 90°F."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
+    "companionPlants": ["Basil", "Carrot", "Marigold"],
+    "storage": {
+      "method": "Room temperature",
+      "duration": "3-7 days",
+      "notes": "Store on the counter, not in the refrigerator."
+    },
+    "careTasks": [
+      {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist."
+      },
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 35,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over 7-10 days."
+      },
+      {
+        "name": "Install stake or cage at transplant",
+        "daysAfterPlanting": 42,
+        "recurring": null,
+        "description": "Set up support systems early."
+      },
+      {
+        "name": "Fertilize with low-nitrogen food",
+        "daysAfterPlanting": 63,
+        "recurring": 14,
+        "description": "Once fruit begins to set, feed with a fertilizer high in phosphorus and potassium."
+      },
+      {
+        "name": "Check for ripe fruit",
+        "daysAfterPlanting": 60,
+        "recurring": 3,
+        "description": "Harvest tomatoes when they are fully colored and firm."
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Beefsteak Tomato",
+    "category": "Fruit",
+    "harvestType": "continuous",
+    "daysToMaturity": 85,
+    "spacing": "24-36 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 6,
+    "transplantWeeksAfterLastFrost": 2,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Consistent, deep watering",
+    "wateringFrequencyDays": 3,
+    "description": "A large, meaty tomato variety, perfect for slicing.",
+    "tips": "Provide strong support due to the heavy fruit. Mulch to retain moisture.",
+    "succession": "Not typically needed due to long harvest period.",
+    "yield": "Lower yield than other varieties, but much larger fruit.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Well-drained, fertile soil high in organic matter.",
+      "notes": "Prefers fertile clay and loam."
+    },
+    "temperature": {
+      "optimalLowF": 65,
+      "optimalHighF": 85,
+      "absoluteMinF": 40,
+      "notes": "A warm-season crop. Fruit will not set at temperatures consistently below 55°F or above 90°F."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
+    "companionPlants": ["Basil", "Carrot", "Marigold"],
+    "storage": {
+      "method": "Room temperature",
+      "duration": "3-7 days",
+      "notes": "Store on the counter, not in the refrigerator."
+    },
+    "careTasks": [
+      {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist."
+      },
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 35,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over 7-10 days."
+      },
+      {
+        "name": "Install strong stake or cage at transplant",
+        "daysAfterPlanting": 42,
+        "recurring": null,
+        "description": "Set up strong support systems early."
+      },
+      {
+        "name": "Fertilize with low-nitrogen food",
+        "daysAfterPlanting": 63,
+        "recurring": 14,
+        "description": "Once fruit begins to set, feed with a fertilizer high in phosphorus and potassium."
+      },
+      {
+        "name": "Check for ripe fruit",
+        "daysAfterPlanting": 80,
+        "recurring": 3,
+        "description": "Harvest tomatoes when they are fully colored and firm."
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Cucamelon",
+    "category": "Fruit",
+    "harvestType": "continuous",
+    "daysToMaturity": 75,
+    "spacing": "12-16 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 4,
+    "transplantWeeksAfterLastFrost": 2,
+    "directSowWeeksAfterLastFrost": 2,
+    "wateringNeeds": "Regular watering",
+    "wateringFrequencyDays": 3,
+    "description": "A small, grape-sized fruit that looks like a tiny watermelon and tastes like a cucumber with a hint of lime.",
+    "tips": "Grow on a trellis to save space and make harvesting easier. The roots develop tubers, so a large pot is best if container gardening.",
+    "succession": "Plant every 2-3 weeks for a continuous harvest.",
+    "yield": "Very prolific.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Well-drained soil.",
+      "notes": "Tolerant of various soil types."
+    },
+    "temperature": {
+      "optimalLowF": 65,
+      "optimalHighF": 85,
+      "absoluteMinF": 40,
+      "notes": "Loves warm weather. Very frost sensitive."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
+    "companionPlants": ["Corn", "Beans", "Nasturtium"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1 week",
+      "notes": "Store in the refrigerator."
+    },
+    "careTasks": [
+      {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep the soil consistently moist."
+      },
+      {
+        "name": "Begin hardening off seedlings",
+        "daysAfterPlanting": 21,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over a week."
+      },
+      {
+        "name": "Set up trellis",
+        "daysAfterPlanting": 28,
+        "recurring": null,
+        "description": "Install a trellis at planting time."
+      },
+      {
+        "name": "Fertilize",
+        "daysAfterPlanting": 45,
+        "recurring": 30,
+        "description": "Fertilize with a high-potassium liquid fertilizer to encourage fruiting."
+      },
+      {
+        "name": "Harvest regularly",
+        "daysAfterPlanting": 70,
+        "recurring": 3,
+        "description": "Harvest when fruit is grape-sized."
+      }
+    ]
+  }
+]

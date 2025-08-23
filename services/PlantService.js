@@ -6,9 +6,11 @@ import leafy_greens from '../data/plants/leafy_greens.json';
 import legumes from '../data/plants/legumes.json';
 import root_vegetables from '../data/plants/root_vegetables.json';
 import vegetables from '../data/plants/vegetables.json';
+import fruit2 from '../data/plants/fruit2.json';
 
 const basePlants = [
   ...fruits,
+  ...fruit2,
   ...grains,
   ...herbs,
   ...leafy_greens,
