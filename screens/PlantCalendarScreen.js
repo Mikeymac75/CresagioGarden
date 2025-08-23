@@ -30,8 +30,11 @@ export default function PlantCalendarScreen() {
           const parsedData = JSON.parse(data);
           setUserData(parsedData);
           if (parsedData.lastFrostDate) {
-            const tasks = getTasksForMonth(parsedData.lastFrostDate, selectedMonth);
-            setPlantingSchedule(tasks);
+            const schedule = await getTasksForMonth(
+              parsedData.lastFrostDate,
+              selectedMonth
+            );
+            setPlantingSchedule(schedule);
           }
         }
       } catch (error) {
