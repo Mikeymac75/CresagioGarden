@@ -21,12 +21,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.GardenCommand75.gardencommand",
-      "edgeToEdgeEnabled": true,
-      "config": {
-        "googleMaps": {
-          "apiKey": "${EXPO_PUBLIC_GOOGLE_MAPS_API_KEY}"
-        }
-      }
+      "edgeToEdgeEnabled": true
     },
     "web": {
       "favicon": "./assets/favicon.png"

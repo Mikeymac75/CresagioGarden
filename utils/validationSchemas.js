@@ -34,9 +34,7 @@ const plantSchema = yup.object().shape({
   directSowWeeksAfterLastFrost: yup.number().nullable(),
   wateringNeeds: yup.string().required(),
   wateringFrequencyDays: yup.number().required().min(1),
-  // --- THE FIX: Corrected 'yp' to 'yup' ---
   description: yup.string().required(),
-  // --- END FIX ---
   tips: yup.string().required(),
   careTasks: yup.array().of(careTaskSchema),
   conditionalAlerts: yup.array().of(conditionalAlertSchema),
