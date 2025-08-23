@@ -4,17 +4,41 @@ Garden Command is a mobile application designed to help gardeners of all levels 
 
 ## Key Features
 
-*   **Personalized Planting Calendar:** Get a customized planting schedule based on your local hardiness zone. Know the best times to start seeds indoors, transplant seedlings, and direct sow into your garden.
-*   **Dynamic Task Management:** Automatically generates a personalized task list based on the plants in your garden. It creates tasks for initial planting, recurring watering schedules, specific care instructions (like fertilizing or pruning), and even reminds you when it's time to harvest. The weekly view keeps you focused on what's important now.
-*   **My Garden:** Keep a virtual representation of your garden. Add plants you're growing and track their progress from seed to harvest.
-*   **Plant Database:** Access a comprehensive database of common garden plants, complete with growing information, tips, and care instructions.
-*   **Garden Journal:** Document your gardening journey, take notes, and keep track of your successes and challenges.
-*   **Climate-Aware Suggestions:** The app provides suggestions for what you can plant right now based on the time remaining before the first frost in your area.
-*   **Task Reminders via Notifications:** Receive local notifications for important gardening tasks like watering, fertilizing, and harvesting, ensuring you never miss a critical step.
-*   **Real-Time Weather Integration & Alerts:** The app now fetches real-time weather forecasts to provide actionable alerts.
-    *   **Dynamic Alerts:** Get warnings for frost, heatwaves, and heavy rain.
-    *   **Smart Suggestions:** The app advises you to protect sensitive plants based on frost alerts and to skip watering when heavy rain is expected.
-*   **Interactive Modals:** Get more details about tasks and plants by clicking on them.
+The application is organized into four main tabs, each with a distinct set of features:
+
+### Home Screen
+
+*   **At-a-Glance Dashboard:** A central hub that displays a welcome message, your hardiness zone, and key stats like the number of plants in your garden and upcoming tasks.
+*   **Real-Time Weather Integration:** Shows the current weather forecast for your location.
+*   **Dynamic Weather Alerts:** Provides actionable alerts for frost, heatwaves, and heavy rain, helping you protect your plants.
+*   **Smart Task Management:**
+    *   Displays a list of tasks for the upcoming week.
+    *   Automatically skips watering tasks if heavy rain is forecasted.
+    *   Allows you to mark tasks as complete.
+*   **Climate-Aware Suggestions:** Recommends plants you can still grow based on the time remaining before the first frost.
+*   **Interactive Modals:** Tap on a task or plant suggestion to get more details.
+
+### My Garden
+
+*   **Virtual Garden:** Keep a digital record of all the plants you are currently growing.
+*   **Comprehensive Plant Database:** Browse a "Seed Bank" of common garden plants with detailed growing information.
+*   **Add Custom Plants:** Flexibility to add your own custom plants to your garden.
+*   **Track Plant Progress:** Monitor the status of each plant from seedling to harvest.
+
+### Calendar
+
+*   **Task Calendar:** View all upcoming gardening tasks in a calendar format.
+*   **Personalized Planting Calendar:** Get a customized planting schedule based on your local hardiness zone, showing the best times to start seeds, transplant, and sow directly.
+
+### Garden Journal
+
+*   **Digital Diary:** Document your gardening journey, take notes, and log your successes and challenges.
+*   **Easy Entry Management:** Create, view, and manage your journal entries.
+
+### Core Features
+
+*   **Local Notifications:** Receive timely reminders for important gardening tasks like watering, fertilizing, and harvesting.
+*   **Secure Storage:** Your garden data is stored securely on your device.
 
 ## Getting Started
 
@@ -23,8 +47,7 @@ This project is built with [React Native](https://reactnative.dev/) and [Expo](h
 ### Prerequisites
 
 *   Node.js and npm (or yarn)
-*   Expo CLI: `npm install -g expo-cli`
-*   Expo Go app on your iOS or Android device
+*   Expo Go app on your iOS or Android device for running the app on a physical device.
 
 ### Installation & Running
 
@@ -41,13 +64,33 @@ This project is built with [React Native](https://reactnative.dev/) and [Expo](h
 
 3.  **Start the development server:**
     ```bash
-    npm start
+    npx expo start
     ```
     This will open the Expo developer tools in your browser.
 
 4.  **Run the app:**
     *   **On your mobile device:** Scan the QR code from the Expo developer tools using the Expo Go app.
-    *   **In an emulator/simulator:** Follow the instructions in the Expo developer tools to run the app on an Android Emulator or iOS Simulator.
+    *   **In an emulator/simulator:** Press `i` to run on iOS Simulator or `a` to run on Android Emulator.
+
+## Navigation Structure
+
+The app's navigation is built using React Navigation and is organized as follows:
+
+*   **Root Stack Navigator:**
+    *   `SetupScreen`: The initial screen for first-time users to set up their profile (e.g., hardiness zone).
+    *   `MainAppTabs`: The main interface of the app, accessible after the initial setup is complete.
+
+*   **Main App Tabs (`BottomTabNavigator`):**
+    *   **Home:** A dashboard displaying weather information and upcoming tasks.
+    *   **My Garden:** A stack navigator for managing the user's garden.
+        *   `MyGardenScreen`: View the plants in your garden.
+        *   `SeedBankScreen`: Add new plants to your garden from a predefined list.
+        *   `CustomPlantScreen`: Create a new custom plant to add to your garden.
+    *   **Calendar:** A stack navigator for viewing tasks and planting schedules.
+        *   `AllTasksCalendarScreen`: View all upcoming tasks.
+        *   `PlantingCalendarScreen`: View the planting schedule for your plants.
+    *   **Journal:** A stack navigator for the garden journal.
+        *   `GardenJournalScreen`: View and manage journal entries.
 
 ## Project Structure
 
@@ -56,7 +99,8 @@ This project is built with [React Native](https://reactnative.dev/) and [Expo](h
 ├── assets/             # Images, icons, and other static assets
 ├── components/         # Reusable React Native components (e.g., WeatherWidget, SkeletonLoader)
 ├── data/               # Static JSON data for the application
-│   └── plants/         # Plant data categorized by type (fruits, vegetables, etc.)
+│   ├── plants/         # Plant data categorized by type (fruits, vegetables, etc.)
+│   └── seasonal_tasks.json # Seasonal tasks data
 ├── hooks/              # Custom React hooks (e.g., useSeedBank)
 ├── screens/            # Components for each screen of the app
 ├── services/           # Core business logic and API interactions
