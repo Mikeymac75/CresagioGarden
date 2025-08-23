@@ -162,6 +162,12 @@ export const getTasksForMonth = async (lastFrostDate, monthIndex) => {
     let allTasks = [];
     const allPlants = await loadPlants();
 
+    // Defensive check to ensure allPlants is an array
+    if (!Array.isArray(allPlants)) {
+      console.error('TaskService: loadPlants did not return an array. Received:', allPlants);
+      return [];
+    }
+
     allPlants.forEach(plant => {
       const plantTasks = TaskGenerator.generatePlantingTasks(plant, lastFrostDate);
       allTasks = [...allTasks, ...plantTasks];
