@@ -63,7 +63,16 @@ export default function AllTasksCalendarScreen({ navigation }) {
                 ]);
 
                 const dynamicAlerts = generateDynamicAlerts(weather, myGarden, allPlants);
-                const allTasks = [...fetchedTasks, ...seasonalTasks, ...dynamicAlerts, ...plantingTasks];
+                const weatherAlerts = weather && weather.alerts ? weather.alerts.map(alert => ({
+                  id: `alert-${alert.type}-${new Date().getTime()}`,
+                  task: alert.message,
+                  date: alert.date,
+                  type: 'alert',
+                  priority: 'medium',
+                  modifiesTasks: alert.modifiesTasks,
+                })) : [];
+
+                const allTasks = [...fetchedTasks, ...seasonalTasks, ...dynamicAlerts, ...plantingTasks, ...weatherAlerts];
                 setAllTasks(allTasks);
               }
             }
