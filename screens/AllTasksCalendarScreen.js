@@ -52,8 +52,8 @@ export default function AllTasksCalendarScreen({ navigation }) {
             const parsedUserData = JSON.parse(userDataString);
             setUserData(parsedUserData);
 
-            if (parsedUserData.location) {
-              const weather = await getWeatherForecast(parsedUserData.location.latitude, parsedUserData.location.longitude);
+            if (parsedUserData.latitude && parsedUserData.longitude) {
+              const weather = await getWeatherForecast(parsedUserData.latitude, parsedUserData.longitude);
               setWeatherData(weather);
               if (weather && weather.error) {
                 setWeatherError(weather.error);
@@ -94,30 +94,26 @@ export default function AllTasksCalendarScreen({ navigation }) {
   );
 
   useEffect(() => {
-    if (!weatherData || weatherData.error) {
-      const filteredTasks = allTasks.filter(task => activeFilters.includes(task.type));
-      const groupedTasks = groupTasksByMonth(filteredTasks);
-      setTasks(groupedTasks);
-      return;
+    let adjustedTasks = [...allTasks];
+    if (weatherData && !weatherData.error) {
+        const rainAlert = weatherData.alerts.find(a => a.modifiesTasks === 'water');
+        adjustedTasks = allTasks.map(task => {
+          if (rainAlert && task.type === 'water') {
+            const taskDate = new Date(task.date);
+            const today = new Date();
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            if (taskDate.toDateString() === today.toDateString() || taskDate.toDateString() === tomorrow.toDateString()) {
+              return {
+                ...task,
+                isCancelled: true,
+                task: `~${task.task}~ (Rain expected)`,
+              };
+            }
+          }
+          return task;
+        });
     }
-
-    const rainAlert = weatherData.alerts.find(a => a.modifiesTasks === 'water');
-    const adjustedTasks = allTasks.map(task => {
-      if (rainAlert && task.type === 'water') {
-        const taskDate = new Date(task.date);
-        const today = new Date();
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        if (taskDate.toDateString() === today.toDateString() || taskDate.toDateString() === tomorrow.toDateString()) {
-          return {
-            ...task,
-            isCancelled: true,
-            task: `~${task.task}~ (Rain expected)`,
-          };
-        }
-      }
-      return task;
-    });
 
     const filteredTasks = adjustedTasks.filter(task => activeFilters.includes(task.type));
     const groupedTasks = groupTasksByMonth(filteredTasks);
