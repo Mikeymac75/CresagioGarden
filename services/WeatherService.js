@@ -196,7 +196,7 @@ export const getWeatherForecast = async (latitude, longitude) => {
  * Enhanced dynamic alerts with better customization
  */
 export const generateDynamicAlerts = (weatherData, myGarden, allPlants) => {
-  if (!weatherData || !Array.isArray(myGarden) || !Array.isArray(allPlants)) {
+  if (!weatherData || weatherData.error || !weatherData.hourlyForecast || !Array.isArray(myGarden) || !Array.isArray(allPlants)) {
     return [];
   }
 
