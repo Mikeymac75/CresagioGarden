@@ -1,23 +1,13 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  Alert,
   Modal,
 } from 'react-native';
-import {
-  getItem as getSecureItem,
-  setItem as setSecureItem,
-  removeItem as removeSecureItem,
-} from '../utils/SecureStorage';
-import { getPlantableNow } from '../services/GardeningService';
-import { getUpcomingTasksForMyGarden, getSeasonalTasks } from '../services/TaskService';
-import { getWeatherForecast, generateDynamicAlerts } from '../services/WeatherService';
-import { loadPlants } from '../services/PlantService';
-import { useFocusEffect } from '@react-navigation/native';
+import useHomeScreenData from '../hooks/useHomeScreenData';
 import WeatherWidget from '../components/WeatherWidget';
 import { StatsCardSkeleton, TaskCardSkeleton } from '../components/SkeletonLoader';
 import PropTypes from 'prop-types';
@@ -35,114 +25,20 @@ Checkbox.propTypes = {
 };
 
 const HomeScreen = ({ navigation }) => {
-  const [userData, setUserData] = useState(null);
-  const [plantableNow, setPlantableNow] = useState([]);
-  const [upcomingTasks, setUpcomingTasks] = useState([]);
-  const [completedTasks, setCompletedTasks] = useState(new Set());
-  const [plantCount, setPlantCount] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [weatherData, setWeatherData] = useState(null);
+  const {
+    userData,
+    plantableNow,
+    upcomingTasks,
+    completedTasks,
+    plantCount,
+    loading,
+    weatherData,
+    toggleTask,
+    handleChangeLocation,
+  } = useHomeScreenData(navigation);
+
   const [isTaskModalVisible, setIsTaskModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
-
-  const loadData = useCallback(async () => {
-    setLoading(true);
-    setWeatherData(null);
-    try {
-      const [userDataString, myGardenString, completedTasksString] = await Promise.all([
-        getSecureItem('userData'),
-        getSecureItem('myGarden'),
-        getSecureItem('completedTasks'),
-      ]);
-
-      const myGarden = myGardenString ? JSON.parse(myGardenString) : [];
-      setPlantCount(myGarden.filter(p => p.status !== 'harvested').length);
-
-      const loadedCompletedTasks = completedTasksString
-        ? new Set(JSON.parse(completedTasksString))
-        : new Set();
-      setCompletedTasks(loadedCompletedTasks);
-
-      if (userDataString) {
-        const parsedUserData = JSON.parse(userDataString);
-        setUserData(parsedUserData);
-
-        const weatherPromise = (parsedUserData.latitude && parsedUserData.longitude)
-          ? getWeatherForecast(parsedUserData.latitude, parsedUserData.longitude)
-          : Promise.resolve(null);
-
-        const [weather, plantable, rawTasks, seasonal, allPlants] = await Promise.all([
-          weatherPromise,
-          getPlantableNow(parsedUserData.firstFrostDate),
-          getUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
-          getSeasonalTasks(parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
-          loadPlants(),
-        ]);
-
-        if (weather) setWeatherData(weather);
-        setPlantableNow(plantable);
-        
-        let allUpcomingItems = [...rawTasks, ...seasonal];
-        
-        if (weather) {
-          // Pass allPlants to the function
-          const alerts = generateDynamicAlerts(weather, myGarden, allPlants);
-          allUpcomingItems = [...alerts, ...allUpcomingItems];
-        }
-
-        // CORRECTED FILTERING LOGIC
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-
-        const rangeStart = new Date();
-        rangeStart.setDate(today.getDate() - 3); // MISSED_TASK_DAYS
-        rangeStart.setHours(0, 0, 0, 0);
-        
-        const wateringPastLimit = new Date();
-        wateringPastLimit.setDate(today.getDate() - 7); // Custom limit for watering
-        wateringPastLimit.setHours(0, 0, 0, 0);
-
-        const filteredAndSortedTasks = allUpcomingItems
-          .filter(task => {
-            const taskDate = new Date(task.date);
-            taskDate.setHours(0, 0, 0, 0);
-            const isCompleted = loadedCompletedTasks.has(task.id);
-
-            // Always show future tasks
-            if (taskDate >= today) {
-              return true;
-            }
-
-            // Handle past tasks
-            if (isCompleted) {
-              // Hide completed tasks that are in the past
-              return false;
-            } else {
-              // For incomplete tasks, use different look-back windows
-              if (task.type === 'water') {
-                return taskDate >= wateringPastLimit;
-              } else {
-                return taskDate >= rangeStart;
-              }
-            }
-          })
-          .sort((a, b) => new Date(a.date) - new Date(b.date));
-
-        setUpcomingTasks(filteredAndSortedTasks);
-      }
-    } catch (error) {
-      console.error('Error loading data:', error);
-      Alert.alert('Error', 'Could not load your garden data. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useFocusEffect(
-    useCallback(() => {
-      loadData();
-    }, [loadData])
-  );
 
   const handleTaskPress = (task) => {
     if (task.description) {
@@ -150,40 +46,6 @@ const HomeScreen = ({ navigation }) => {
       setIsTaskModalVisible(true);
     }
   };
-  
-  const handleChangeLocation = () => {
-    Alert.alert(
-      'Change Location',
-      'Are you sure you want to change your location? This will require you to set it up again.',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Change',
-          onPress: async () => {
-            try {
-              await removeSecureItem('userData');
-              navigation.replace('Setup');
-            } catch (error) {
-              console.error('Failed to remove user data:', error);
-              Alert.alert('Error', 'Could not reset location.');
-            }
-          },
-          style: 'destructive',
-        },
-      ]
-    );
-  };
-
-  const toggleTask = useCallback(async (taskId) => {
-    const newCompletedTasks = new Set(completedTasks);
-    if (newCompletedTasks.has(taskId)) {
-      newCompletedTasks.delete(taskId);
-    } else {
-      newCompletedTasks.add(taskId);
-    }
-    setCompletedTasks(newCompletedTasks);
-    await setSecureItem('completedTasks', JSON.stringify(Array.from(newCompletedTasks)));
-  }, [completedTasks]);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
