@@ -24,6 +24,7 @@ export default function AllTasksCalendarScreen({ navigation }) {
   const [activeFilters, setActiveFilters] = useState(['water', 'care', 'harvest', 'seasonal', 'alert']);
   const [isTaskModalVisible, setIsTaskModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
+  const [weatherError, setWeatherError] = useState(null);
 
   const filterOptions = {
     'water': '💧',
@@ -37,6 +38,7 @@ export default function AllTasksCalendarScreen({ navigation }) {
     React.useCallback(() => {
       const loadData = async () => {
         setLoading(true);
+        setWeatherError(null);
         try {
           const [userDataString, myGardenString, seedBankString] = await Promise.all([
             getSecureItem('userData'),
@@ -53,6 +55,9 @@ export default function AllTasksCalendarScreen({ navigation }) {
             if (parsedUserData.location) {
               const weather = await getWeatherForecast(parsedUserData.location.latitude, parsedUserData.location.longitude);
               setWeatherData(weather);
+              if (weather && weather.error) {
+                setWeatherError(weather.error);
+              }
 
               if (parsedUserData.lastFrostDate) {
                 const allPlants = await loadPlants();
@@ -89,7 +94,7 @@ export default function AllTasksCalendarScreen({ navigation }) {
   );
 
   useEffect(() => {
-    if (!weatherData) {
+    if (!weatherData || weatherData.error) {
       const filteredTasks = allTasks.filter(task => activeFilters.includes(task.type));
       const groupedTasks = groupTasksByMonth(filteredTasks);
       setTasks(groupedTasks);
@@ -186,6 +191,11 @@ export default function AllTasksCalendarScreen({ navigation }) {
           <Text style={styles.linkButtonText}>View Planting Calendar</Text>
         </TouchableOpacity>
       </View>
+      {weatherError && (
+        <View style={styles.errorContainer}>
+            <Text style={styles.errorText}>Weather data unavailable: {weatherError}</Text>
+        </View>
+      )}
       <View style={styles.filterContainer}>
         {Object.entries(filterOptions).map(([key, value]) => (
           <TouchableOpacity
@@ -386,5 +396,19 @@ const styles = StyleSheet.create({
       marginBottom: 15,
       textAlign: "center",
       fontSize: 16
+  },
+  errorContainer: {
+    backgroundColor: '#FFEBEE',
+    padding: 10,
+    marginHorizontal: 20,
+    marginTop: 10,
+    borderRadius: 8,
+    borderLeftWidth: 4,
+    borderLeftColor: '#f44336',
+  },
+  errorText: {
+    color: '#D32F2F',
+    fontSize: 14,
+    fontWeight: '500',
   }
 });
