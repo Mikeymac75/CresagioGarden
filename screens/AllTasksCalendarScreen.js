@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import { getItem as getSecureItem } from '../utils/SecureStorage';
 import { getAllUpcomingTasksForMyGarden, getSeasonalTasks } from '../services/TaskService';
+import { getWeatherForecast, generateDynamicAlerts } from '../services/WeatherService';
+import { loadPlants } from '../services/PlantService';
 import { useFocusEffect } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 
@@ -17,8 +19,9 @@ export default function AllTasksCalendarScreen({ navigation }) {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
   const [allTasks, setAllTasks] = useState([]);
-  const [activeFilters, setActiveFilters] = useState(['water', 'care', 'harvest', 'seasonal']);
+  const [activeFilters, setActiveFilters] = useState(['water', 'care', 'harvest', 'seasonal', 'alert']);
   const [isTaskModalVisible, setIsTaskModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
 
@@ -26,7 +29,8 @@ export default function AllTasksCalendarScreen({ navigation }) {
     'water': '💧',
     'care': '🔧',
     'harvest': '🥕',
-    'seasonal': '🗓️'
+    'seasonal': '🗓️',
+    'alert': '🔔'
   };
 
   useFocusEffect(
@@ -43,16 +47,22 @@ export default function AllTasksCalendarScreen({ navigation }) {
           if (userDataString) {
             const parsedUserData = JSON.parse(userDataString);
             setUserData(parsedUserData);
-            
-            if (parsedUserData.lastFrostDate) {
-              const [fetchedTasks, seasonalTasks] = await Promise.all([
-                getAllUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
-                getSeasonalTasks(parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
-              ]);
-              const allTasks = [...fetchedTasks, ...seasonalTasks];
-              setAllTasks(allTasks);
-              const groupedTasks = groupTasksByMonth(allTasks.filter(task => activeFilters.includes(task.type)));
-              setTasks(groupedTasks);
+
+            if (parsedUserData.location) {
+              const weather = await getWeatherForecast(parsedUserData.location.latitude, parsedUserData.location.longitude);
+              setWeatherData(weather);
+
+              if (parsedUserData.lastFrostDate) {
+                const allPlants = await loadPlants();
+                const [fetchedTasks, seasonalTasks] = await Promise.all([
+                  getAllUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
+                  getSeasonalTasks(parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
+                ]);
+
+                const dynamicAlerts = generateDynamicAlerts(weather, myGarden, allPlants);
+                const allTasks = [...fetchedTasks, ...seasonalTasks, ...dynamicAlerts];
+                setAllTasks(allTasks);
+              }
             }
           }
         } catch (error) {
@@ -67,10 +77,35 @@ export default function AllTasksCalendarScreen({ navigation }) {
   );
 
   useEffect(() => {
-    const filteredTasks = allTasks.filter(task => activeFilters.includes(task.type));
+    if (!weatherData) {
+      const filteredTasks = allTasks.filter(task => activeFilters.includes(task.type));
+      const groupedTasks = groupTasksByMonth(filteredTasks);
+      setTasks(groupedTasks);
+      return;
+    }
+
+    const rainAlert = weatherData.alerts.find(a => a.modifiesTasks === 'water');
+    const adjustedTasks = allTasks.map(task => {
+      if (rainAlert && task.type === 'water') {
+        const taskDate = new Date(task.date);
+        const today = new Date();
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        if (taskDate.toDateString() === today.toDateString() || taskDate.toDateString() === tomorrow.toDateString()) {
+          return {
+            ...task,
+            isCancelled: true,
+            task: `~${task.task}~ (Rain expected)`,
+          };
+        }
+      }
+      return task;
+    });
+
+    const filteredTasks = adjustedTasks.filter(task => activeFilters.includes(task.type));
     const groupedTasks = groupTasksByMonth(filteredTasks);
     setTasks(groupedTasks);
-  }, [activeFilters, allTasks]);
+  }, [activeFilters, allTasks, weatherData]);
 
   const handleFilterChange = (filter) => {
     setActiveFilters(prevFilters => {
@@ -153,7 +188,7 @@ export default function AllTasksCalendarScreen({ navigation }) {
             {tasks[month].map((item, index) => (
               <TouchableOpacity key={index} style={styles.taskCard} onPress={() => handleTaskPress(item)} disabled={!item.description}>
                 <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
-                <Text style={styles.taskText}>{item.task}</Text>
+                <Text style={[styles.taskText, item.isCancelled && styles.cancelledTaskText]}>{item.task}</Text>
               </TouchableOpacity>
             ))}
           </View>
@@ -239,6 +274,10 @@ const styles = StyleSheet.create({
   taskText: {
     fontSize: 16,
     color: '#333',
+  },
+  cancelledTaskText: {
+    textDecorationLine: 'line-through',
+    color: '#999',
   },
   emptyState: {
     marginTop: 50,
