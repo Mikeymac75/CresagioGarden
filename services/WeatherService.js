@@ -204,31 +204,46 @@ export const generateDynamicAlerts = (weatherData, myGarden, allPlants) => {
     const dynamicAlerts = [];
     const now = new Date();
 
-    // --- New Frost Alert Logic ---
     const forecastTemperatures = weatherData.hourlyForecast.map(f => f.temperature);
     const minTempCelsius = Math.min(...forecastTemperatures);
+    const maxTempCelsius = Math.max(...forecastTemperatures);
     const minTempFahrenheit = (minTempCelsius * 9/5) + 32;
+    const maxTempFahrenheit = (maxTempCelsius * 9/5) + 32;
 
     myGarden.forEach(entry => {
       const plantDetails = allPlants.find(p => p.id === entry.plantId);
-      if (!plantDetails || !plantDetails.temperature?.absoluteMinF) {
+      if (!plantDetails || !plantDetails.temperature) {
         return;
       }
 
-      if (minTempFahrenheit <= plantDetails.temperature.absoluteMinF) {
-        const frostAlert = plantDetails.environmentalAlerts?.find(
-          a => a.condition === 'FROST_WARNING'
-        );
+      const { absoluteMinF, optimalLowF, optimalHighF } = plantDetails.temperature;
 
-        if (frostAlert) {
-          dynamicAlerts.push({
-            id: `alert-frost-${plantDetails.id}-${now.getTime()}`,
-            task: `❄️ ${plantDetails.name}: ${frostAlert.message}`,
-            date: now.toISOString(),
-            type: 'alert',
-            priority: frostAlert.priority || 'high',
-          });
-        }
+      if (minTempFahrenheit <= absoluteMinF) {
+        dynamicAlerts.push({
+          id: `alert-abs-min-${plantDetails.id}-${now.getTime()}`,
+          task: `❄️ Dangerously low temperatures for ${plantDetails.name}! Cover immediately.`,
+          date: now.toISOString(),
+          type: 'alert',
+          priority: 'high',
+        });
+      } else if (minTempFahrenheit <= optimalLowF) {
+        dynamicAlerts.push({
+          id: `alert-opt-low-${plantDetails.id}-${now.getTime()}`,
+          task: `📉 Low temperature warning for ${plantDetails.name}. Growth may be stunted.`,
+          date: now.toISOString(),
+          type: 'alert',
+          priority: 'medium',
+        });
+      }
+
+      if (maxTempFahrenheit >= optimalHighF) {
+        dynamicAlerts.push({
+          id: `alert-opt-high-${plantDetails.id}-${now.getTime()}`,
+          task: `☀️ High temperature warning for ${plantDetails.name}. Ensure adequate water and shade.`,
+          date: now.toISOString(),
+          type: 'alert',
+          priority: 'medium',
+        });
       }
     });
 
