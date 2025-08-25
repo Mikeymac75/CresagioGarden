@@ -8,20 +8,13 @@ import {
   TouchableOpacity,
   Modal
 } from 'react-native';
-import { getItem as getSecureItem } from '../utils/SecureStorage';
-import { getAllUpcomingTasksForMyGarden, getSeasonalTasks, getAllPlantingTasks } from '../services/TaskService';
-import { getWeatherForecast, generateDynamicAlerts } from '../services/WeatherService';
-import { loadPlants } from '../services/PlantService';
-import { useFocusEffect } from '@react-navigation/native';
+import useHomeScreenData from '../hooks/useHomeScreenData';
 import PropTypes from 'prop-types';
 
 export default function AllTasksCalendarScreen({ navigation }) {
   const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [userData, setUserData] = useState(null);
-  const [weatherData, setWeatherData] = useState(null);
-  const [allTasks, setAllTasks] = useState([]);
-  const [activeFilters, setActiveFilters] = useState(['water', 'care', 'harvest', 'seasonal', 'alert']);
+  const { allTasks, weatherData, loading } = useHomeScreenData(navigation);
+  const [activeFilters, setActiveFilters] = useState(['water', 'care', 'harvest', 'seasonal', 'alert', 'start-indoors', 'direct-sow', 'transplant']);
   const [isTaskModalVisible, setIsTaskModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
 
@@ -30,54 +23,12 @@ export default function AllTasksCalendarScreen({ navigation }) {
     'care': '🔧',
     'harvest': '🥕',
     'seasonal': '🗓️',
-    'alert': '🔔'
+    'alert': '🔔',
+    'start-indoors': '🌱',
+    'direct-sow': '🌿',
+    'transplant': '🌿',
   };
 
-  useFocusEffect(
-    React.useCallback(() => {
-      const loadData = async () => {
-        setLoading(true);
-        try {
-          const [userDataString, myGardenString, seedBankString] = await Promise.all([
-            getSecureItem('userData'),
-            getSecureItem('myGarden'),
-            getSecureItem('userSeedBank'),
-          ]);
-          const myGarden = myGardenString ? JSON.parse(myGardenString) : [];
-          const seedBank = seedBankString ? JSON.parse(seedBankString) : [];
-
-          if (userDataString) {
-            const parsedUserData = JSON.parse(userDataString);
-            setUserData(parsedUserData);
-
-            if (parsedUserData.location) {
-              const weather = await getWeatherForecast(parsedUserData.location.latitude, parsedUserData.location.longitude);
-              setWeatherData(weather);
-
-              if (parsedUserData.lastFrostDate) {
-                const allPlants = await loadPlants();
-                const [fetchedTasks, seasonalTasks, plantingTasks] = await Promise.all([
-                  getAllUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
-                  getSeasonalTasks(parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
-                  getAllPlantingTasks(parsedUserData.lastFrostDate, seedBank),
-                ]);
-
-                const dynamicAlerts = generateDynamicAlerts(weather, myGarden, allPlants);
-                const allTasks = [...fetchedTasks, ...seasonalTasks, ...dynamicAlerts, ...plantingTasks];
-                setAllTasks(allTasks);
-              }
-            }
-          }
-        } catch (error) {
-          console.error('Error loading tasks:', error);
-        } finally {
-          setLoading(false);
-        }
-      };
-
-      loadData();
-    }, [])
-  );
 
   useEffect(() => {
     if (!weatherData) {
