@@ -77,30 +77,29 @@ export default function AllTasksCalendarScreen({ navigation }) {
   );
 
   useEffect(() => {
-    if (!weatherData) {
-      const filteredTasks = allTasks.filter(task => activeFilters.includes(task.type));
-      const groupedTasks = groupTasksByMonth(filteredTasks);
-      setTasks(groupedTasks);
-      return;
-    }
+    let adjustedTasks = [...allTasks];
+    if (weatherData && weatherData.alerts) {
+      const rainAlert = weatherData.alerts.find(a => a.modifiesTasks === 'water');
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
 
-    const rainAlert = weatherData.alerts.find(a => a.modifiesTasks === 'water');
-    const adjustedTasks = allTasks.map(task => {
-      if (rainAlert && task.type === 'water') {
-        const taskDate = new Date(task.date);
-        const today = new Date();
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        if (taskDate.toDateString() === today.toDateString() || taskDate.toDateString() === tomorrow.toDateString()) {
-          return {
-            ...task,
-            isCancelled: true,
-            task: `~${task.task}~ (Rain expected)`,
-          };
-        }
+      if (rainAlert) {
+        adjustedTasks = allTasks.map(task => {
+          if (task.type === 'water') {
+            const taskDate = new Date(task.date);
+            if (taskDate.toDateString() === today.toDateString() || taskDate.toDateString() === tomorrow.toDateString()) {
+              return {
+                ...task,
+                isCancelled: true,
+                task: `~${task.task}~ (Rain expected)`,
+              };
+            }
+          }
+          return task;
+        });
       }
-      return task;
-    });
+    }
 
     const filteredTasks = adjustedTasks.filter(task => activeFilters.includes(task.type));
     const groupedTasks = groupTasksByMonth(filteredTasks);
@@ -127,9 +126,13 @@ export default function AllTasksCalendarScreen({ navigation }) {
   const groupTasksByMonth = (tasks) => {
     const grouped = {};
     const today = new Date();
-    
+    today.setHours(0, 0, 0, 0);
+
     // Filter for tasks that are today or in the future
-    const futureTasks = tasks.filter(task => new Date(task.date) >= today);
+    const futureTasks = tasks.filter(task => {
+      const taskDate = new Date(task.date);
+      return taskDate >= today;
+    });
 
     futureTasks.forEach(task => {
       const date = new Date(task.date);
