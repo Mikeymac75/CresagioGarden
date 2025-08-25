@@ -151,6 +151,41 @@ const TaskGenerator = {
 };
 
 /**
+ * Gets all upcoming planting tasks for all plants
+ */
+export const getAllPlantingTasks = async (lastFrostDate, seedBank = []) => {
+  if (!ValidationUtils.isValidDate(lastFrostDate)) {
+    return [];
+  }
+
+  try {
+    let allTasks = [];
+    const allPlants = await loadPlants();
+    const seedBankSet = new Set(seedBank);
+
+    const plantsToProcess = seedBank.length > 0 ?
+      allPlants.filter(p => seedBankSet.has(p.id)) :
+      allPlants;
+
+
+    if (!Array.isArray(plantsToProcess)) {
+      console.error('TaskService: loadPlants did not return an array. Received:', plantsToProcess);
+      return [];
+    }
+
+    plantsToProcess.forEach(plant => {
+      const plantTasks = TaskGenerator.generatePlantingTasks(plant, lastFrostDate);
+      allTasks = [...allTasks, ...plantTasks];
+    });
+
+    return allTasks.sort((a, b) => new Date(a.date) - new Date(b.date));
+  } catch (error) {
+    console.error('Error generating all planting tasks:', error);
+    return [];
+  }
+};
+
+/**
  * Gets tasks for a specific month with better filtering
  */
 export const getTasksForMonth = async (lastFrostDate, monthIndex) => {
