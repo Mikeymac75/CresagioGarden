@@ -9,7 +9,7 @@ import {
   Modal
 } from 'react-native';
 import { getItem as getSecureItem } from '../utils/SecureStorage';
-import { getAllUpcomingTasksForMyGarden, getSeasonalTasks } from '../services/TaskService';
+import { getAllUpcomingTasksForMyGarden, getSeasonalTasks, getAllPlantingTasks } from '../services/TaskService';
 import { getWeatherForecast, generateDynamicAlerts } from '../services/WeatherService';
 import { loadPlants } from '../services/PlantService';
 import { useFocusEffect } from '@react-navigation/native';
@@ -38,11 +38,13 @@ export default function AllTasksCalendarScreen({ navigation }) {
       const loadData = async () => {
         setLoading(true);
         try {
-          const [userDataString, myGardenString] = await Promise.all([
+          const [userDataString, myGardenString, seedBankString] = await Promise.all([
             getSecureItem('userData'),
             getSecureItem('myGarden'),
+            getSecureItem('userSeedBank'),
           ]);
           const myGarden = myGardenString ? JSON.parse(myGardenString) : [];
+          const seedBank = seedBankString ? JSON.parse(seedBankString) : [];
 
           if (userDataString) {
             const parsedUserData = JSON.parse(userDataString);
@@ -54,13 +56,14 @@ export default function AllTasksCalendarScreen({ navigation }) {
 
               if (parsedUserData.lastFrostDate) {
                 const allPlants = await loadPlants();
-                const [fetchedTasks, seasonalTasks] = await Promise.all([
+                const [fetchedTasks, seasonalTasks, plantingTasks] = await Promise.all([
                   getAllUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
                   getSeasonalTasks(parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
+                  getAllPlantingTasks(parsedUserData.lastFrostDate, seedBank),
                 ]);
 
                 const dynamicAlerts = generateDynamicAlerts(weather, myGarden, allPlants);
-                const allTasks = [...fetchedTasks, ...seasonalTasks, ...dynamicAlerts];
+                const allTasks = [...fetchedTasks, ...seasonalTasks, ...dynamicAlerts, ...plantingTasks];
                 setAllTasks(allTasks);
               }
             }
