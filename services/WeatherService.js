@@ -247,23 +247,6 @@ export const generateDynamicAlerts = (weatherData, myGarden, allPlants) => {
       }
     });
 
-    // --- Retain Existing Heatwave and Rain Alerts ---
-    if (weatherData.alerts) {
-      weatherData.alerts.forEach(alert => {
-        if (alert.type === ALERT_TYPES.HEATWAVE || alert.type === ALERT_TYPES.RAIN) {
-          dynamicAlerts.push({
-            id: `alert-${alert.type}-${now.getTime()}`,
-            task: alert.message,
-            date: alert.date,
-            type: 'alert',
-            priority: 'medium',
-            modifiesTasks: alert.modifiesTasks
-          });
-        }
-      });
-    }
-
-
     // Remove duplicates and sort by priority
     const uniqueAlerts = Array.from(
       new Map(dynamicAlerts.map(item => [item.task, item])).values()
