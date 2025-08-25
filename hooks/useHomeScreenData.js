@@ -1,14 +1,12 @@
 import { useState, useCallback } from 'react';
 import { Alert } from 'react-native';
-import { useState, useCallback } from 'react';
-import { Alert } from 'react-native';
 import {
   getItem as getSecureItem,
   setItem as setSecureItem,
   removeItem as removeSecureItem,
 } from '../utils/SecureStorage';
 import { getPlantableNow } from '../services/GardeningService';
-import { getUpcomingTasksForMyGarden, getSeasonalTasks, getAllPlantingTasks } from '../services/TaskService';
+import { getUpcomingTasksForMyGarden, getSeasonalTasks } from '../services/TaskService';
 import { getWeatherForecast, generateDynamicAlerts } from '../services/WeatherService';
 import { loadPlants } from '../services/PlantService';
 import { useFocusEffect } from '@react-navigation/native';
@@ -17,7 +15,6 @@ const useHomeScreenData = (navigation) => {
   const [userData, setUserData] = useState(null);
   const [plantableNow, setPlantableNow] = useState([]);
   const [upcomingTasks, setUpcomingTasks] = useState([]);
-  const [allTasks, setAllTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState(new Set());
   const [plantCount, setPlantCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -27,15 +24,13 @@ const useHomeScreenData = (navigation) => {
     setLoading(true);
     setWeatherData(null);
     try {
-      const [userDataString, myGardenString, completedTasksString, seedBankString] = await Promise.all([
+      const [userDataString, myGardenString, completedTasksString] = await Promise.all([
         getSecureItem('userData'),
         getSecureItem('myGarden'),
         getSecureItem('completedTasks'),
-        getSecureItem('userSeedBank'),
       ]);
 
       const myGarden = myGardenString ? JSON.parse(myGardenString) : [];
-      const seedBank = seedBankString ? JSON.parse(seedBankString) : [];
       setPlantCount(myGarden.filter(p => p.status !== 'harvested').length);
 
       const loadedCompletedTasks = completedTasksString
@@ -51,26 +46,23 @@ const useHomeScreenData = (navigation) => {
           ? getWeatherForecast(parsedUserData.latitude, parsedUserData.longitude)
           : Promise.resolve(null);
 
-        const [weather, plantable, rawTasks, seasonal, allPlants, plantingTasks] = await Promise.all([
+        const [weather, plantable, rawTasks, seasonal, allPlants] = await Promise.all([
           weatherPromise,
           getPlantableNow(parsedUserData.firstFrostDate),
           getUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
           getSeasonalTasks(parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
           loadPlants(),
-          getAllPlantingTasks(parsedUserData.lastFrostDate, seedBank),
         ]);
 
         if (weather) setWeatherData(weather);
         setPlantableNow(plantable);
 
-        let allUpcomingItems = [...rawTasks, ...seasonal, ...plantingTasks];
+        let allUpcomingItems = [...rawTasks, ...seasonal];
 
         if (weather) {
           const alerts = generateDynamicAlerts(weather, myGarden, allPlants);
           allUpcomingItems = [...alerts, ...allUpcomingItems];
         }
-
-        setAllTasks(allUpcomingItems);
 
         const today = new Date();
         today.setHours(0, 0, 0, 0);
@@ -159,7 +151,6 @@ const useHomeScreenData = (navigation) => {
     userData,
     plantableNow,
     upcomingTasks,
-    allTasks,
     completedTasks,
     plantCount,
     loading,
