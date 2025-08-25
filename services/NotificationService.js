@@ -66,6 +66,40 @@ export const scheduleTaskNotification = async (identifier, title, body, date) =>
     console.log(`Scheduled notification: ${title} for ${date.toLocaleString()}`);
 };
 
+/**
+ * Schedules a repeating local notification for a recurring task.
+ * @param {string} identifier - A unique ID for the notification.
+ * @param {string} title - The title of the notification.
+ * @param {string} body - The body message of the notification.
+ * @param {Date} startDate - The date and time for the first notification to trigger.
+ * @param {number} repeatingDays - The interval in days for the notification to repeat.
+ */
+export const scheduleRepeatingTaskNotification = async (identifier, title, body, startDate, repeatingDays) => {
+    // Ensure the start date is in the future
+    if (startDate.getTime() <= Date.now()) {
+        console.log(`Skipping repeating notification for ${title} as its start date is in the past.`);
+        return;
+    }
+
+    const seconds = repeatingDays * 24 * 60 * 60;
+
+    await Notifications.scheduleNotificationAsync({
+        content: {
+            title: title,
+            body: body,
+            data: { identifier },
+        },
+        trigger: {
+            date: startDate,
+            repeats: true,
+            seconds: seconds,
+        },
+        identifier: identifier,
+    });
+
+    console.log(`Scheduled repeating notification: ${title} starting from ${startDate.toLocaleString()} every ${repeatingDays} days.`);
+};
+
 
 /**
  * Schedules all notifications for a newly added plant.
@@ -79,17 +113,15 @@ export const scheduleNotificationsForPlant = async (gardenEntry, plantDetails) =
 
   // --- Schedule Recurring Watering Tasks ---
   if (plantDetails.wateringFrequencyDays) {
-    let waterDate = new Date(plantedDate);
-    while (waterDate <= harvestDate) {
-      const identifier = `${gardenEntry.id}-water-${waterDate.toISOString()}`;
-      await scheduleTaskNotification(
-        identifier,
-        '💧 Time to Water!',
-        `Your ${plantDetails.name} needs watering.`,
-        waterDate
-      );
-      waterDate.setDate(waterDate.getDate() + plantDetails.wateringFrequencyDays);
-    }
+    const waterDate = new Date(plantedDate);
+    const identifier = `${gardenEntry.id}-water-recurring`;
+    await scheduleRepeatingTaskNotification(
+      identifier,
+      '💧 Time to Water!',
+      `Your ${plantDetails.name} needs watering.`,
+      waterDate,
+      plantDetails.wateringFrequencyDays
+    );
   }
 
   // --- Schedule Care Tasks ---
@@ -99,16 +131,14 @@ export const scheduleNotificationsForPlant = async (gardenEntry, plantDetails) =
       taskDate.setDate(taskDate.getDate() + careTask.daysAfterPlanting);
 
       if (careTask.recurring) {
-        while (taskDate <= harvestDate) {
-          const identifier = `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`;
-          await scheduleTaskNotification(
-            identifier,
-            `🔧 Upcoming Task: ${careTask.name}`,
-            `It's time to: ${careTask.name} for your ${plantDetails.name}.`,
-            taskDate
-          );
-          taskDate.setDate(taskDate.getDate() + careTask.recurring);
-        }
+        const identifier = `${gardenEntry.id}-${careTask.name}-recurring`;
+        await scheduleRepeatingTaskNotification(
+          identifier,
+          `🔧 Upcoming Task: ${careTask.name}`,
+          `It's time to: ${careTask.name} for your ${plantDetails.name}.`,
+          taskDate,
+          careTask.recurring
+        );
       } else if (taskDate <= harvestDate) {
         const identifier = `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`;
         await scheduleTaskNotification(
