@@ -47,9 +47,12 @@ This project is built with [React Native](https://reactnative.dev/) and [Expo](h
 ### Prerequisites
 
 *   Node.js and npm (or yarn)
-*   Expo Go app on your iOS or Android device for running the app on a physical device.
+*   An iOS simulator or Android emulator, or a physical device.
+*   EAS CLI for building the development client: `npm install -g eas-cli`
 
 ### Installation & Running
+
+This project uses `expo-dev-client`, which requires a custom development client build.
 
 1.  **Clone the repository:**
     ```bash
@@ -62,15 +65,24 @@ This project is built with [React Native](https://reactnative.dev/) and [Expo](h
     npm install
     ```
 
-3.  **Start the development server:**
-    ```bash
-    npx expo start
-    ```
-    This will open the Expo developer tools in your browser.
+3.  **Build the development client:**
 
-4.  **Run the app:**
-    *   **On your mobile device:** Scan the QR code from the Expo developer tools using the Expo Go app.
-    *   **In an emulator/simulator:** Press `i` to run on iOS Simulator or `a` to run on Android Emulator.
+    Build the development client for your target platform. This command will produce a custom build of the app that includes `expo-dev-client`.
+
+    ```bash
+    # Build for iOS or Android
+    npx eas build --profile development --platform [ios|android]
+    ```
+    Once the build is complete, download and install the app onto your physical device or simulator/emulator.
+
+4.  **Start the development server:**
+
+    With the development client installed and running, start the Metro server.
+
+    ```bash
+    npx expo start --dev-client
+    ```
+    Scan the QR code from the terminal using your device's camera to connect the development client to the server.
 
 ## Navigation Structure
 
