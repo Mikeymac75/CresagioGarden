@@ -2,14 +2,15 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const PlantListItem = ({ item, isSelected, onToggle, onDelete }) => {
+const PlantListItem = ({ item, isSelected, onToggle, onDelete, onPress }) => {
   const isCustom = item.category === 'Custom';
 
   return (
     <View style={styles.plantItemContainer}>
       <TouchableOpacity
         style={[styles.plantItem, isSelected && styles.plantItemSelected]}
-        onPress={() => onToggle(item.id)}
+        onPress={onPress}
+        activeOpacity={0.7}
       >
         <View style={styles.plantInfo}>
           <Text style={styles.plantName}>
@@ -17,16 +18,18 @@ const PlantListItem = ({ item, isSelected, onToggle, onDelete }) => {
           </Text>
           <Text style={styles.plantCategory}>{item.category}</Text>
         </View>
-        <Ionicons
-          name={isSelected ? 'checkbox' : 'square-outline'}
-          size={24}
-          color={isSelected ? '#4CAF50' : '#ccc'}
-        />
+        <TouchableOpacity onPress={onToggle} style={styles.checkboxTouchable}>
+          <Ionicons
+            name={isSelected ? 'checkbox' : 'square-outline'}
+            size={24}
+            color={isSelected ? '#4CAF50' : '#ccc'}
+          />
+        </TouchableOpacity>
       </TouchableOpacity>
       {isCustom && (
         <TouchableOpacity
           style={styles.deleteButton}
-          onPress={() => onDelete(item.id)}
+          onPress={onDelete}
         >
           <Ionicons name="trash-outline" size={24} color="#ff4444" />
         </TouchableOpacity>
@@ -70,6 +73,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#666',
     marginTop: 2,
+  },
+  checkboxTouchable: {
+    padding: 8,
   },
 });
 

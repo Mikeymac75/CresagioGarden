@@ -13,6 +13,7 @@ import CustomPlantScreen from './screens/CustomPlantScreen';
 import PlantCalendarScreen from './screens/PlantCalendarScreen';
 import GardenJournalScreen from './screens/GardenJournalScreen';
 import AllTasksCalendarScreen from './screens/AllTasksCalendarScreen';
+import PlantDetailScreen from './screens/PlantDetailScreen';
 import { ActivityIndicator, View } from 'react-native';
 
 const RootStack = createStackNavigator();
@@ -39,6 +40,11 @@ function GardenStackNavigator() {
         name="SeedBank"
         component={SeedBankScreen}
         options={{ title: 'Seed Bank' }}
+      />
+      <GardenStack.Screen
+        name="PlantDetail"
+        component={PlantDetailScreen}
+        options={({ route }) => ({ title: route.params.plant.name })}
       />
       <GardenStack.Screen
         name="CustomPlant"

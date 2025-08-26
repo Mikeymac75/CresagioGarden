@@ -1,3 +1,4 @@
+// This hook encapsulates the logic for the home screen.
 import { useState, useCallback } from 'react';
 import { Alert } from 'react-native';
 import {

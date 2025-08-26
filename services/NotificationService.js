@@ -1,3 +1,4 @@
+// This service handles scheduling and managing push notifications.
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
