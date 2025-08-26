@@ -28,7 +28,8 @@
     "react-native-maps": "1.20.1",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
-    "yup": "^1.7.0"
+    "yup": "^1.7.0",
+    "expo-secure-store": "~14.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

@@ -72,7 +72,14 @@ const TaskGenerator = {
         const baseTaskDescription = careTask.name.replace(plantDetails.name, '').trim();
 
         if (careTask.recurring) {
-          while (taskDate <= harvestDate) {
+          let loopEndDate = harvestDate;
+          const isHarvestTask = /harvest|check for ripe/i.test(careTask.name);
+
+          if (plantDetails.harvestType === 'continuous' && plantDetails.harvestPeriodDays && isHarvestTask) {
+            loopEndDate = DateUtils.addDays(harvestDate, plantDetails.harvestPeriodDays);
+          }
+
+          while (taskDate <= loopEndDate) {
             if (TaskGenerator.shouldSkipTask(taskDate, firstFrost, plantDetails.frostTolerant)) {
               break;
             }
@@ -267,16 +274,19 @@ export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, fi
         gardenEntry, plantDetails, harvestDate, firstFrost
       );
 
-      // Add harvest task
-      const harvestTask = {
-        id: `${gardenEntry.id}-harvest-${harvestDate.toISOString()}`,
-        plantName: displayName,
-        task: `🥕 Harvest ${displayName}`,
-        date: harvestDate.toISOString(),
-        type: TASK_TYPES.HARVEST
-      };
+      allTasks.push(...criticalTasks, ...careTasks);
 
-      allTasks.push(...criticalTasks, ...careTasks, harvestTask);
+      // Add harvest task for single-harvest plants
+      if (plantDetails.harvestType === 'single') {
+        const harvestTask = {
+          id: `${gardenEntry.id}-harvest-${harvestDate.toISOString()}`,
+          plantName: displayName,
+          task: `🥕 Harvest ${displayName}`,
+          date: harvestDate.toISOString(),
+          type: TASK_TYPES.HARVEST
+        };
+        allTasks.push(harvestTask);
+      }
     });
 
     return allTasks.sort((a, b) => new Date(a.date) - new Date(b.date));

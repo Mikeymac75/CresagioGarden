@@ -12,10 +12,7 @@ const GardenPlantListItem = ({ item, plantInfo, onRemove }) => {
     );
   }
 
-  const daysUntilHarvest = getDaysUntilHarvest(
-    item.plantedDate,
-    plantInfo.daysToMaturity
-  );
+  const harvestStatus = getDaysUntilHarvest(item.plantedDate, plantInfo);
 
   return (
     <View style={styles.plantEntry}>
@@ -30,8 +27,7 @@ const GardenPlantListItem = ({ item, plantInfo, onRemove }) => {
         📅 Planted: {new Date(item.plantedDate).toLocaleDateString()}
       </Text>
       <Text style={styles.plantDetail}>
-        🌾 Harvest in:{' '}
-        {daysUntilHarvest > 0 ? `${daysUntilHarvest} days` : 'Ready!'}
+        🌾 Harvest: {harvestStatus}
       </Text>
     </View>
   );

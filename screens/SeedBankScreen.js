@@ -13,10 +13,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
 import useSeedBank from '../hooks/useSeedBank';
 import PlantListItem from '../components/PlantListItem';
+import { useNavigation } from '@react-navigation/native';
 
 export default function SeedBankScreen() {
   const { seedBank, allPlants, isLoading, toggleSeedInBank, loadSeedBank } = useSeedBank();
   const [searchQuery, setSearchQuery] = useState('');
+  const navigation = useNavigation();
 
   // --- NEW FEATURE: Delete custom plant ---
   const deleteCustomPlant = async (plantId) => {
@@ -71,11 +73,12 @@ export default function SeedBankScreen() {
       <PlantListItem
         item={item}
         isSelected={isSelected}
-        onToggle={toggleSeedInBank}
-        onDelete={deleteCustomPlant}
+        onToggle={() => toggleSeedInBank(item.id)}
+        onDelete={() => deleteCustomPlant(item.id)}
+        onPress={() => navigation.navigate('PlantDetail', { plant: item })}
       />
     );
-  }, [seedBank, toggleSeedInBank, deleteCustomPlant]);
+  }, [seedBank, toggleSeedInBank, deleteCustomPlant, navigation]);
 
   if (isLoading) {
     return (

@@ -161,17 +161,37 @@ export const validateGardenEntry = async (entry) => {
 /**
  * Calculates days until harvest for a given plant entry
  */
-export const getDaysUntilHarvest = (plantedDate, daysToMaturity) => {
-  if (!ValidationUtils.isValidDate(plantedDate) || !daysToMaturity) {
+export const getDaysUntilHarvest = (plantedDate, plantInfo) => {
+  if (!ValidationUtils.isValidDate(plantedDate) || !plantInfo || !plantInfo.daysToMaturity) {
     return null;
   }
+  const { daysToMaturity, harvestType, harvestPeriodDays } = plantInfo;
+
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
   const harvestDate = DateUtils.addDays(new Date(plantedDate), daysToMaturity);
   harvestDate.setHours(0, 0, 0, 0);
 
-  return Math.ceil((harvestDate - today) / (1000 * 60 * 60 * 24));
+  if (harvestType === 'continuous' && harvestPeriodDays) {
+    const harvestEndDate = DateUtils.addDays(harvestDate, harvestPeriodDays);
+    harvestEndDate.setHours(0, 0, 0, 0);
+
+    if (today >= harvestDate && today <= harvestEndDate) {
+      return "Harvesting Now";
+    }
+    if (today > harvestEndDate) {
+      return "Finished";
+    }
+  }
+
+  const daysRemaining = Math.ceil((harvestDate - today) / (1000 * 60 * 60 * 24));
+
+  if (daysRemaining <= 0) {
+      return "Ready!";
+  }
+
+  return `${daysRemaining} days`;
 };
 
 
