@@ -45,7 +45,7 @@ export default function MyGardenScreen({ navigation }) {
     navigation.setOptions({
       title: `My Garden (${activePlants}/10)`
     });
-  }, [myGarden, navigation]);
+  }, [myGarden, navigation.setOptions]);
 
   const loadMyGarden = async () => {
     try {

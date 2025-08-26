@@ -37,12 +37,14 @@ export default function SetupScreen({ navigation }) {
       if (status !== 'granted') {
         Alert.alert(
           'Permission Denied',
-          'Location is required to automatically determine your hardiness zone. You can set it manually if you prefer.',
-          [{ text: 'OK', onPress: () => setLoading(false) }]
+          'Location is required to automatically determine your hardiness zone. Please set it manually.',
+          [{ text: 'OK' }]
         );
-        // Default to a common zone if permission is denied
+        // Default to a common zone and show the picker
         const climateData = getFrostDates('5b');
         setZoneInfo({ ...climateData });
+        setIsPickerVisible(true);
+        setLoading(false);
         return;
       }
 
