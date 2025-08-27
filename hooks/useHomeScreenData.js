@@ -86,6 +86,12 @@ const useHomeScreenData = (navigation) => {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
+        const sevenDaysAgo = new Date(today);
+        sevenDaysAgo.setDate(today.getDate() - 7);
+
+        const twentyEightDaysAgo = new Date(today);
+        twentyEightDaysAgo.setDate(today.getDate() - 28);
+
         const oneWeekFromNow = new Date(today);
         oneWeekFromNow.setDate(today.getDate() + 7);
 
@@ -100,7 +106,18 @@ const useHomeScreenData = (navigation) => {
           if (isCompleted) return;
 
           if (taskDate < today) {
-            overdue.push(task);
+            // This is a past task. Apply pruning logic.
+            if (task.type === 'water') {
+              // Only show uncompleted watering tasks from the last 7 days.
+              if (taskDate >= sevenDaysAgo) {
+                overdue.push(task);
+              }
+            } else {
+              // Only show other uncompleted tasks from the last 28 days.
+              if (taskDate >= twentyEightDaysAgo) {
+                overdue.push(task);
+              }
+            }
           } else if (taskDate < oneWeekFromNow) {
             upcoming.push(task);
           }

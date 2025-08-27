@@ -65,15 +65,18 @@ const HomeScreen = ({ navigation }) => {
   };
 
   const groupedTasks = useMemo(() => {
-    return upcomingTasks.reduce((acc, task) => {
-      const day = formatDate(task.date);
-      if (!acc[day]) {
-        acc[day] = [];
-      }
-      acc[day].push(task);
-      return acc;
-    }, {});
-  }, [upcomingTasks]);
+    // Filter out completed tasks before grouping
+    return upcomingTasks
+      .filter(task => !completedTasks.has(task.id))
+      .reduce((acc, task) => {
+        const day = formatDate(task.date);
+        if (!acc[day]) {
+          acc[day] = [];
+        }
+        acc[day].push(task);
+        return acc;
+      }, {});
+  }, [upcomingTasks, completedTasks]);
 
   const toggleDay = (day) => {
     setExpandedDays(current =>
