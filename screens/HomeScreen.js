@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   View,
   Text,
@@ -41,6 +41,7 @@ const HomeScreen = ({ navigation }) => {
 
   const [isTaskModalVisible, setIsTaskModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
+  const [expandedDays, setExpandedDays] = useState(['Today']);
 
   const handleTaskPress = (task) => {
     if (task.description) {
@@ -59,9 +60,26 @@ const HomeScreen = ({ navigation }) => {
     if (date.toDateString() === tomorrow.toDateString()) return 'Tomorrow';
     return date.toLocaleDateString('en-US', {
       weekday: 'long',
-      month: 'short',
-      day: 'numeric',
     });
+  };
+
+  const groupedTasks = useMemo(() => {
+    return upcomingTasks.reduce((acc, task) => {
+      const day = formatDate(task.date);
+      if (!acc[day]) {
+        acc[day] = [];
+      }
+      acc[day].push(task);
+      return acc;
+    }, {});
+  }, [upcomingTasks]);
+
+  const toggleDay = (day) => {
+    setExpandedDays(current =>
+      current.includes(day)
+        ? current.filter(d => d !== day)
+        : [...current, day]
+    );
   };
 
   if (loading) {
@@ -74,7 +92,7 @@ const HomeScreen = ({ navigation }) => {
         <WeatherWidget weatherData={null} locationAvailable={true} />
         <StatsCardSkeleton />
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>✅ This Week's Tasks</Text>
+          <Text style={styles.sectionTitle}>🗓️ This Week at a Glance</Text>
           <TaskCardSkeleton />
           <TaskCardSkeleton />
           <TaskCardSkeleton />
@@ -112,46 +130,60 @@ const HomeScreen = ({ navigation }) => {
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>✅ This Week's Tasks</Text>
+        <Text style={styles.sectionTitle}>🗓️ This Week at a Glance</Text>
         {upcomingTasks.length > 0 ? (
-          upcomingTasks.map((item) => {
-            const isCompleted = completedTasks.has(item.id);
-            const isAlert = item.type === 'alert';
-            const rainAlert = upcomingTasks.find(t => t.modifiesTasks === 'water' && formatDate(t.date) === 'Today');
-            const isSkipped = item.type === 'water' && rainAlert && formatDate(item.date) === 'Today';
-            const canToggle = !isAlert && !isSkipped;
-
-            return (
+          Object.entries(groupedTasks).map(([day, tasks]) => (
+            <View key={day} style={styles.dayGroup}>
               <TouchableOpacity
-                key={item.id}
-                style={[
-                  styles.taskCard,
-                  isAlert && styles.alertCard,
-                  isSkipped && styles.skippedCard,
-                ]}
-                onPress={() => handleTaskPress(item)}
-                disabled={!item.description || isAlert}
+                style={styles.dayHeader}
+                onPress={() => toggleDay(day)}
               >
-                {canToggle ? (
-                  <Checkbox isChecked={isCompleted} onToggle={() => toggleTask(item.id)} />
-                ) : (
-                  <Text style={{width: 24, marginRight: 15, textAlign: 'center'}}>{isSkipped ? '🌧️' : '🔔'}</Text>
-                )}
-                <View style={styles.taskDetails}>
-                  <Text style={styles.taskDate}>{formatDate(item.date)}</Text>
-                  <Text style={[styles.taskText, (isCompleted || isSkipped) && styles.completedTaskText]}>
-                    {item.task}
-                  </Text>
-                  {isSkipped && <Text style={styles.skippedText}>Skipped due to rain</Text>}
-                </View>
-                {canToggle && !isCompleted && (
-                  <TouchableOpacity onPress={() => snoozeTask(item.id)} style={styles.snoozeButton}>
-                    <Ionicons name="time-outline" size={22} color="#888" />
-                  </TouchableOpacity>
-                )}
+                <Text style={styles.dayHeaderText}>{day}</Text>
+                <Ionicons
+                  name={expandedDays.includes(day) ? 'chevron-up' : 'chevron-down'}
+                  size={24}
+                  color="#333"
+                />
               </TouchableOpacity>
-            );
-          })
+              {expandedDays.includes(day) && tasks.map((item) => {
+                const isCompleted = completedTasks.has(item.id);
+                const isAlert = item.type === 'alert';
+                const rainAlert = upcomingTasks.find(t => t.modifiesTasks === 'water' && formatDate(t.date) === 'Today');
+                const isSkipped = item.type === 'water' && rainAlert && formatDate(item.date) === 'Today';
+                const canToggle = !isAlert && !isSkipped;
+
+                return (
+                  <TouchableOpacity
+                    key={item.id}
+                    style={[
+                      styles.taskCard,
+                      isAlert && styles.alertCard,
+                      isSkipped && styles.skippedCard,
+                    ]}
+                    onPress={() => handleTaskPress(item)}
+                    disabled={!item.description || isAlert}
+                  >
+                    {canToggle ? (
+                      <Checkbox isChecked={isCompleted} onToggle={() => toggleTask(item.id)} />
+                    ) : (
+                      <Text style={{width: 24, marginRight: 15, textAlign: 'center'}}>{isSkipped ? '🌧️' : '🔔'}</Text>
+                    )}
+                    <View style={styles.taskDetails}>
+                      <Text style={[styles.taskText, (isCompleted || isSkipped) && styles.completedTaskText]}>
+                        {item.task}
+                      </Text>
+                      {isSkipped && <Text style={styles.skippedText}>Skipped due to rain</Text>}
+                    </View>
+                    {canToggle && !isCompleted && (
+                      <TouchableOpacity onPress={() => snoozeTask(item.id)} style={styles.snoozeButton}>
+                        <Ionicons name="time-outline" size={22} color="#888" />
+                      </TouchableOpacity>
+                    )}
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+          ))
         ) : (
           <View style={styles.emptyState}><Text style={styles.emptyStateText}>You're all caught up!</Text></View>
         )}
@@ -219,18 +251,48 @@ const styles = StyleSheet.create({
     statDivider: { width: 1, backgroundColor: '#ddd' },
     section: { margin: 20, marginTop: 10 },
     sectionTitle: { fontSize: 20, fontWeight: 'bold', color: '#333', marginBottom: 15 },
-    taskCard: { backgroundColor: 'white', padding: 15, borderRadius: 8, marginBottom: 10, flexDirection: 'row', alignItems: 'center' },
+    dayGroup: { marginBottom: 10 },
+    dayHeader: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      backgroundColor: '#fff',
+      paddingVertical: 12,
+      paddingHorizontal: 15,
+      borderRadius: 8,
+      elevation: 1,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.1,
+      shadowRadius: 1,
+    },
+    dayHeaderText: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: '#333',
+    },
+    taskCard: {
+      backgroundColor: 'white',
+      padding: 15,
+      borderRadius: 8,
+      marginTop: 8,
+      flexDirection: 'row',
+      alignItems: 'center',
+      borderLeftWidth: 4,
+      borderLeftColor: '#4CAF50'
+    },
     alertCard: {
       backgroundColor: '#E1F5FE', // Light blue
       borderColor: '#0288D1',
       borderWidth: 1,
+      borderLeftWidth: 1,
     },
     skippedCard: {
       backgroundColor: '#E3F2FD',
       opacity: 0.7,
+      borderLeftColor: '#E3F2FD'
     },
     taskDetails: { flex: 1 },
-    taskDate: { fontSize: 12, fontWeight: 'bold', color: '#666', marginBottom: 4 },
     taskText: { fontSize: 16, color: '#333' },
     completedTaskText: { textDecorationLine: 'line-through', color: '#aaa' },
     snoozeButton: {
