@@ -3,8 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { getItem as getSecureItem } from './utils/SecureStorage';
+import { getItem as getSecureItem, setItem as setSecureItem } from './utils/SecureStorage';
 import { Ionicons } from '@expo/vector-icons';
+import FTUETour from './components/FTUETour';
 
 import SetupScreen from './screens/SetupScreen';
 import HomeScreen from './screens/HomeScreen';
@@ -15,6 +16,7 @@ import PlantCalendarScreen from './screens/PlantCalendarScreen';
 import GardenJournalScreen from './screens/GardenJournalScreen';
 import AllTasksCalendarScreen from './screens/AllTasksCalendarScreen';
 import PlantDetailScreen from './screens/PlantDetailScreen';
+import UpgradeScreen from './screens/UpgradeScreen';
 import { ActivityIndicator, View } from 'react-native';
 
 const RootStack = createStackNavigator();
@@ -51,6 +53,11 @@ function GardenStackNavigator() {
         name="CustomPlant"
         component={CustomPlantScreen}
         options={{ title: 'Create Custom Plant' }}
+      />
+      <GardenStack.Screen
+        name="Upgrade"
+        component={UpgradeScreen}
+        options={{ headerShown: false }}
       />
     </GardenStack.Navigator>
   );
@@ -106,15 +113,21 @@ function MainAppTabs() {
 
 export default function App() {
   const [initialRoute, setInitialRoute] = useState(null);
+  const [showFtueTour, setShowFtueTour] = useState(false);
 
   useEffect(() => {
     const checkSetup = async () => {
       try {
         const userDataString = await getSecureItem('userData');
+        const ftueCompleteString = await getSecureItem('ftueComplete');
+
         if (userDataString) {
           const userData = JSON.parse(userDataString);
           if (userData.setupComplete) {
             setInitialRoute('MainApp');
+            if (ftueCompleteString !== 'true') {
+              setShowFtueTour(true);
+            }
           } else {
             setInitialRoute('Setup');
           }
@@ -130,6 +143,15 @@ export default function App() {
     checkSetup();
   }, []);
 
+  const handleFtueFinish = async () => {
+    try {
+      await setSecureItem('ftueComplete', 'true');
+      setShowFtueTour(false);
+    } catch (error) {
+      console.error('Failed to save FTUE status:', error);
+    }
+  };
+
   if (!initialRoute) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -139,11 +161,14 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <RootStack.Navigator initialRouteName={initialRoute} screenOptions={{ headerShown: false }}>
-        <RootStack.Screen name="Setup" component={SetupScreen} />
-        <RootStack.Screen name="MainApp" component={MainAppTabs} />
-      </RootStack.Navigator>
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <RootStack.Navigator initialRouteName={initialRoute} screenOptions={{ headerShown: false }}>
+          <RootStack.Screen name="Setup" component={SetupScreen} />
+          <RootStack.Screen name="MainApp" component={MainAppTabs} />
+        </RootStack.Navigator>
+      </NavigationContainer>
+      <FTUETour isVisible={showFtueTour} onFinish={handleFtueFinish} />
+    </>
   );
 }

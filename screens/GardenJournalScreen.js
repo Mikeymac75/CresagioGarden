@@ -7,22 +7,55 @@ import {
   ScrollView,
   Alert,
   Modal,
-  TextInput
+  TextInput,
+  Image,
 } from 'react-native';
 import {
   getItem as getSecureItem,
   setItem as setSecureItem,
 } from '../utils/SecureStorage';
+import * as ImagePicker from 'expo-image-picker';
+import * as FileSystem from 'expo-file-system';
 
 export default function GardenJournalScreen() {
   const [journalEntries, setJournalEntries] = useState([]);
   const [showAddEntry, setShowAddEntry] = useState(false);
   const [newEntryTitle, setNewEntryTitle] = useState('');
   const [newEntryNote, setNewEntryNote] = useState('');
+  const [newEntryPhotos, setNewEntryPhotos] = useState([]);
 
   useEffect(() => {
     loadJournalEntries();
   }, []);
+
+  const pickImage = async () => {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== 'granted') {
+      Alert.alert('Permission Denied', 'Sorry, we need camera roll permissions to add photos.');
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 0.8,
+    });
+
+    if (!result.canceled && result.assets && result.assets.length > 0) {
+      const imageUri = result.assets[0].uri;
+      const fileName = imageUri.split('/').pop();
+      const newPath = FileSystem.documentDirectory + fileName;
+
+      try {
+        await FileSystem.copyAsync({ from: imageUri, to: newPath });
+        setNewEntryPhotos(prevPhotos => [...prevPhotos, newPath]);
+      } catch (e) {
+        console.error("Could not copy image:", e);
+        Alert.alert('Error', 'Could not save the selected photo.');
+      }
+    }
+  };
 
   const loadJournalEntries = async () => {
     try {
@@ -46,7 +79,7 @@ export default function GardenJournalScreen() {
       title: newEntryTitle.trim(),
       note: newEntryNote.trim(),
       date: new Date().toISOString(),
-      photos: [] // For future photo functionality
+      photos: newEntryPhotos,
     };
 
     const updatedEntries = [newEntry, ...journalEntries];
@@ -56,6 +89,7 @@ export default function GardenJournalScreen() {
       await setSecureItem('journalEntries', JSON.stringify(updatedEntries));
       setNewEntryTitle('');
       setNewEntryNote('');
+      setNewEntryPhotos([]);
       setShowAddEntry(false);
       Alert.alert('Success!', 'Journal entry added! 📝');
     } catch (error) {
@@ -196,15 +230,17 @@ export default function GardenJournalScreen() {
               {entry.note && (
                 <Text style={styles.entryNote}>{entry.note}</Text>
               )}
-              
-              <View style={styles.entryActions}>
-                <TouchableOpacity style={styles.actionButton}>
-                  <Text style={styles.actionButtonText}>📷 Add Photo</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.actionButton}>
-                  <Text style={styles.actionButtonText}>✏️ Edit</Text>
-                </TouchableOpacity>
-              </View>
+
+              {entry.photos && entry.photos.length > 0 && (
+                <View>
+                  <Text style={styles.photosTitle}>Photos:</Text>
+                  <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    {entry.photos.map((uri, index) => (
+                      <Image key={index} source={{ uri }} style={styles.journalImage} />
+                    ))}
+                  </ScrollView>
+                </View>
+              )}
             </View>
           ))
         )}
@@ -247,9 +283,16 @@ export default function GardenJournalScreen() {
               textAlignVertical="top"
             />
 
-            <TouchableOpacity style={styles.photoPlaceholder}>
-              <Text style={styles.photoPlaceholderText}>📷 Add Photos (Coming Soon)</Text>
-            </TouchableOpacity>
+            <View>
+              <TouchableOpacity style={styles.addPhotoButton} onPress={pickImage}>
+                <Text style={styles.addPhotoButtonText}>📷 Add a Photo</Text>
+              </TouchableOpacity>
+              <ScrollView horizontal style={styles.thumbnailContainer}>
+                {newEntryPhotos.map((uri, index) => (
+                  <Image key={index} source={{ uri }} style={styles.thumbnail} />
+                ))}
+              </ScrollView>
+            </View>
           </ScrollView>
         </View>
       </Modal>
@@ -455,17 +498,38 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     backgroundColor: '#f9f9f9',
   },
-  photoPlaceholder: {
-    borderWidth: 2,
-    borderColor: '#ddd',
-    borderStyle: 'dashed',
+  addPhotoButton: {
+    backgroundColor: '#E8F5E9',
+    padding: 12,
     borderRadius: 8,
-    padding: 30,
     alignItems: 'center',
-    backgroundColor: '#f9f9f9',
+    marginBottom: 10,
   },
-  photoPlaceholderText: {
-    fontSize: 16,
-    color: '#999',
+  addPhotoButtonText: {
+    color: '#4CAF50',
+    fontWeight: 'bold',
   },
+  thumbnailContainer: {
+    flexDirection: 'row',
+    marginBottom: 20,
+  },
+  thumbnail: {
+    width: 80,
+    height: 80,
+    borderRadius: 8,
+    marginRight: 10,
+  },
+  photosTitle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 8,
+    marginTop: 4,
+  },
+  journalImage: {
+    width: 150,
+    height: 150,
+    borderRadius: 8,
+    marginRight: 10,
+  }
 });
