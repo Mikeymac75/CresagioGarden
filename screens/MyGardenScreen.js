@@ -73,7 +73,14 @@ export default function MyGardenScreen({ navigation }) {
   
   const addPlant = async () => {
     if (myGarden.filter(p => p.status !== 'harvested').length >= 10) {
-      Alert.alert('Garden Full!', 'Upgrade to Pro for unlimited plants!');
+      Alert.alert(
+        'Garden Full!',
+        'Upgrade to Pro for more plant slots.',
+        [
+          { text: 'Cancel', style: 'cancel' },
+          { text: 'Upgrade', onPress: () => navigation.navigate('Upgrade') },
+        ]
+      );
       return;
     }
     const newPlantEntry = {

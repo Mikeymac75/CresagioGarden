@@ -25,10 +25,16 @@ const useHomeScreenData = (navigation) => {
     setLoading(true);
     setWeatherData(null);
     try {
-      const [userDataString, myGardenString, completedTasksString] = await Promise.all([
+      const [
+        userDataString,
+        myGardenString,
+        completedTasksString,
+        snoozedTasksString,
+      ] = await Promise.all([
         getSecureItem('userData'),
         getSecureItem('myGarden'),
         getSecureItem('completedTasks'),
+        getSecureItem('snoozedTasks'),
       ]);
 
       const myGarden = myGardenString ? JSON.parse(myGardenString) : [];
@@ -38,6 +44,10 @@ const useHomeScreenData = (navigation) => {
         ? new Set(JSON.parse(completedTasksString))
         : new Set();
       setCompletedTasks(loadedCompletedTasks);
+
+      const loadedSnoozedTasks = snoozedTasksString
+        ? JSON.parse(snoozedTasksString)
+        : {};
 
       if (userDataString) {
         const parsedUserData = JSON.parse(userDataString);
@@ -65,39 +75,28 @@ const useHomeScreenData = (navigation) => {
           allUpcomingItems = [...alerts, ...allUpcomingItems];
         }
 
+        const tasksWithSnooze = allUpcomingItems.map(task => {
+          if (loadedSnoozedTasks[task.id]) {
+            return { ...task, date: loadedSnoozedTasks[task.id] };
+          }
+          return task;
+        });
+
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
         const oneWeekFromNow = new Date(today);
         oneWeekFromNow.setDate(today.getDate() + 7);
 
-        const rangeStart = new Date();
-        rangeStart.setDate(today.getDate() - 3);
-        rangeStart.setHours(0, 0, 0, 0);
-
-        const wateringPastLimit = new Date();
-        wateringPastLimit.setDate(today.getDate() - 7);
-        wateringPastLimit.setHours(0, 0, 0, 0);
-
-        const filteredAndSortedTasks = allUpcomingItems
+        const filteredAndSortedTasks = tasksWithSnooze
           .filter(task => {
             const taskDate = new Date(task.date);
             taskDate.setHours(0, 0, 0, 0);
             const isCompleted = loadedCompletedTasks.has(task.id);
 
-            if (taskDate >= today) {
-              return taskDate < oneWeekFromNow;
-            }
+            if (isCompleted) return false;
 
-            if (isCompleted) {
-              return false;
-            } else {
-              if (task.type === 'water') {
-                return taskDate >= wateringPastLimit;
-              } else {
-                return taskDate >= rangeStart;
-              }
-            }
+            return taskDate >= today && taskDate < oneWeekFromNow;
           })
           .sort((a, b) => new Date(a.date) - new Date(b.date));
 
@@ -116,6 +115,18 @@ const useHomeScreenData = (navigation) => {
       loadData();
     }, [loadData])
   );
+
+  const snoozeTask = useCallback(async (taskId) => {
+    const snoozedTasksString = await getSecureItem('snoozedTasks');
+    const snoozedTasks = snoozedTasksString ? JSON.parse(snoozedTasksString) : {};
+
+    const newDueDate = new Date();
+    newDueDate.setDate(newDueDate.getDate() + 3);
+    snoozedTasks[taskId] = newDueDate.toISOString();
+
+    await setSecureItem('snoozedTasks', JSON.stringify(snoozedTasks));
+    await loadData();
+  }, [loadData]);
 
   const handleChangeLocation = () => {
     Alert.alert(
@@ -162,6 +173,7 @@ const useHomeScreenData = (navigation) => {
     toggleTask,
     handleChangeLocation,
     loadData,
+    snoozeTask,
   };
 };
 

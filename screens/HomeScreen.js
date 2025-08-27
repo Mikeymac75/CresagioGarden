@@ -11,6 +11,7 @@ import useHomeScreenData from '../hooks/useHomeScreenData';
 import WeatherWidget from '../components/WeatherWidget';
 import { StatsCardSkeleton, TaskCardSkeleton } from '../components/SkeletonLoader';
 import PropTypes from 'prop-types';
+import { Ionicons } from '@expo/vector-icons';
 
 // Memoized Checkbox component to prevent re-renders
 const Checkbox = React.memo(({ isChecked, onToggle }) => (
@@ -34,6 +35,7 @@ const HomeScreen = ({ navigation }) => {
     loading,
     weatherData,
     toggleTask,
+    snoozeTask,
     handleChangeLocation,
   } = useHomeScreenData(navigation);
 
@@ -142,6 +144,11 @@ const HomeScreen = ({ navigation }) => {
                   </Text>
                   {isSkipped && <Text style={styles.skippedText}>Skipped due to rain</Text>}
                 </View>
+                {canToggle && !isCompleted && (
+                  <TouchableOpacity onPress={() => snoozeTask(item.id)} style={styles.snoozeButton}>
+                    <Ionicons name="time-outline" size={22} color="#888" />
+                  </TouchableOpacity>
+                )}
               </TouchableOpacity>
             );
           })
@@ -226,6 +233,10 @@ const styles = StyleSheet.create({
     taskDate: { fontSize: 12, fontWeight: 'bold', color: '#666', marginBottom: 4 },
     taskText: { fontSize: 16, color: '#333' },
     completedTaskText: { textDecorationLine: 'line-through', color: '#aaa' },
+    snoozeButton: {
+      padding: 5,
+      marginLeft: 10,
+    },
     skippedText: {
       fontSize: 12,
       color: '#0D47A1',

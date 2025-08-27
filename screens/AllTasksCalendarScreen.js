@@ -315,13 +315,13 @@ const styles = StyleSheet.create({
   },
   filterContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     flexWrap: 'wrap',
     paddingVertical: 10,
     backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
-    paddingHorizontal: 5
+    paddingHorizontal: 10
   },
   filterButton: {
     paddingHorizontal: 16,

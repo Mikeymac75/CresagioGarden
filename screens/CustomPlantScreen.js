@@ -26,7 +26,11 @@ export default function CustomPlantScreen({ navigation }) {
     if (existingPlants.length >= 1) {
       Alert.alert(
         'Limit Reached',
-        'You can only create one custom plant in the free version. Please upgrade to Pro for unlimited custom plants!'
+        'You can only create one custom plant in the free version. Please upgrade to Pro for unlimited custom plants!',
+        [
+          { text: 'Cancel', style: 'cancel' },
+          { text: 'Upgrade', onPress: () => navigation.navigate('Upgrade') },
+        ]
       );
       return;
     }
