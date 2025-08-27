@@ -16,6 +16,7 @@ const useHomeScreenData = (navigation) => {
   const [userData, setUserData] = useState(null);
   const [plantableNow, setPlantableNow] = useState([]);
   const [upcomingTasks, setUpcomingTasks] = useState([]);
+  const [overdueTasks, setOverdueTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState(new Set());
   const [plantCount, setPlantCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -88,19 +89,25 @@ const useHomeScreenData = (navigation) => {
         const oneWeekFromNow = new Date(today);
         oneWeekFromNow.setDate(today.getDate() + 7);
 
-        const filteredAndSortedTasks = tasksWithSnooze
-          .filter(task => {
-            const taskDate = new Date(task.date);
-            taskDate.setHours(0, 0, 0, 0);
-            const isCompleted = loadedCompletedTasks.has(task.id);
+        const upcoming = [];
+        const overdue = [];
 
-            if (isCompleted) return false;
+        tasksWithSnooze.forEach(task => {
+          const taskDate = new Date(task.date);
+          taskDate.setHours(0, 0, 0, 0);
+          const isCompleted = loadedCompletedTasks.has(task.id);
 
-            return taskDate >= today && taskDate < oneWeekFromNow;
-          })
-          .sort((a, b) => new Date(a.date) - new Date(b.date));
+          if (isCompleted) return;
 
-        setUpcomingTasks(filteredAndSortedTasks);
+          if (taskDate < today) {
+            overdue.push(task);
+          } else if (taskDate < oneWeekFromNow) {
+            upcoming.push(task);
+          }
+        });
+
+        setUpcomingTasks(upcoming.sort((a, b) => new Date(a.date) - new Date(b.date)));
+        setOverdueTasks(overdue.sort((a, b) => new Date(a.date) - new Date(b.date)));
       }
     } catch (error) {
       console.error('Error loading data:', error);
@@ -166,6 +173,7 @@ const useHomeScreenData = (navigation) => {
     userData,
     plantableNow,
     upcomingTasks,
+    overdueTasks,
     completedTasks,
     plantCount,
     loading,
