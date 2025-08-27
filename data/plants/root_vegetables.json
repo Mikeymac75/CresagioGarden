@@ -22,8 +22,8 @@
       "notes": "Compacted or rocky soil will cause roots to be forked or stunted. Avoid high-nitrogen fertilizers, which can cause hairy, forked roots."
     },
     "temperature": {
-      "optimalLowF": 60,
-      "optimalHighF": 70,
+      "optimalLowF": 55,
+      "optimalHighF": 75,
       "absoluteMinF": 30,
       "notes": "A cool-season crop. Germination is slow in cold soil. Light frost can improve sweetness."
     },
@@ -97,7 +97,7 @@
     },
     "temperature": {
       "optimalLowF": 50,
-      "optimalHighF": 65,
+      "optimalHighF": 75,
       "absoluteMinF": 32,
       "notes": "Very fast-growing cool-season crop. Becomes woody and spicy (hot) if left too long or grown in heat."
     },
@@ -164,8 +164,8 @@
       "notes": "Prefers acidic soil, which helps prevent a common disease called potato scab. Avoid applying fresh manure."
     },
     "temperature": {
-      "optimalLowF": 60,
-      "optimalHighF": 70,
+      "optimalLowF": 55,
+      "optimalHighF": 75,
       "absoluteMinF": 38,
       "notes": "A cool-season crop. Tubers form best in cool soil. The foliage is very sensitive to frost."
     },
@@ -324,8 +324,8 @@
       "notes": "Onions are heavy feeders. Benefit from a balanced fertilizer, but reduce nitrogen once bulbing begins to encourage bulb growth over leaf growth."
     },
     "temperature": {
-      "optimalLowF": 60,
-      "optimalHighF": 75,
+      "optimalLowF": 55,
+      "optimalHighF": 80,
       "absoluteMinF": 30,
       "notes": "Bulbing is triggered by day length, not just temperature. Cool weather is best for top growth, and warmer weather for bulb development."
     },
@@ -404,8 +404,8 @@
       "notes": "Avoid high-nitrogen fertilizers which encourages leaf growth at the expense of roots. Consistent moisture is key for tender, non-woody roots."
     },
     "temperature": {
-      "optimalLowF": 60,
-      "optimalHighF": 70,
+      "optimalLowF": 55,
+      "optimalHighF": 75,
       "absoluteMinF": 30,
       "notes": "A cool-season crop. Can tolerate light frost, which can improve the flavor of the roots."
     },
@@ -479,7 +479,7 @@
     },
     "temperature": {
       "optimalLowF": 50,
-      "optimalHighF": 65,
+      "optimalHighF": 75,
       "absoluteMinF": 28,
       "notes": "A cool-season crop. The flavor of the roots improves after a light frost. Becomes woody and bitter in heat."
     },
@@ -553,7 +553,7 @@
     },
     "temperature": {
       "optimalLowF": 50,
-      "optimalHighF": 65,
+      "optimalHighF": 70,
       "absoluteMinF": 25,
       "notes": "A cool-season crop that requires a longer season than turnips. Flavor is much improved by several frosts."
     },

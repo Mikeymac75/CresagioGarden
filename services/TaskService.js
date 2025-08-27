@@ -1,6 +1,7 @@
 import { DateUtils } from './utils/DateUtils';
 import { ValidationUtils } from './utils/ValidationUtils';
 import { loadPlants } from './PlantService';
+import { getWeatherForecast } from './WeatherService';
 import { TASK_TYPES, CONFIG } from './constants';
 import SEASONAL_TASKS from '../data/seasonal_tasks.json';
 
@@ -57,7 +58,7 @@ const TaskGenerator = {
   /**
    * Generates care tasks for a planted garden entry
    */
-  generateCareTasks: (gardenEntry, plantDetails, harvestDate, firstFrost = null) => {
+  generateCareTasks: (gardenEntry, plantDetails, harvestDate, plantSpecificKillDate) => {
     const tasks = [];
     const plantedDate = new Date(gardenEntry.plantedDate);
     const displayName = gardenEntry.nickname ?
@@ -67,20 +68,33 @@ const TaskGenerator = {
       plantDetails.careTasks.forEach(careTask => {
         let taskDate = DateUtils.addDays(plantedDate, careTask.daysAfterPlanting);
         const isWateringTask = careTask.name.toLowerCase() === 'watering';
-        const taskType = isWateringTask ? TASK_TYPES.WATER : TASK_TYPES.CARE;
-        const taskEmoji = isWateringTask ? '💧' : '🔧';
+        const isHarvestTask = /harvest|check for ripe/i.test(careTask.name);
+
+        let taskType;
+        let taskEmoji;
+
+        if (isHarvestTask) {
+          taskType = TASK_TYPES.HARVEST;
+          taskEmoji = '🥕';
+        } else if (isWateringTask) {
+          taskType = TASK_TYPES.WATER;
+          taskEmoji = '💧';
+        } else {
+          taskType = TASK_TYPES.CARE;
+          taskEmoji = '🔧';
+        }
+
         const baseTaskDescription = careTask.name.replace(plantDetails.name, '').trim();
 
         if (careTask.recurring) {
           let loopEndDate = harvestDate;
-          const isHarvestTask = /harvest|check for ripe/i.test(careTask.name);
 
           if (plantDetails.harvestType === 'continuous' && plantDetails.harvestPeriodDays && isHarvestTask) {
             loopEndDate = DateUtils.addDays(harvestDate, plantDetails.harvestPeriodDays);
           }
 
           while (taskDate <= loopEndDate) {
-            if (TaskGenerator.shouldSkipTask(taskDate, firstFrost, plantDetails.frostTolerant)) {
+            if (TaskGenerator.shouldSkipTask(taskDate, plantSpecificKillDate)) {
               break;
             }
 
@@ -96,7 +110,7 @@ const TaskGenerator = {
             taskDate = DateUtils.addDays(taskDate, careTask.recurring);
           }
         } else if (taskDate <= harvestDate) {
-          if (!TaskGenerator.shouldSkipTask(taskDate, firstFrost, plantDetails.frostTolerant)) {
+          if (!TaskGenerator.shouldSkipTask(taskDate, plantSpecificKillDate)) {
             tasks.push({
               id: `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`,
               plantName: displayName,
@@ -150,10 +164,10 @@ const TaskGenerator = {
   },
 
   /**
-   * Helper to determine if a task should be skipped due to frost
+   * Helper to determine if a task should be skipped due to plant-specific kill date
    */
-  shouldSkipTask: (taskDate, firstFrost, isFrostTolerant) => {
-    return firstFrost && !isFrostTolerant && taskDate > firstFrost;
+  shouldSkipTask: (taskDate, plantSpecificKillDate) => {
+    return plantSpecificKillDate && taskDate > plantSpecificKillDate;
   }
 };
 
@@ -229,11 +243,11 @@ export const getTasksForMonth = async (lastFrostDate, monthIndex) => {
 /**
  * Enhanced upcoming tasks function with better organization
  */
-export const getUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, firstFrostDate) => {
+export const getUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, firstFrostDate, latitude, longitude) => {
   if (!Array.isArray(myGarden)) return [];
 
   try {
-    const allTasks = await getAllUpcomingTasksForMyGarden(myGarden, lastFrostDate, firstFrostDate);
+    const allTasks = await getAllUpcomingTasksForMyGarden(myGarden, lastFrostDate, firstFrostDate, latitude, longitude);
     return allTasks;
   } catch (error) {
     console.error('Error generating upcoming tasks:', error);
@@ -244,7 +258,7 @@ export const getUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, first
 /**
  * Enhanced all tasks function with modular task generation
  */
-export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, firstFrostDate) => {
+export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, firstFrostDate, latitude, longitude) => {
   if (!Array.isArray(myGarden) || myGarden.length === 0) {
     return [];
   }
@@ -253,12 +267,44 @@ export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, fi
     const firstFrost = firstFrostDate ? DateUtils.createDate(firstFrostDate) : null;
     let allTasks = [];
     const allPlants = await loadPlants();
+    const weatherData = await getWeatherForecast(latitude, longitude);
 
     myGarden.forEach(gardenEntry => {
       if (gardenEntry.status === 'harvested') return;
 
       const plantDetails = allPlants.find(p => p.id === gardenEntry.plantId);
       if (!plantDetails) return;
+
+      let plantSpecificKillDate = null;
+      if (weatherData && weatherData.hourlyForecast && !plantDetails.frostTolerant) {
+        const killTemp = plantDetails.temperature.absoluteMinF;
+        const killForecast = weatherData.hourlyForecast.find(forecast => {
+          const tempF = (forecast.temperature * 9/5) + 32;
+          return tempF <= killTemp;
+        });
+        if (killForecast) {
+          plantSpecificKillDate = new Date(killForecast.time);
+
+          // Create Final Harvest Warning
+          const warningDate = DateUtils.addDays(plantSpecificKillDate, -4);
+          const today = new Date();
+          if (warningDate > today) {
+            allTasks.push({
+              id: `${gardenEntry.id}-final-harvest-warning`,
+              plantName: plantDetails.name,
+              task: `Final Harvest Warning for ${plantDetails.name}`,
+              description: `Freezing temperatures are expected around ${plantSpecificKillDate.toLocaleDateString()}. Harvest any remaining produce before then.`,
+              date: warningDate.toISOString(),
+              type: TASK_TYPES.CRITICAL,
+            });
+          }
+        }
+      }
+
+      if (!plantSpecificKillDate && firstFrost && !plantDetails.frostTolerant) {
+        plantSpecificKillDate = firstFrost;
+      }
+
 
       const plantedDate = new Date(gardenEntry.plantedDate);
       const harvestDate = DateUtils.addDays(plantedDate, plantDetails.daysToMaturity);
@@ -271,7 +317,7 @@ export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, fi
       );
 
       const careTasks = TaskGenerator.generateCareTasks(
-        gardenEntry, plantDetails, harvestDate, firstFrost
+        gardenEntry, plantDetails, harvestDate, plantSpecificKillDate
       );
 
       allTasks.push(...criticalTasks, ...careTasks);

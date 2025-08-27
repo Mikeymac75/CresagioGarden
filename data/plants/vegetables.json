@@ -115,8 +115,8 @@
       "notes": "Rich in organic matter. Sensitive to nutrient deficiencies, especially nitrogen."
     },
     "temperature": {
-      "optimalLowF": 60,
-      "optimalHighF": 70,
+      "optimalLowF": 55,
+      "optimalHighF": 75,
       "absoluteMinF": 28,
       "notes": "Can tolerate light frost, which can sweeten the flavor. Excessive heat can cause bolting."
     },
@@ -195,8 +195,8 @@
       "notes": "Requires consistent supply of nutrients, especially boron, to prevent hollow stems. Side-dress with compost mid-season."
     },
     "temperature": {
-      "optimalLowF": 60,
-      "optimalHighF": 70,
+      "optimalLowF": 55,
+      "optimalHighF": 80,
       "absoluteMinF": 32,
       "notes": "Very sensitive to temperature swings. Protect from both frost and heat to prevent 'buttoning' (forming tiny heads)."
     },
@@ -271,7 +271,7 @@
     },
     "temperature": {
       "optimalLowF": 60,
-      "optimalHighF": 70,
+      "optimalHighF": 80,
       "absoluteMinF": 25,
       "notes": "Requires a long, cool growing season. Hot weather can cause sprouts to be bitter or loose."
     },
@@ -512,7 +512,7 @@
     },
     "temperature": {
       "optimalLowF": 60,
-      "optimalHighF": 70,
+      "optimalHighF": 75,
       "absoluteMinF": 32,
       "notes": "A cool-season crop. Hot weather or a sudden drop in temperature will cause it to bolt before a bulb forms."
     },
