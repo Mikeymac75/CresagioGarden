@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { getDaysUntilHarvest } from '../services/GardeningService';
 
-const GardenPlantListItem = ({ item, plantInfo, onRemove }) => {
+const GardenPlantListItem = ({ item, plantInfo, onRemove, onPress }) => {
   if (!plantInfo) {
     return (
       <View style={styles.plantEntry}>
@@ -15,7 +15,7 @@ const GardenPlantListItem = ({ item, plantInfo, onRemove }) => {
   const harvestStatus = getDaysUntilHarvest(item.plantedDate, plantInfo);
 
   return (
-    <View style={styles.plantEntry}>
+    <TouchableOpacity style={styles.plantEntry} onPress={onPress} activeOpacity={0.7}>
       <View style={styles.plantHeader}>
         <Text style={styles.plantName}>{item.nickname}</Text>
         <TouchableOpacity onPress={() => onRemove(item)}>
@@ -29,7 +29,7 @@ const GardenPlantListItem = ({ item, plantInfo, onRemove }) => {
       <Text style={styles.plantDetail}>
         🌾 Harvest: {harvestStatus}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

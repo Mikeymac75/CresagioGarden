@@ -130,16 +130,21 @@ export default function MyGardenScreen({ navigation }) {
         item={item}
         plantInfo={plantInfo}
         onRemove={removePlant}
+        onPress={() => navigation.navigate('PlantDetail', {
+          gardenEntry: item,
+          plant: plantInfo,
+        })}
       />
     );
-  }, [allPlants, removePlant]);
+  }, [allPlants, removePlant, navigation]);
 
   const renderAvailablePlant = useCallback(({ item }) => (
     <AvailablePlantListItem
       item={item}
       onSelect={handlePlantSelection}
+      onPressDetails={() => navigation.navigate('PlantDetail', { plant: item })}
     />
-  ), [handlePlantSelection]);
+  ), [handlePlantSelection, navigation]);
 
   const activeGarden = myGarden.filter(p => p.status !== 'harvested');
 
