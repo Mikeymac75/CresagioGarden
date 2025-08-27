@@ -68,6 +68,9 @@ const useHomeScreenData = (navigation) => {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
+        const oneWeekFromNow = new Date(today);
+        oneWeekFromNow.setDate(today.getDate() + 7);
+
         const rangeStart = new Date();
         rangeStart.setDate(today.getDate() - 3);
         rangeStart.setHours(0, 0, 0, 0);
@@ -83,7 +86,7 @@ const useHomeScreenData = (navigation) => {
             const isCompleted = loadedCompletedTasks.has(task.id);
 
             if (taskDate >= today) {
-              return true;
+              return taskDate < oneWeekFromNow;
             }
 
             if (isCompleted) {
