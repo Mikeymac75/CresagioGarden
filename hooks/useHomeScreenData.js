@@ -50,7 +50,7 @@ const useHomeScreenData = (navigation) => {
         const [weather, plantable, rawTasks, seasonal, allPlants] = await Promise.all([
           weatherPromise,
           getPlantableNow(parsedUserData.firstFrostDate),
-          getUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
+          getUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate, parsedUserData.firstFrostDate, parsedUserData.latitude, parsedUserData.longitude),
           getSeasonalTasks(parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
           loadPlants(),
         ]);
