@@ -223,5 +223,348 @@
         "description": "Harvest when fruit is grape-sized."
       }
     ]
+  },
+  {
+    "id": 44,
+    "name": "Blueberry",
+    "category": "Fruit",
+    "harvestType": "continuous",
+    "harvestPeriodDays": 45,
+    "daysToMaturity": 730,
+    "spacing": "4-6 feet",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 2,
+    "description": "A perennial shrub producing sweet, antioxidant-rich berries. Requires cross-pollination for best fruit set.",
+    "tips": "Plant at least two different varieties for better pollination. Mulch heavily to maintain soil moisture and acidity.",
+    "succession": "Not applicable for perennial plants.",
+    "yield": "5-10 pounds per mature bush.",
+    "soil": {
+      "ph": "4.5-5.5",
+      "type": "Acidic, well-drained soil rich in organic matter.",
+      "notes": "Requires acidic soil. Amend with sulfur if needed."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 80,
+      "absoluteMinF": -20,
+      "notes": "Cold-hardy perennial. Most varieties require winter chill hours."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "HEAT_WAVE",
+        "message": "Provide extra water and shade during extreme heat.",
+        "priority": "medium"
+      }
+    ],
+    "companionPlants": ["Azalea", "Rhododendron", "Cranberry"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "7-10 days",
+      "notes": "Store unwashed in refrigerator. Freeze for long-term storage."
+    },
+    "careTasks": [
+      {
+        "name": "Water deeply",
+        "daysAfterPlanting": 7,
+        "recurring": 2,
+        "description": "Keep soil consistently moist but not waterlogged."
+      },
+      {
+        "name": "Apply mulch",
+        "daysAfterPlanting": 14,
+        "recurring": null,
+        "description": "Apply 2-3 inches of acidic mulch around base."
+      },
+      {
+        "name": "Fertilize with acid fertilizer",
+        "daysAfterPlanting": 60,
+        "recurring": 90,
+        "description": "Apply acidic fertilizer designed for blueberries."
+      },
+      {
+        "name": "Harvest berries",
+        "daysAfterPlanting": 730,
+        "recurring": 3,
+        "description": "Pick berries when they are fully blue and easily detach."
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "name": "Raspberry",
+    "category": "Fruit",
+    "harvestType": "continuous",
+    "harvestPeriodDays": 30,
+    "daysToMaturity": 365,
+    "spacing": "18-24 inches",
+    "sunRequirement": "Full sun to partial shade",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Regular watering",
+    "wateringFrequencyDays": 3,
+    "description": "A perennial cane fruit producing sweet-tart berries. Available in summer-bearing and everbearing varieties.",
+    "tips": "Install trellis system for support. Prune old canes after harvest to promote new growth.",
+    "succession": "Not applicable for perennial plants.",
+    "yield": "2-4 pounds per mature plant.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Well-drained, fertile soil rich in organic matter.",
+      "notes": "Good drainage is essential to prevent root rot."
+    },
+    "temperature": {
+      "optimalLowF": 60,
+      "optimalHighF": 80,
+      "absoluteMinF": -10,
+      "notes": "Hardy perennial. Tolerates cold winters well."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Late spring frosts can damage blossoms and reduce yield.",
+        "priority": "medium"
+      }
+    ],
+    "companionPlants": ["Garlic", "Chives", "Tansy"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "2-3 days",
+      "notes": "Very perishable. Use quickly or freeze immediately."
+    },
+    "careTasks": [
+      {
+        "name": "Install trellis system",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Set up support system for canes."
+      },
+      {
+        "name": "Water regularly",
+        "daysAfterPlanting": 7,
+        "recurring": 3,
+        "description": "Maintain consistent soil moisture."
+      },
+      {
+        "name": "Apply compost",
+        "daysAfterPlanting": 30,
+        "recurring": 90,
+        "description": "Side-dress with compost for nutrition."
+      },
+      {
+        "name": "Harvest berries",
+        "daysAfterPlanting": 365,
+        "recurring": 2,
+        "description": "Pick berries when they easily pull off the plant."
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "name": "Blackberry",
+    "category": "Fruit",
+    "harvestType": "continuous",
+    "harvestPeriodDays": 35,
+    "daysToMaturity": 365,
+    "spacing": "3-4 feet",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Deep, regular watering",
+    "wateringFrequencyDays": 4,
+    "description": "A thorny perennial cane producing large, sweet-tart berries. Very vigorous and productive.",
+    "tips": "Wear gloves when harvesting due to thorns. Prune old canes annually for best production.",
+    "succession": "Not applicable for perennial plants.",
+    "yield": "5-10 pounds per mature plant.",
+    "soil": {
+      "ph": "5.5-7.0",
+      "type": "Well-drained soil with good organic content.",
+      "notes": "Tolerates various soil types but prefers slightly acidic conditions."
+    },
+    "temperature": {
+      "optimalLowF": 65,
+      "optimalHighF": 85,
+      "absoluteMinF": -5,
+      "notes": "Hardy perennial but flowers can be damaged by late frosts."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover plants if late frost threatens during flowering.",
+        "priority": "medium"
+      }
+    ],
+    "companionPlants": ["Mint", "Chives", "Marigold"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "3-5 days",
+      "notes": "Store unwashed in refrigerator. Rinse just before eating."
+    },
+    "careTasks": [
+      {
+        "name": "Install sturdy trellis",
+        "daysAfterPlanting": 14,
+        "recurring": null,
+        "description": "Set up strong support system for vigorous growth."
+      },
+      {
+        "name": "Deep watering",
+        "daysAfterPlanting": 7,
+        "recurring": 4,
+        "description": "Water deeply to encourage deep root development."
+      },
+      {
+        "name": "Fertilize",
+        "daysAfterPlanting": 45,
+        "recurring": 90,
+        "description": "Apply balanced fertilizer during growing season."
+      },
+      {
+        "name": "Harvest berries",
+        "daysAfterPlanting": 365,
+        "recurring": 3,
+        "description": "Pick when berries are fully black and soft."
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "name": "Grape",
+    "category": "Fruit",
+    "harvestType": "single",
+    "daysToMaturity": 1095,
+    "spacing": "6-8 feet",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Moderate watering",
+    "wateringFrequencyDays": 7,
+    "description": "A perennial vine producing clusters of sweet fruit. Takes several years to establish and produce significant harvest.",
+    "tips": "Requires strong trellis system and annual pruning. Choose varieties suited to your climate zone.",
+    "succession": "Not applicable for perennial plants.",
+    "yield": "10-30 pounds per mature vine.",
+    "soil": {
+      "ph": "6.0-7.5",
+      "type": "Well-drained, slightly alkaline soil.",
+      "notes": "Good drainage is critical. Avoid heavy clay or waterlogged soils."
+    },
+    "temperature": {
+      "optimalLowF": 70,
+      "optimalHighF": 85,
+      "absoluteMinF": 0,
+      "notes": "Cold hardiness varies by variety. Requires warm summers for fruit ripening."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Late spring frosts can damage new growth and flowers.",
+        "priority": "high"
+      }
+    ],
+    "companionPlants": ["Rose", "Lavender", "Oregano"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1-2 weeks",
+      "notes": "Store in perforated bags in refrigerator."
+    },
+    "careTasks": [
+      {
+        "name": "Install trellis system",
+        "daysAfterPlanting": 14,
+        "recurring": null,
+        "description": "Build sturdy trellis to support mature vine."
+      },
+      {
+        "name": "Weekly watering",
+        "daysAfterPlanting": 7,
+        "recurring": 7,
+        "description": "Water deeply once per week during growing season."
+      },
+      {
+        "name": "Annual pruning",
+        "daysAfterPlanting": 365,
+        "recurring": 365,
+        "description": "Prune during dormancy to maintain shape and productivity."
+      },
+      {
+        "name": "Harvest grapes",
+        "daysAfterPlanting": 1095,
+        "recurring": null,
+        "description": "Harvest when grapes are sweet and fully colored."
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "name": "Apple",
+    "category": "Fruit",
+    "harvestType": "single",
+    "daysToMaturity": 1460,
+    "spacing": "12-15 feet",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Deep, infrequent watering",
+    "wateringFrequencyDays": 10,
+    "description": "A fruit tree producing crisp, sweet apples. Requires cross-pollination from another apple variety for fruit production.",
+    "tips": "Plant at least two different varieties for pollination. Annual pruning is essential for tree health and fruit quality.",
+    "succession": "Not applicable for perennial trees.",
+    "yield": "30-50 pounds per mature tree.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Well-drained, fertile soil with good organic content.",
+      "notes": "Avoid poorly drained or compacted soils."
+    },
+    "temperature": {
+      "optimalLowF": 65,
+      "optimalHighF": 80,
+      "absoluteMinF": -25,
+      "notes": "Requires winter chill hours for proper flowering. Very cold hardy."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Late frosts during bloom can severely reduce fruit set.",
+        "priority": "high"
+      }
+    ],
+    "companionPlants": ["Chives", "Nasturtium", "Comfrey"],
+    "storage": {
+      "method": "Cool, humid storage",
+      "duration": "2-6 months",
+      "notes": "Store in cool cellar or refrigerator for long-term storage."
+    },
+    "careTasks": [
+      {
+        "name": "Deep watering",
+        "daysAfterPlanting": 7,
+        "recurring": 10,
+        "description": "Water deeply to encourage deep root development."
+      },
+      {
+        "name": "Apply mulch ring",
+        "daysAfterPlanting": 14,
+        "recurring": null,
+        "description": "Mulch around base but keep away from trunk."
+      },
+      {
+        "name": "Annual pruning",
+        "daysAfterPlanting": 365,
+        "recurring": 365,
+        "description": "Prune during dormancy to maintain shape and health."
+      },
+      {
+        "name": "Harvest apples",
+        "daysAfterPlanting": 1460,
+        "recurring": null,
+        "description": "Harvest when apples easily twist off the branch."
+      }
+    ]
   }
 ]
