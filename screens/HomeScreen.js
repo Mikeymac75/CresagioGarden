@@ -30,6 +30,7 @@ const HomeScreen = ({ navigation }) => {
     userData,
     plantableNow,
     upcomingTasks,
+    overdueTasks,
     completedTasks,
     plantCount,
     loading,
@@ -128,6 +129,42 @@ const HomeScreen = ({ navigation }) => {
           <Text style={styles.statLabel}>Tasks This Week</Text>
         </View>
       </View>
+
+      {overdueTasks.length > 0 && (
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: '#D32F2F' }]}>
+            🚩 Action Needed
+          </Text>
+          {overdueTasks.map(item => {
+            const isCompleted = completedTasks.has(item.id);
+            const daysOverdue = Math.floor((new Date() - new Date(item.date)) / (1000 * 60 * 60 * 24));
+
+            return (
+              <TouchableOpacity
+                key={item.id}
+                style={[styles.taskCard, styles.overdueCard]}
+                onPress={() => handleTaskPress(item)}
+                disabled={!item.description}
+              >
+                <Checkbox isChecked={isCompleted} onToggle={() => toggleTask(item.id)} />
+                <View style={styles.taskDetails}>
+                  <Text style={[styles.taskText, isCompleted && styles.completedTaskText]}>
+                    {item.task}
+                  </Text>
+                  <Text style={styles.overdueText}>
+                    {daysOverdue} day{daysOverdue > 1 ? 's' : ''} overdue
+                  </Text>
+                </View>
+                {!isCompleted && (
+                  <TouchableOpacity onPress={() => snoozeTask(item.id, 1)} style={styles.snoozeButton}>
+                    <Ionicons name="sunny-outline" size={22} color="#888" />
+                  </TouchableOpacity>
+                )}
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+      )}
 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>🗓️ This Week at a Glance</Text>
@@ -280,6 +317,16 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       borderLeftWidth: 4,
       borderLeftColor: '#4CAF50'
+    },
+    overdueCard: {
+      borderLeftColor: '#D32F2F',
+      backgroundColor: '#FFEBEE',
+    },
+    overdueText: {
+      fontSize: 12,
+      color: '#D32F2F',
+      fontStyle: 'italic',
+      marginTop: 4,
     },
     alertCard: {
       backgroundColor: '#E1F5FE', // Light blue

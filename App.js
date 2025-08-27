@@ -45,11 +45,6 @@ function GardenStackNavigator() {
         options={{ title: 'Seed Bank' }}
       />
       <GardenStack.Screen
-        name="PlantDetail"
-        component={PlantDetailScreen}
-        options={({ route }) => ({ title: route.params.plant.name })}
-      />
-      <GardenStack.Screen
         name="CustomPlant"
         component={CustomPlantScreen}
         options={{ title: 'Create Custom Plant' }}
@@ -163,9 +158,19 @@ export default function App() {
   return (
     <>
       <NavigationContainer>
-        <RootStack.Navigator initialRouteName={initialRoute} screenOptions={{ headerShown: false }}>
-          <RootStack.Screen name="Setup" component={SetupScreen} />
-          <RootStack.Screen name="MainApp" component={MainAppTabs} />
+        <RootStack.Navigator initialRouteName={initialRoute}>
+          <RootStack.Screen name="Setup" component={SetupScreen} options={{ headerShown: false }} />
+          <RootStack.Screen name="MainApp" component={MainAppTabs} options={{ headerShown: false }} />
+          <RootStack.Screen
+            name="PlantDetail"
+            component={PlantDetailScreen}
+            options={({ route }) => ({
+              title: route.params.plant.name,
+              ...stackNavigatorOptions,
+              headerShown: true,
+              presentation: 'modal',
+            })}
+          />
         </RootStack.Navigator>
       </NavigationContainer>
       <FTUETour isVisible={showFtueTour} onFinish={handleFtueFinish} />
