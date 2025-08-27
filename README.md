@@ -12,9 +12,10 @@ The application is organized into four main tabs, each with a distinct set of fe
 *   **Real-Time Weather Integration:** Shows the current weather forecast for your location.
 *   **Dynamic Weather Alerts:** Provides actionable alerts for frost, heatwaves, and heavy rain, helping you protect your plants.
 *   **Smart Task Management:**
-    *   Displays a list of tasks for the upcoming week.
+    *   Organizes weekly tasks into collapsible daily sections like "Today," "Tomorrow," and so on.
     *   Automatically skips watering tasks if heavy rain is forecasted.
     *   Allows you to mark tasks as complete.
+    *   **Snooze Tasks:** Postpone a single task by 3 days without affecting its recurring schedule.
 *   **Climate-Aware Suggestions:** Recommends plants you can still grow based on the time remaining before the first frost.
 *   **Interactive Modals:** Tap on a task or plant suggestion to get more details.
 
@@ -22,6 +23,7 @@ The application is organized into four main tabs, each with a distinct set of fe
 
 *   **Virtual Garden:** Keep a digital record of all the plants you are currently growing.
 *   **Comprehensive Plant Database:** Browse a "Seed Bank" of common garden plants with detailed growing information.
+*   **Dynamic Plant Detail Screen:** Get a detailed view of each plant, including its growth progress, care schedule, and photo journal.
 *   **Add Custom Plants:** Flexibility to add your own custom plants to your garden.
 *   **Track Plant Progress:** Monitor the status of each plant from seedling to harvest.
 
@@ -32,8 +34,14 @@ The application is organized into four main tabs, each with a distinct set of fe
 
 ### Garden Journal
 
+*   **Photo Journaling:** Visually document your garden's progress by adding photos to your journal entries.
 *   **Digital Diary:** Document your gardening journey, take notes, and log your successes and challenges.
 *   **Easy Entry Management:** Create, view, and manage your journal entries.
+
+### Freemium Model
+
+*   **Free Tier:** Enjoy core features like adding up to 10 plants, tracking tasks, and accessing the plant database.
+*   **Premium Upgrade:** Unlock unlimited plants and gain access to exclusive future features.
 
 ### Core Features
 
@@ -141,7 +149,6 @@ This app is just getting started! Here are some ideas for future upgrades:
     *   Improve the calendar views with better filtering and visualization of tasks.
     *   Create a more engaging and "My Garden" view, perhaps with a visual layout tool.
 *   **Expanded Plant Database:** Add more plants, including flowers and native species. Include more detailed information like pest and disease control, companion planting, and specific nutrient needs.
-*   **Photo Journal:** Enable users to upload photos to their garden journal entries to visually track plant growth and garden changes.
 *   **User Accounts & Cloud Sync:** Allow users to create accounts and sync their garden data across multiple devices. This would also enable true **Push Notifications** to sync tasks across devices.
 *   **Community Features:** Create a space for users to share tips, ask questions, and show off their gardens.
 *   **Pest & Disease Identifier:** Use the device's camera and machine learning to help users identify common garden pests and diseases.
