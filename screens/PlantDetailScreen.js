@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import ProgressBar from '../components/ProgressBar';
 
 const DetailRow = ({ icon, label, value }) => (
   <View style={styles.detailRow}>
@@ -11,7 +12,14 @@ const DetailRow = ({ icon, label, value }) => (
 );
 
 const PlantDetailScreen = ({ route }) => {
-  const { plant } = route.params;
+  const { plant, gardenEntry } = route.params;
+
+  const getEstimatedHarvestDate = () => {
+    if (!gardenEntry || !plant.daysToMaturity) return 'N/A';
+    const planted = new Date(gardenEntry.plantedDate);
+    const harvestDate = new Date(planted.setDate(planted.getDate() + plant.daysToMaturity));
+    return harvestDate.toLocaleDateString();
+  };
 
   if (!plant) {
     return (
@@ -23,6 +31,27 @@ const PlantDetailScreen = ({ route }) => {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      {gardenEntry && (
+        <View style={styles.card}>
+          <Text style={styles.sectionTitle}>My {gardenEntry.nickname}</Text>
+          <DetailRow
+            icon="calendar-outline"
+            label="Planted On"
+            value={new Date(gardenEntry.plantedDate).toLocaleDateString()}
+          />
+          <DetailRow
+            icon="leaf-outline"
+            label="Est. Harvest"
+            value={getEstimatedHarvestDate()}
+          />
+          <Text style={styles.progressLabel}>Progress to Maturity:</Text>
+          <ProgressBar
+            plantedDate={gardenEntry.plantedDate}
+            daysToMaturity={plant.daysToMaturity}
+          />
+        </View>
+      )}
+
       <View style={styles.card}>
         <Text style={styles.title}>{plant.name}</Text>
         <Text style={styles.category}>{plant.category}</Text>
@@ -122,6 +151,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#666',
     marginTop: 4,
+  },
+  progressLabel: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
+    marginTop: 16,
+    marginBottom: 8,
   },
 });
 
