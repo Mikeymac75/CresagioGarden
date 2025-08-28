@@ -1,0 +1,156 @@
+[
+  {
+    "id": 63,
+    "name": "Marigold",
+    "category": "Flower",
+    "daysToMaturity": 60,
+    "spacing": "8-12 inches",
+    "sunRequirement": "Full sun",
+    "description": "A cheerful, hardy annual known for its bright pom-pom-like flowers. Marigolds are easy to grow and are excellent companion plants for vegetable gardens, repelling pests.",
+    "tips": "Deadhead spent blooms regularly to encourage continuous flowering. Can be planted deeper than most seedlings as roots will form along the buried stem.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Adaptable to most garden soils, but prefers well-drained loam."
+    },
+    "temperature": {
+      "optimalLowF": 68,
+      "optimalHighF": 90,
+      "absoluteMinF": 35,
+      "notes": "Loves heat and is drought-tolerant once established. Protect from frost."
+    },
+    "careTasks": [
+      {
+        "name": "Thin seedlings",
+        "daysAfterPlanting": 14,
+        "recurring": null,
+        "description": "Once seedlings are 2-3 inches tall, thin them to the recommended spacing (8-12 inches) to ensure good air circulation."
+      },
+      {
+        "name": "Watering",
+        "daysAfterPlanting": 0,
+        "recurring": 4,
+        "description": "Water regularly after planting until established. Mature plants are drought-tolerant but bloom best with consistent weekly watering."
+      },
+      {
+        "name": "Deadhead spent flowers",
+        "daysAfterPlanting": 45,
+        "recurring": 7,
+        "description": "Pinch or snip off faded flowers to encourage the plant to produce more blooms instead of seeds."
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "name": "Sunflower",
+    "category": "Flower",
+    "daysToMaturity": 90,
+    "spacing": "24-36 inches for giant varieties, 6-12 inches for smaller ones",
+    "sunRequirement": "Full sun",
+    "description": "Iconic, towering flowers that follow the sun. Sunflowers are fast-growing annuals that produce beautiful heads full of seeds, which can be eaten or left for wildlife.",
+    "tips": "Taller varieties may need staking to protect them from wind. The flower head is actually composed of thousands of tiny individual flowers.",
+    "soil": {
+      "ph": "6.0-7.5",
+      "type": "Tolerant of most soil types but performs best in well-drained soil with some organic matter."
+    },
+    "temperature": {
+      "optimalLowF": 70,
+      "optimalHighF": 85,
+      "absoluteMinF": 35,
+      "notes": "A heat-loving plant that requires a long, sunny season to thrive. Protect young plants from frost."
+    },
+    "careTasks": [
+      {
+        "name": "Provide support",
+        "daysAfterPlanting": 40,
+        "recurring": null,
+        "description": "For varieties growing over 5 feet tall, install a sturdy stake to prevent the heavy heads from breaking the stem, especially in windy areas."
+      },
+      {
+        "name": "Watering",
+        "daysAfterPlanting": 0,
+        "recurring": 5,
+        "description": "Water deeply but infrequently to encourage a strong root system. Needs more water during the 20 days before and after flowering."
+      },
+      {
+        "name": "Protect from birds",
+        "daysAfterPlanting": 80,
+        "recurring": null,
+        "description": "If you plan to harvest the seeds, cover the flower heads with netting or a paper bag once the petals start to droop to protect them from birds."
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "name": "Nasturtium",
+    "category": "Flower",
+    "daysToMaturity": 55,
+    "spacing": "10-12 inches",
+    "sunRequirement": "Full sun to partial shade",
+    "description": "A versatile and easy-to-grow flower with edible leaves, flowers, and seed pods that have a peppery taste. Comes in both vining and bush types.",
+    "tips": "Thrives on neglect; overly rich soil will lead to more leaves and fewer flowers. Often used as a 'trap crop' to lure aphids away from vegetables.",
+    "soil": {
+      "ph": "6.0-8.0",
+      "type": "Prefers poor, well-drained soil. Avoid rich, fertilized soil."
+    },
+    "temperature": {
+      "optimalLowF": 55,
+      "optimalHighF": 75,
+      "absoluteMinF": 33,
+      "notes": "A cool-season flower that may struggle in intense summer heat. Very sensitive to frost."
+    },
+    "careTasks": [
+      {
+        "name": "Watering",
+        "daysAfterPlanting": 0,
+        "recurring": 5,
+        "description": "Water regularly, but allow the soil to dry out slightly between waterings. Does not like to be waterlogged."
+      },
+      {
+        "name": "Harvest for salads",
+        "daysAfterPlanting": 40,
+        "recurring": 7,
+        "description": "Harvest leaves and flowers as desired for culinary use. Regular picking of flowers can encourage more blooms."
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "name": "Zinnia",
+    "category": "Flower",
+    "daysToMaturity": 75,
+    "spacing": "9-12 inches",
+    "sunRequirement": "Full sun",
+    "description": "A vibrant, low-maintenance annual that provides a burst of color from summer until the first frost. Zinnias are excellent for cut flower gardens.",
+    "tips": "Good air circulation is key to preventing powdery mildew. Pinching young plants can encourage bushier growth. The more you cut, the more they bloom.",
+    "soil": {
+      "ph": "6.3-6.8",
+      "type": "Fertile, well-drained soil rich in organic matter."
+    },
+    "temperature": {
+      "optimalLowF": 74,
+      "optimalHighF": 84,
+      "absoluteMinF": 35,
+      "notes": "Loves hot weather. Very sensitive to frost. Wait for reliably warm weather to plant."
+    },
+    "careTasks": [
+      {
+        "name": "Pinch young plants",
+        "daysAfterPlanting": 21,
+        "recurring": null,
+        "description": "When plants are about 8-12 inches tall, pinch off the top 4 inches of the central stem to encourage branching and more flowers."
+      },
+      {
+        "name": "Watering",
+        "daysAfterPlanting": 0,
+        "recurring": 4,
+        "description": "Water at the base of the plant to keep foliage dry, which helps prevent powdery mildew. Water deeply to encourage strong roots."
+      },
+      {
+        "name": "Deadhead or cut for bouquets",
+        "daysAfterPlanting": 60,
+        "recurring": 5,
+        "description": "Regularly cut flowers for bouquets or remove spent blooms. This encourages the plant to produce more flowers all season long."
+      }
+    ]
+  }
+]

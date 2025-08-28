@@ -7,11 +7,16 @@ const plantDataFiles = {
   'vegetables.json': () => require('../data/plants/vegetables.json'),
   'fruits.json': () => require('../data/plants/fruits.json'),
   'fruit2.json': () => require('../data/plants/fruit2.json'),
+  'fruit3.json': () => require('../data/plants/fruit3.json'),
   'grains.json': () => require('../data/plants/grains.json'),
   'herbs.json': () => require('../data/plants/herbs.json'),
+  'herbs2.json': () => require('../data/plants/herbs2.json'),
   'leafy_greens.json': () => require('../data/plants/leafy_greens.json'),
+  'leafy_greens2.json': () => require('../data/plants/leafy_greens2.json'),
   'legumes.json': () => require('../data/plants/legumes.json'),
   'root_vegetables.json': () => require('../data/plants/root_vegetables.json'),
+  'root_vegetables2.json': () => require('../data/plants/root_vegetables2.json'),
+  'flowers.json': () => require('../data/plants/flowers.json'),
 };
 
 // A map for the corresponding FAQ files.
@@ -19,11 +24,16 @@ const plantFaqFiles = {
   'vegetables_faq.json': () => require('../data/plants/vegetables_faq.json'),
   'fruits_faq.json': () => require('../data/plants/fruits_faq.json'),
   'fruit2_faq.json': () => require('../data/plants/fruit2_faq.json'),
+  'fruit3_faq.json': () => require('../data/plants/fruit3_faq.json'),
   'grains_faq.json': () => require('../data/plants/grains_faq.json'),
   'herbs_faq.json': () => require('../data/plants/herbs_faq.json'),
+  'herbs2_faq.json': () => require('../data/plants/herbs2_faq.json'),
   'leafy_greens_faq.json': () => require('../data/plants/leafy_greens_faq.json'),
+  'leafy_greens2_faq.json': () => require('../data/plants/leafy_greens2_faq.json'),
   'legumes_faq.json': () => require('../data/plants/legumes_faq.json'),
   'root_vegetables_faq.json': () => require('../data/plants/root_vegetables_faq.json'),
+  'root_vegetables2_faq.json': () => require('../data/plants/root_vegetables2_faq.json'),
+  'flowers_faq.json': () => require('../data/plants/flowers_faq.json'),
 };
 
 const basePlants = plantIndex;

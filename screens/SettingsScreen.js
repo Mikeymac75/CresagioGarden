@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { getItem as getSecureItem, setItem as setSecureItem } from '../utils/SecureStorage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getWateringPreferences } from '../services/UserPreferenceService';
+import { getWateringPreferences, getTemperatureUnit, saveTemperatureUnit } from '../services/UserPreferenceService';
 
 const SettingsScreen = ({ navigation }) => {
+  const [tempUnit, setTempUnit] = useState('C');
+
+  useEffect(() => {
+    const fetchTempUnit = async () => {
+      const unit = await getTemperatureUnit();
+      setTempUnit(unit);
+    };
+    fetchTempUnit();
+  }, []);
+
+  const handleSetTempUnit = async (unit) => {
+    await saveTemperatureUnit(unit);
+    setTempUnit(unit);
+  };
 
   const handleBackup = async () => {
     try {
@@ -99,6 +113,28 @@ const SettingsScreen = ({ navigation }) => {
       <Text style={styles.title}>Settings</Text>
 
       <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Preferences</Text>
+        <View style={styles.row}>
+          <Ionicons name="thermometer-outline" size={24} color="#4CAF50" />
+          <Text style={styles.rowText}>Temperature Unit</Text>
+          <View style={styles.segmentedControl}>
+            <TouchableOpacity
+              style={[styles.segmentButton, tempUnit === 'C' && styles.segmentButtonActive]}
+              onPress={() => handleSetTempUnit('C')}
+            >
+              <Text style={[styles.segmentButtonText, tempUnit === 'C' && styles.segmentButtonTextActive]}>°C</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.segmentButton, tempUnit === 'F' && styles.segmentButtonActive]}
+              onPress={() => handleSetTempUnit('F')}
+            >
+              <Text style={[styles.segmentButtonText, tempUnit === 'F' && styles.segmentButtonTextActive]}>°F</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+
+      <View style={styles.section}>
         <Text style={styles.sectionTitle}>Backup & Restore</Text>
         <TouchableOpacity style={styles.row} onPress={handleBackup}>
           <Ionicons name="cloud-upload-outline" size={24} color="#4CAF50" />
@@ -170,6 +206,29 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginLeft: 16,
     color: '#333',
+    flex: 1,
+  },
+  segmentedControl: {
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderColor: '#4CAF50',
+    borderRadius: 8,
+    overflow: 'hidden',
+  },
+  segmentButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+  },
+  segmentButtonActive: {
+    backgroundColor: '#4CAF50',
+  },
+  segmentButtonText: {
+    fontSize: 16,
+    color: '#4CAF50',
+  },
+  segmentButtonTextActive: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
 

@@ -1,6 +1,7 @@
 import { getItem, setItem } from '../utils/SecureStorage';
 
 const PREFERENCES_KEY = 'userWateringPreferences';
+const TEMP_UNIT_KEY = 'userTemperatureUnit';
 const GARDEN_KEY = 'myGarden';
 
 /**
@@ -63,4 +64,37 @@ export const getWateringPreferences = async () => {
         console.error('Failed to get watering preferences:', error);
         return {};
     }
+};
+
+/**
+ * Saves the user's preferred temperature unit ('C' or 'F').
+ * @param {string} unit - The temperature unit to save ('C' or 'F').
+ * @returns {Promise<boolean>} - True if successful, false otherwise.
+ */
+export const saveTemperatureUnit = async (unit) => {
+  try {
+    if (unit !== 'C' && unit !== 'F') {
+      console.error('Invalid temperature unit provided. Must be "C" or "F".');
+      return false;
+    }
+    await setItem(TEMP_UNIT_KEY, unit);
+    return true;
+  } catch (error) {
+    console.error('Failed to save temperature unit:', error);
+    return false;
+  }
+};
+
+/**
+ * Retrieves the user's preferred temperature unit.
+ * @returns {Promise<string>} - The temperature unit ('C' or 'F'), defaulting to 'C'.
+ */
+export const getTemperatureUnit = async () => {
+  try {
+    const unit = await getItem(TEMP_UNIT_KEY);
+    return unit === 'F' ? 'F' : 'C'; // Default to 'C' if not set or invalid
+  } catch (error) {
+    console.error('Failed to get temperature unit:', error);
+    return 'C'; // Default to 'C' on error
+  }
 };

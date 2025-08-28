@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, ActivityIndicator, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import ProgressBar from '../components/ProgressBar';
+import TemperatureRange from '../components/TemperatureRange';
 import { loadPlantDetails, loadPlantFaq } from '../services/PlantService';
-import { saveWateringPreferenceForPlantInstance, saveWateringPreferenceAsDefault } from '../services/UserPreferenceService';
+import {
+  saveWateringPreferenceForPlantInstance,
+  saveWateringPreferenceAsDefault,
+  getTemperatureUnit,
+} from '../services/UserPreferenceService';
 import AdjustWateringModal from '../components/AdjustWateringModal';
 
 const DetailRow = ({ icon, label, value }) => (
@@ -40,8 +45,16 @@ const PlantDetailScreen = ({ route }) => {
   const [isLoading, setIsLoading] = useState(!initialPlant);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [currentGardenEntry, setCurrentGardenEntry] = useState(gardenEntry);
+  const [tempUnit, setTempUnit] = useState('C');
 
   useEffect(() => {
+    const fetchPrefs = async () => {
+      const unit = await getTemperatureUnit();
+      setTempUnit(unit);
+    };
+
+    fetchPrefs();
+
     // If the plant object from route params is a summary, fetch full details
     if (initialPlant && initialPlant.detailsFile && initialPlant.id) {
       setIsLoading(true);
@@ -175,6 +188,9 @@ const PlantDetailScreen = ({ route }) => {
             <DetailRow icon="leaf-outline" label="Soil Type" value={plant.soil.type} />
             <DetailRow icon="analytics-outline" label="Soil pH" value={plant.soil.ph} />
           </>
+        )}
+        {plant.temperature && (
+            <TemperatureRange temperature={plant.temperature} unit={tempUnit} />
         )}
       </View>
 
