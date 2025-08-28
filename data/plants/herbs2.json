@@ -406,11 +406,40 @@
       "optimalLowF": 45,
       "optimalHighF": 75,
       "absoluteMinF": -20,
-      "notes": "Very hardy perennial."
+      "notes": "Very hardy perennial in zones 3-9. Goes dormant in winter."
     },
     "environmentalAlerts": [],
-    "companionPlants": [],
-    "storage": {},
-    "careTasks": []
+    "companionPlants": ["Carrots", "Tomatoes", "Roses"],
+    "storage": {
+      "method": "Refrigerate or freeze",
+      "duration": "1 week fresh, 6 months frozen",
+      "notes": "Store fresh leaves in a plastic bag in the refrigerator. Freeze chopped chives in ice cube trays with water."
+    },
+    "careTasks": [
+       {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 14,
+        "recurring": null,
+        "description": "Keep soil moist. Seedlings are slow to establish but very hardy once mature."
+      },
+      {
+        "name": "Harvest leaves",
+        "daysAfterPlanting": 60,
+        "recurring": 14,
+        "description": "Cut outer leaves about 2 inches from the ground. Regular harvesting encourages new growth."
+      },
+      {
+        "name": "Divide clumps",
+        "daysAfterPlanting": 1095,
+        "recurring": null,
+        "description": "Every 3-4 years, dig up and divide clumps in spring to rejuvenate them."
+      },
+      {
+        "name": "Watering",
+        "description": "Water regularly, especially during dry spells. Chives prefer consistent moisture.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
   }
 ]
