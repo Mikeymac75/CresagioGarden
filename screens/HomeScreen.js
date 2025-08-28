@@ -161,11 +161,6 @@ const HomeScreen = ({ navigation }) => {
                     {daysOverdue} day{daysOverdue > 1 ? 's' : ''} overdue
                   </Text>
                 </View>
-                {!isCompleted && (
-                  <TouchableOpacity onPress={() => snoozeTask(item.id, 1)} style={styles.snoozeButton}>
-                    <Ionicons name="sunny-outline" size={22} color="#888" />
-                  </TouchableOpacity>
-                )}
               </TouchableOpacity>
             );
           })}
