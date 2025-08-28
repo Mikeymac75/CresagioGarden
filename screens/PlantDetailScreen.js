@@ -159,8 +159,12 @@ const PlantDetailScreen = ({ route }) => {
         <Text style={styles.sectionTitle}>Growing Information</Text>
         <DetailRow icon="sunny-outline" label="Sun" value={plant.sunRequirement} />
         <DetailRow icon="resize-outline" label="Spacing" value={plant.spacing} />
-        <DetailRow icon="leaf-outline" label="Soil Type" value={plant.soil.type} />
-        <DetailRow icon="analytics-outline" label="Soil pH" value={plant.soil.ph} />
+        {plant.soil && (
+          <>
+            <DetailRow icon="leaf-outline" label="Soil Type" value={plant.soil.type} />
+            <DetailRow icon="analytics-outline" label="Soil pH" value={plant.soil.ph} />
+          </>
+        )}
       </View>
 
       <FaqSection faqData={faqData} />
