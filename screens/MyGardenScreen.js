@@ -231,7 +231,7 @@ export default function MyGardenScreen({ navigation }) {
               <Text style={styles.faqButtonText}>App FAQ</Text>
             </TouchableOpacity>
           </View>
-        )}
+        )}}
         ListEmptyComponent={() => (
           <View style={styles.emptyState}>
             <Text style={styles.emptyStateTitle}>Your garden is empty! 🌱</Text>
