@@ -43,9 +43,14 @@ export default function MyGardenScreen({ navigation }) {
   useEffect(() => {
     const activePlants = myGarden.filter(p => p.status !== 'harvested').length;
     navigation.setOptions({
-      title: `My Garden (${activePlants}/10)`
+      // Make the header title a button
+      headerTitle: () => (
+        <TouchableOpacity onPress={() => navigation.navigate('Upgrade')}>
+          <Text style={styles.headerTitleText}>My Garden ({activePlants}/10)</Text>
+        </TouchableOpacity>
+      ),
     });
-  }, [myGarden, navigation.setOptions]);
+  }, [myGarden, navigation]);
 
   const loadMyGarden = async () => {
     try {
@@ -461,5 +466,10 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  headerTitleText: {
+    fontWeight: 'bold',
+    fontSize: 17,
+    color: '#000',
   },
 });

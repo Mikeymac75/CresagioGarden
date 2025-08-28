@@ -151,16 +151,86 @@ const useHomeScreenData = (navigation) => {
   );
 
   const snoozeTask = useCallback(async (taskId) => {
+    const allCurrentTasks = [...upcomingTasks, ...overdueTasks];
+    const task = allCurrentTasks.find(t => t.id === taskId);
+
+    if (!task) {
+      console.error('Task to snooze not found in current lists:', taskId);
+      await loadData();
+      return;
+    }
+
     const snoozedTasksString = await getSecureItem('snoozedTasks');
     const snoozedTasks = snoozedTasksString ? JSON.parse(snoozedTasksString) : {};
 
-    const newDueDate = new Date();
-    newDueDate.setDate(newDueDate.getDate() + 3);
-    snoozedTasks[taskId] = newDueDate.toISOString();
+    if (task.type === 'water') {
+      const newDueDate = new Date();
+      newDueDate.setHours(0, 0, 0, 0);
+      newDueDate.setDate(newDueDate.getDate() + 1);
+
+      // To correctly check for duplicates, we need the full list of tasks,
+      // not just what's currently displayed.
+      const [myGardenString, userDataString] = await Promise.all([
+        getSecureItem('myGarden'),
+        getSecureItem('userData'),
+      ]);
+      const myGarden = myGardenString ? JSON.parse(myGardenString) : [];
+      const userData = JSON.parse(userDataString);
+
+      const [rawTasks, seasonal] = await Promise.all([
+        getUpcomingTasksForMyGarden(myGarden, userData.lastFrostDate, userData.firstFrostDate, userData.latitude, userData.longitude),
+        getSeasonalTasks(userData.lastFrostDate, userData.firstFrostDate),
+      ]);
+
+      const allPossibleTasks = [...rawTasks, ...seasonal];
+
+      const allTasksWithSnooze = allPossibleTasks.map(t => {
+        if (snoozedTasks[t.id]) {
+          return { ...t, date: snoozedTasks[t.id] };
+        }
+        return t;
+      });
+
+      const isDuplicate = allTasksWithSnooze.some(existingTask => {
+        if (existingTask.id === task.id) return false;
+        if (existingTask.plantName !== task.plantName || existingTask.type !== 'water') return false;
+
+        const existingTaskDate = new Date(existingTask.date);
+        existingTaskDate.setHours(0, 0, 0, 0);
+
+        return existingTaskDate.getTime() === newDueDate.getTime();
+      });
+
+      if (isDuplicate) {
+        console.log(`Duplicate watering task for ${task.plantName} on ${newDueDate.toISOString()}. Dismissing original task.`);
+        // "Dismiss" by marking as complete.
+        const completedTasksString = await getAsyncItem('completedTasks');
+        const currentCompletedTasks = completedTasksString ? new Set(JSON.parse(completedTasksString)) : new Set();
+        currentCompletedTasks.add(task.id);
+        await setAsyncItem('completedTasks', JSON.stringify(Array.from(currentCompletedTasks)));
+
+        // If the task was snoozed before, remove it from snoozed list
+        if (snoozedTasks[task.id]) {
+          delete snoozedTasks[task.id];
+          await setSecureItem('snoozedTasks', JSON.stringify(snoozedTasks));
+        }
+
+        await loadData();
+        return;
+      } else {
+        // No duplicate, snooze for 1 day.
+        snoozedTasks[taskId] = newDueDate.toISOString();
+      }
+    } else {
+      // Not a watering task, keep original 3-day snooze logic.
+      const newDueDate = new Date();
+      newDueDate.setDate(newDueDate.getDate() + 3);
+      snoozedTasks[taskId] = newDueDate.toISOString();
+    }
 
     await setSecureItem('snoozedTasks', JSON.stringify(snoozedTasks));
     await loadData();
-  }, [loadData]);
+  }, [loadData, upcomingTasks, overdueTasks]);
 
   const handleChangeLocation = () => {
     Alert.alert(
