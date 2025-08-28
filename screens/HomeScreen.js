@@ -65,9 +65,7 @@ const HomeScreen = ({ navigation }) => {
   };
 
   const groupedTasks = useMemo(() => {
-    // Filter out completed tasks before grouping
     return upcomingTasks
-      .filter(task => !completedTasks.has(task.id))
       .reduce((acc, task) => {
         const day = formatDate(task.date);
         if (!acc[day]) {
@@ -76,7 +74,7 @@ const HomeScreen = ({ navigation }) => {
         acc[day].push(task);
         return acc;
       }, {});
-  }, [upcomingTasks, completedTasks]);
+  }, [upcomingTasks]);
 
   const toggleDay = (day) => {
     setExpandedDays(current =>

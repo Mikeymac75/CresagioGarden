@@ -108,12 +108,12 @@ export default function MyGardenScreen({ navigation }) {
     }
   };
 
-  const resetAddPlantState = () => {
+  const resetAddPlantState = useCallback(() => {
     setIsModalVisible(false);
     setSelectedPlant(null);
     setModalStep('list');
     setPlantNickname('');
-  };
+  }, []);
 
   const removePlant = async (plantEntry) => {
     Alert.alert('Remove Plant', `Remove ${plantEntry.nickname} from your garden?`,
@@ -149,9 +149,12 @@ export default function MyGardenScreen({ navigation }) {
     <AvailablePlantListItem
       item={item}
       onSelect={handlePlantSelection}
-      onPressDetails={() => navigation.navigate('PlantDetail', { plant: item })}
+      onPressDetails={() => {
+        resetAddPlantState();
+        navigation.navigate('PlantDetail', { plant: item });
+      }}
     />
-  ), [handlePlantSelection, navigation]);
+  ), [handlePlantSelection, navigation, resetAddPlantState]);
 
   const activeGarden = myGarden.filter(p => p.status !== 'harvested');
 

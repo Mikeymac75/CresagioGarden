@@ -6,6 +6,10 @@ import {
   setItem as setSecureItem,
   removeItem as removeSecureItem,
 } from '../utils/SecureStorage';
+import {
+  getItem as getAsyncItem,
+  setItem as setAsyncItem,
+} from '../utils/AsyncStorage';
 import { getPlantableNow } from '../services/GardeningService';
 import { getUpcomingTasksForMyGarden, getSeasonalTasks } from '../services/TaskService';
 import { getWeatherForecast, generateDynamicAlerts } from '../services/WeatherService';
@@ -34,7 +38,7 @@ const useHomeScreenData = (navigation) => {
       ] = await Promise.all([
         getSecureItem('userData'),
         getSecureItem('myGarden'),
-        getSecureItem('completedTasks'),
+        getAsyncItem('completedTasks'),
         getSecureItem('snoozedTasks'),
       ]);
 
@@ -103,10 +107,14 @@ const useHomeScreenData = (navigation) => {
           taskDate.setHours(0, 0, 0, 0);
           const isCompleted = loadedCompletedTasks.has(task.id);
 
-          if (isCompleted) return;
-
           if (taskDate < today) {
-            // This is a past task. Apply pruning logic.
+            // This is a past task.
+            if (isCompleted) {
+              // Completed past tasks are not shown.
+              return;
+            }
+
+            // Uncompleted past task. Apply pruning logic.
             if (task.type === 'water') {
               // Only show uncompleted watering tasks from the last 7 days.
               if (taskDate >= sevenDaysAgo) {
@@ -119,6 +127,8 @@ const useHomeScreenData = (navigation) => {
               }
             }
           } else if (taskDate < oneWeekFromNow) {
+            // Upcoming tasks (today and future) are always shown,
+            // the UI will handle the checkmark for completed ones.
             upcoming.push(task);
           }
         });
@@ -183,7 +193,7 @@ const useHomeScreenData = (navigation) => {
       newCompletedTasks.add(taskId);
     }
     setCompletedTasks(newCompletedTasks);
-    await setSecureItem('completedTasks', JSON.stringify(Array.from(newCompletedTasks)));
+    await setAsyncItem('completedTasks', JSON.stringify(Array.from(newCompletedTasks)));
   }, [completedTasks]);
 
   return {
