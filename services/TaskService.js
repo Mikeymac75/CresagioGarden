@@ -1,6 +1,6 @@
 import { DateUtils } from './utils/DateUtils';
 import { ValidationUtils } from './utils/ValidationUtils';
-import { loadPlants } from './PlantService';
+import { loadPlants, loadPlantDetails } from './PlantService';
 import { getWeatherForecast } from './WeatherService';
 import { getWateringPreferences } from './UserPreferenceService';
 import { TASK_TYPES, CONFIG } from './constants';
@@ -281,7 +281,13 @@ export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, fi
     myGarden.forEach(gardenEntry => {
       if (gardenEntry.status === 'harvested') return;
 
-      const plantDetails = allPlants.find(p => p.id === gardenEntry.plantId);
+      let plantDetails;
+      if (gardenEntry.detailsFile) {
+        plantDetails = loadPlantDetails(gardenEntry.detailsFile, gardenEntry.plantId.toString());
+      } else {
+        plantDetails = allPlants.find(p => p.id === gardenEntry.plantId);
+      }
+
       if (!plantDetails) return;
 
       let plantSpecificKillDate = null;
