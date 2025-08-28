@@ -1,0 +1,227 @@
+[
+  {
+    "id": 58,
+    "name": "Romaine Lettuce",
+    "category": "Leafy Green",
+    "harvestType": "single",
+    "harvestPeriodDays": 80,
+    "daysToMaturity": 75,
+    "spacing": "8-12 inches",
+    "sunRequirement": "Full sun to partial shade",
+    "startIndoorsWeeksBefore": 4,
+    "transplantWeeksAfterLastFrost": -2,
+    "directSowWeeksAfterLastFrost": -4,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 2,
+    "description": "A crisp, upright lettuce with elongated leaves forming loose heads. Excellent heat tolerance and distinctive crunchy texture perfect for Caesar salads.",
+    "tips": "Plant in succession every 2 weeks for continuous harvest. Harvest outer leaves or cut entire head at base. Provide afternoon shade in hot weather.",
+    "succession": "Plant every 2 weeks from early spring through late summer.",
+    "yield": "1 large head per plant, or continuous leaf harvest.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Well-drained, fertile soil rich in organic matter.",
+      "notes": "Benefits from regular feeding with nitrogen-rich fertilizer. Prefers loose, well-cultivated soil."
+    },
+    "temperature": {
+      "optimalLowF": 45,
+      "optimalHighF": 75,
+      "absoluteMinF": 20,
+      "notes": "Cool-season crop. More heat tolerant than other lettuces but still bolts in extreme heat."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "HEAT_WARNING",
+        "message": "Provide afternoon shade or harvest early to prevent bitter leaves and bolting.",
+        "priority": "medium"
+      }
+    ],
+    "companionPlants": ["Carrots", "Radishes", "Onions", "Chives"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1-2 weeks",
+      "notes": "Store in perforated plastic bags in refrigerator crisper. Do not wash until ready to use."
+    },
+    "careTasks": [
+      {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep soil consistently moist for good germination. Thin seedlings when 2 inches tall."
+      },
+      {
+        "name": "Thin seedlings",
+        "daysAfterPlanting": 14,
+        "recurring": null,
+        "description": "Thin plants to proper spacing, using thinnings as baby greens."
+      },
+      {
+        "name": "Side-dress with fertilizer",
+        "daysAfterPlanting": 30,
+        "recurring": null,
+        "description": "Apply balanced fertilizer or compost around plants to encourage head formation."
+      },
+      {
+        "name": "Begin harvest",
+        "daysAfterPlanting": 70,
+        "recurring": null,
+        "description": "Start harvesting outer leaves or cut entire heads when firm and full-sized."
+      },
+      {
+        "name": "Watering",
+        "description": "Water regularly to maintain consistent soil moisture. Avoid overhead watering to prevent disease.",
+        "daysAfterPlanting": 0,
+        "recurring": 2
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "name": "Butterhead Lettuce",
+    "category": "Leafy Green",
+    "harvestType": "single",
+    "harvestPeriodDays": 65,
+    "daysToMaturity": 60,
+    "spacing": "6-10 inches",
+    "sunRequirement": "Partial shade to full sun",
+    "startIndoorsWeeksBefore": 4,
+    "transplantWeeksAfterLastFrost": -2,
+    "directSowWeeksAfterLastFrost": -4,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 2,
+    "description": "A tender lettuce forming loose, soft heads with buttery-textured leaves. Also known as Boston or Bibb lettuce, prized for its sweet, delicate flavor.",
+    "tips": "Handle gently as leaves bruise easily. Excellent for containers. Harvest entire heads or individual leaves for extended harvest.",
+    "succession": "Plant every 2 weeks from early spring through fall.",
+    "yield": "1 soft head per plant weighing 4-8 oz.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Rich, well-drained soil with high organic matter content.",
+      "notes": "Prefers cooler, moister conditions than other lettuces. Benefits from regular compost applications."
+    },
+    "temperature": {
+      "optimalLowF": 45,
+      "optimalHighF": 70,
+      "absoluteMinF": 25,
+      "notes": "Cool-season crop that bolts quickly in heat. Best grown in spring and fall in most climates."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "HEAT_WARNING",
+        "message": "Move to shadier location or harvest immediately to prevent bolting and bitter taste.",
+        "priority": "high"
+      }
+    ],
+    "companionPlants": ["Chives", "Garlic", "Carrots", "Radishes"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "5-7 days",
+      "notes": "Very delicate - store loosely wrapped in damp paper towels. Use quickly for best quality."
+    },
+    "careTasks": [
+      {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 5,
+        "recurring": null,
+        "description": "Maintain consistent moisture and cool conditions. Seeds need light to germinate."
+      },
+      {
+        "name": "Thin seedlings",
+        "daysAfterPlanting": 12,
+        "recurring": null,
+        "description": "Thin to final spacing when seedlings have 2-3 true leaves."
+      },
+      {
+        "name": "Mulch around plants",
+        "daysAfterPlanting": 21,
+        "recurring": null,
+        "description": "Apply light mulch to keep roots cool and maintain moisture."
+      },
+      {
+        "name": "Harvest heads",
+        "daysAfterPlanting": 55,
+        "recurring": null,
+        "description": "Harvest whole heads when loose but full, or begin taking outer leaves earlier."
+      },
+      {
+        "name": "Watering",
+        "description": "Water frequently with light applications to maintain consistent soil moisture.",
+        "daysAfterPlanting": 0,
+        "recurring": 2
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "name": "Mustard Greens",
+    "category": "Leafy Green",
+    "harvestType": "continuous",
+    "harvestPeriodDays": 90,
+    "daysToMaturity": 45,
+    "spacing": "4-6 inches",
+    "sunRequirement": "Full sun to partial shade",
+    "startIndoorsWeeksBefore": 3,
+    "transplantWeeksAfterLastFrost": -3,
+    "directSowWeeksAfterLastFrost": -6,
+    "wateringNeeds": "Moderate to high moisture",
+    "wateringFrequencyDays": 3,
+    "description": "Fast-growing leafy greens with a spicy, peppery flavor that intensifies with heat and age. Excellent cooked or raw when young and tender.",
+    "tips": "Harvest young leaves for milder flavor. Cold weather sweetens the leaves. Plant in fall for best flavor and slower bolting.",
+    "succession": "Plant every 2-3 weeks for continuous harvest.",
+    "yield": "Multiple harvests of leaves per plant.",
+    "soil": {
+      "ph": "6.0-7.5",
+      "type": "Well-drained, fertile soil with good organic matter.",
+      "notes": "Tolerates wider range of soil conditions than most greens. Benefits from nitrogen-rich fertilizer."
+    },
+    "temperature": {
+      "optimalLowF": 40,
+      "optimalHighF": 70,
+      "absoluteMinF": 15,
+      "notes": "Cool-season crop that becomes more pungent in heat. Very cold hardy and improves with light frost."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "HEAT_WARNING",
+        "message": "Leaves will become very spicy and bitter in hot weather. Harvest young or provide shade.",
+        "priority": "medium"
+      }
+    ],
+    "companionPlants": ["Onions", "Garlic", "Carrots", "Beets"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1 week",
+      "notes": "Store in perforated bags in refrigerator. Wash just before use. Can be frozen for cooking."
+    },
+    "careTasks": [
+      {
+        "name": "Direct sowing",
+        "daysAfterPlanting": 0,
+        "recurring": null,
+        "description": "Sow seeds directly in garden. Seeds germinate quickly in cool weather."
+      },
+      {
+        "name": "Thin seedlings",
+        "daysAfterPlanting": 10,
+        "recurring": null,
+        "description": "Thin overcrowded seedlings to prevent competition. Use thinnings as microgreens."
+      },
+      {
+        "name": "First harvest",
+        "daysAfterPlanting": 25,
+        "recurring": null,
+        "description": "Begin harvesting baby leaves when 2-3 inches long for mild flavor."
+      },
+      {
+        "name": "Regular harvest",
+        "daysAfterPlanting": 40,
+        "recurring": 7,
+        "description": "Harvest outer leaves regularly, leaving center to continue growing."
+      },
+      {
+        "name": "Watering",
+        "description": "Water regularly to keep leaves tender and reduce excessive pungency.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  }
+]

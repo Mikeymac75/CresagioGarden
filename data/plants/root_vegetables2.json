@@ -1,0 +1,157 @@
+[
+  {
+    "id": 61,
+    "name": "Sweet Potato",
+    "category": "Root Vegetable",
+    "harvestType": "single",
+    "harvestPeriodDays": 100,
+    "daysToMaturity": 100,
+    "spacing": "12-18 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": 3,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Moderate moisture",
+    "wateringFrequencyDays": 5,
+    "description": "A warm-season vine producing nutritious, sweet orange tubers. Grown from slips (rooted cuttings) rather than seeds. Excellent source of vitamins A and C.",
+    "tips": "Purchase certified disease-free slips from reputable suppliers. Hill soil around plants as they grow. Harvest before first frost for best storage.",
+    "succession": "Not applicable - single season crop.",
+    "yield": "3-6 pounds per plant, depending on variety and growing conditions.",
+    "soil": {
+      "ph": "5.8-6.2",
+      "type": "Well-drained, loose, sandy loam soil.",
+      "notes": "Avoid heavy clay or waterlogged soils. Excessive nitrogen produces lush vines but small tubers."
+    },
+    "temperature": {
+      "optimalLowF": 65,
+      "optimalHighF": 85,
+      "absoluteMinF": 50,
+      "notes": "Requires long, warm growing season. Very sensitive to cold and frost damage."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Harvest immediately - sweet potatoes are damaged by temperatures below 50°F.",
+        "priority": "high"
+      },
+      {
+        "condition": "EXCESSIVE_MOISTURE",
+        "message": "Reduce watering near harvest to prevent tuber cracking and storage issues.",
+        "priority": "medium"
+      }
+    ],
+    "companionPlants": ["Beans", "Peas", "Oregano", "Thyme"],
+    "storage": {
+      "method": "Cure then store in cool, dry place",
+      "duration": "6-10 months when properly cured",
+      "notes": "Cure in warm, humid conditions for 7-10 days, then store at 55-60°F with high humidity."
+    },
+    "careTasks": [
+      {
+        "name": "Plant slips",
+        "daysAfterPlanting": 0,
+        "recurring": null,
+        "description": "Plant rooted slips when soil temperature reaches 60°F and all danger of frost has passed."
+      },
+      {
+        "name": "Hill soil",
+        "daysAfterPlanting": 30,
+        "recurring": null,
+        "description": "Mound soil around the base of plants to encourage tuber formation and prevent greening."
+      },
+      {
+        "name": "Side-dress with fertilizer",
+        "daysAfterPlanting": 45,
+        "recurring": null,
+        "description": "Apply low-nitrogen fertilizer to encourage tuber development rather than excessive vine growth."
+      },
+      {
+        "name": "Harvest tubers",
+        "daysAfterPlanting": 95,
+        "recurring": null,
+        "description": "Harvest before first frost. Dig carefully to avoid bruising. Brush off soil but don't wash."
+      },
+      {
+        "name": "Watering",
+        "description": "Water regularly early in season, then reduce as harvest approaches. Avoid overhead watering.",
+        "daysAfterPlanting": 0,
+        "recurring": 5
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "name": "Parsnip",
+    "category": "Root Vegetable",
+    "harvestType": "single",
+    "harvestPeriodDays": 120,
+    "daysToMaturity": 120,
+    "spacing": "3-4 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": -2,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 4,
+    "description": "A long-season root vegetable with cream-colored, carrot-shaped roots and sweet, nutty flavor that improves after frost. Related to carrots but more cold-hardy.",
+    "tips": "Seeds have poor germination - sow thickly and thin later. Can remain in ground through winter in most climates for sweetest flavor.",
+    "succession": "Not recommended - long growing season makes succession planting impractical.",
+    "yield": "1 root per plant, typically 8-12 inches long.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Deep, loose, well-drained soil free of stones and debris.",
+      "notes": "Deep soil preparation essential for straight, long roots. Avoid fresh manure which causes forked roots."
+    },
+    "temperature": {
+      "optimalLowF": 45,
+      "optimalHighF": 70,
+      "absoluteMinF": 0,
+      "notes": "Cool-season crop that tolerates hard frost. Flavor improves significantly after exposure to cold weather."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "HEAT_WARNING",
+        "message": "Mulch heavily to keep soil cool during summer heat to prevent poor root development.",
+        "priority": "medium"
+      }
+    ],
+    "companionPlants": ["Carrots", "Onions", "Radishes", "Lettuce"],
+    "storage": {
+      "method": "Leave in ground or store in root cellar",
+      "duration": "All winter in ground, 4-6 months in storage",
+      "notes": "Best left in ground and harvested as needed. Store harvested roots in damp sand at 32-35°F."
+    },
+    "careTasks": [
+      {
+        "name": "Direct sowing",
+        "daysAfterPlanting": 0,
+        "recurring": null,
+        "description": "Sow fresh seeds directly in prepared bed. Seeds lose viability quickly and germination is slow."
+      },
+      {
+        "name": "Thin seedlings",
+        "daysAfterPlanting": 21,
+        "recurring": null,
+        "description": "Thin crowded seedlings to final spacing when 2 inches tall. Handle gently to avoid root damage."
+      },
+      {
+        "name": "Mulch heavily",
+        "daysAfterPlanting": 60,
+        "recurring": null,
+        "description": "Apply thick mulch to suppress weeds and keep soil consistently moist and cool."
+      },
+      {
+        "name": "Begin harvest",
+        "daysAfterPlanting": 115,
+        "recurring": null,
+        "description": "Begin harvesting after first frost for sweetest flavor. Roots can remain in ground all winter."
+      },
+      {
+        "name": "Watering",
+        "description": "Water consistently to prevent cracking. Deep, infrequent watering encourages straight root development.",
+        "daysAfterPlanting": 0,
+        "recurring": 4
+      }
+    ]
+  }
+]

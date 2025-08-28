@@ -1,0 +1,221 @@
+[
+  {
+    "id": 49,
+    "name": "Jalapeño Pepper",
+    "category": "Fruit",
+    "harvestType": "continuous",
+    "harvestPeriodDays": 90,
+    "daysToMaturity": 75,
+    "spacing": "12-18 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 8,
+    "transplantWeeksAfterLastFrost": 3,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 3,
+    "description": "A popular medium-heat chili pepper. Fruits are typically harvested green but will turn red if left on the plant.",
+    "tips": "Wear gloves when handling seeds and harvesting to avoid skin irritation. The more you harvest, the more the plant will produce.",
+    "succession": "Not necessary; plants produce all season.",
+    "yield": "25-40 peppers per plant.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Well-drained, rich loamy soil.",
+      "notes": "Fertilize when first flowers appear, but avoid high-nitrogen fertilizers which can inhibit fruit production."
+    },
+    "temperature": {
+      "optimalLowF": 70,
+      "optimalHighF": 85,
+      "absoluteMinF": 40,
+      "notes": "A warm-season crop that thrives in heat. Very sensitive to frost."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover with a blanket or bring potted plants indoors to protect from frost.",
+        "priority": "high"
+      }
+    ],
+    "companionPlants": ["Basil", "Carrots", "Onions", "Marjoram"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "1 week",
+      "notes": "Store in the crisper drawer. Can be pickled, frozen, or dried for long-term storage."
+    },
+    "careTasks": [
+      {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep soil consistently moist to aid germination."
+      },
+      {
+        "name": "Harden off seedlings",
+        "daysAfterPlanting": 49,
+        "recurring": null,
+        "description": "Gradually expose seedlings to outdoor conditions over 7-10 days before transplanting."
+      },
+      {
+        "name": "Harvest peppers",
+        "daysAfterPlanting": 70,
+        "recurring": 7,
+        "description": "Harvest when peppers are 3-4 inches long and dark green. Cut the stem with scissors to avoid damaging the plant."
+      },
+      {
+        "name": "Watering",
+        "description": "Water consistently, especially during dry periods, to produce healthy fruit. Water at the base of the plant.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "name": "Habanero Pepper",
+    "category": "Fruit",
+    "harvestType": "continuous",
+    "harvestPeriodDays": 100,
+    "daysToMaturity": 90,
+    "spacing": "18-24 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 10,
+    "transplantWeeksAfterLastFrost": 3,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Consistent moisture",
+    "wateringFrequencyDays": 3,
+    "description": "An extremely hot chili pepper with fruity flavor. Typically orange when ripe, but can be red, brown, or yellow depending on variety.",
+    "tips": "Always wear gloves when handling. Reduce watering slightly as fruits ripen to concentrate heat. Provide support for heavily laden branches.",
+    "succession": "Not necessary; plants produce all season.",
+    "yield": "30-50 peppers per plant.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Well-drained, fertile soil with good organic matter.",
+      "notes": "Benefits from regular feeding with balanced fertilizer. Avoid over-fertilizing with nitrogen."
+    },
+    "temperature": {
+      "optimalLowF": 75,
+      "optimalHighF": 90,
+      "absoluteMinF": 45,
+      "notes": "Requires consistently warm temperatures. Very sensitive to cold and frost."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Protect plants immediately - habaneros are extremely frost sensitive.",
+        "priority": "high"
+      }
+    ],
+    "companionPlants": ["Basil", "Oregano", "Carrots", "Onions"],
+    "storage": {
+      "method": "Refrigerate",
+      "duration": "2 weeks",
+      "notes": "Store in paper bags in refrigerator. Can be frozen whole or made into hot sauce for long-term storage."
+    },
+    "careTasks": [
+      {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 10,
+        "recurring": null,
+        "description": "Maintain warm soil temperature (75-85°F) for optimal germination."
+      },
+      {
+        "name": "Harden off seedlings",
+        "daysAfterPlanting": 63,
+        "recurring": null,
+        "description": "Gradually acclimate seedlings to outdoor conditions over 10-14 days."
+      },
+      {
+        "name": "Support plants",
+        "daysAfterPlanting": 60,
+        "recurring": null,
+        "description": "Install stakes or cages to support heavy fruit production."
+      },
+      {
+        "name": "Harvest peppers",
+        "daysAfterPlanting": 85,
+        "recurring": 7,
+        "description": "Harvest when peppers change color and feel firm. Use scissors and wear gloves."
+      },
+      {
+        "name": "Watering",
+        "description": "Water consistently but avoid waterlogging. Reduce slightly when fruits are ripening.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "name": "Cayenne Pepper",
+    "category": "Fruit",
+    "harvestType": "continuous",
+    "harvestPeriodDays": 85,
+    "daysToMaturity": 70,
+    "spacing": "12-18 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 8,
+    "transplantWeeksAfterLastFrost": 2,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Moderate moisture",
+    "wateringFrequencyDays": 4,
+    "description": "A hot, thin-walled pepper perfect for drying and making cayenne powder. Long, slender red peppers with intense heat.",
+    "tips": "Excellent for drying - string them up or use a dehydrator. Harvest frequently to encourage continued production.",
+    "succession": "Not necessary; plants produce all season.",
+    "yield": "50-100 peppers per plant.",
+    "soil": {
+      "ph": "6.0-6.8",
+      "type": "Well-drained, sandy loam with moderate fertility.",
+      "notes": "Tolerates slightly less fertile soil than other peppers. Avoid excessive nitrogen."
+    },
+    "temperature": {
+      "optimalLowF": 70,
+      "optimalHighF": 85,
+      "absoluteMinF": 40,
+      "notes": "Warm-season crop. More heat tolerant than sweet peppers once established."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "Cover plants or harvest remaining peppers before frost arrives.",
+        "priority": "high"
+      }
+    ],
+    "companionPlants": ["Basil", "Tomatoes", "Carrots", "Onions"],
+    "storage": {
+      "method": "Dry or refrigerate",
+      "duration": "1 week fresh, indefinitely when dried",
+      "notes": "Perfect for drying whole or grinding into powder. Fresh peppers keep 1 week refrigerated."
+    },
+    "careTasks": [
+      {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep seedbed warm and consistently moist during germination."
+      },
+      {
+        "name": "Harden off seedlings",
+        "daysAfterPlanting": 49,
+        "recurring": null,
+        "description": "Acclimate seedlings gradually to outdoor conditions over 7-10 days."
+      },
+      {
+        "name": "First harvest",
+        "daysAfterPlanting": 65,
+        "recurring": null,
+        "description": "Begin harvesting when peppers are fully red and firm."
+      },
+      {
+        "name": "Regular harvest",
+        "daysAfterPlanting": 70,
+        "recurring": 5,
+        "description": "Harvest red peppers regularly to encourage continued production."
+      },
+      {
+        "name": "Watering",
+        "description": "Water moderately, allowing soil to dry slightly between waterings.",
+        "daysAfterPlanting": 0,
+        "recurring": 4
+      }
+    ]
+  }
+]

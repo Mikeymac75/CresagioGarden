@@ -1,0 +1,32 @@
+{
+  "49": [
+    {
+      "question": "Why are my jalapeño peppers not spicy?",
+      "answer": "Heat levels can vary due to growing conditions. Stressors like less frequent watering can increase the heat. Also, ensure you are growing a hot variety, not a 'no-heat' hybrid."
+    },
+    {
+      "question": "When should I harvest my jalapeños?",
+      "answer": "Harvest them when they are a deep, glossy green for a classic flavor. For a sweeter and slightly hotter pepper, you can let them fully ripen to red on the plant."
+    }
+  ],
+  "50": [
+    {
+      "question": "How do I safely handle habanero peppers?",
+      "answer": "Always wear gloves when handling habaneros and avoid touching your face or eyes. The oils can remain on your hands for hours even after washing. Consider using disposable gloves."
+    },
+    {
+      "question": "Why are my habanero plants not producing fruit?",
+      "answer": "Habaneros need consistently warm temperatures and may drop flowers if stressed by cool weather. Ensure temperatures stay above 60°F at night and provide consistent watering."
+    }
+  ],
+  "51": [
+    {
+      "question": "How do I dry cayenne peppers properly?",
+      "answer": "String whole peppers on thread and hang in a warm, dry, well-ventilated area away from direct sunlight. They should be completely dry and brittle in 3-4 weeks. Alternatively, use a food dehydrator."
+    },
+    {
+      "question": "Can I harvest cayenne peppers when they're still green?",
+      "answer": "While cayenne peppers can be harvested green, they're best left to ripen to red for maximum heat and flavor. Green cayennes are milder and less suitable for drying."
+    }
+  ]
+}

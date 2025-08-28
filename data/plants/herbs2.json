@@ -1,0 +1,409 @@
+[
+  {
+    "id": 52,
+    "name": "Mint",
+    "category": "Herb",
+    "harvestType": "continuous",
+    "harvestPeriodDays": 120,
+    "daysToMaturity": 45,
+    "spacing": "12-18 inches",
+    "sunRequirement": "Partial shade to full sun",
+    "startIndoorsWeeksBefore": 6,
+    "transplantWeeksAfterLastFrost": 0,
+    "directSowWeeksAfterLastFrost": 2,
+    "wateringNeeds": "High moisture",
+    "wateringFrequencyDays": 2,
+    "description": "A vigorous perennial herb with a refreshing flavor. Popular for teas, cocktails, and culinary uses. Spreads rapidly by underground runners.",
+    "tips": "Plant in containers to prevent spreading. Pinch flowers to maintain leaf production. Divide plants every 2-3 years.",
+    "succession": "Not necessary; perennial plant continues producing.",
+    "yield": "Continuous harvest throughout growing season.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Moist, well-drained soil rich in organic matter.",
+      "notes": "Tolerates various soil types but prefers consistently moist conditions."
+    },
+    "temperature": {
+      "optimalLowF": 55,
+      "optimalHighF": 75,
+      "absoluteMinF": 10,
+      "notes": "Cool-season perennial. Dies back in winter but returns in spring in zones 3-9."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "DROUGHT_WARNING",
+        "message": "Increase watering - mint requires consistent moisture to prevent wilting.",
+        "priority": "medium"
+      }
+    ],
+    "companionPlants": ["Cabbage", "Tomatoes", "Carrots", "Broccoli"],
+    "storage": {
+      "method": "Refrigerate or freeze",
+      "duration": "1 week fresh, 6 months frozen",
+      "notes": "Store fresh stems in water in refrigerator. Freeze leaves in ice cubes or dry for long-term storage."
+    },
+    "careTasks": [
+      {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep soil consistently moist and provide partial shade for young plants."
+      },
+      {
+        "name": "First harvest",
+        "daysAfterPlanting": 40,
+        "recurring": null,
+        "description": "Begin harvesting leaves when plants are 4-6 inches tall."
+      },
+      {
+        "name": "Pinch flowers",
+        "daysAfterPlanting": 60,
+        "recurring": 14,
+        "description": "Remove flower buds to encourage leaf production and prevent seeding."
+      },
+      {
+        "name": "Harvest leaves",
+        "daysAfterPlanting": 45,
+        "recurring": 7,
+        "description": "Harvest regularly by cutting stems just above leaf pairs to encourage bushier growth."
+      },
+      {
+        "name": "Watering",
+        "description": "Water frequently to maintain consistently moist soil. Mulch around plants to retain moisture.",
+        "daysAfterPlanting": 0,
+        "recurring": 2
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "name": "Rosemary",
+    "category": "Herb",
+    "harvestType": "continuous",
+    "harvestPeriodDays": 365,
+    "daysToMaturity": 90,
+    "spacing": "24-36 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 10,
+    "transplantWeeksAfterLastFrost": 2,
+    "directSowWeeksAfterLastFrost": null,
+    "wateringNeeds": "Low to moderate moisture",
+    "wateringFrequencyDays": 7,
+    "description": "A woody, aromatic perennial herb with needle-like leaves. Essential for Mediterranean cooking and valued for its fragrant, pine-like scent.",
+    "tips": "Protect from harsh winter winds. Prune after flowering to maintain shape. Excellent in containers for colder climates.",
+    "succession": "Not necessary; evergreen perennial provides year-round harvest.",
+    "yield": "Continuous harvest throughout the year.",
+    "soil": {
+      "ph": "6.0-7.5",
+      "type": "Well-drained, sandy soil. Poor to moderately fertile.",
+      "notes": "Excellent drainage is essential. Tolerates drought and poor soils once established."
+    },
+    "temperature": {
+      "optimalLowF": 50,
+      "optimalHighF": 80,
+      "absoluteMinF": 20,
+      "notes": "Hardy in zones 7-10. In colder zones, grow in containers and bring indoors for winter."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "FROST_WARNING",
+        "message": "In zones 6 and below, move containers indoors or provide winter protection.",
+        "priority": "medium"
+      },
+      {
+        "condition": "EXCESSIVE_MOISTURE",
+        "message": "Ensure good drainage to prevent root rot in wet conditions.",
+        "priority": "high"
+      }
+    ],
+    "companionPlants": ["Lavender", "Thyme", "Sage", "Beans"],
+    "storage": {
+      "method": "Dry or freeze",
+      "duration": "1 year dried, 6 months frozen",
+      "notes": "Dry sprigs hung in bundles or freeze whole sprigs. Fresh sprigs last 1-2 weeks in refrigerator."
+    },
+    "careTasks": [
+      {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 14,
+        "recurring": null,
+        "description": "Provide bottom heat and ensure excellent drainage for slow-germinating seeds."
+      },
+      {
+        "name": "First light harvest",
+        "daysAfterPlanting": 85,
+        "recurring": null,
+        "description": "Begin light harvesting once plant is well-established with woody stems."
+      },
+      {
+        "name": "Pruning",
+        "daysAfterPlanting": 120,
+        "recurring": 60,
+        "description": "Prune lightly to maintain shape and encourage new growth. Avoid cutting into old wood."
+      },
+      {
+        "name": "Regular harvest",
+        "daysAfterPlanting": 90,
+        "recurring": 14,
+        "description": "Harvest sprigs by cutting stems just above leaf nodes. Never harvest more than 1/3 of the plant."
+      },
+      {
+        "name": "Watering",
+        "description": "Water sparingly, allowing soil to dry between waterings. Overwatering can cause root rot.",
+        "daysAfterPlanting": 0,
+        "recurring": 7
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "name": "Thyme",
+    "category": "Herb",
+    "harvestType": "continuous",
+    "harvestPeriodDays": 200,
+    "daysToMaturity": 75,
+    "spacing": "6-12 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 8,
+    "transplantWeeksAfterLastFrost": 1,
+    "directSowWeeksAfterLastFrost": 2,
+    "wateringNeeds": "Low to moderate moisture",
+    "wateringFrequencyDays": 5,
+    "description": "A low-growing perennial herb with small, aromatic leaves. Essential in French cuisine and herb blends. Forms dense, spreading mats.",
+    "tips": "Trim back after flowering to maintain compact growth. Divide clumps every 3-4 years to rejuvenate plants.",
+    "succession": "Not necessary; perennial provides continuous harvest.",
+    "yield": "Continuous harvest spring through fall.",
+    "soil": {
+      "ph": "6.0-8.0",
+      "type": "Well-drained, light soil. Tolerates poor, rocky soils.",
+      "notes": "Excellent drainage is crucial. Thrives in lean soils with good drainage."
+    },
+    "temperature": {
+      "optimalLowF": 45,
+      "optimalHighF": 75,
+      "absoluteMinF": 0,
+      "notes": "Hardy perennial in zones 4-9. Tolerates cold well but may die back in severe winters."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "EXCESSIVE_MOISTURE",
+        "message": "Improve drainage to prevent root rot and fungal issues.",
+        "priority": "medium"
+      }
+    ],
+    "companionPlants": ["Rosemary", "Lavender", "Cabbage", "Tomatoes"],
+    "storage": {
+      "method": "Dry or freeze",
+      "duration": "1 year dried, 6 months frozen",
+      "notes": "Air dry in small bundles or freeze whole sprigs. Dried thyme retains excellent flavor."
+    },
+    "careTasks": [
+      {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 10,
+        "recurring": null,
+        "description": "Seeds are tiny and slow to germinate. Keep soil lightly moist but not waterlogged."
+      },
+      {
+        "name": "First harvest",
+        "daysAfterPlanting": 70,
+        "recurring": null,
+        "description": "Begin harvesting when plants are well-established and 4-6 inches tall."
+      },
+      {
+        "name": "Post-bloom trim",
+        "daysAfterPlanting": 100,
+        "recurring": 45,
+        "description": "Trim back by one-third after flowering to encourage fresh growth and prevent woodiness."
+      },
+      {
+        "name": "Regular harvest",
+        "daysAfterPlanting": 75,
+        "recurring": 10,
+        "description": "Cut sprigs regularly to encourage branching. Harvest in morning after dew dries."
+      },
+      {
+        "name": "Watering",
+        "description": "Water moderately, allowing soil to dry between waterings. Very drought tolerant once established.",
+        "daysAfterPlanting": 0,
+        "recurring": 5
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "name": "Oregano",
+    "category": "Herb",
+    "harvestType": "continuous",
+    "harvestPeriodDays": 150,
+    "daysToMaturity": 80,
+    "spacing": "8-12 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": 6,
+    "transplantWeeksAfterLastFrost": 2,
+    "directSowWeeksAfterLastFrost": 2,
+    "wateringNeeds": "Moderate moisture",
+    "wateringFrequencyDays": 4,
+    "description": "A robust perennial herb with pungent, earthy flavor essential in Mediterranean and Italian cooking. Forms spreading clumps with small white or pink flowers.",
+    "tips": "Pinch flowers to maintain leaf quality. Divide plants every 3 years. Greek oregano has the strongest flavor for cooking.",
+    "succession": "Not necessary; perennial provides season-long harvest.",
+    "yield": "Abundant harvest throughout growing season.",
+    "soil": {
+      "ph": "6.0-8.0",
+      "type": "Well-drained, moderately fertile soil.",
+      "notes": "Tolerates poor soils. Good drainage prevents root rot in winter."
+    },
+    "temperature": {
+      "optimalLowF": 50,
+      "optimalHighF": 80,
+      "absoluteMinF": 10,
+      "notes": "Hardy perennial in zones 5-10. May die back in winter but returns in spring."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "EXCESSIVE_MOISTURE",
+        "message": "Ensure good drainage to prevent winter kill and root rot.",
+        "priority": "medium"
+      }
+    ],
+    "companionPlants": ["Basil", "Tomatoes", "Peppers", "Eggplant"],
+    "storage": {
+      "method": "Dry or freeze",
+      "duration": "1 year dried, 6 months frozen",
+      "notes": "Hang in small bundles to air dry. Freezing preserves more flavor than drying for fresh use."
+    },
+    "careTasks": [
+      {
+        "name": "Care for Seedlings",
+        "daysAfterPlanting": 7,
+        "recurring": null,
+        "description": "Keep soil consistently moist until germination. Seedlings are slow to establish."
+      },
+      {
+        "name": "First harvest",
+        "daysAfterPlanting": 75,
+        "recurring": null,
+        "description": "Begin harvesting when plants are 4-6 inches tall and well-branched."
+      },
+      {
+        "name": "Pinch flowers",
+        "daysAfterPlanting": 90,
+        "recurring": 14,
+        "description": "Remove flower buds regularly to maintain tender leaves and prevent self-seeding."
+      },
+      {
+        "name": "Major harvest",
+        "daysAfterPlanting": 100,
+        "recurring": 30,
+        "description": "Cut stems back by half for drying when plants are in full growth before flowering."
+      },
+      {
+        "name": "Watering",
+        "description": "Water regularly but allow soil to dry slightly between waterings. Avoid overhead watering.",
+        "daysAfterPlanting": 0,
+        "recurring": 4
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "name": "Dill",
+    "category": "Herb",
+    "harvestType": "continuous",
+    "harvestPeriodDays": 70,
+    "daysToMaturity": 40,
+    "spacing": "4-6 inches",
+    "sunRequirement": "Full sun",
+    "startIndoorsWeeksBefore": null,
+    "transplantWeeksAfterLastFrost": null,
+    "directSowWeeksAfterLastFrost": 0,
+    "wateringNeeds": "Moderate moisture",
+    "wateringFrequencyDays": 3,
+    "description": "A delicate annual herb with feathery foliage and distinctive tangy flavor. Essential for pickles, fish dishes, and European cuisine. Self-seeds readily.",
+    "tips": "Direct sow only - does not transplant well. Sow every 2-3 weeks for continuous harvest. Allow some plants to flower for dill seeds.",
+    "succession": "Sow every 2-3 weeks for continuous fresh leaves.",
+    "yield": "Multiple cuttings per plant before flowering.",
+    "soil": {
+      "ph": "5.8-6.5",
+      "type": "Well-drained, fertile soil with good organic matter.",
+      "notes": "Prefers loose, well-cultivated soil. Avoid heavy clay or waterlogged conditions."
+    },
+    "temperature": {
+      "optimalLowF": 55,
+      "optimalHighF": 75,
+      "absoluteMinF": 25,
+      "notes": "Cool-season annual. Bolts quickly in hot weather. Best grown in spring and fall."
+    },
+    "environmentalAlerts": [
+      {
+        "condition": "HEAT_WARNING",
+        "message": "Provide afternoon shade during hot weather to prevent early bolting.",
+        "priority": "medium"
+      }
+    ],
+    "companionPlants": ["Cabbage", "Lettuce", "Onions", "Cucumbers"],
+    "storage": {
+      "method": "Refrigerate or freeze",
+      "duration": "1 week fresh, 6 months frozen",
+      "notes": "Store fresh stems in water. Freeze whole sprigs or dry for seeds. Loses flavor when dried."
+    },
+    "careTasks": [
+      {
+        "name": "Direct sowing",
+        "daysAfterPlanting": 0,
+        "recurring": null,
+        "description": "Sow seeds directly in garden. Seeds need light to germinate - barely cover with soil."
+      },
+      {
+        "name": "Thin seedlings",
+        "daysAfterPlanting": 14,
+        "recurring": null,
+        "description": "Thin seedlings to 4-6 inches apart when 2 inches tall. Use thinnings in cooking."
+      },
+      {
+        "name": "First harvest",
+        "daysAfterPlanting": 35,
+        "recurring": null,
+        "description": "Begin harvesting leaves when plants are 6-8 inches tall."
+      },
+      {
+        "name": "Regular harvest",
+        "daysAfterPlanting": 40,
+        "recurring": 7,
+        "description": "Cut outer leaves regularly to encourage new growth. Harvest before flowering for best flavor."
+      },
+      {
+        "name": "Watering",
+        "description": "Water regularly to maintain consistent moisture. Avoid overhead watering to prevent disease.",
+        "daysAfterPlanting": 0,
+        "recurring": 3
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "name": "Chives",
+    "category": "Herb",
+    "harvestType": "continuous",
+    "harvestPeriodDays": 200,
+    "daysToMaturity": 60,
+    "spacing": "6-8 inches",
+    "sunRequirement": "Full sun to partial shade",
+    "startIndoorsWeeksBefore": 8,
+    "transplantWeeksAfterLastFrost": 0,
+    "directSowWeeksAfterLastFrost": 2,
+    "wateringNeeds": "Moderate moisture",
+    "wateringFrequencyDays": 3,
+    "description": "A hardy perennial herb with slender, hollow leaves and mild onion flavor. Produces attractive purple flowers that are also edible. Excellent for containers.",
+    "tips": "Cut like grass, taking entire clumps down to 2 inches. Divide clumps every 3-4 years. Flowers are edible and attractive.",
+    "succession": "Not necessary; perennial provides continuous harvest.",
+    "yield": "Multiple harvests throughout growing season.",
+    "soil": {
+      "ph": "6.0-7.0",
+      "type": "Well-drained, fertile soil rich in organic matter.",
+      "notes": "Adaptable to various soil types but prefers moist, well-drained conditions."
+    },
+    "temperature": {
+      "optimalLowF": 45,
+      "optimalHighF": 75,
+      "absoluteMinF": -20,
+      "notes": "Very hardy per
