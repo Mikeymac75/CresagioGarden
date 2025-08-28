@@ -15,7 +15,14 @@ import { Ionicons } from '@expo/vector-icons';
 
 // Memoized Checkbox component to prevent re-renders
 const Checkbox = React.memo(({ isChecked, onToggle }) => (
-  <TouchableOpacity onPress={onToggle} style={[styles.checkboxBase, isChecked && styles.checkboxChecked]}>
+  <TouchableOpacity
+    onPress={(e) => {
+      e.stopPropagation();
+      onToggle();
+    }}
+    hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+    style={[styles.checkboxBase, isChecked && styles.checkboxChecked]}
+  >
     {isChecked && <Text style={styles.checkmark}>✓</Text>}
   </TouchableOpacity>
 ));
@@ -122,13 +129,25 @@ const HomeScreen = ({ navigation }) => {
       <WeatherWidget
         weatherData={weatherData}
         locationAvailable={!!(userData?.latitude && userData?.longitude)}
+        locationName={userData?.locationName}
+        highTemp={weatherData?.todayHigh}
+        lowTemp={weatherData?.todayLow}
       />
 
       <View style={styles.statsCard}>
-        <View style={styles.statItem}>
+        <TouchableOpacity
+          style={styles.statItem}
+          onPress={() => {
+            if (plantCount >= 10) {
+              navigation.navigate('Upgrade');
+            } else {
+              navigation.navigate('MyGarden');
+            }
+          }}
+        >
           <Text style={styles.statNumber}>{plantCount}/10</Text>
           <Text style={styles.statLabel}>Plants in Garden</Text>
-        </View>
+        </TouchableOpacity>
         <View style={styles.statDivider} />
         <View style={styles.statItem}>
           <Text style={styles.statNumber}>{upcomingTasks.length}</Text>

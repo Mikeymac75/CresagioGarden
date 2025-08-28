@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 
-const WeatherWidget = React.memo(({ weatherData, locationAvailable }) => {
+const WeatherWidget = React.memo(({ weatherData, locationAvailable, locationName, highTemp, lowTemp }) => {
   // If location is not available, show a helpful message.
   if (!locationAvailable) {
     return (
@@ -41,12 +41,15 @@ const WeatherWidget = React.memo(({ weatherData, locationAvailable }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Right Now</Text>
+      <Text style={styles.locationTitle}>{locationName || 'Current Location'}</Text>
       <View style={styles.weatherInfo}>
         <Text style={styles.temperature}>
           {Math.round(currentWeather.temperature)}°C
         </Text>
-        {/* In a real app, you would map currentWeather.symbol_code to an icon */}
+        <View style={styles.highLowContainer}>
+          {highTemp !== undefined && <Text style={styles.highLowText}>H: {Math.round(highTemp)}°</Text>}
+          {lowTemp !== undefined && <Text style={styles.highLowText}>L: {Math.round(lowTemp)}°</Text>}
+        </View>
         <Text style={styles.weatherSymbol}>☀️</Text>
       </View>
     </View>
@@ -59,8 +62,13 @@ WeatherWidget.propTypes = {
         temperature: PropTypes.number.isRequired,
         symbol_code: PropTypes.string,
       }),
+      todayHigh: PropTypes.number,
+      todayLow: PropTypes.number,
     }),
     locationAvailable: PropTypes.bool.isRequired,
+    locationName: PropTypes.string,
+    highTemp: PropTypes.number,
+    lowTemp: PropTypes.number,
   };
 
 const styles = StyleSheet.create({
@@ -88,6 +96,13 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
+  locationTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 12,
+    color: '#2E7D32',
+    textAlign: 'center',
+  },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -109,6 +124,15 @@ const styles = StyleSheet.create({
     fontSize: 48,
     fontWeight: '200',
     color: '#1B5E20',
+  },
+  highLowContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  highLowText: {
+    fontSize: 18,
+    color: '#1B5E20',
+    fontWeight: '300',
   },
   weatherSymbol: {
     fontSize: 48,

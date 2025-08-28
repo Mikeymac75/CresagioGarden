@@ -224,17 +224,26 @@ export const getTasksForMonth = async (lastFrostDate, monthIndex) => {
 
   try {
     let allTasks = [];
-    const allPlants = await loadPlants();
+    const plantSummaries = await loadPlants();
 
-    // Defensive check to ensure allPlants is an array
-    if (!Array.isArray(allPlants)) {
-      console.error('TaskService: loadPlants did not return an array. Received:', allPlants);
+    if (!Array.isArray(plantSummaries)) {
+      console.error('TaskService: loadPlants did not return an array. Received:', plantSummaries);
       return [];
     }
 
-    allPlants.forEach(plant => {
-      const plantTasks = TaskGenerator.generatePlantingTasks(plant, lastFrostDate);
-      allTasks = [...allTasks, ...plantTasks];
+    plantSummaries.forEach(summary => {
+      // Custom plants have their details inline and don't have a detailsFile
+      if (summary.category === 'Custom') {
+        const plantTasks = TaskGenerator.generatePlantingTasks(summary, lastFrostDate);
+        allTasks.push(...plantTasks);
+      } else if (summary.detailsFile) {
+        // Standard plants need their details loaded from JSON
+        const plantDetails = loadPlantDetails(summary.detailsFile, summary.id.toString());
+        if (plantDetails) {
+          const plantTasks = TaskGenerator.generatePlantingTasks(plantDetails, lastFrostDate);
+          allTasks.push(...plantTasks);
+        }
+      }
     });
 
     const monthTasks = allTasks.filter(task =>
