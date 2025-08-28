@@ -1,7 +1,10 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, ScrollView, ActivityIndicator, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import ProgressBar from '../components/ProgressBar';
+import { loadPlantDetails, loadPlantFaq } from '../services/PlantService';
+import { saveWateringPreferenceForPlantInstance, saveWateringPreferenceAsDefault } from '../services/UserPreferenceService';
+import AdjustWateringModal from '../components/AdjustWateringModal';
 
 const DetailRow = ({ icon, label, value }) => (
   <View style={styles.detailRow}>
@@ -11,33 +14,127 @@ const DetailRow = ({ icon, label, value }) => (
   </View>
 );
 
+const FaqSection = ({ faqData }) => {
+  if (!faqData || faqData.length === 0) {
+    return null;
+  }
+
+  return (
+    <View style={styles.card}>
+      <Text style={styles.sectionTitle}>Frequently Asked Questions</Text>
+      {faqData.map((faq, index) => (
+        <View key={index} style={styles.faqItem}>
+          <Text style={styles.faqQuestion}>{faq.question}</Text>
+          <Text style={styles.faqAnswer}>{faq.answer}</Text>
+        </View>
+      ))}
+    </View>
+  );
+};
+
 const PlantDetailScreen = ({ route }) => {
-  const { plant, gardenEntry } = route.params;
+  const { plant: initialPlant, gardenEntry, plantId, detailsFile, faqFile, name } = route.params;
+
+  const [plant, setPlant] = useState(initialPlant);
+  const [faqData, setFaqData] = useState(null);
+  const [isLoading, setIsLoading] = useState(!initialPlant);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [currentGardenEntry, setCurrentGardenEntry] = useState(gardenEntry);
+
+  useEffect(() => {
+    if (!initialPlant && plantId && detailsFile) {
+      setIsLoading(true);
+      const details = loadPlantDetails(detailsFile, plantId.toString());
+      if (details) {
+        setPlant(details);
+      } else {
+        console.error("Could not load plant details for ID:", plantId);
+      }
+
+      if (faqFile) {
+        const faqs = loadPlantFaq(faqFile, plantId.toString());
+        setFaqData(faqs);
+      }
+      setIsLoading(false);
+    } else if (initialPlant) {
+      // For custom plants that are passed directly, they won't have an FAQ file.
+      // If we wanted them to, the logic would need to be more complex.
+      // For now, only non-custom plants will show FAQs.
+      setIsLoading(false);
+    }
+  }, [initialPlant, plantId, detailsFile, faqFile]);
 
   const getEstimatedHarvestDate = () => {
-    if (!gardenEntry || !plant.daysToMaturity) return 'N/A';
-    const planted = new Date(gardenEntry.plantedDate);
+    if (!currentGardenEntry || !plant.daysToMaturity) return 'N/A';
+    const planted = new Date(currentGardenEntry.plantedDate);
     const harvestDate = new Date(planted.setDate(planted.getDate() + plant.daysToMaturity));
     return harvestDate.toLocaleDateString();
   };
 
-  if (!plant) {
+  if (isLoading) {
     return (
-      <View style={styles.container}>
-        <Text>No plant data provided.</Text>
+      <View style={[styles.container, styles.centered]}>
+        <ActivityIndicator size="large" color="#4CAF50" />
+        <Text>Loading Plant Details...</Text>
       </View>
     );
   }
 
+  if (!plant) {
+    return (
+      <View style={[styles.container, styles.centered]}>
+        <Text>Could not load plant data.</Text>
+      </View>
+    );
+  }
+
+  const handleSaveWatering = async (newFrequency) => {
+    if (!currentGardenEntry) return;
+
+    const success = await saveWateringPreferenceForPlantInstance(currentGardenEntry.id, newFrequency);
+    if (success) {
+      const updatedGardenEntry = { ...currentGardenEntry, customWateringDays: newFrequency };
+      setCurrentGardenEntry(updatedGardenEntry);
+
+      Alert.alert(
+        'Success',
+        'Watering schedule updated!',
+        [
+          {
+            text: 'OK',
+            onPress: () => {
+              Alert.alert(
+                'Set as Default?',
+                `Would you like to make watering every ${newFrequency} days the new default for all future ${plant.name}s you add?`,
+                [
+                  { text: 'No', style: 'cancel' },
+                  {
+                    text: 'Yes',
+                    onPress: () => saveWateringPreferenceAsDefault(plant.id.toString(), newFrequency),
+                  },
+                ]
+              );
+            },
+          },
+        ]
+      );
+    } else {
+      Alert.alert('Error', 'Could not save the new watering schedule.');
+    }
+  };
+
+  const wateringTask = plant?.careTasks?.find(t => t.name === 'Watering');
+
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-      {gardenEntry && (
-        <View style={styles.card}>
-          <Text style={styles.sectionTitle}>My {gardenEntry.nickname}</Text>
+    <>
+      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        {currentGardenEntry && (
+          <View style={styles.card}>
+          <Text style={styles.sectionTitle}>My {currentGardenEntry.nickname}</Text>
           <DetailRow
             icon="calendar-outline"
             label="Planted On"
-            value={new Date(gardenEntry.plantedDate).toLocaleDateString()}
+            value={new Date(currentGardenEntry.plantedDate).toLocaleDateString()}
           />
           <DetailRow
             icon="leaf-outline"
@@ -46,7 +143,7 @@ const PlantDetailScreen = ({ route }) => {
           />
           <Text style={styles.progressLabel}>Progress to Maturity:</Text>
           <ProgressBar
-            plantedDate={gardenEntry.plantedDate}
+            plantedDate={currentGardenEntry.plantedDate}
             daysToMaturity={plant.daysToMaturity}
           />
         </View>
@@ -66,16 +163,47 @@ const PlantDetailScreen = ({ route }) => {
         <DetailRow icon="analytics-outline" label="Soil pH" value={plant.soil.ph} />
       </View>
 
+      <FaqSection faqData={faqData} />
+
       <View style={styles.card}>
         <Text style={styles.sectionTitle}>Care Schedule</Text>
-        {plant.careTasks && plant.careTasks.map((task, index) => (
-          <View key={index} style={styles.taskItem}>
-            <Text style={styles.taskName}>{task.name}</Text>
-            <Text style={styles.taskDescription}>{task.description}</Text>
-          </View>
-        ))}
+        {plant.careTasks && plant.careTasks.map((task, index) => {
+          if (task.name === 'Watering') {
+            const currentFrequency = currentGardenEntry?.customWateringDays || task.recurring;
+            return (
+              <View key={index} style={styles.taskItem}>
+                <View style={styles.taskHeader}>
+                  <Text style={styles.taskName}>{task.name}</Text>
+                  {currentGardenEntry && (
+                    <TouchableOpacity onPress={() => setIsModalVisible(true)}>
+                      <Text style={styles.adjustButton}>Adjust</Text>
+                    </TouchableOpacity>
+                  )}
+                </View>
+                <Text style={styles.taskDescription}>
+                  {`Every ${currentFrequency} days. ${task.description}`}
+                </Text>
+              </View>
+            );
+          }
+          return (
+            <View key={index} style={styles.taskItem}>
+              <Text style={styles.taskName}>{task.name}</Text>
+              <Text style={styles.taskDescription}>{task.description}</Text>
+            </View>
+          );
+        })}
       </View>
     </ScrollView>
+    {wateringTask && (
+        <AdjustWateringModal
+            visible={isModalVisible}
+            onClose={() => setIsModalVisible(false)}
+            onSave={handleSaveWatering}
+            currentFrequency={currentGardenEntry?.customWateringDays || wateringTask.recurring || 3}
+        />
+    )}
+    </>
   );
 };
 
@@ -83,6 +211,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
+  },
+  centered: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   contentContainer: {
     padding: 16,
@@ -147,6 +279,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
   },
+  taskHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 4,
+  },
+  adjustButton: {
+    color: '#007bff',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
   taskDescription: {
     fontSize: 14,
     color: '#666',
@@ -158,6 +301,20 @@ const styles = StyleSheet.create({
     color: '#333',
     marginTop: 16,
     marginBottom: 8,
+  },
+  faqItem: {
+    marginBottom: 12,
+  },
+  faqQuestion: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 4,
+  },
+  faqAnswer: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: '#555',
   },
 });
 

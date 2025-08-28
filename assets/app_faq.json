@@ -1,0 +1,10 @@
+[
+  {
+    "question": "How does the weather forecast affect watering tasks?",
+    "answer": "If significant rainfall is predicted, the app will automatically postpone your scheduled watering tasks for that day to prevent overwatering."
+  },
+  {
+    "question": "How do I add a plant to My Garden?",
+    "answer": "From the main plant list, tap on any plant and then tap the 'Add to My Garden' button on its details page."
+  }
+]

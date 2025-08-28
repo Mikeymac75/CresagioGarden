@@ -2,6 +2,7 @@ import { DateUtils } from './utils/DateUtils';
 import { ValidationUtils } from './utils/ValidationUtils';
 import { loadPlants } from './PlantService';
 import { getWeatherForecast } from './WeatherService';
+import { getWateringPreferences } from './UserPreferenceService';
 import { TASK_TYPES, CONFIG } from './constants';
 import SEASONAL_TASKS from '../data/seasonal_tasks.json';
 
@@ -58,7 +59,7 @@ const TaskGenerator = {
   /**
    * Generates care tasks for a planted garden entry
    */
-  generateCareTasks: (gardenEntry, plantDetails, harvestDate, plantSpecificKillDate) => {
+  generateCareTasks: (gardenEntry, plantDetails, harvestDate, plantSpecificKillDate, wateringPrefs = {}) => {
     const tasks = [];
     const plantedDate = new Date(gardenEntry.plantedDate);
     const displayName = gardenEntry.nickname ?
@@ -87,6 +88,13 @@ const TaskGenerator = {
         const baseTaskDescription = careTask.name.replace(plantDetails.name, '').trim();
 
         if (careTask.recurring) {
+          let recurrence = careTask.recurring;
+          if (isWateringTask) {
+            recurrence = gardenEntry.customWateringDays
+              || wateringPrefs[plantDetails.id]?.defaultWateringDays
+              || careTask.recurring;
+          }
+
           let loopEndDate = harvestDate;
 
           if (plantDetails.harvestType === 'continuous' && plantDetails.harvestPeriodDays && isHarvestTask) {
@@ -107,7 +115,7 @@ const TaskGenerator = {
               type: taskType
             });
 
-            taskDate = DateUtils.addDays(taskDate, careTask.recurring);
+            taskDate = DateUtils.addDays(taskDate, recurrence);
           }
         } else if (taskDate <= harvestDate) {
           if (!TaskGenerator.shouldSkipTask(taskDate, plantSpecificKillDate)) {
@@ -268,6 +276,7 @@ export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, fi
     let allTasks = [];
     const allPlants = await loadPlants();
     const weatherData = await getWeatherForecast(latitude, longitude);
+    const wateringPrefs = await getWateringPreferences();
 
     myGarden.forEach(gardenEntry => {
       if (gardenEntry.status === 'harvested') return;
@@ -317,7 +326,7 @@ export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, fi
       );
 
       const careTasks = TaskGenerator.generateCareTasks(
-        gardenEntry, plantDetails, harvestDate, plantSpecificKillDate
+        gardenEntry, plantDetails, harvestDate, plantSpecificKillDate, wateringPrefs
       );
 
       allTasks.push(...criticalTasks, ...careTasks);

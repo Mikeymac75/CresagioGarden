@@ -106,11 +106,16 @@ const HomeScreen = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.welcomeText}>Welcome back! 🌱</Text>
-        <TouchableOpacity onLongPress={handleChangeLocation}>
-          <Text style={styles.locationText}>
-            📍 Zone {userData?.hardinessZone || 'N/A'}
-          </Text>
+        <View>
+            <Text style={styles.welcomeText}>Welcome back! 🌱</Text>
+            <TouchableOpacity onLongPress={handleChangeLocation}>
+            <Text style={styles.locationText}>
+                📍 Zone {userData?.hardinessZone || 'N/A'}
+            </Text>
+            </TouchableOpacity>
+        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
+            <Ionicons name="settings-outline" size={28} color="white" />
         </TouchableOpacity>
       </View>
 
@@ -279,7 +284,15 @@ export default React.memo(HomeScreen);
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: '#f5f5f5' },
     center: { justifyContent: 'center', alignItems: 'center', flex: 1 },
-    header: { backgroundColor: '#4CAF50', padding: 20, paddingBottom: 40, paddingTop: 50 },
+    header: {
+        backgroundColor: '#4CAF50',
+        padding: 20,
+        paddingBottom: 40,
+        paddingTop: 50,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
     welcomeText: { fontSize: 24, fontWeight: 'bold', color: 'white', marginBottom: 5 },
     locationText: { fontSize: 16, color: '#E8F5E8' },
     statsCard: { backgroundColor: 'white', marginHorizontal: 20, marginTop: -30, padding: 20, borderRadius: 12, flexDirection: 'row', justifyContent: 'space-around', elevation: 5 },
