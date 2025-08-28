@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, ActivityIndicator, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, ActivityIndicator, TouchableOpacity, Alert, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import ProgressBar from '../components/ProgressBar';
 import TemperatureRange from '../components/TemperatureRange';
@@ -10,6 +10,7 @@ import {
   getTemperatureUnit,
 } from '../services/UserPreferenceService';
 import AdjustWateringModal from '../components/AdjustWateringModal';
+import { getPlantImage } from '../services/utils/ImageUtils';
 
 const DetailRow = ({ icon, label, value }) => (
   <View style={styles.detailRow}>
@@ -174,6 +175,7 @@ const PlantDetailScreen = ({ route }) => {
       )}
 
       <View style={styles.card}>
+        <Image source={getPlantImage(plant.id)} style={styles.plantImage} />
         <Text style={styles.title}>{plant.name}</Text>
         <Text style={styles.category}>{plant.category}</Text>
         <Text style={styles.description}>{plant.description}</Text>
@@ -256,6 +258,12 @@ const styles = StyleSheet.create({
     padding: 16,
     marginBottom: 16,
     elevation: 2,
+  },
+  plantImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: 12,
+    marginBottom: 16,
   },
   title: {
     fontSize: 28,

@@ -9,6 +9,7 @@ node_modules/
 # Expo
 .expo/
 dist/
+expo_dev_client.log
 web-build/
 expo-env.d.ts
 
