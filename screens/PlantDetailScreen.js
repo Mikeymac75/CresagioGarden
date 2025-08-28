@@ -42,25 +42,36 @@ const PlantDetailScreen = ({ route }) => {
   const [currentGardenEntry, setCurrentGardenEntry] = useState(gardenEntry);
 
   useEffect(() => {
-    if (!initialPlant && plantId && detailsFile) {
+    // If the plant object from route params is a summary, fetch full details
+    if (initialPlant && initialPlant.detailsFile && initialPlant.id) {
       setIsLoading(true);
-      const details = loadPlantDetails(detailsFile, plantId.toString());
-      if (details) {
-        setPlant(details);
-      } else {
-        console.error("Could not load plant details for ID:", plantId);
+      const fullDetails = loadPlantDetails(initialPlant.detailsFile, initialPlant.id.toString());
+      if (fullDetails) {
+        setPlant(fullDetails); // Overwrite summary with full details
+        if (initialPlant.faqFile) {
+            const faqs = loadPlantFaq(initialPlant.faqFile, initialPlant.id.toString());
+            setFaqData(faqs);
+        }
       }
+      setIsLoading(false);
+    } else if (!initialPlant && plantId && detailsFile) {
+        // Fallback for when details are passed as separate params
+        setIsLoading(true);
+        const details = loadPlantDetails(detailsFile, plantId.toString());
+        if (details) {
+            setPlant(details);
+        } else {
+            console.error("Could not load plant details for ID:", plantId);
+        }
 
-      if (faqFile) {
-        const faqs = loadPlantFaq(faqFile, plantId.toString());
-        setFaqData(faqs);
-      }
-      setIsLoading(false);
-    } else if (initialPlant) {
-      // For custom plants that are passed directly, they won't have an FAQ file.
-      // If we wanted them to, the logic would need to be more complex.
-      // For now, only non-custom plants will show FAQs.
-      setIsLoading(false);
+        if (faqFile) {
+            const faqs = loadPlantFaq(faqFile, plantId.toString());
+            setFaqData(faqs);
+        }
+        setIsLoading(false);
+    } else {
+        // This handles custom plants passed directly or other cases
+        setIsLoading(false);
     }
   }, [initialPlant, plantId, detailsFile, faqFile]);
 
