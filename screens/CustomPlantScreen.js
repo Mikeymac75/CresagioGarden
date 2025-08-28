@@ -20,10 +20,13 @@ export default function CustomPlantScreen({ navigation }) {
 
   const handleSave = async () => {
     // --- THE FIX: Check for existing custom plants ---
-    const existingPlantsString = await AsyncStorage.getItem('userCustomPlants');
+    const [existingPlantsString, isPremium] = await Promise.all([
+      AsyncStorage.getItem('userCustomPlants'),
+      AsyncStorage.getItem('isPremium'),
+    ]);
     const existingPlants = existingPlantsString ? JSON.parse(existingPlantsString) : [];
 
-    if (existingPlants.length >= 1) {
+    if (isPremium !== 'true' && existingPlants.length >= 1) {
       Alert.alert(
         'Limit Reached',
         'You can only create one custom plant in the free version. Please upgrade to Pro for unlimited custom plants!',

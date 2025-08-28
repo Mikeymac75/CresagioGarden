@@ -65,6 +65,7 @@ const WeatherService = {
     let hardFreezeFound = false;
     let totalRainNext24h = 0;
     const dailyMaxTemps = {};
+    const dailyMinTemps = {};
 
     // Process each time point for alerts
     for (const item of timeseries) {
@@ -83,12 +84,19 @@ const WeatherService = {
         totalRainNext24h += parseFloat(item.data.next_1_hours.details.precipitation_amount);
       }
 
-      // Daily maximum temperature tracking
+      // Daily temperature tracking
       const dayString = itemDate.toISOString().split('T')[0];
       if (!dailyMaxTemps[dayString] || temp > dailyMaxTemps[dayString]) {
         dailyMaxTemps[dayString] = temp;
       }
+      if (!dailyMinTemps[dayString] || temp < dailyMinTemps[dayString]) {
+        dailyMinTemps[dayString] = temp;
+      }
     }
+
+    const todayString = now.toISOString().split('T')[0];
+    const todayHigh = dailyMaxTemps[todayString];
+    const todayLow = dailyMinTemps[todayString];
 
     // Heatwave detection
     const dates = Object.keys(dailyMaxTemps).sort();
@@ -121,6 +129,8 @@ const WeatherService = {
       hourlyForecast,
       alerts,
       hardFreezeWarning: hardFreezeFound,
+      todayHigh,
+      todayLow,
     };
   }
 };

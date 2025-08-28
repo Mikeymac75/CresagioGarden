@@ -15,6 +15,7 @@ import { getUpcomingTasksForMyGarden, getSeasonalTasks } from '../services/TaskS
 import { getWeatherForecast, generateDynamicAlerts } from '../services/WeatherService';
 import { loadPlants } from '../services/PlantService';
 import { useFocusEffect } from '@react-navigation/native';
+import * as Location from 'expo-location';
 
 const useHomeScreenData = (navigation) => {
   const [userData, setUserData] = useState(null);
@@ -57,6 +58,24 @@ const useHomeScreenData = (navigation) => {
       if (userDataString) {
         const parsedUserData = JSON.parse(userDataString);
         setUserData(parsedUserData);
+
+        // Reverse geocode the location
+        if (parsedUserData.latitude && parsedUserData.longitude) {
+          try {
+            const placemarks = await Location.reverseGeocodeAsync({
+              latitude: parsedUserData.latitude,
+              longitude: parsedUserData.longitude,
+            });
+            if (placemarks && placemarks.length > 0) {
+              const { city, region } = placemarks[0];
+              const locationName = city && region ? `${city}, ${region}` : (city || region || '');
+              // Update state in a way that triggers a re-render
+              setUserData(prevData => ({ ...prevData, locationName }));
+            }
+          } catch (e) {
+            console.error('Reverse geocoding failed', e);
+          }
+        }
 
         const weatherPromise = (parsedUserData.latitude && parsedUserData.longitude)
           ? getWeatherForecast(parsedUserData.latitude, parsedUserData.longitude)

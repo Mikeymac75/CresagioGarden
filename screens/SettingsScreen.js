@@ -113,6 +113,24 @@ const SettingsScreen = ({ navigation }) => {
           <Text style={styles.rowText}>Restore Purchases</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Developer Tools Section */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Developer Tools</Text>
+        <TouchableOpacity style={styles.row} onPress={async () => {
+          try {
+            const isPremium = await AsyncStorage.getItem('isPremium');
+            const newStatus = isPremium === 'true' ? 'false' : 'true';
+            await AsyncStorage.setItem('isPremium', newStatus);
+            Alert.alert('Dev Tool', `Premium status set to: ${newStatus}`);
+          } catch (e) {
+            Alert.alert('Error', 'Failed to toggle premium status.');
+          }
+        }}>
+          <Ionicons name="bug-outline" size={24} color="#4CAF50" />
+          <Text style={styles.rowText}>Toggle Premium (Dev)</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
