@@ -18,6 +18,11 @@ const AppFaqScreen = () => {
         keyExtractor={(item, index) => index.toString()}
         contentContainerStyle={styles.listContent}
         ListHeaderComponent={<Text style={styles.title}>App FAQ</Text>}
+        ListFooterComponent={
+          <Text style={styles.footerText}>
+            Weather data provided by the Norwegian Meteorological Institute.
+          </Text>
+        }
       />
     </View>
   );
@@ -54,6 +59,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     color: '#555',
+  },
+  footerText: {
+    marginTop: 20,
+    fontSize: 12,
+    color: '#888',
+    textAlign: 'center',
+    fontStyle: 'italic',
   },
 });
 
