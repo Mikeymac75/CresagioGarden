@@ -282,10 +282,18 @@ export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, fi
       if (gardenEntry.status === 'harvested') return;
 
       let plantDetails;
-      if (gardenEntry.detailsFile) {
-        plantDetails = loadPlantDetails(gardenEntry.detailsFile, gardenEntry.plantId.toString());
+      // First, find the base plant information from the index.
+      const summaryPlant = allPlants.find(p => p.id === gardenEntry.plantId);
+
+      if (gardenEntry.isCustom && gardenEntry.details) {
+        // If it's a custom plant, the details are stored on the entry itself.
+        plantDetails = gardenEntry.details;
+      } else if (summaryPlant && summaryPlant.detailsFile) {
+        // If it's a standard plant from the index, load its full details from the corresponding file.
+        plantDetails = loadPlantDetails(summaryPlant.detailsFile, summaryPlant.id.toString());
       } else {
-        plantDetails = allPlants.find(p => p.id === gardenEntry.plantId);
+        // Fallback or error case
+        plantDetails = summaryPlant;
       }
 
       if (!plantDetails) return;
