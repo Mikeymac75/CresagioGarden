@@ -291,7 +291,7 @@ export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, fi
       if (!plantDetails) return;
 
       let plantSpecificKillDate = null;
-      if (weatherData && weatherData.hourlyForecast && !plantDetails.frostTolerant) {
+      if (weatherData && weatherData.hourlyForecast && !plantDetails.frostTolerant && plantDetails.temperature) {
         const killTemp = plantDetails.temperature.absoluteMinF;
         const killForecast = weatherData.hourlyForecast.find(forecast => {
           const tempF = (forecast.temperature * 9/5) + 32;
