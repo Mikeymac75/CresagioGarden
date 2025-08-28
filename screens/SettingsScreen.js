@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { getItem as getSecureItem, setItem as setSecureItem } from '../utils/SecureStorage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -147,6 +147,14 @@ const SettingsScreen = ({ navigation }) => {
         <TouchableOpacity style={styles.row} onPress={handleRestorePurchases}>
           <Ionicons name="receipt-outline" size={24} color="#4CAF50" />
           <Text style={styles.rowText}>Restore Purchases</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Community</Text>
+        <TouchableOpacity style={styles.row} onPress={() => Linking.openURL('https://discord.gg/your-invite-code-here')}>
+          <Ionicons name="logo-discord" size={24} color="#4CAF50" />
+          <Text style={styles.rowText}>Join our Discord Community</Text>
         </TouchableOpacity>
       </View>
 
