@@ -1,0 +1,22 @@
+{
+  "1": [
+    {
+      "question": "Why are my tomato leaves turning yellow?",
+      "answer": "This could be due to overwatering, underwatering, or a nitrogen deficiency in the soil. Check the soil moisture and consider a balanced fertilizer."
+    },
+    {
+      "question": "What is blossom-end rot on tomatoes?",
+      "answer": "It's a dark, sunken spot on the bottom of the fruit, usually caused by a calcium deficiency and inconsistent watering. Ensure consistent moisture and consider a calcium supplement."
+    }
+  ],
+  "16": [
+    {
+      "question": "How do I know when my pumpkin is ripe?",
+      "answer": "A pumpkin is ripe when its skin is a deep, solid color, the rind is hard, and it sounds hollow when you thump it."
+    },
+    {
+      "question": "What are common pests for pumpkins?",
+      "answer": "Look out for squash bugs and vine borers. Regular inspection is key to catching them early."
+    }
+  ]
+}

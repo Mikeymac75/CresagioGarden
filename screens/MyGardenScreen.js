@@ -86,6 +86,7 @@ export default function MyGardenScreen({ navigation }) {
     const newPlantEntry = {
       id: Date.now().toString(),
       plantId: selectedPlant.id,
+      detailsFile: selectedPlant.detailsFile, // <-- Add this
       nickname: plantNickname.trim() || selectedPlant.name,
       plantedDate: plantedDate.toISOString(),
       status: 'active',
@@ -188,6 +189,13 @@ export default function MyGardenScreen({ navigation }) {
             >
               <Ionicons name="leaf" size={20} color="#4CAF50" />
               <Text style={styles.seedBankButtonText}>Manage Seed Bank</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.faqButton}
+              onPress={() => navigation.navigate('AppFaq')}
+            >
+              <Ionicons name="help-circle-outline" size={20} color="#4CAF50" />
+              <Text style={styles.faqButtonText}>App FAQ</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -324,6 +332,23 @@ const styles = StyleSheet.create({
   },
   addButtonText: {
     color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
+    marginLeft: 8,
+  },
+  faqButton: {
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#4CAF50',
+    marginTop: 10,
+  },
+  faqButtonText: {
+    color: '#4CAF50',
     fontWeight: 'bold',
     fontSize: 16,
     marginLeft: 8,

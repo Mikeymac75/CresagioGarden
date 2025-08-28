@@ -17,6 +17,8 @@ import GardenJournalScreen from './screens/GardenJournalScreen';
 import AllTasksCalendarScreen from './screens/AllTasksCalendarScreen';
 import PlantDetailScreen from './screens/PlantDetailScreen';
 import UpgradeScreen from './screens/UpgradeScreen';
+import AppFaqScreen from './screens/AppFaqScreen';
+import SettingsScreen from './screens/SettingsScreen';
 import { ActivityIndicator, View } from 'react-native';
 
 const RootStack = createStackNavigator();
@@ -48,6 +50,11 @@ function GardenStackNavigator() {
         name="CustomPlant"
         component={CustomPlantScreen}
         options={{ title: 'Create Custom Plant' }}
+      />
+      <GardenStack.Screen
+        name="AppFaq"
+        component={AppFaqScreen}
+        options={{ title: 'App FAQ' }}
       />
       <GardenStack.Screen
         name="Upgrade"
@@ -165,11 +172,20 @@ export default function App() {
             name="PlantDetail"
             component={PlantDetailScreen}
             options={({ route }) => ({
-              title: route.params.plant.name,
+              title: route.params.name || route.params.plant?.name,
               ...stackNavigatorOptions,
               headerShown: true,
               presentation: 'modal',
             })}
+          />
+          <RootStack.Screen
+            name="Settings"
+            component={SettingsScreen}
+            options={{
+              ...stackNavigatorOptions,
+              headerShown: true,
+              title: 'Settings',
+            }}
           />
         </RootStack.Navigator>
       </NavigationContainer>

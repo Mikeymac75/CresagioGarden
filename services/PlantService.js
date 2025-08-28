@@ -1,23 +1,32 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import fruits from '../data/plants/fruits.json';
-import grains from '../data/plants/grains.json';
-import herbs from '../data/plants/herbs.json';
-import leafy_greens from '../data/plants/leafy_greens.json';
-import legumes from '../data/plants/legumes.json';
-import root_vegetables from '../data/plants/root_vegetables.json';
-import vegetables from '../data/plants/vegetables.json';
-import fruit2 from '../data/plants/fruit2.json';
+import plantIndex from '../assets/plant_index.json';
 
-const basePlants = [
-  ...fruits,
-  ...fruit2,
-  ...grains,
-  ...herbs,
-  ...leafy_greens,
-  ...legumes,
-  ...root_vegetables,
-  ...vegetables,
-];
+// A map to handle dynamic loading of plant data JSON files.
+// Metro bundler requires static paths for imports.
+const plantDataFiles = {
+  'vegetables.json': () => require('../data/plants/vegetables.json'),
+  'fruits.json': () => require('../data/plants/fruits.json'),
+  'fruit2.json': () => require('../data/plants/fruit2.json'),
+  'grains.json': () => require('../data/plants/grains.json'),
+  'herbs.json': () => require('../data/plants/herbs.json'),
+  'leafy_greens.json': () => require('../data/plants/leafy_greens.json'),
+  'legumes.json': () => require('../data/plants/legumes.json'),
+  'root_vegetables.json': () => require('../data/plants/root_vegetables.json'),
+};
+
+// A map for the corresponding FAQ files.
+const plantFaqFiles = {
+  'vegetables_faq.json': () => require('../data/plants/vegetables_faq.json'),
+  'fruits_faq.json': () => require('../data/plants/fruits_faq.json'),
+  'fruit2_faq.json': () => require('../data/plants/fruit2_faq.json'),
+  'grains_faq.json': () => require('../data/plants/grains_faq.json'),
+  'herbs_faq.json': () => require('../data/plants/herbs_faq.json'),
+  'leafy_greens_faq.json': () => require('../data/plants/leafy_greens_faq.json'),
+  'legumes_faq.json': () => require('../data/plants/legumes_faq.json'),
+  'root_vegetables_faq.json': () => require('../data/plants/root_vegetables_faq.json'),
+};
+
+const basePlants = plantIndex;
 
 export const loadPlants = async () => {
   try {
@@ -26,9 +35,39 @@ export const loadPlants = async () => {
     return [...basePlants, ...customPlants];
   } catch (error) {
     console.error('Failed to load custom plants:', error);
-    // Return base plants if there's an error
     return basePlants;
   }
+};
+
+/**
+ * Loads the detailed information for a specific plant.
+ * @param {string} detailsFile - The JSON file where the plant details are stored.
+ * @param {string} plantId - The unique identifier for the plant (e.g., '1').
+ * @returns {object | null} The detailed plant object or null if not found.
+ */
+export const loadPlantDetails = (detailsFile, plantId) => {
+  if (!plantDataFiles[detailsFile]) {
+    console.error(`Details file not found: ${detailsFile}`);
+    return null;
+  }
+  const allDetails = plantDataFiles[detailsFile]();
+  const numericId = parseInt(plantId, 10);
+  return allDetails.find(p => p.id === numericId) || null;
+};
+
+/**
+ * Loads the FAQ for a specific plant.
+ * @param {string} faqFile - The JSON file where the plant FAQs are stored.
+ * @param {string} plantId - The unique identifier for the plant (e.g., '1').
+ * @returns {Array | null} An array of Q&A objects or null if not found.
+ */
+export const loadPlantFaq = (faqFile, plantId) => {
+  if (!plantFaqFiles[faqFile]) {
+    console.error(`FAQ file not found: ${faqFile}`);
+    return null;
+  }
+  const allFaqs = plantFaqFiles[faqFile]();
+  return allFaqs[plantId] || null;
 };
 
 // For any legacy components that might still use a static import.

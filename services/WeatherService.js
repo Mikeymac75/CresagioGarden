@@ -1,7 +1,7 @@
 import { DateUtils } from './utils/DateUtils';
 import { ValidationUtils } from './utils/ValidationUtils';
 import { ALERT_TYPES, CONFIG } from './constants';
-import PLANTS from './PlantService';
+import { loadPlantDetails } from './PlantService';
 import { weatherSchema } from '../utils/validationSchemas';
 
 /**
@@ -211,7 +211,15 @@ export const generateDynamicAlerts = (weatherData, myGarden, allPlants) => {
     const maxTempFahrenheit = (maxTempCelsius * 9/5) + 32;
 
     myGarden.forEach(entry => {
-      const plantDetails = allPlants.find(p => p.id === entry.plantId);
+      let plantDetails;
+      if (entry.detailsFile) {
+        // It's an indexed plant, load its details
+        plantDetails = loadPlantDetails(entry.detailsFile, entry.plantId.toString());
+      } else {
+        // It's a custom plant (or pre-existing one), find it in the full list
+        plantDetails = allPlants.find(p => p.id === entry.plantId);
+      }
+
       if (!plantDetails || !plantDetails.temperature) {
         return;
       }

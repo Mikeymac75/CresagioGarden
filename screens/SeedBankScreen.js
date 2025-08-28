@@ -69,13 +69,28 @@ export default function SeedBankScreen() {
 
   const renderPlantItem = useCallback(({ item }) => {
     const isSelected = seedBank.has(item.id);
+    const handlePress = () => {
+      if (item.detailsFile) {
+        // It's a base plant from the index, navigate with IDs
+        navigation.navigate('PlantDetail', {
+          plantId: item.id,
+          detailsFile: item.detailsFile,
+          faqFile: item.faqFile,
+          name: item.name, // Pass name for title during load
+        });
+      } else {
+        // It's a custom plant, pass the full object
+        navigation.navigate('PlantDetail', { plant: item });
+      }
+    };
+
     return (
       <PlantListItem
         item={item}
         isSelected={isSelected}
         onToggle={() => toggleSeedInBank(item.id)}
         onDelete={() => deleteCustomPlant(item.id)}
-        onPress={() => navigation.navigate('PlantDetail', { plant: item })}
+        onPress={handlePress}
       />
     );
   }, [seedBank, toggleSeedInBank, deleteCustomPlant, navigation]);
