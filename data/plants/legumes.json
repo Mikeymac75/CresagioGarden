@@ -116,7 +116,7 @@
       "fruiting": "1-3-3"
     },
     "companionPlants": ["Carrots", "Radishes", "Cucumbers", "Turnips", "Mint"],
-    "antagonistPlants": ["Onion", "Garlic", "Chives", "Fennel", "Beans"],
+    "antagonistPlants": ["Onion", "Garlic", "Chives", "Fennel"],
     "storage": {
       "method": "Refrigerate",
       "duration": "3-5 days",

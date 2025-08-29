@@ -37,8 +37,7 @@
     ],
     "npk": {
       "seedling": "1-2-1",
-      "vegetative": "1-1-1",
-      "fruiting": "1-1-1"
+      "vegetative": "1-1-1"
     },
     "companionPlants": ["Tomato", "Peppers", "Asparagus", "Marigold", "Chamomile", "Petunias"],
     "antagonistPlants": ["Rue", "Fennel", "Sage", "Cucumber"],
@@ -118,8 +117,7 @@
     ],
     "npk": {
       "seedling": "1-2-1",
-      "vegetative": "1-1-1",
-      "fruiting": "1-1-1"
+      "vegetative": "1-1-1"
     },
     "companionPlants": ["Anise", "Potatoes", "Dill", "Spinach", "Beans", "Lettuce"],
     "antagonistPlants": ["Fennel", "Lavender"],
@@ -199,8 +197,7 @@
     ],
     "npk": {
       "seedling": "1-2-1",
-      "vegetative": "2-1-2",
-      "fruiting": "2-1-2"
+      "vegetative": "2-1-2"
     },
     "companionPlants": ["Tomato", "Asparagus", "Roses", "Carrots", "Chives"],
     "antagonistPlants": ["Mint", "Fennel", "Dill", "Lettuce"],

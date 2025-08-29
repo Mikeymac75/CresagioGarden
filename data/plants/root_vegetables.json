@@ -37,7 +37,7 @@
     "npk": {
       "seedling": "1-2-1",
       "vegetative": "1-2-2",
-      "fruiting": "1-3-3"
+      "root_development": "1-3-3"
     },
     "companionPlants": ["Lettuce", "Onions", "Rosemary", "Sage", "Radishes", "Marigolds"],
     "antagonistPlants": ["Dill", "Parsley", "Fennel", "Celery", "Parsnip"],
@@ -117,7 +117,7 @@
     "npk": {
       "seedling": "1-2-1",
       "vegetative": "1-1-1",
-      "fruiting": "1-2-2"
+      "root_development": "1-2-2"
     },
     "companionPlants": ["Lettuce", "Cucumbers", "Peas", "Spinach", "Nasturtium", "Chives"],
     "antagonistPlants": ["Hyssop", "Cabbage", "Potato"],
@@ -191,7 +191,7 @@
     "npk": {
       "seedling": "1-2-1",
       "vegetative": "2-2-3",
-      "fruiting": "1-2-3"
+      "root_development": "1-2-3"
     },
     "companionPlants": ["Beans", "Corn", "Cabbage family", "Marigolds", "Horseradish"],
     "antagonistPlants": ["Tomato", "Cucumber", "Pumpkin", "Raspberry", "Fennel", "Sunflower"],
@@ -277,7 +277,7 @@
     "npk": {
       "seedling": "1-2-1",
       "vegetative": "3-1-2",
-      "fruiting": "1-2-3"
+      "root_development": "1-2-3"
     },
     "companionPlants": ["Roses", "Fruit trees", "Tomatoes", "Cabbage"],
     "antagonistPlants": ["Beans", "Peas", "Asparagus", "Sage"],
@@ -363,7 +363,7 @@
     "npk": {
       "seedling": "1-2-1",
       "vegetative": "3-1-2",
-      "fruiting": "1-2-3"
+      "root_development": "1-2-3"
     },
     "companionPlants": ["Carrots", "Lettuce", "Cabbage family", "Chamomile"],
     "antagonistPlants": ["Beans", "Peas", "Asparagus", "Sage"],
@@ -449,7 +449,7 @@
     "npk": {
       "seedling": "1-2-1",
       "vegetative": "1-2-2",
-      "fruiting": "1-3-3"
+      "root_development": "1-3-3"
     },
     "companionPlants": ["Onions", "Cabbage family", "Lettuce", "Bush Beans"],
     "antagonistPlants": ["Pole Beans", "Swiss Chard", "Fennel"],
@@ -529,7 +529,7 @@
     "npk": {
       "seedling": "1-2-1",
       "vegetative": "1-2-2",
-      "fruiting": "1-3-3"
+      "root_development": "1-3-3"
     },
     "companionPlants": ["Peas", "Onions", "Garlic", "Rosemary"],
     "antagonistPlants": ["Tomato", "Pole Beans", "Potato", "Mustard"],
@@ -609,7 +609,7 @@
     "npk": {
       "seedling": "1-2-1",
       "vegetative": "1-2-2",
-      "fruiting": "1-3-3"
+      "root_development": "1-3-3"
     },
     "companionPlants": ["Onions", "Peas", "Dill", "Sage"],
     "antagonistPlants": ["Tomato", "Pole Beans", "Potato", "Mustard"],
