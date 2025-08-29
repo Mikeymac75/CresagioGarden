@@ -39,8 +39,8 @@
       "vegetative": "4-1-2",
       "fruiting": "3-1-3"
     },
-    "companionPlants": ["Beans", "Squash", "Cucumbers", "Peas", "Sunflowers"],
-    "antagonistPlants": ["Tomato", "Broccoli", "Cabbage", "Fennel"],
+    "companionPlants": ["Green Beans (Bush)", "Zucchini", "Winter Squash (Butternut)", "Cucumber", "Peas", "Sunflower"],
+    "antagonistPlants": ["Tomato", "Broccoli", "Cabbage", "Fennel (Bulbing)"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1-3 days",

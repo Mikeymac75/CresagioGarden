@@ -40,8 +40,8 @@
       "vegetative": "3-1-2",
       "heading": "1-3-2"
     },
-    "companionPlants": ["Rosemary", "Chamomile", "Marigold", "Onion"],
-    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape"],
+    "companionPlants": ["Rosemary", "Chamomile", "Marigold", "Onions"],
+    "antagonistPlants": ["Tomato", "Bell Pepper", "Strawberry (June-Bearing)", "Grape"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1-2 weeks",
@@ -138,8 +138,8 @@
       "vegetative": "3-1-2",
       "heading": "1-3-2"
     },
-    "companionPlants": ["Dill", "Celery", "Onion", "Thyme"],
-    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape"],
+    "companionPlants": ["Dill", "Celery", "Onions", "Thyme"],
+    "antagonistPlants": ["Tomato", "Bell Pepper", "Strawberry (June-Bearing)", "Grape"],
     "storage": {
       "method": "Refrigerate or root cellar",
       "duration": "1-2 months",
@@ -224,8 +224,8 @@
       "vegetative": "3-1-2",
       "heading": "1-3-2"
     },
-    "companionPlants": ["Beans", "Celery", "Peas"],
-    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape"],
+    "companionPlants": ["Green Beans (Bush)", "Celery", "Peas"],
+    "antagonistPlants": ["Tomato", "Bell Pepper", "Strawberry (June-Bearing)", "Grape"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1-2 weeks",
@@ -306,7 +306,7 @@
       "heading": "1-3-2"
     },
     "companionPlants": ["Marigold", "Nasturtium", "Rosemary"],
-    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape"],
+    "antagonistPlants": ["Tomato", "Bell Pepper", "Strawberry (June-Bearing)", "Grape"],
     "storage": {
       "method": "Refrigerate or on the stalk",
       "duration": "2-4 weeks",
@@ -391,8 +391,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-1-1"
     },
-    "companionPlants": ["Carrot", "Celery", "Beet", "Marigold", "Chamomile"],
-    "antagonistPlants": ["Beans", "Peas", "Asparagus", "Sage"],
+    "companionPlants": ["Carrots", "Celery", "Beets", "Marigold", "Chamomile"],
+    "antagonistPlants": ["Green Beans (Bush)", "Peas", "Asparagus", "Sage"],
     "storage": {
       "method": "Refrigerate or leave in ground",
       "duration": "2-4 weeks refrigerated; several months in ground",
@@ -478,8 +478,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-1-1"
     },
-    "companionPlants": ["Tomato", "Parsley", "Basil", "Marigold", "Strawberry"],
-    "antagonistPlants": ["Onion", "Garlic", "Potato", "Fennel"],
+    "companionPlants": ["Tomato", "Parsley", "Basil", "Marigold", "Strawberry (June-Bearing)"],
+    "antagonistPlants": ["Onions", "Garlic", "Potato", "Fennel (Bulbing)"],
     "storage": {
       "method": "Refrigerate",
       "duration": "5-7 days",
@@ -565,7 +565,7 @@
       "fruiting": "3-1-1"
     },
     "companionPlants": ["Dill", "Sage", "Chamomile"],
-    "antagonistPlants": ["Beans", "Tomato", "Kohlrabi", "Coriander"],
+    "antagonistPlants": ["Green Beans (Bush)", "Tomato", "Kohlrabi", "Coriander"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1 week",
@@ -645,8 +645,8 @@
       "vegetative": "4-1-2",
       "budding": "2-3-3"
     },
-    "companionPlants": ["Peas", "Cabbage", "Sunflowers", "Tarragon", "Asparagus"],
-    "antagonistPlants": ["Potato", "Tomato", "Fennel"],
+    "companionPlants": ["Peas", "Cabbage", "Sunflower", "Tarragon", "Asparagus"],
+    "antagonistPlants": ["Potato", "Tomato", "Fennel (Bulbing)"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1-2 weeks",

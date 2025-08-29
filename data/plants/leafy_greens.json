@@ -43,15 +43,15 @@
     "companionPlants": [
       "Carrots",
       "Radishes",
-      "Strawberries",
-      "Cucumbers",
+      "Strawberry (June-Bearing)",
+      "Cucumber",
       "Chives",
-      "Marigolds"
+      "Marigold"
     ],
     "antagonistPlants": [
       "Cabbage",
       "Broccoli",
-      "Fennel",
+      "Fennel (Bulbing)",
       "Parsley"
     ],
     "storage": {
@@ -134,15 +134,17 @@
       "fruiting": null
     },
     "companionPlants": [
-      "Strawberries",
-      "Cabbage family",
+      "Strawberry (June-Bearing)",
+      "Cabbage",
+      "Broccoli",
+      "Cauliflower",
       "Peas",
       "Radishes",
-      "Lettuce"
+      "Lettuce (Loose Leaf)"
     ],
     "antagonistPlants": [
       "Potato",
-      "Fennel"
+      "Fennel (Bulbing)"
     ],
     "storage": {
       "method": "Refrigerate",
@@ -218,17 +220,17 @@
       "fruiting": null
     },
     "companionPlants": [
-      "Onion",
-      "Beet",
+      "Onions",
+      "Beets",
       "Cucumber",
       "Dill",
       "Rosemary",
-      "Bush Beans"
+      "Green Beans (Bush)"
     ],
     "antagonistPlants": [
       "Tomato",
-      "Pepper",
-      "Strawberry",
+      "Bell Pepper",
+      "Strawberry (June-Bearing)",
       "Grape"
     ],
     "storage": {
@@ -312,15 +314,17 @@
     },
     "companionPlants": [
       "Onions",
-      "Cabbage family",
-      "Beans",
-      "Lettuce"
+      "Cabbage",
+      "Broccoli",
+      "Cauliflower",
+      "Green Beans (Bush)",
+      "Lettuce (Loose Leaf)"
     ],
     "antagonistPlants": [
-      "Beet",
+      "Beets",
       "Spinach",
       "Potato",
-      "Corn"
+      "Sweet Corn"
     ],
     "storage": {
       "method": "Refrigerate",
@@ -408,15 +412,15 @@
       "fruiting": null
     },
     "companionPlants": [
-      "Lettuce",
+      "Lettuce (Loose Leaf)",
       "Onions",
       "Carrots",
       "Rosemary"
     ],
     "antagonistPlants": [
       "Tomato",
-      "Pepper",
-      "Strawberry",
+      "Bell Pepper",
+      "Strawberry (June-Bearing)",
       "Grape"
     ],
     "storage": {
@@ -499,7 +503,7 @@
       "fruiting": null
     },
     "companionPlants": [
-      "Onion",
+      "Onions",
       "Potato",
       "Dill",
       "Sage",
@@ -508,8 +512,8 @@
     ],
     "antagonistPlants": [
       "Tomato",
-      "Pepper",
-      "Strawberry",
+      "Bell Pepper",
+      "Strawberry (June-Bearing)",
       "Grape"
     ],
     "storage": {

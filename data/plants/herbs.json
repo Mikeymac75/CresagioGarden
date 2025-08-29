@@ -42,7 +42,10 @@
     },
     "companionPlants": [
       "Tomato",
-      "Peppers",
+      "Bell Pepper",
+      "Jalapeño Pepper",
+      "Habanero Pepper",
+      "Cayenne Pepper",
       "Asparagus",
       "Marigold",
       "Chamomile",
@@ -50,7 +53,7 @@
     ],
     "antagonistPlants": [
       "Rue",
-      "Fennel",
+      "Fennel (Bulbing)",
       "Sage",
       "Cucumber"
     ],
@@ -135,14 +138,14 @@
     },
     "companionPlants": [
       "Anise",
-      "Potatoes",
+      "Potato",
       "Dill",
       "Spinach",
-      "Beans",
-      "Lettuce"
+      "Green Beans (Bush)",
+      "Lettuce (Loose Leaf)"
     ],
     "antagonistPlants": [
-      "Fennel",
+      "Fennel (Bulbing)",
       "Lavender"
     ],
     "storage": {
@@ -233,9 +236,9 @@
     ],
     "antagonistPlants": [
       "Mint",
-      "Fennel",
+      "Fennel (Bulbing)",
       "Dill",
-      "Lettuce"
+      "Lettuce (Loose Leaf)"
     ],
     "storage": {
       "method": "Refrigerate or freeze",

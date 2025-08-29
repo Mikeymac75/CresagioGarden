@@ -39,8 +39,8 @@
       "vegetative": "1-2-2",
       "root_development": "1-3-3"
     },
-    "companionPlants": ["Lettuce", "Onions", "Rosemary", "Sage", "Radishes", "Marigolds"],
-    "antagonistPlants": ["Dill", "Parsley", "Fennel", "Celery", "Parsnip"],
+    "companionPlants": ["Lettuce (Loose Leaf)", "Onions", "Rosemary", "Sage", "Radishes", "Marigold"],
+    "antagonistPlants": ["Dill", "Parsley", "Fennel (Bulbing)", "Celery", "Parsnip"],
     "storage": {
       "method": "Refrigerate or store in sand",
       "duration": "1-3 months",
@@ -119,7 +119,7 @@
       "vegetative": "1-1-1",
       "root_development": "1-2-2"
     },
-    "companionPlants": ["Lettuce", "Cucumbers", "Peas", "Spinach", "Nasturtium", "Chives"],
+    "companionPlants": ["Lettuce (Loose Leaf)", "Cucumber", "Peas", "Spinach", "Nasturtium", "Chives"],
     "antagonistPlants": ["Hyssop", "Cabbage", "Potato"],
     "storage": {
       "method": "Refrigerate",
@@ -193,8 +193,8 @@
       "vegetative": "2-2-3",
       "root_development": "1-2-3"
     },
-    "companionPlants": ["Beans", "Corn", "Cabbage family", "Marigolds", "Horseradish"],
-    "antagonistPlants": ["Tomato", "Cucumber", "Pumpkin", "Raspberry", "Fennel", "Sunflower"],
+    "companionPlants": ["Green Beans (Bush)", "Sweet Corn", "Cabbage", "Broccoli", "Cauliflower", "Marigold", "Horseradish"],
+    "antagonistPlants": ["Tomato", "Cucumber", "Pumpkin", "Raspberry", "Fennel (Bulbing)", "Sunflower"],
     "storage": {
       "method": "Cure then store",
       "duration": "4-6 months",
@@ -279,8 +279,8 @@
       "vegetative": "3-1-2",
       "root_development": "1-2-3"
     },
-    "companionPlants": ["Roses", "Fruit trees", "Tomatoes", "Cabbage"],
-    "antagonistPlants": ["Beans", "Peas", "Asparagus", "Sage"],
+    "companionPlants": ["Roses", "Fruit trees", "Tomato", "Cherry Tomato", "Beefsteak Tomato", "Cabbage"],
+    "antagonistPlants": ["Green Beans (Bush)", "Peas", "Asparagus", "Sage"],
     "storage": {
       "method": "Cure then store",
       "duration": "6-8 months",
@@ -365,8 +365,8 @@
       "vegetative": "3-1-2",
       "root_development": "1-2-3"
     },
-    "companionPlants": ["Carrots", "Lettuce", "Cabbage family", "Chamomile"],
-    "antagonistPlants": ["Beans", "Peas", "Asparagus", "Sage"],
+    "companionPlants": ["Carrots", "Lettuce (Loose Leaf)", "Cabbage", "Broccoli", "Cauliflower", "Chamomile"],
+    "antagonistPlants": ["Green Beans (Bush)", "Peas", "Asparagus", "Sage"],
     "storage": {
       "method": "Cure then store",
       "duration": "3-6 months",
@@ -451,8 +451,8 @@
       "vegetative": "1-2-2",
       "root_development": "1-3-3"
     },
-    "companionPlants": ["Onions", "Cabbage family", "Lettuce", "Bush Beans"],
-    "antagonistPlants": ["Pole Beans", "Swiss Chard", "Fennel"],
+    "companionPlants": ["Onions", "Cabbage", "Broccoli", "Cauliflower", "Lettuce (Loose Leaf)", "Green Beans (Bush)"],
+    "antagonistPlants": ["Pole Beans", "Swiss Chard", "Fennel (Bulbing)"],
     "storage": {
       "method": "Refrigerate",
       "duration": "2-4 weeks",
