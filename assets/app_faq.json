@@ -6,5 +6,9 @@
   {
     "question": "How do I add a plant to My Garden?",
     "answer": "From the main plant list, tap on any plant and then tap the 'Add to My Garden' button on its details page."
+  },
+  {
+    "question": "What does N-P-K mean?",
+    "answer": "N-P-K stands for Nitrogen (N), Phosphorus (P), and Potassium (K). These are the three main nutrients plants need. Nitrogen promotes leaf growth, Phosphorus supports root and flower development, and Potassium is vital for overall plant health. The ideal ratio changes as a plant grows, which is why you'll see different recommendations for its different life stages."
   }
 ]

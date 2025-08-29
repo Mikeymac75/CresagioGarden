@@ -40,7 +40,13 @@
         "priority": "medium"
       }
     ],
-    "companionPlants": ["Beans", "Peas", "Oregano", "Thyme"],
+    "npk": {
+      "seedling": "1-2-2",
+      "vegetative": "1-2-3",
+      "fruiting": "1-3-4"
+    },
+    "companionPlants": ["Beans", "Peas", "Oregano", "Thyme", "Carrots", "Onions"],
+    "antagonistPlants": ["Squash", "Parsnip", "Fennel"],
     "storage": {
       "method": "Cure then store in cool, dry place",
       "duration": "6-10 months when properly cured",
@@ -115,7 +121,13 @@
         "priority": "medium"
       }
     ],
-    "companionPlants": ["Carrots", "Onions", "Radishes", "Lettuce"],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "1-2-2",
+      "fruiting": "1-3-3"
+    },
+    "companionPlants": ["Onion", "Radish", "Lettuce", "Rosemary", "Peas"],
+    "antagonistPlants": ["Carrot", "Celery", "Dill", "Fennel", "Potato"],
     "storage": {
       "method": "Leave in ground or store in root cellar",
       "duration": "All winter in ground, 4-6 months in storage",

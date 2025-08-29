@@ -35,7 +35,13 @@
         "priority": "high"
       }
     ],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "3-1-2",
+      "fruiting": "1-3-2"
+    },
     "companionPlants": ["Basil", "Carrot", "Marigold"],
+    "antagonistPlants": ["Cabbage", "Corn", "Potatoes", "Fennel", "Broccoli"],
     "storage": {
       "method": "Room temperature",
       "duration": "3-7 days",
@@ -110,7 +116,13 @@
         "priority": "high"
       }
     ],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "3-1-2",
+      "fruiting": "1-3-2"
+    },
     "companionPlants": ["Basil", "Carrot", "Marigold"],
+    "antagonistPlants": ["Cabbage", "Corn", "Potatoes", "Fennel", "Broccoli"],
     "storage": {
       "method": "Room temperature",
       "duration": "3-7 days",
@@ -185,7 +197,13 @@
         "priority": "high"
       }
     ],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "3-1-2",
+      "fruiting": "1-3-2"
+    },
     "companionPlants": ["Corn", "Beans", "Nasturtium"],
+    "antagonistPlants": ["Potato", "Cucumber", "Melons", "Fennel"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1 week",
@@ -260,7 +278,13 @@
         "priority": "medium"
       }
     ],
+    "npk": {
+      "seedling": "1-1-1",
+      "vegetative": "1-1-1",
+      "fruiting": "1-1-2"
+    },
     "companionPlants": ["Azalea", "Rhododendron", "Cranberry"],
+    "antagonistPlants": ["Tomato", "Peas", "Beans", "Cabbage", "Cauliflower", "Lawn Grass"],
     "storage": {
       "method": "Refrigerate",
       "duration": "7-10 days",
@@ -329,7 +353,13 @@
         "priority": "medium"
       }
     ],
+    "npk": {
+      "seedling": "1-1-1",
+      "vegetative": "1-1-1",
+      "fruiting": "1-1-2"
+    },
     "companionPlants": ["Garlic", "Chives", "Tansy"],
+    "antagonistPlants": ["Potato", "Tomato", "Eggplant", "Blackberry", "Strawberry"],
     "storage": {
       "method": "Refrigerate",
       "duration": "2-3 days",
@@ -398,7 +428,13 @@
         "priority": "medium"
       }
     ],
+    "npk": {
+      "seedling": "1-1-1",
+      "vegetative": "1-1-1",
+      "fruiting": "1-1-2"
+    },
     "companionPlants": ["Mint", "Chives", "Marigold"],
+    "antagonistPlants": ["Potato", "Tomato", "Eggplant", "Raspberry", "Strawberry"],
     "storage": {
       "method": "Refrigerate",
       "duration": "3-5 days",
@@ -466,7 +502,13 @@
         "priority": "high"
       }
     ],
+    "npk": {
+      "seedling": "1-1-1",
+      "vegetative": "2-1-1",
+      "fruiting": "1-2-2"
+    },
     "companionPlants": ["Rose", "Lavender", "Oregano"],
+    "antagonistPlants": ["Cabbage", "Radishes", "Black Walnut", "Sunflowers"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1-2 weeks",
@@ -534,7 +576,13 @@
         "priority": "high"
       }
     ],
+    "npk": {
+      "seedling": "1-1-1",
+      "vegetative": "3-1-2",
+      "fruiting": "1-2-3"
+    },
     "companionPlants": ["Chives", "Nasturtium", "Comfrey"],
+    "antagonistPlants": ["Juniper", "Potato", "Fennel", "Carrot", "Rosemary"],
     "storage": {
       "method": "Cool, humid storage",
       "duration": "2-6 months",

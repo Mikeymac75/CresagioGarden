@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, ActivityIndicator, TouchableOpacity, Alert, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import plantIndex from '../assets/plant_index.json';
 import ProgressBar from '../components/ProgressBar';
 import TemperatureRange from '../components/TemperatureRange';
 import { loadPlantDetails, loadPlantFaq } from '../services/PlantService';
@@ -20,6 +21,78 @@ const DetailRow = ({ icon, label, value }) => (
   </View>
 );
 
+const NpkCard = ({ npk }) => {
+  if (!npk) return null;
+
+  return (
+    <View style={styles.card}>
+      <Text style={styles.sectionTitle}>Fertilizer Needs (N-P-K)</Text>
+      <DetailRow icon="leaf-outline" label="Seedling Stage" value={npk.seedling} />
+      <DetailRow icon="leaf-outline" label="Vegetative Growth" value={npk.vegetative} />
+      <DetailRow icon="leaf-outline" label="Fruiting & Flowering" value={npk.fruiting} />
+    </View>
+  );
+};
+
+const PlantCompanionsCard = ({ plant, navigation }) => {
+  const findPlantByName = (name) => {
+    return plantIndex.find(p => p.name.toLowerCase() === name.toLowerCase());
+  };
+
+  const handleCompanionPress = (plantName) => {
+    const companion = findPlantByName(plantName);
+    if (companion) {
+      navigation.push('PlantDetail', {
+        plantId: companion.id,
+        name: companion.name,
+        detailsFile: companion.detailsFile,
+        faqFile: companion.faqFile,
+        // Pass the initial plant object as a summary
+        plant: companion,
+      });
+    } else {
+      Alert.alert('Plant Not Found', `Details for ${plantName} are not available.`);
+    }
+  };
+
+  const hasCompanions = plant.companionPlants && plant.companionPlants.length > 0;
+  const hasAntagonists = plant.antagonistPlants && plant.antagonistPlants.length > 0;
+
+  if (!hasCompanions && !hasAntagonists) {
+    return null;
+  }
+
+  return (
+    <View style={styles.card}>
+      <Text style={styles.sectionTitle}>Plant Companions</Text>
+      {hasCompanions && (
+        <View style={styles.companionSection}>
+          <Text style={styles.subSectionTitle}>Good Neighbors</Text>
+          <View style={styles.companionList}>
+            {plant.companionPlants.map((name, index) => (
+              <TouchableOpacity key={index} onPress={() => handleCompanionPress(name)}>
+                <Text style={styles.companionLink}>{name}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      )}
+      {hasAntagonists && (
+        <View style={styles.companionSection}>
+          <Text style={styles.subSectionTitle}>Bad Neighbors</Text>
+          <View style={styles.companionList}>
+            {plant.antagonistPlants.map((name, index) => (
+              <TouchableOpacity key={index} onPress={() => handleCompanionPress(name)}>
+                <Text style={styles.companionLink}>{name}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      )}
+    </View>
+  );
+};
+
 const FaqSection = ({ faqData }) => {
   if (!faqData || faqData.length === 0) {
     return null;
@@ -38,7 +111,7 @@ const FaqSection = ({ faqData }) => {
   );
 };
 
-const PlantDetailScreen = ({ route }) => {
+const PlantDetailScreen = ({ route, navigation }) => {
   const { plant: initialPlant, gardenEntry, plantId, detailsFile, faqFile, name } = route.params;
 
   const [plant, setPlant] = useState(initialPlant);
@@ -196,6 +269,9 @@ const PlantDetailScreen = ({ route }) => {
         )}
       </View>
 
+      <NpkCard npk={plant.npk} />
+      <PlantCompanionsCard plant={plant} navigation={navigation} />
+
       <FaqSection faqData={faqData} />
 
       <View style={styles.card}>
@@ -306,6 +382,27 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     flexShrink: 1,
     color: '#555',
+  },
+  companionSection: {
+    marginBottom: 10,
+  },
+  subSectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 8,
+  },
+  companionList: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  companionLink: {
+    fontSize: 16,
+    color: '#007bff',
+    padding: 8,
+    backgroundColor: '#f0f8ff',
+    borderRadius: 8,
+    margin: 4,
   },
   taskItem: {
     marginBottom: 12,

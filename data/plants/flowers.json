@@ -18,6 +18,13 @@
       "absoluteMinF": 35,
       "notes": "Loves heat and is drought-tolerant once established. Protect from frost."
     },
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "1-1-1",
+      "fruiting": "1-2-2"
+    },
+    "companionPlants": ["Tomato", "Potato", "Cucumber", "Rose", "Lettuce"],
+    "antagonistPlants": [],
     "careTasks": [
       {
         "name": "Thin seedlings",
@@ -58,6 +65,13 @@
       "absoluteMinF": 35,
       "notes": "A heat-loving plant that requires a long, sunny season to thrive. Protect young plants from frost."
     },
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "3-2-2",
+      "fruiting": "2-3-2"
+    },
+    "companionPlants": ["Cucumber", "Lettuce", "Corn", "Bush Beans", "Peas"],
+    "antagonistPlants": ["Potato", "Pole Beans", "Fennel"],
     "careTasks": [
       {
         "name": "Provide support",
@@ -98,6 +112,13 @@
       "absoluteMinF": 33,
       "notes": "A cool-season flower that may struggle in intense summer heat. Very sensitive to frost."
     },
+    "npk": {
+      "seedling": "1-1-1",
+      "vegetative": "1-1-1",
+      "fruiting": "1-1-1"
+    },
+    "companionPlants": ["Cucumber", "Squash", "Tomato", "Pepper", "Radish"],
+    "antagonistPlants": ["Broccoli", "Kale", "Fennel"],
     "careTasks": [
       {
         "name": "Watering",
@@ -132,6 +153,13 @@
       "absoluteMinF": 35,
       "notes": "Loves hot weather. Very sensitive to frost. Wait for reliably warm weather to plant."
     },
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "2-2-2",
+      "fruiting": "1-2-2"
+    },
+    "companionPlants": ["Tomato", "Cucumber", "Marigold", "Cosmos", "Lettuce"],
+    "antagonistPlants": ["Impatiens", "Hydrangea", "Ferns", "Fennel"],
     "careTasks": [
       {
         "name": "Pinch young plants",

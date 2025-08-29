@@ -35,7 +35,13 @@
         "priority": "medium"
       }
     ],
-    "companionPlants": ["Carrots", "Radishes", "Strawberries", "Cucumbers"],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "2-1-1",
+      "fruiting": "1-1-1"
+    },
+    "companionPlants": ["Carrots", "Radishes", "Strawberries", "Cucumbers", "Chives", "Marigolds"],
+    "antagonistPlants": ["Cabbage", "Broccoli", "Fennel", "Parsley"],
     "storage": {
       "method": "Refrigerate",
       "duration": "5-10 days",
@@ -110,7 +116,13 @@
         "priority": "low"
       }
     ],
-    "companionPlants": ["Strawberries", "Cabbage family", "Peas", "Radishes"],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "3-1-2",
+      "fruiting": "2-1-2"
+    },
+    "companionPlants": ["Strawberries", "Cabbage family", "Peas", "Radishes", "Lettuce"],
+    "antagonistPlants": ["Potato", "Fennel"],
     "storage": {
       "method": "Refrigerate",
       "duration": "5-7 days",
@@ -179,7 +191,13 @@
         "priority": "low"
       }
     ],
-    "companionPlants": ["Onions", "Beets", "Cucumbers", "Herbs like dill and rosemary"],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "3-1-2",
+      "fruiting": "2-2-2"
+    },
+    "companionPlants": ["Onion", "Beet", "Cucumber", "Dill", "Rosemary", "Bush Beans"],
+    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape", "Pole Beans"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1-2 weeks",
@@ -254,7 +272,13 @@
         "priority": "medium"
       }
     ],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "3-1-2",
+      "fruiting": "2-2-2"
+    },
     "companionPlants": ["Onions", "Cabbage family", "Beans", "Lettuce"],
+    "antagonistPlants": ["Beet", "Spinach", "Potato", "Corn"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1 week",
@@ -335,7 +359,13 @@
         "priority": "medium"
       }
     ],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "1-1-1",
+      "fruiting": "1-1-1"
+    },
     "companionPlants": ["Lettuce", "Onions", "Carrots", "Rosemary"],
+    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape", "Pole Beans"],
     "storage": {
       "method": "Refrigerate",
       "duration": "2-4 days",
@@ -410,7 +440,13 @@
         "priority": "low"
       }
     ],
-    "companionPlants": ["Onions", "Potatoes", "Herbs like dill and sage"],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "3-1-2",
+      "fruiting": "2-2-2"
+    },
+    "companionPlants": ["Onion", "Potato", "Dill", "Sage", "Chamomile", "Celery"],
+    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape", "Pole Beans"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1 week",
