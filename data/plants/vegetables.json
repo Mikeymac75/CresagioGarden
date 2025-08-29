@@ -38,10 +38,10 @@
     "npk": {
       "seedling": "1-2-1",
       "vegetative": "3-1-2",
-      "fruiting": "2-3-2"
+      "heading": "1-3-2"
     },
     "companionPlants": ["Rosemary", "Chamomile", "Marigold", "Onion"],
-    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape", "Pole Beans"],
+    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1-2 weeks",
@@ -136,10 +136,10 @@
     "npk": {
       "seedling": "1-2-1",
       "vegetative": "3-1-2",
-      "fruiting": "2-3-2"
+      "heading": "1-3-2"
     },
     "companionPlants": ["Dill", "Celery", "Onion", "Thyme"],
-    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape", "Pole Beans"],
+    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape"],
     "storage": {
       "method": "Refrigerate or root cellar",
       "duration": "1-2 months",
@@ -222,10 +222,10 @@
     "npk": {
       "seedling": "1-2-1",
       "vegetative": "3-1-2",
-      "fruiting": "2-3-2"
+      "heading": "1-3-2"
     },
     "companionPlants": ["Beans", "Celery", "Peas"],
-    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape", "Pole Beans"],
+    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1-2 weeks",
@@ -303,10 +303,10 @@
     "npk": {
       "seedling": "1-2-1",
       "vegetative": "3-1-2",
-      "fruiting": "2-3-2"
+      "heading": "1-3-2"
     },
     "companionPlants": ["Marigold", "Nasturtium", "Rosemary"],
-    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape", "Pole Beans"],
+    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape"],
     "storage": {
       "method": "Refrigerate or on the stalk",
       "duration": "2-4 weeks",
@@ -643,7 +643,7 @@
     "npk": {
       "seedling": "1-2-1",
       "vegetative": "4-1-2",
-      "fruiting": "4-1-2"
+      "budding": "2-3-3"
     },
     "companionPlants": ["Peas", "Cabbage", "Sunflowers", "Tarragon", "Asparagus"],
     "antagonistPlants": ["Potato", "Tomato", "Fennel"],

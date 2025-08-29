@@ -359,7 +359,7 @@
       "fruiting": "1-1-2"
     },
     "companionPlants": ["Garlic", "Chives", "Tansy"],
-    "antagonistPlants": ["Potato", "Tomato", "Eggplant", "Blackberry", "Strawberry"],
+    "antagonistPlants": ["Potato", "Tomato", "Eggplant", "Blackberry"],
     "storage": {
       "method": "Refrigerate",
       "duration": "2-3 days",
@@ -434,7 +434,7 @@
       "fruiting": "1-1-2"
     },
     "companionPlants": ["Mint", "Chives", "Marigold"],
-    "antagonistPlants": ["Potato", "Tomato", "Eggplant", "Raspberry", "Strawberry"],
+    "antagonistPlants": ["Potato", "Tomato", "Eggplant", "Raspberry"],
     "storage": {
       "method": "Refrigerate",
       "duration": "3-5 days",

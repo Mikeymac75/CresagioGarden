@@ -961,7 +961,7 @@
   {
     "id": 37,
     "name": "Rhubarb",
-    "category": "Fruit",
+    "category": "Vegetable",
     "harvestType": "continuous",
     "harvestPeriodDays": 60,
     "daysToMaturity": 365,
