@@ -35,7 +35,13 @@
         "priority": "medium"
       }
     ],
+    "npk": {
+      "seedling": "1-1-1",
+      "vegetative": "1-1-1",
+      "fruiting": "1-1-1"
+    },
     "companionPlants": ["Cabbage", "Tomatoes", "Carrots", "Broccoli"],
+    "antagonistPlants": ["Parsley", "Lavender", "Chamomile", "Other Mints"],
     "storage": {
       "method": "Refrigerate or freeze",
       "duration": "1 week fresh, 6 months frozen",
@@ -115,7 +121,13 @@
         "priority": "high"
       }
     ],
+    "npk": {
+      "seedling": "1-1-1",
+      "vegetative": "1-1-1",
+      "fruiting": "1-1-1"
+    },
     "companionPlants": ["Lavender", "Thyme", "Sage", "Beans"],
+    "antagonistPlants": ["Mint", "Basil", "Cucumber"],
     "storage": {
       "method": "Dry or freeze",
       "duration": "1 year dried, 6 months frozen",
@@ -190,7 +202,13 @@
         "priority": "medium"
       }
     ],
+    "npk": {
+      "seedling": "1-1-1",
+      "vegetative": "1-1-1",
+      "fruiting": "1-1-1"
+    },
     "companionPlants": ["Rosemary", "Lavender", "Cabbage", "Tomatoes"],
+    "antagonistPlants": ["Mint", "Basil", "Cucumber"],
     "storage": {
       "method": "Dry or freeze",
       "duration": "1 year dried, 6 months frozen",
@@ -265,7 +283,13 @@
         "priority": "medium"
       }
     ],
+    "npk": {
+      "seedling": "1-1-1",
+      "vegetative": "1-1-1",
+      "fruiting": "1-1-1"
+    },
     "companionPlants": ["Basil", "Tomatoes", "Peppers", "Eggplant"],
+    "antagonistPlants": ["Mint", "Basil", "Cucumber"],
     "storage": {
       "method": "Dry or freeze",
       "duration": "1 year dried, 6 months frozen",
@@ -340,7 +364,13 @@
         "priority": "medium"
       }
     ],
-    "companionPlants": ["Cabbage", "Lettuce", "Onions", "Cucumbers"],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "1-1-1",
+      "fruiting": "1-1-1"
+    },
+    "companionPlants": ["Cabbage", "Lettuce", "Onions", "Cucumbers", "Asparagus"],
+    "antagonistPlants": ["Carrot", "Fennel", "Cilantro", "Lavender"],
     "storage": {
       "method": "Refrigerate or freeze",
       "duration": "1 week fresh, 6 months frozen",
@@ -409,7 +439,13 @@
       "notes": "Very hardy perennial in zones 3-9. Goes dormant in winter."
     },
     "environmentalAlerts": [],
-    "companionPlants": ["Carrots", "Tomatoes", "Roses"],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "2-1-2",
+      "fruiting": "1-1-1"
+    },
+    "companionPlants": ["Carrots", "Tomatoes", "Roses", "Cabbage"],
+    "antagonistPlants": ["Beans", "Peas", "Asparagus"],
     "storage": {
       "method": "Refrigerate or freeze",
       "duration": "1 week fresh, 6 months frozen",

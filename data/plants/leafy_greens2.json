@@ -35,7 +35,13 @@
         "priority": "medium"
       }
     ],
-    "companionPlants": ["Carrots", "Radishes", "Onions", "Chives"],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "2-1-1",
+      "fruiting": "1-1-1"
+    },
+    "companionPlants": ["Carrots", "Radishes", "Onions", "Chives", "Strawberries", "Marigolds"],
+    "antagonistPlants": ["Cabbage", "Broccoli", "Fennel", "Parsley"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1-2 weeks",
@@ -110,7 +116,13 @@
         "priority": "high"
       }
     ],
-    "companionPlants": ["Chives", "Garlic", "Carrots", "Radishes"],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "2-1-1",
+      "fruiting": "1-1-1"
+    },
+    "companionPlants": ["Carrots", "Radishes", "Onions", "Chives", "Strawberries", "Marigolds"],
+    "antagonistPlants": ["Cabbage", "Broccoli", "Fennel", "Parsley"],
     "storage": {
       "method": "Refrigerate",
       "duration": "5-7 days",
@@ -185,7 +197,13 @@
         "priority": "medium"
       }
     ],
-    "companionPlants": ["Onions", "Garlic", "Carrots", "Beets"],
+    "npk": {
+      "seedling": "1-2-1",
+      "vegetative": "3-1-2",
+      "fruiting": "2-1-2"
+    },
+    "companionPlants": ["Onions", "Garlic", "Carrots", "Beets", "Dill"],
+    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape", "Pole Beans"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1 week",
