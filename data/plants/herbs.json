@@ -26,7 +26,7 @@
       "optimalLowF": 70,
       "optimalHighF": 90,
       "absoluteMinF": 45,
-      "notes": "Very sensitive to frost and cool temperatures. Prefers warm days and nights (above 60°F)."
+      "notes": "Very sensitive to frost and cool temperatures. Prefers warm days and nights (above 60\u00b0F)."
     },
     "environmentalAlerts": [
       {
@@ -37,10 +37,23 @@
     ],
     "npk": {
       "seedling": "1-2-1",
-      "vegetative": "1-1-1"
+      "vegetative": "1-1-1",
+      "fruiting": null
     },
-    "companionPlants": ["Tomato", "Peppers", "Asparagus", "Marigold", "Chamomile", "Petunias"],
-    "antagonistPlants": ["Rue", "Fennel", "Sage", "Cucumber"],
+    "companionPlants": [
+      "Tomato",
+      "Peppers",
+      "Asparagus",
+      "Marigold",
+      "Chamomile",
+      "Petunias"
+    ],
+    "antagonistPlants": [
+      "Rue",
+      "Fennel",
+      "Sage",
+      "Cucumber"
+    ],
     "storage": {
       "method": "Fresh in water or frozen",
       "duration": "1 week (fresh), 6 months (frozen)",
@@ -106,7 +119,7 @@
       "optimalLowF": 50,
       "optimalHighF": 75,
       "absoluteMinF": 32,
-      "notes": "A cool-season herb. Bolts rapidly in temperatures above 85°F. Can tolerate a light frost."
+      "notes": "A cool-season herb. Bolts rapidly in temperatures above 85\u00b0F. Can tolerate a light frost."
     },
     "environmentalAlerts": [
       {
@@ -117,10 +130,21 @@
     ],
     "npk": {
       "seedling": "1-2-1",
-      "vegetative": "1-1-1"
+      "vegetative": "1-1-1",
+      "fruiting": null
     },
-    "companionPlants": ["Anise", "Potatoes", "Dill", "Spinach", "Beans", "Lettuce"],
-    "antagonistPlants": ["Fennel", "Lavender"],
+    "companionPlants": [
+      "Anise",
+      "Potatoes",
+      "Dill",
+      "Spinach",
+      "Beans",
+      "Lettuce"
+    ],
+    "antagonistPlants": [
+      "Fennel",
+      "Lavender"
+    ],
     "storage": {
       "method": "Refrigerate or freeze leaves; dry store seeds",
       "duration": "1 week (refrigerated leaves)",
@@ -197,10 +221,22 @@
     ],
     "npk": {
       "seedling": "1-2-1",
-      "vegetative": "2-1-2"
+      "vegetative": "2-1-2",
+      "fruiting": null
     },
-    "companionPlants": ["Tomato", "Asparagus", "Roses", "Carrots", "Chives"],
-    "antagonistPlants": ["Mint", "Fennel", "Dill", "Lettuce"],
+    "companionPlants": [
+      "Tomato",
+      "Asparagus",
+      "Roses",
+      "Carrots",
+      "Chives"
+    ],
+    "antagonistPlants": [
+      "Mint",
+      "Fennel",
+      "Dill",
+      "Lettuce"
+    ],
     "storage": {
       "method": "Refrigerate or freeze",
       "duration": "1 week (refrigerated)",

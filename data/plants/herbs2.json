@@ -37,10 +37,21 @@
     ],
     "npk": {
       "seedling": "1-1-1",
-      "vegetative": "1-1-1"
+      "vegetative": "1-1-1",
+      "fruiting": null
     },
-    "companionPlants": ["Cabbage", "Tomatoes", "Carrots", "Broccoli"],
-    "antagonistPlants": ["Parsley", "Lavender", "Chamomile", "Other Mints"],
+    "companionPlants": [
+      "Cabbage",
+      "Tomatoes",
+      "Carrots",
+      "Broccoli"
+    ],
+    "antagonistPlants": [
+      "Parsley",
+      "Lavender",
+      "Chamomile",
+      "Other Mints"
+    ],
     "storage": {
       "method": "Refrigerate or freeze",
       "duration": "1 week fresh, 6 months frozen",
@@ -122,10 +133,20 @@
     ],
     "npk": {
       "seedling": "1-1-1",
-      "vegetative": "1-1-1"
+      "vegetative": "1-1-1",
+      "fruiting": null
     },
-    "companionPlants": ["Lavender", "Thyme", "Sage", "Beans"],
-    "antagonistPlants": ["Mint", "Basil", "Cucumber"],
+    "companionPlants": [
+      "Lavender",
+      "Thyme",
+      "Sage",
+      "Beans"
+    ],
+    "antagonistPlants": [
+      "Mint",
+      "Basil",
+      "Cucumber"
+    ],
     "storage": {
       "method": "Dry or freeze",
       "duration": "1 year dried, 6 months frozen",
@@ -202,10 +223,20 @@
     ],
     "npk": {
       "seedling": "1-1-1",
-      "vegetative": "1-1-1"
+      "vegetative": "1-1-1",
+      "fruiting": null
     },
-    "companionPlants": ["Rosemary", "Lavender", "Cabbage", "Tomatoes"],
-    "antagonistPlants": ["Mint", "Basil", "Cucumber"],
+    "companionPlants": [
+      "Rosemary",
+      "Lavender",
+      "Cabbage",
+      "Tomatoes"
+    ],
+    "antagonistPlants": [
+      "Mint",
+      "Basil",
+      "Cucumber"
+    ],
     "storage": {
       "method": "Dry or freeze",
       "duration": "1 year dried, 6 months frozen",
@@ -282,10 +313,19 @@
     ],
     "npk": {
       "seedling": "1-1-1",
-      "vegetative": "1-1-1"
+      "vegetative": "1-1-1",
+      "fruiting": null
     },
-    "companionPlants": ["Basil", "Tomatoes", "Peppers", "Eggplant"],
-    "antagonistPlants": ["Mint", "Cucumber"],
+    "companionPlants": [
+      "Basil",
+      "Tomatoes",
+      "Peppers",
+      "Eggplant"
+    ],
+    "antagonistPlants": [
+      "Mint",
+      "Cucumber"
+    ],
     "storage": {
       "method": "Dry or freeze",
       "duration": "1 year dried, 6 months frozen",
@@ -362,10 +402,22 @@
     ],
     "npk": {
       "seedling": "1-2-1",
-      "vegetative": "1-1-1"
+      "vegetative": "1-1-1",
+      "fruiting": null
     },
-    "companionPlants": ["Cabbage", "Lettuce", "Onions", "Cucumbers", "Asparagus"],
-    "antagonistPlants": ["Carrot", "Fennel", "Cilantro", "Lavender"],
+    "companionPlants": [
+      "Cabbage",
+      "Lettuce",
+      "Onions",
+      "Cucumbers",
+      "Asparagus"
+    ],
+    "antagonistPlants": [
+      "Carrot",
+      "Fennel",
+      "Cilantro",
+      "Lavender"
+    ],
     "storage": {
       "method": "Refrigerate or freeze",
       "duration": "1 week fresh, 6 months frozen",
@@ -436,17 +488,27 @@
     "environmentalAlerts": [],
     "npk": {
       "seedling": "1-2-1",
-      "vegetative": "2-1-2"
+      "vegetative": "2-1-2",
+      "fruiting": null
     },
-    "companionPlants": ["Carrots", "Tomatoes", "Roses", "Cabbage"],
-    "antagonistPlants": ["Beans", "Peas", "Asparagus"],
+    "companionPlants": [
+      "Carrots",
+      "Tomatoes",
+      "Roses",
+      "Cabbage"
+    ],
+    "antagonistPlants": [
+      "Beans",
+      "Peas",
+      "Asparagus"
+    ],
     "storage": {
       "method": "Refrigerate or freeze",
       "duration": "1 week fresh, 6 months frozen",
       "notes": "Store fresh leaves in a plastic bag in the refrigerator. Freeze chopped chives in ice cube trays with water."
     },
     "careTasks": [
-       {
+      {
         "name": "Care for Seedlings",
         "daysAfterPlanting": 14,
         "recurring": null,
