@@ -40,8 +40,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-3-2"
     },
-    "companionPlants": ["Basil", "Carrot", "Marigold"],
-    "antagonistPlants": ["Cabbage", "Corn", "Potatoes", "Fennel", "Broccoli"],
+    "companionPlants": ["Basil", "Carrots", "Marigold"],
+    "antagonistPlants": ["Cabbage", "Sweet Corn", "Potato", "Fennel (Bulbing)", "Broccoli"],
     "storage": {
       "method": "Room temperature",
       "duration": "3-7 days",
@@ -121,8 +121,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-3-2"
     },
-    "companionPlants": ["Basil", "Carrot", "Marigold"],
-    "antagonistPlants": ["Cabbage", "Corn", "Potatoes", "Fennel", "Broccoli"],
+    "companionPlants": ["Basil", "Carrots", "Marigold"],
+    "antagonistPlants": ["Cabbage", "Sweet Corn", "Potato", "Fennel (Bulbing)", "Broccoli"],
     "storage": {
       "method": "Room temperature",
       "duration": "3-7 days",
@@ -202,8 +202,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-3-2"
     },
-    "companionPlants": ["Corn", "Beans", "Nasturtium"],
-    "antagonistPlants": ["Potato", "Cucumber", "Melons", "Fennel"],
+    "companionPlants": ["Sweet Corn", "Green Beans (Bush)", "Nasturtium"],
+    "antagonistPlants": ["Potato", "Cucumber", "Watermelon", "Cantaloupe", "Fennel (Bulbing)"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1 week",
@@ -284,7 +284,7 @@
       "fruiting": "1-1-2"
     },
     "companionPlants": ["Azalea", "Rhododendron", "Cranberry"],
-    "antagonistPlants": ["Tomato", "Peas", "Beans", "Cabbage", "Cauliflower", "Lawn Grass"],
+    "antagonistPlants": ["Tomato", "Peas", "Green Beans (Bush)", "Cabbage", "Cauliflower", "Lawn Grass"],
     "storage": {
       "method": "Refrigerate",
       "duration": "7-10 days",
@@ -508,7 +508,7 @@
       "fruiting": "1-2-2"
     },
     "companionPlants": ["Rose", "Lavender", "Oregano"],
-    "antagonistPlants": ["Cabbage", "Radishes", "Black Walnut", "Sunflowers"],
+    "antagonistPlants": ["Cabbage", "Radishes", "Black Walnut", "Sunflower"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1-2 weeks",
@@ -582,7 +582,7 @@
       "fruiting": "1-2-3"
     },
     "companionPlants": ["Chives", "Nasturtium", "Comfrey"],
-    "antagonistPlants": ["Juniper", "Potato", "Fennel", "Carrot", "Rosemary"],
+    "antagonistPlants": ["Juniper", "Potato", "Fennel (Bulbing)", "Carrots", "Rosemary"],
     "storage": {
       "method": "Cool, humid storage",
       "duration": "2-6 months",

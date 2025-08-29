@@ -45,13 +45,13 @@
       "Radishes",
       "Onions",
       "Chives",
-      "Strawberries",
-      "Marigolds"
+      "Strawberry (June-Bearing)",
+      "Marigold"
     ],
     "antagonistPlants": [
       "Cabbage",
       "Broccoli",
-      "Fennel",
+      "Fennel (Bulbing)",
       "Parsley"
     ],
     "storage": {
@@ -138,13 +138,13 @@
       "Radishes",
       "Onions",
       "Chives",
-      "Strawberries",
-      "Marigolds"
+      "Strawberry (June-Bearing)",
+      "Marigold"
     ],
     "antagonistPlants": [
       "Cabbage",
       "Broccoli",
-      "Fennel",
+      "Fennel (Bulbing)",
       "Parsley"
     ],
     "storage": {
@@ -235,8 +235,8 @@
     ],
     "antagonistPlants": [
       "Tomato",
-      "Pepper",
-      "Strawberry",
+      "Bell Pepper",
+      "Strawberry (June-Bearing)",
       "Grape"
     ],
     "storage": {

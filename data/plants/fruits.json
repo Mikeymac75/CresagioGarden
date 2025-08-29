@@ -40,8 +40,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-3-2"
     },
-    "companionPlants": ["Basil", "Carrot", "Marigold", "Borage"],
-    "antagonistPlants": ["Cabbage", "Corn", "Potatoes", "Fennel", "Broccoli"],
+    "companionPlants": ["Basil", "Carrots", "Marigold", "Borage"],
+    "antagonistPlants": ["Cabbage", "Sweet Corn", "Potato", "Fennel (Bulbing)", "Broccoli"],
     "storage": {
       "method": "Room temperature",
       "duration": "3-7 days",
@@ -134,7 +134,7 @@
       "fruiting": "1-3-2"
     },
     "companionPlants": ["Basil", "Carrots", "Onions", "Rosemary"],
-    "antagonistPlants": ["Fennel", "Kohlrabi", "Cabbage", "Beans"],
+    "antagonistPlants": ["Fennel (Bulbing)", "Kohlrabi", "Cabbage", "Green Beans (Bush)"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1-2 weeks",
@@ -220,8 +220,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-3-2"
     },
-    "companionPlants": ["Corn", "Beans", "Nasturtium", "Marigold"],
-    "antagonistPlants": ["Potato", "Pumpkin", "Fennel"],
+    "companionPlants": ["Sweet Corn", "Green Beans (Bush)", "Nasturtium", "Marigold"],
+    "antagonistPlants": ["Potato", "Pumpkin", "Fennel (Bulbing)"],
     "storage": {
       "method": "Refrigerate",
       "duration": "5-7 days",
@@ -301,8 +301,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-3-2"
     },
-    "companionPlants": ["Beans", "Peas", "Radish", "Dill", "Tansy"],
-    "antagonistPlants": ["Potato", "Melons", "Sage", "Fennel"],
+    "companionPlants": ["Green Beans (Bush)", "Peas", "Radishes", "Dill", "Tansy"],
+    "antagonistPlants": ["Potato", "Watermelon", "Cantaloupe", "Sage", "Fennel (Bulbing)"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1 week",
@@ -388,8 +388,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-3-3"
     },
-    "companionPlants": ["Borage", "Lettuce", "Spinach", "Onion"],
-    "antagonistPlants": ["Cabbage", "Broccoli", "Fennel", "Potato", "Tomato", "Eggplant"],
+    "companionPlants": ["Borage", "Lettuce (Loose Leaf)", "Spinach", "Onions"],
+    "antagonistPlants": ["Cabbage", "Broccoli", "Fennel (Bulbing)", "Potato", "Tomato", "Eggplant"],
     "storage": {
       "method": "Refrigerate",
       "duration": "2-3 days",
@@ -468,8 +468,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-3-2"
     },
-    "companionPlants": ["Corn", "Beans", "Marigold", "Oregano"],
-    "antagonistPlants": ["Potato", "Onion", "Zucchini", "Fennel"],
+    "companionPlants": ["Sweet Corn", "Green Beans (Bush)", "Marigold", "Oregano"],
+    "antagonistPlants": ["Potato", "Onions", "Zucchini", "Fennel (Bulbing)"],
     "storage": {
       "method": "Cure then store",
       "duration": "2-3 months",
@@ -561,8 +561,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-3-2"
     },
-    "companionPlants": ["Beans", "Peas", "Spinach", "Marigold"],
-    "antagonistPlants": ["Fennel", "Tomato", "Potato", "Peppers", "Geranium"],
+    "companionPlants": ["Green Beans (Bush)", "Peas", "Spinach", "Marigold"],
+    "antagonistPlants": ["Fennel (Bulbing)", "Tomato", "Potato", "Bell Pepper", "Jalapeño Pepper", "Habanero Pepper", "Cayenne Pepper", "Geranium"],
     "storage": {
       "method": "Refrigerate",
       "duration": "5-7 days",
@@ -653,8 +653,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-3-2"
     },
-    "companionPlants": ["Corn", "Beans", "Marigold"],
-    "antagonistPlants": ["Potato", "Pumpkin", "Fennel"],
+    "companionPlants": ["Sweet Corn", "Green Beans (Bush)", "Marigold"],
+    "antagonistPlants": ["Potato", "Pumpkin", "Fennel (Bulbing)"],
     "storage": {
       "method": "Cure then store",
       "duration": "3-6 months",
@@ -739,8 +739,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-3-2"
     },
-    "companionPlants": ["Corn", "Marigold", "Nasturtium", "Radish"],
-    "antagonistPlants": ["Cucumber", "Zucchini", "Potato", "Strawberry"],
+    "companionPlants": ["Sweet Corn", "Marigold", "Nasturtium", "Radishes"],
+    "antagonistPlants": ["Cucumber", "Zucchini", "Potato", "Strawberry (June-Bearing)"],
     "storage": {
       "method": "Refrigerate after cutting",
       "duration": "1 week (cut), 2-3 weeks (uncut)",
@@ -825,8 +825,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-3-2"
     },
-    "companionPlants": ["Corn", "Marigold", "Nasturtium"],
-    "antagonistPlants": ["Cucumber", "Watermelon", "Potato", "Fennel"],
+    "companionPlants": ["Sweet Corn", "Marigold", "Nasturtium"],
+    "antagonistPlants": ["Cucumber", "Watermelon", "Potato", "Fennel (Bulbing)"],
     "storage": {
       "method": "Refrigerate",
       "duration": "5-7 days",
@@ -912,8 +912,8 @@
       "vegetative": "2-1-2",
       "fruiting": "1-3-2"
     },
-    "companionPlants": ["Basil", "Peppers", "Sunflowers"],
-    "antagonistPlants": ["Cucumber", "Squash", "Melons", "Fennel"],
+    "companionPlants": ["Basil", "Bell Pepper", "Jalapeño Pepper", "Habanero Pepper", "Cayenne Pepper", "Sunflower"],
+    "antagonistPlants": ["Cucumber", "Zucchini", "Winter Squash (Butternut)", "Watermelon", "Cantaloupe", "Fennel (Bulbing)"],
     "storage": {
       "method": "Refrigerate",
       "duration": "2-3 days",
@@ -999,8 +999,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-1-1"
     },
-    "companionPlants": ["Beans", "Cabbage family", "Garlic"],
-    "antagonistPlants": ["Melon", "Cucumber", "Pumpkin", "Black Walnut", "Dock", "Sunflower"],
+    "companionPlants": ["Green Beans (Bush)", "Cabbage", "Broccoli", "Cauliflower", "Garlic"],
+    "antagonistPlants": ["Watermelon", "Cantaloupe", "Cucumber", "Pumpkin", "Black Walnut", "Dock", "Sunflower"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1-2 weeks",

@@ -42,7 +42,9 @@
     },
     "companionPlants": [
       "Cabbage",
-      "Tomatoes",
+      "Tomato",
+      "Cherry Tomato",
+      "Beefsteak Tomato",
       "Carrots",
       "Broccoli"
     ],
@@ -140,7 +142,7 @@
       "Lavender",
       "Thyme",
       "Sage",
-      "Beans"
+      "Green Beans (Bush)"
     ],
     "antagonistPlants": [
       "Mint",
@@ -230,7 +232,9 @@
       "Rosemary",
       "Lavender",
       "Cabbage",
-      "Tomatoes"
+      "Tomato",
+      "Cherry Tomato",
+      "Beefsteak Tomato"
     ],
     "antagonistPlants": [
       "Mint",
@@ -318,8 +322,13 @@
     },
     "companionPlants": [
       "Basil",
-      "Tomatoes",
-      "Peppers",
+      "Tomato",
+      "Cherry Tomato",
+      "Beefsteak Tomato",
+      "Bell Pepper",
+      "Jalapeño Pepper",
+      "Habanero Pepper",
+      "Cayenne Pepper",
       "Eggplant"
     ],
     "antagonistPlants": [
@@ -407,14 +416,14 @@
     },
     "companionPlants": [
       "Cabbage",
-      "Lettuce",
+      "Lettuce (Loose Leaf)",
       "Onions",
-      "Cucumbers",
+      "Cucumber",
       "Asparagus"
     ],
     "antagonistPlants": [
-      "Carrot",
-      "Fennel",
+      "Carrots",
+      "Fennel (Bulbing)",
       "Cilantro",
       "Lavender"
     ],
@@ -493,12 +502,14 @@
     },
     "companionPlants": [
       "Carrots",
-      "Tomatoes",
+      "Tomato",
+      "Cherry Tomato",
+      "Beefsteak Tomato",
       "Roses",
       "Cabbage"
     ],
     "antagonistPlants": [
-      "Beans",
+      "Green Beans (Bush)",
       "Peas",
       "Asparagus"
     ],

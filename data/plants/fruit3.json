@@ -41,7 +41,7 @@
       "fruiting": "1-3-2"
     },
     "companionPlants": ["Basil", "Carrots", "Onions", "Marjoram"],
-    "antagonistPlants": ["Fennel", "Kohlrabi", "Cabbage", "Beans"],
+    "antagonistPlants": ["Fennel (Bulbing)", "Kohlrabi", "Cabbage", "Green Beans (Bush)"],
     "storage": {
       "method": "Refrigerate",
       "duration": "1 week",
@@ -116,7 +116,7 @@
       "fruiting": "1-3-2"
     },
     "companionPlants": ["Basil", "Oregano", "Carrots", "Onions"],
-    "antagonistPlants": ["Fennel", "Kohlrabi", "Cabbage", "Beans"],
+    "antagonistPlants": ["Fennel (Bulbing)", "Kohlrabi", "Cabbage", "Green Beans (Bush)"],
     "storage": {
       "method": "Refrigerate",
       "duration": "2 weeks",
@@ -196,8 +196,8 @@
       "vegetative": "3-1-2",
       "fruiting": "1-3-2"
     },
-    "companionPlants": ["Basil", "Tomatoes", "Carrots", "Onions"],
-    "antagonistPlants": ["Fennel", "Kohlrabi", "Cabbage", "Beans"],
+    "companionPlants": ["Basil", "Tomato", "Cherry Tomato", "Beefsteak Tomato", "Carrots", "Onions"],
+    "antagonistPlants": ["Fennel (Bulbing)", "Kohlrabi", "Cabbage", "Green Beans (Bush)"],
     "storage": {
       "method": "Dry or refrigerate",
       "duration": "1 week fresh, indefinitely when dried",

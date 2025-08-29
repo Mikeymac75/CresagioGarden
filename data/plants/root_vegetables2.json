@@ -45,8 +45,8 @@
       "vegetative": "1-2-3",
       "root_development": "1-3-4"
     },
-    "companionPlants": ["Beans", "Peas", "Oregano", "Thyme", "Carrots", "Onions"],
-    "antagonistPlants": ["Squash", "Parsnip", "Fennel"],
+    "companionPlants": ["Green Beans (Bush)", "Peas", "Oregano", "Thyme", "Carrots", "Onions"],
+    "antagonistPlants": ["Zucchini", "Winter Squash (Butternut)", "Parsnip", "Fennel (Bulbing)"],
     "storage": {
       "method": "Cure then store in cool, dry place",
       "duration": "6-10 months when properly cured",
