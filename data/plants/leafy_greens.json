@@ -26,7 +26,7 @@
       "optimalLowF": 60,
       "optimalHighF": 70,
       "absoluteMinF": 32,
-      "notes": "A cool-season crop. Will bolt and become bitter in hot weather (above 80°F). Appreciates afternoon shade."
+      "notes": "A cool-season crop. Will bolt and become bitter in hot weather (above 80\u00b0F). Appreciates afternoon shade."
     },
     "environmentalAlerts": [
       {
@@ -37,10 +37,23 @@
     ],
     "npk": {
       "seedling": "1-2-1",
-      "vegetative": "2-1-1"
+      "vegetative": "2-1-1",
+      "fruiting": null
     },
-    "companionPlants": ["Carrots", "Radishes", "Strawberries", "Cucumbers", "Chives", "Marigolds"],
-    "antagonistPlants": ["Cabbage", "Broccoli", "Fennel", "Parsley"],
+    "companionPlants": [
+      "Carrots",
+      "Radishes",
+      "Strawberries",
+      "Cucumbers",
+      "Chives",
+      "Marigolds"
+    ],
+    "antagonistPlants": [
+      "Cabbage",
+      "Broccoli",
+      "Fennel",
+      "Parsley"
+    ],
     "storage": {
       "method": "Refrigerate",
       "duration": "5-10 days",
@@ -117,10 +130,20 @@
     ],
     "npk": {
       "seedling": "1-2-1",
-      "vegetative": "3-1-2"
+      "vegetative": "3-1-2",
+      "fruiting": null
     },
-    "companionPlants": ["Strawberries", "Cabbage family", "Peas", "Radishes", "Lettuce"],
-    "antagonistPlants": ["Potato", "Fennel"],
+    "companionPlants": [
+      "Strawberries",
+      "Cabbage family",
+      "Peas",
+      "Radishes",
+      "Lettuce"
+    ],
+    "antagonistPlants": [
+      "Potato",
+      "Fennel"
+    ],
     "storage": {
       "method": "Refrigerate",
       "duration": "5-7 days",
@@ -191,10 +214,23 @@
     ],
     "npk": {
       "seedling": "1-2-1",
-      "vegetative": "3-1-2"
+      "vegetative": "3-1-2",
+      "fruiting": null
     },
-    "companionPlants": ["Onion", "Beet", "Cucumber", "Dill", "Rosemary", "Bush Beans"],
-    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape"],
+    "companionPlants": [
+      "Onion",
+      "Beet",
+      "Cucumber",
+      "Dill",
+      "Rosemary",
+      "Bush Beans"
+    ],
+    "antagonistPlants": [
+      "Tomato",
+      "Pepper",
+      "Strawberry",
+      "Grape"
+    ],
     "storage": {
       "method": "Refrigerate",
       "duration": "1-2 weeks",
@@ -271,10 +307,21 @@
     ],
     "npk": {
       "seedling": "1-2-1",
-      "vegetative": "3-1-2"
+      "vegetative": "3-1-2",
+      "fruiting": null
     },
-    "companionPlants": ["Onions", "Cabbage family", "Beans", "Lettuce"],
-    "antagonistPlants": ["Beet", "Spinach", "Potato", "Corn"],
+    "companionPlants": [
+      "Onions",
+      "Cabbage family",
+      "Beans",
+      "Lettuce"
+    ],
+    "antagonistPlants": [
+      "Beet",
+      "Spinach",
+      "Potato",
+      "Corn"
+    ],
     "storage": {
       "method": "Refrigerate",
       "duration": "1 week",
@@ -357,10 +404,21 @@
     ],
     "npk": {
       "seedling": "1-2-1",
-      "vegetative": "1-1-1"
+      "vegetative": "1-1-1",
+      "fruiting": null
     },
-    "companionPlants": ["Lettuce", "Onions", "Carrots", "Rosemary"],
-    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape"],
+    "companionPlants": [
+      "Lettuce",
+      "Onions",
+      "Carrots",
+      "Rosemary"
+    ],
+    "antagonistPlants": [
+      "Tomato",
+      "Pepper",
+      "Strawberry",
+      "Grape"
+    ],
     "storage": {
       "method": "Refrigerate",
       "duration": "2-4 days",
@@ -437,10 +495,23 @@
     ],
     "npk": {
       "seedling": "1-2-1",
-      "vegetative": "3-1-2"
+      "vegetative": "3-1-2",
+      "fruiting": null
     },
-    "companionPlants": ["Onion", "Potato", "Dill", "Sage", "Chamomile", "Celery"],
-    "antagonistPlants": ["Tomato", "Pepper", "Strawberry", "Grape"],
+    "companionPlants": [
+      "Onion",
+      "Potato",
+      "Dill",
+      "Sage",
+      "Chamomile",
+      "Celery"
+    ],
+    "antagonistPlants": [
+      "Tomato",
+      "Pepper",
+      "Strawberry",
+      "Grape"
+    ],
     "storage": {
       "method": "Refrigerate",
       "duration": "1 week",
