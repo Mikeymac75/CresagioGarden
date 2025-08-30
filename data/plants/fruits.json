@@ -8,15 +8,20 @@
     "daysToMaturity": 75,
     "spacing": "18-24 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 inch deep for seeds, or plant transplants deep enough to cover the first set of true leaves.",
     "startIndoorsWeeksBefore": 6,
     "transplantWeeksAfterLastFrost": 2,
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Consistent, deep watering",
     "wateringFrequencyDays": 3,
     "description": "A popular warm-season crop that loves heat and needs support. Varieties can be determinate (bush-like) or indeterminate (vining).",
-    "tips": "Stake or cage indeterminate varieties for support. Water deeply and consistently at the base to prevent blossom end rot and foliage diseases.",
-    "succession": "For indeterminate varieties, one planting is sufficient. For determinate (bush) types, plant a second crop 3-4 weeks after the first for a longer harvest window.",
+    "tips": "Stake or cage indeterminate varieties for support. Water deeply and consistently at the base to prevent blossom end rot and foliage diseases. Provide good air circulation to prevent fungal issues. For determinate types, a cage is sufficient. For indeterminate types, use a tall, sturdy stake or cage and tie the main stem to it as it grows.",
+    "pruning": "For indeterminate varieties, remove 'suckers' (small shoots that form in the 'V' between the main stem and a branch) to encourage larger fruit and better air circulation. Let 1-2 suckers below the first flower cluster grow to increase yield. Determinate varieties do not require pruning.",
+    "succession": "For indeterminate varieties, one planting is sufficient for a season-long harvest. For determinate (bush) types, plant a second crop 3-4 weeks after the first for a more continuous harvest window.",
     "yield": "Varies by type: 5-10 lbs for determinate, 10-30 lbs for indeterminate per plant.",
+    "pestsAndDiseases": ["disorder-1", "disease-3", "disease-4"],
+    "harvestInstructions": "Harvest when the fruit is fully colored and firm, but with a slight give. Gently twist the fruit until it detaches from the vine, or use pruners. For green tomatoes, harvest at full size before the first frost and ripen indoors.",
+    "containerGardening": "Determinate or 'patio' varieties are best. Use a large pot (at least 5-10 gallons) with good drainage and a cage for support. Requires consistent watering as containers dry out fast.",
     "soil": {
       "ph": "6.2-6.8",
       "type": "Well-drained, loamy soil rich in organic matter.",
@@ -42,11 +47,7 @@
     },
     "companionPlants": ["Basil", "Carrots", "Marigold", "Borage"],
     "antagonistPlants": ["Cabbage", "Sweet Corn", "Potato", "Fennel (Bulbing)", "Broccoli"],
-    "storage": {
-      "method": "Room temperature",
-      "duration": "3-7 days",
-      "notes": "Store on the counter, not in the refrigerator, which can make them mealy. Can be canned, frozen, or dried for long-term storage."
-    },
+    "storage": "Store fresh tomatoes at room temperature on the counter, not in the refrigerator, which makes them mealy. For long-term preservation, tomatoes are excellent for canning (whole, diced, or as sauce), freezing (raw or cooked), or drying.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -101,15 +102,20 @@
     "daysToMaturity": 80,
     "spacing": "12-18 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 inch deep.",
     "startIndoorsWeeksBefore": 8,
     "transplantWeeksAfterLastFrost": 3,
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
     "description": "A long-season, warm-weather crop that produces sweet, blocky fruits. Part of the nightshade family along with tomatoes and eggplant.",
-    "tips": "Wait for consistently warm weather and soil. Mulch to retain soil heat and moisture. Peppers can be harvested green or left to ripen to red, yellow, or orange for a sweeter flavor.",
-    "succession": "Not typically needed due to continuous harvesting, but a second planting can extend the harvest in long-season climates.",
+    "tips": "Wait for consistently warm weather and soil. Mulch to retain soil heat and moisture. High heat can cause flower drop. Peppers can be harvested green or left to ripen to red, yellow, or orange for a sweeter flavor and higher vitamin C content.",
+    "heatRating": { "scoville": 0, "level": "Sweet" },
+    "succession": "Not typically needed due to continuous harvesting, but starting a few extra plants can be a buffer against losses. A second planting can extend the harvest in long-season climates.",
     "yield": "5-10+ peppers per plant, depending on variety and conditions.",
+    "pestsAndDiseases": ["pest-1", "disorder-1"],
+    "harvestInstructions": "Harvest when fruits reach desired size. Can be picked green and immature, or left on the plant to ripen to its mature color (red, yellow, orange) for a sweeter flavor. Cut the stem with pruners to avoid damaging the plant.",
+    "containerGardening": "Grows well in 3-5 gallon pots. Ensure good drainage and provide support with a small stake or cage. Potted plants require more frequent watering.",
     "soil": {
       "ph": "6.0-6.8",
       "type": "Well-drained, sandy loam.",
@@ -135,11 +141,7 @@
     },
     "companionPlants": ["Basil", "Carrots", "Onions", "Rosemary"],
     "antagonistPlants": ["Fennel (Bulbing)", "Kohlrabi", "Cabbage", "Green Beans (Bush)"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1-2 weeks",
-      "notes": "Store unwashed in the crisper drawer. Can be sliced and frozen for long-term use in cooked dishes."
-    },
+    "storage": "Store unwashed peppers in the refrigerator's crisper drawer for 1-2 weeks. For long-term storage, peppers can be sliced or diced and frozen raw, or roasted and then frozen.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -188,6 +190,7 @@
     "daysToMaturity": 50,
     "spacing": "36 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1 inch deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": 2,
@@ -195,8 +198,11 @@
     "wateringFrequencyDays": 3,
     "description": "An incredibly productive warm-season summer squash. Its rampant growth means a few plants go a long way.",
     "tips": "Give it lots of space to sprawl. Harvest fruits when they are small and tender (6-8 inches) for the best flavor. Check under large leaves daily during peak season.",
-    "succession": "Plant a second crop 3-4 weeks after the first to ensure a supply if squash vine borers damage the first planting.",
+    "succession": "Plant a second crop 3-4 weeks after the first to ensure a supply if squash vine borers or powdery mildew damage the first planting.",
     "yield": "Highly productive; 6-10 lbs of fruit per plant is common.",
+    "pestsAndDiseases": ["pest-5", "disease-1"],
+    "harvestInstructions": "Harvest when fruits are 6-8 inches long for best flavor and texture. Skin should be tender and glossy. Check plants daily as they grow quickly. Cut the stem with a knife.",
+    "containerGardening": "Bush varieties can be grown in large containers (at least 5-10 gallons) with a trellis for support. Requires consistent watering.",
     "soil": {
       "ph": "6.0-7.5",
       "type": "Rich, well-drained soil.",
@@ -222,11 +228,7 @@
     },
     "companionPlants": ["Sweet Corn", "Green Beans (Bush)", "Nasturtium", "Marigold"],
     "antagonistPlants": ["Potato", "Pumpkin", "Fennel (Bulbing)"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "5-7 days",
-      "notes": "Store unwashed in a perforated plastic bag. Do not store for long as it becomes watery. Can be shredded and frozen."
-    },
+    "storage": "Store unwashed zucchini in a perforated plastic bag in the refrigerator for 5-7 days. For long-term storage, it can be shredded and frozen for use in breads and soups, or blanched and frozen in slices.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -269,6 +271,7 @@
     "daysToMaturity": 60,
     "spacing": "12-18 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1 inch deep.",
     "startIndoorsWeeksBefore": 4,
     "transplantWeeksAfterLastFrost": 2,
     "directSowWeeksAfterLastFrost": 2,
@@ -276,8 +279,11 @@
     "wateringFrequencyDays": 2,
     "description": "A vining plant that needs warm weather and consistent moisture to produce crisp, refreshing fruit. Can be grown on the ground or on a trellis.",
     "tips": "Grow on a trellis to save space, improve air circulation, and produce straighter, cleaner fruit. Inconsistent watering can lead to bitter-tasting cucumbers.",
-    "succession": "Sow seeds every 2-3 weeks for a continuous supply throughout the summer.",
+    "succession": "Sow seeds every 3-4 weeks for a continuous supply throughout the summer, ensuring a harvest even if early plants succumb to pests or disease.",
     "yield": "10-20 cucumbers per plant, depending on variety (slicing or pickling).",
+    "pestsAndDiseases": ["pest-1", "disease-1", "disease-2"],
+    "harvestInstructions": "Pickling cucumbers are ready at 3-4 inches; slicing cucumbers at 6-8 inches. Harvest regularly to encourage more fruit. Yellowing at the blossom end indicates over-ripeness. Cut the stem with pruners.",
+    "containerGardening": "Compact or bush varieties are ideal. Use a large pot (5+ gallons) with a trellis. Container-grown cucumbers need frequent watering.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Fertile, well-drained soil with lots of organic matter.",
@@ -303,11 +309,7 @@
     },
     "companionPlants": ["Green Beans (Bush)", "Peas", "Radishes", "Dill", "Tansy"],
     "antagonistPlants": ["Potato", "Watermelon", "Cantaloupe", "Sage", "Fennel (Bulbing)"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1 week",
-      "notes": "Wrap in plastic to retain moisture. Do not store near ethylene-producing fruits like apples or tomatoes, as it will cause them to yellow."
-    },
+    "storage": "Store unwashed cucumbers in the refrigerator for up to a week. For long-term preservation, they are ideal for pickling (both as spears and relish) but do not freeze well raw.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -356,6 +358,7 @@
     "daysToMaturity": 365,
     "spacing": "18 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "Plant with the crown (where leaves emerge) exactly at soil level. Do not bury the crown or it will rot.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": -2,
     "directSowWeeksAfterLastFrost": null,
@@ -363,8 +366,11 @@
     "wateringFrequencyDays": 2,
     "description": "A low-growing perennial fruit that establishes in year one and produces a large, concentrated crop for a few weeks in late spring or early summer of year two.",
     "tips": "Pinch off all flowers in the first year to encourage a strong root system and more runners. Mulch with straw to keep berries clean and suppress weeds.",
-    "succession": "Not applicable. For a longer harvest season, plant a mix of June-bearing, everbearing, and day-neutral varieties.",
+    "succession": "Not applicable in the traditional sense. For a longer harvest season, plant a mix of June-bearing, everbearing, and day-neutral varieties to cover different harvest windows.",
     "yield": "1-2 pints per plant per season.",
+    "pestsAndDiseases": ["pest-4", "disease-1"],
+    "harvestInstructions": "Harvest when berries are fully and uniformly red, as they will not ripen further after picking. Pick in the cool of the morning. Grasp the stem just above the berry and pinch it off.",
+    "containerGardening": "Excellent for containers, hanging baskets, and strawberry pots. Ensure good drainage. Everbearing and day-neutral types are often preferred for containers due to a longer, smaller harvest.",
     "soil": {
       "ph": "5.5-6.5",
       "type": "Well-drained, sandy loam with high organic matter.",
@@ -390,11 +396,7 @@
     },
     "companionPlants": ["Borage", "Lettuce (Loose Leaf)", "Spinach", "Onions"],
     "antagonistPlants": ["Cabbage", "Broccoli", "Fennel (Bulbing)", "Potato", "Tomato", "Eggplant"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "2-3 days",
-      "notes": "Store unwashed in a single layer in a covered container. Wash just before eating. Very perishable."
-    },
+    "storage": "Refrigerate unwashed berries in a single layer for 2-3 days. Wash just before eating. For long-term storage, strawberries freeze beautifully (whole or sliced) and are perfect for making jam.",
     "careTasks": [
       {
         "name": "Pinch off all flowers (First Year)",
@@ -436,6 +438,7 @@
     "daysToMaturity": 100,
     "spacing": "48-60 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1-2 inches deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": 2,
@@ -443,8 +446,11 @@
     "wateringFrequencyDays": 5,
     "description": "A vining, warm-season crop that requires a lot of space and a long growing season to produce its iconic fall fruit.",
     "tips": "Water at the base of the plant to prevent powdery mildew. Place a board or straw under developing fruits to prevent rot from contact with wet soil.",
-    "succession": "Not applicable due to the long season and space requirements.",
+    "succession": "Not applicable due to the long season and space requirements. Plant different varieties for different sizes and uses.",
     "yield": "2-5 pumpkins per plant, depending on variety.",
+    "pestsAndDiseases": ["pest-5", "disease-1"],
+    "harvestInstructions": "Harvest when the pumpkin has reached its mature color and the rind is hard. A hollow sound when thumped is a good indicator. Leave 3-4 inches of stem attached to the pumpkin, as this 'handle' helps it store longer. Cure in the sun for 7-10 days before storing.",
+    "containerGardening": "Not recommended for most varieties due to sprawling vines and large fruit size. Miniature varieties may be grown in very large (20+ gallon) containers with strong trellising.",
     "soil": {
       "ph": "6.0-6.8",
       "type": "Rich, well-drained soil.",
@@ -470,11 +476,7 @@
     },
     "companionPlants": ["Sweet Corn", "Green Beans (Bush)", "Marigold", "Oregano"],
     "antagonistPlants": ["Potato", "Onions", "Zucchini", "Fennel (Bulbing)"],
-    "storage": {
-      "method": "Cure then store",
-      "duration": "2-3 months",
-      "notes": "Cure in the sun for 7-10 days, then store in a cool, dry place (50-55°F). Good air circulation is important."
-    },
+    "storage": "After curing, store in a cool, dry place (50-55°F) with good air circulation for 2-3 months. For culinary use, pumpkin puree can be frozen for up to a year.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -529,6 +531,7 @@
     "daysToMaturity": 85,
     "spacing": "18-24 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 inch deep.",
     "startIndoorsWeeksBefore": 8,
     "transplantWeeksAfterLastFrost": 3,
     "directSowWeeksAfterLastFrost": null,
@@ -536,8 +539,11 @@
     "wateringFrequencyDays": 3,
     "description": "A heat-loving, warm-season crop that produces beautiful, glossy fruit. A staple in many cuisines.",
     "tips": "Wait for consistently warm weather (day and night) before transplanting. Harvest when skin is glossy and firm. Overripe fruits become seedy and bitter.",
-    "succession": "Not typically needed, as plants produce continuously until frost.",
+    "succession": "Not typically needed, as plants produce continuously until frost if harvested regularly.",
     "yield": "4-8 fruits per plant, depending on variety.",
+    "pestsAndDiseases": ["pest-1", "pest-2"],
+    "harvestInstructions": "Harvest when fruits have reached a good size, their skin is glossy, and they are firm to the touch. If you press the skin and it leaves an indent, it's ripe. If it's hard, it's immature. If it's soft and dull, it's overripe. Cut with pruners, leaving a small piece of stem.",
+    "containerGardening": "Compact varieties grow well in 5-gallon or larger pots. They need consistent water and support or staking as fruit develops.",
     "soil": {
       "ph": "6.0-6.8",
       "type": "Well-drained, fertile soil.",
@@ -563,11 +569,7 @@
     },
     "companionPlants": ["Green Beans (Bush)", "Peas", "Spinach", "Marigold"],
     "antagonistPlants": ["Fennel (Bulbing)", "Tomato", "Potato", "Bell Pepper", "Jalapeño Pepper", "Habanero Pepper", "Cayenne Pepper", "Geranium"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "5-7 days",
-      "notes": "Store in the crisper drawer. Eggplant is sensitive to cold; do not store for too long."
-    },
+    "storage": "Store in the crisper drawer of the refrigerator for 5-7 days. For longer storage, eggplant can be blanched and frozen, or cooked into dishes like ratatouille and then frozen.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -621,6 +623,7 @@
     "daysToMaturity": 110,
     "spacing": "48 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1 inch deep.",
     "startIndoorsWeeksBefore": 4,
     "transplantWeeksAfterLastFrost": 2,
     "directSowWeeksAfterLastFrost": 2,
@@ -628,8 +631,11 @@
     "wateringFrequencyDays": 5,
     "description": "A vining, warm-season crop that produces hard-skinned squash that can be stored for months.",
     "tips": "Harvest when the rind is hard and cannot be easily dented with a fingernail. Leave a few inches of stem attached. Cure in the sun for 10 days before storing.",
-    "succession": "Not applicable due to long growing season.",
+    "succession": "Not applicable due to long growing season. Plant different winter squash varieties for a diverse winter pantry.",
     "yield": "3-5 squash per plant.",
+    "pestsAndDiseases": ["pest-5", "disease-1"],
+    "harvestInstructions": "Harvest before the first hard frost, when the squash has turned a solid tan color and the rind is too hard to be pierced with a fingernail. Leave at least 2 inches of stem attached. Cure in a sunny spot for 1-2 weeks before storing.",
+    "containerGardening": "Bush or compact vining types can be grown in very large containers (10-20 gallons) with strong trellising, but it can be challenging.",
     "soil": {
       "ph": "6.0-6.8",
       "type": "Rich, well-drained soil.",
@@ -655,11 +661,7 @@
     },
     "companionPlants": ["Sweet Corn", "Green Beans (Bush)", "Marigold"],
     "antagonistPlants": ["Potato", "Pumpkin", "Fennel (Bulbing)"],
-    "storage": {
-      "method": "Cure then store",
-      "duration": "3-6 months",
-      "notes": "After curing, store in a cool, dry, dark place with good air circulation (50-60°F)."
-    },
+    "storage": "After curing, store in a cool, dry, dark place with good air circulation (50-60°F) for 3-6 months. Cooked, pureed squash freezes very well.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -707,6 +709,7 @@
     "daysToMaturity": 90,
     "spacing": "60-72 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1 inch deep.",
     "startIndoorsWeeksBefore": 4,
     "transplantWeeksAfterLastFrost": 3,
     "directSowWeeksAfterLastFrost": 3,
@@ -714,8 +717,11 @@
     "wateringFrequencyDays": 5,
     "description": "A sprawling, warm-season crop that needs a long, hot growing season to produce large, sweet fruit.",
     "tips": "Reduce watering as fruit ripens to concentrate sugars. Look for multiple signs of ripeness: the tendril closest to the fruit stem is dry and brown, the spot where it rests on the ground is yellow, and it sounds hollow when thumped.",
-    "succession": "Not applicable due to long growing season and large space requirements.",
+    "succession": "Not applicable due to long growing season and large space requirements. For different harvest times, choose varieties with different days-to-maturity.",
     "yield": "2-4 melons per vine.",
+    "pestsAndDiseases": ["pest-1", "disease-2"],
+    "harvestInstructions": "Check for three signs of ripeness: 1) The tendril closest to the melon stem is dry and brown. 2) The spot where the melon rests on the ground (the 'belly') has turned from white to a creamy yellow. 3) The melon sounds deep and hollow when thumped.",
+    "containerGardening": "Smaller 'icebox' varieties can be grown in large (10-20 gallon) containers with a strong trellis. Requires very consistent watering.",
     "soil": {
       "ph": "6.0-6.8",
       "type": "Sandy, well-drained soil.",
@@ -741,11 +747,7 @@
     },
     "companionPlants": ["Sweet Corn", "Marigold", "Nasturtium", "Radishes"],
     "antagonistPlants": ["Cucumber", "Zucchini", "Potato", "Strawberry (June-Bearing)"],
-    "storage": {
-      "method": "Refrigerate after cutting",
-      "duration": "1 week (cut), 2-3 weeks (uncut)",
-      "notes": "Uncut melons can be stored in a cool place. Once cut, wrap tightly and refrigerate."
-    },
+    "storage": "Uncut melons can be stored in a cool place for a week or two. Once cut, wrap tightly and refrigerate for up to 3 days. Flesh can be pureed and frozen for slushies or sorbets.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -793,6 +795,7 @@
     "daysToMaturity": 85,
     "spacing": "36-48 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1 inch deep.",
     "startIndoorsWeeksBefore": 4,
     "transplantWeeksAfterLastFrost": 2,
     "directSowWeeksAfterLastFrost": 2,
@@ -800,8 +803,11 @@
     "wateringFrequencyDays": 4,
     "description": "A warm-season vine crop that produces fragrant, sweet melons with a netted skin.",
     "tips": "A ripe cantaloupe will slip easily from the vine with gentle pressure and have a sweet, musky aroma at the blossom end.",
-    "succession": "In long-season areas, a second planting can be made for a later harvest.",
+    "succession": "In long-season areas, a second planting can be made 3-4 weeks after the first for a later harvest.",
     "yield": "3-5 melons per vine.",
+    "pestsAndDiseases": ["pest-1", "disease-1", "disease-2"],
+    "harvestInstructions": "Ripe cantaloupes will have a fragrant, musky aroma at the blossom end and the melon should 'slip' from the vine with gentle pressure at the stem. The netting on the skin will be pronounced and the color underneath should be tan or yellow, not green.",
+    "containerGardening": "Compact or bush varieties are suitable for large (5-10 gallon) containers with trellising. Consistent watering is crucial.",
     "soil": {
       "ph": "6.0-6.8",
       "type": "Well-drained, fertile soil.",
@@ -827,11 +833,7 @@
     },
     "companionPlants": ["Sweet Corn", "Marigold", "Nasturtium"],
     "antagonistPlants": ["Cucumber", "Watermelon", "Potato", "Fennel (Bulbing)"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "5-7 days",
-      "notes": "Store in the refrigerator to slow ripening. The aroma will become stronger as it ripens."
-    },
+    "storage": "Store uncut melons at room temperature for a few days or in the fridge for up to a week. Once cut, refrigerate and eat within 3 days. Flesh can be frozen.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -880,6 +882,7 @@
     "daysToMaturity": 60,
     "spacing": "18-24 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1 inch deep.",
     "startIndoorsWeeksBefore": 6,
     "transplantWeeksAfterLastFrost": 3,
     "directSowWeeksAfterLastFrost": 3,
@@ -889,6 +892,9 @@
     "tips": "Harvest pods when they are young and tender (3-4 inches long). Wear gloves when harvesting, as some varieties have spines that can irritate the skin.",
     "succession": "Not necessary. Plants will produce continuously until the first frost if pods are picked regularly.",
     "yield": "20-30+ pods per plant over the season.",
+    "pestsAndDiseases": ["pest-1"],
+    "harvestInstructions": "Harvest pods when they are 2-4 inches long and tender. Pick every 1-2 days to encourage continuous production. Use pruners or a knife. Pods become woody and tough if left on the plant too long.",
+    "containerGardening": "Dwarf varieties are well-suited for 5-gallon pots. Okra has a deep taproot, so use a deep container. Loves heat and sun.",
     "soil": {
       "ph": "6.5-7.0",
       "type": "Well-drained, fertile soil.",
@@ -914,11 +920,7 @@
     },
     "companionPlants": ["Basil", "Bell Pepper", "Jalapeño Pepper", "Habanero Pepper", "Cayenne Pepper", "Sunflower"],
     "antagonistPlants": ["Cucumber", "Zucchini", "Winter Squash (Butternut)", "Watermelon", "Cantaloupe", "Fennel (Bulbing)"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "2-3 days",
-      "notes": "Store dry and unwashed in a paper or perforated plastic bag. Use quickly as pods will darken and become slimy."
-    },
+    "storage": "Best used fresh. Store dry and unwashed in a paper bag in the warmest part of the refrigerator for 2-3 days. For long-term storage, okra can be blanched and frozen (whole or sliced), pickled, or dried.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -967,6 +969,7 @@
     "daysToMaturity": 365,
     "spacing": "36 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "Plant crowns so the top is 1-2 inches below the soil surface.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": -4,
     "directSowWeeksAfterLastFrost": null,
@@ -974,8 +977,11 @@
     "wateringFrequencyDays": 7,
     "description": "A perennial vegetable most often treated as a fruit. Known for its tart, edible stalks and very large leaves. Extremely cold hardy and long-lived.",
     "tips": "Never eat the leaves - they contain high levels of oxalic acid and are toxic. Harvest stalks by pulling and twisting at the base, not cutting.",
-    "succession": "Not applicable. A perennial that will produce for 10+ years.",
+    "succession": "Not applicable. A well-cared-for perennial plant will produce for 10+ years.",
     "yield": "2-4 lbs of stalks per mature plant per season.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "Do not harvest in the first year. In year two, take a light harvest. From year three on, harvest stalks that are at least 10-12 inches long by firmly grasping the stalk near the base and pulling with a twisting motion. Never eat the leaves.",
+    "containerGardening": "Can be grown in a very large (20+ gallon) container, but requires a cold winter dormancy period, which can be difficult to achieve in a pot. Not ideal for container gardening long-term.",
     "soil": {
       "ph": "6.0-6.8",
       "type": "Deep, well-drained soil, rich in organic matter.",
@@ -1001,11 +1007,7 @@
     },
     "companionPlants": ["Green Beans (Bush)", "Cabbage", "Broccoli", "Cauliflower", "Garlic"],
     "antagonistPlants": ["Watermelon", "Cantaloupe", "Cucumber", "Pumpkin", "Black Walnut", "Dock", "Sunflower"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1-2 weeks",
-      "notes": "Remove leaves, wrap stalks in plastic, and store in the crisper. Stalks can be chopped and frozen for long-term storage."
-    },
+    "storage": "Refrigerate unwashed stalks in a plastic bag for up to two weeks. For long-term storage, chop stalks and freeze them raw, or cook them down into a sauce before freezing.",
     "careTasks": [
       {
         "name": "Do not harvest (First Year)",

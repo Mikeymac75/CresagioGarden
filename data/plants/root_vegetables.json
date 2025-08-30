@@ -7,6 +7,7 @@
     "daysToMaturity": 70,
     "spacing": "2-3 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 to 1/2 inch deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": -3,
@@ -16,6 +17,9 @@
     "tips": "Keep the soil consistently moist to prevent roots from splitting. Cover the shoulders of roots with soil or mulch to prevent them from turning green.",
     "succession": "Sow a new batch every 2-3 weeks from early spring until mid-summer for a continuous harvest.",
     "yield": "One root per plant. A 10-foot row can yield 8-10 lbs of carrots.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "Harvest when roots reach desired size and color. Loosen soil with a garden fork before pulling to avoid breaking the root. Flavor is often best after a light frost.",
+    "containerGardening": "Choose shorter varieties like 'Paris Market' or 'Danvers Half Long'. Use a deep pot (at least 12 inches) with loose, stone-free soil.",
     "soil": {
       "ph": "6.0-6.8",
       "type": "Loose, sandy, well-drained soil, free of stones.",
@@ -41,11 +45,7 @@
     },
     "companionPlants": ["Lettuce (Loose Leaf)", "Onions", "Rosemary", "Sage", "Radishes", "Marigold"],
     "antagonistPlants": ["Dill", "Parsley", "Fennel (Bulbing)", "Celery", "Parsnip"],
-    "storage": {
-      "method": "Refrigerate or store in sand",
-      "duration": "1-3 months",
-      "notes": "Remove green tops before storing to prevent moisture loss. Can be stored in the crisper drawer or in boxes of damp sand in a root cellar."
-    },
+    "storage": "Remove green tops immediately to prevent moisture loss. Store in the refrigerator crisper or in boxes of damp sand in a root cellar for several months. Can be canned, pickled, or frozen.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -87,6 +87,7 @@
     "daysToMaturity": 25,
     "spacing": "1-2 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/2 inch deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": -4,
@@ -96,6 +97,9 @@
     "tips": "Harvest as soon as they reach a usable size. Radishes left in the ground too long become woody and unpleasantly spicy.",
     "succession": "Key to a steady supply. Plant a small batch every 7-10 days during cool weather in spring and fall.",
     "yield": "One root per plant. Harvests quickly. A small patch provides plenty.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "Harvest as soon as roots are about 1 inch in diameter. They grow fast. Pulling a test radish is a good idea. If left too long, they become woody and spicy.",
+    "containerGardening": "Excellent for containers. A pot 6-8 inches deep is sufficient for most small varieties. Can be interplanted with slower-growing crops.",
     "soil": {
       "ph": "6.5-7.0",
       "type": "Loose, well-drained soil with plenty of organic matter.",
@@ -121,11 +125,7 @@
     },
     "companionPlants": ["Lettuce (Loose Leaf)", "Cucumber", "Peas", "Spinach", "Nasturtium", "Chives"],
     "antagonistPlants": ["Hyssop", "Cabbage", "Potato"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1-2 weeks",
-      "notes": "Remove greens and store roots in a plastic bag in the refrigerator. The peppery greens are also edible."
-    },
+    "storage": "Remove greens and store roots in a plastic bag in the refrigerator for 1-2 weeks. Best eaten fresh.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -161,6 +161,7 @@
     "daysToMaturity": 90,
     "spacing": "12 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "4-6 inches deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": -4,
@@ -170,6 +171,9 @@
     "tips": "Hill plants by mounding soil up the stems as they grow. This protects developing tubers from sunlight, which can turn them green and toxic.",
     "succession": "Not applicable. Plant main crop at once. You can plant an early variety for new potatoes and a main storage variety.",
     "yield": "5-10 lbs of potatoes for every 1 lb of seed potato planted.",
+    "pestsAndDiseases": ["disease-3", "disease-4"],
+    "harvestInstructions": "For 'new' potatoes, carefully dig around plants 2-3 weeks after they flower. For storage potatoes, wait until the foliage has completely died back, then carefully dig up tubers.",
+    "containerGardening": "Grows very well in grow bags or large (15-20 gallon) containers. 'Hilling' is done by adding more soil or straw to the container as the plant grows.",
     "soil": {
       "ph": "4.8-5.5",
       "type": "Well-drained, loose, sandy loam.",
@@ -195,11 +199,7 @@
     },
     "companionPlants": ["Green Beans (Bush)", "Sweet Corn", "Cabbage", "Broccoli", "Cauliflower", "Marigold", "Horseradish"],
     "antagonistPlants": ["Tomato", "Cucumber", "Pumpkin", "Raspberry", "Fennel (Bulbing)", "Sunflower"],
-    "storage": {
-      "method": "Cure then store",
-      "duration": "4-6 months",
-      "notes": "After harvest, cure for 1-2 weeks in a dark, humid place. Then store in a cool, dark, well-ventilated location (45-50°F). Do not refrigerate."
-    },
+    "storage": "Cure in a dark, humid place for 1-2 weeks, then store in a cool, dark, well-ventilated location (45-50°F). Do not refrigerate. Can be canned.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -247,6 +247,7 @@
     "daysToMaturity": 240,
     "spacing": "4-6 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "2-3 inches deep, pointed end up.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": -24,
@@ -256,6 +257,9 @@
     "tips": "Plant individual cloves, pointed end up. Mulch heavily after planting to protect cloves through winter and suppress weeds in spring.",
     "succession": "Not applicable. Plant in fall for a single harvest the following summer.",
     "yield": "One bulb per clove planted.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "Harvest when the lower 3-4 leaves have turned brown but the upper leaves are still green. Loosen the soil and gently lift the bulbs. Do not pull, as it can damage the neck.",
+    "containerGardening": "Can be grown in pots at least 8 inches deep. Plant in the fall and provide winter protection for the pot in cold climates.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Well-drained, fertile soil with good organic matter.",
@@ -281,11 +285,7 @@
     },
     "companionPlants": ["Roses", "Fruit trees", "Tomato", "Cherry Tomato", "Beefsteak Tomato", "Cabbage"],
     "antagonistPlants": ["Green Beans (Bush)", "Peas", "Asparagus", "Sage"],
-    "storage": {
-      "method": "Cure then store",
-      "duration": "6-8 months",
-      "notes": "After harvesting, cure bulbs by hanging them or laying them on racks in a shady, dry, well-ventilated area for 2-4 weeks. Then trim roots and tops and store."
-    },
+    "storage": "Cure bulbs by hanging them in a shady, dry, well-ventilated area for several weeks until the necks are dry. Then trim roots and store in a cool, dark place. Can be minced and frozen in oil.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -333,6 +333,7 @@
     "daysToMaturity": 120,
     "spacing": "4-6 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/2 inch deep for seeds, 1-2 inches for sets.",
     "startIndoorsWeeksBefore": 10,
     "transplantWeeksAfterLastFrost": -4,
     "directSowWeeksAfterLastFrost": -6,
@@ -342,6 +343,9 @@
     "tips": "Long-day varieties for the North, short-day for the South. Stop watering when tops begin to fall over naturally. This signals the start of the curing process.",
     "succession": "Not typical for storage onions. Green onions (scallions) can be succession planted every few weeks.",
     "yield": "One bulb per plant.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "For storage onions, harvest after the green tops have yellowed and fallen over. Pull the bulbs and cure them in a warm, dry, airy location for 1-2 weeks before storing.",
+    "containerGardening": "Can be grown in containers, especially for green onions. For bulb onions, use a wide, relatively shallow container (6-8 inches deep).",
     "soil": {
       "ph": "6.0-6.8",
       "type": "Well-drained, fertile sandy loam.",
@@ -367,11 +371,7 @@
     },
     "companionPlants": ["Carrots", "Lettuce (Loose Leaf)", "Cabbage", "Broccoli", "Cauliflower", "Chamomile"],
     "antagonistPlants": ["Green Beans (Bush)", "Peas", "Asparagus", "Sage"],
-    "storage": {
-      "method": "Cure then store",
-      "duration": "3-6 months",
-      "notes": "Cure for 1-2 weeks in a dry, well-ventilated spot until necks are dry and skins are papery. Store in a cool, dry, dark place."
-    },
+    "storage": "After curing, store in a cool, dry, dark place with good air circulation. Do not store with potatoes. Can be chopped and frozen or dehydrated.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -419,6 +419,7 @@
     "daysToMaturity": 55,
     "spacing": "3-4 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "1/2 inch deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": -4,
@@ -428,6 +429,9 @@
     "tips": "Each beet 'seed' is a cluster of several seeds, so thinning is essential. Harvest roots when they are between golf ball and tennis ball size for best tenderness.",
     "succession": "Sow every 2-3 weeks from spring through early fall for a continuous harvest of both roots and greens.",
     "yield": "One root per plant. A 10-foot row can yield 4-6 lbs.",
+    "pestsAndDiseases": ["pest-1"],
+    "harvestInstructions": "Harvest roots when they are 1.5 to 3 inches in diameter. Larger beets can be tough. Greens can be harvested sparingly throughout the season by taking one or two outer leaves per plant.",
+    "containerGardening": "Grows well in pots that are at least 8-10 inches deep. Ensure consistent watering to prevent woody roots.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Loose, well-drained soil.",
@@ -453,11 +457,7 @@
     },
     "companionPlants": ["Onions", "Cabbage", "Broccoli", "Cauliflower", "Lettuce (Loose Leaf)", "Green Beans (Bush)"],
     "antagonistPlants": ["Pole Beans", "Swiss Chard", "Fennel (Bulbing)"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "2-4 weeks",
-      "notes": "Cut off greens about an inch above the root to prevent moisture loss. Store greens and roots separately in plastic bags in the crisper."
-    },
+    "storage": "Cut tops off leaving one inch of stem to prevent 'bleeding'. Store roots and greens separately in the fridge. Roots can be stored for months in a root cellar. Can be canned or pickled.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -499,6 +499,7 @@
     "daysToMaturity": 50,
     "spacing": "4-6 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/2 inch deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": -6,
@@ -508,6 +509,9 @@
     "tips": "Harvest roots when they are about the size of a tennis ball or smaller for the best flavor and texture. Hot weather makes them woody.",
     "succession": "Plant in early spring for a summer harvest and again in late summer for a fall crop, which is often sweeter.",
     "yield": "One root per plant. Greens can also be harvested throughout the season.",
+    "pestsAndDiseases": ["pest-3"],
+    "harvestInstructions": "Harvest roots when they are 2-3 inches in diameter for best flavor and texture. Greens can be harvested when young and tender.",
+    "containerGardening": "Possible in deep containers (8-12 inches). Consistent moisture is key to prevent woody roots.",
     "soil": {
       "ph": "6.0-6.8",
       "type": "Light, well-drained soil.",
@@ -533,11 +537,7 @@
     },
     "companionPlants": ["Peas", "Onions", "Garlic", "Rosemary"],
     "antagonistPlants": ["Tomato", "Pole Beans", "Potato", "Mustard"],
-    "storage": {
-      "method": "Refrigerate or root cellar",
-      "duration": "1-2 months",
-      "notes": "Remove greens and store roots in a cool, moist place like a crisper drawer or root cellar."
-    },
+    "storage": "Remove greens. Store roots in a cool, moist place like a root cellar or the fridge for several months. Can be cooked and frozen.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -579,6 +579,7 @@
     "daysToMaturity": 90,
     "spacing": "6-8 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/2 inch deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": -10,
@@ -588,6 +589,9 @@
     "tips": "Often called 'Swedes'. They can be left in the ground through winter in mild climates if heavily mulched for protection and easier harvesting.",
     "succession": "Not typical due to its longer growing season. Plant once in early summer for a fall/winter harvest.",
     "yield": "One large root per plant.",
+    "pestsAndDiseases": ["pest-3"],
+    "harvestInstructions": "Harvest after several frosts have sweetened the roots. They can be 4-6 inches in diameter. Loosen soil with a fork before pulling.",
+    "containerGardening": "Requires a large, deep container (at least 10 gallons) due to its large root size. Challenging but possible.",
     "soil": {
       "ph": "6.0-6.8",
       "type": "Rich, well-drained soil.",
@@ -613,11 +617,7 @@
     },
     "companionPlants": ["Onions", "Peas", "Dill", "Sage"],
     "antagonistPlants": ["Tomato", "Pole Beans", "Potato", "Mustard"],
-    "storage": {
-      "method": "Root cellar or refrigerate",
-      "duration": "2-4 months",
-      "notes": "Store in a cool, dark, moist place. Can be stored in the crisper drawer or a root cellar. Often coated in wax for commercial sale to extend shelf life."
-    },
+    "storage": "Stores very well. Keep in a cold, moist place (root cellar or crisper drawer) for several months. Can be waxed to prolong storage. Can also be cooked and frozen.",
     "careTasks": [
       {
         "name": "Care for Seedlings",

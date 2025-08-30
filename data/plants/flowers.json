@@ -6,6 +6,7 @@
     "daysToMaturity": 60,
     "spacing": "8-12 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 to 1/2 inch deep.",
     "description": "A cheerful, hardy annual known for its bright pom-pom-like flowers. Marigolds are easy to grow and are excellent companion plants for vegetable gardens, repelling pests.",
     "tips": "Deadhead spent blooms regularly to encourage continuous flowering. Can be planted deeper than most seedlings as roots will form along the buried stem.",
     "soil": {
@@ -25,6 +26,11 @@
     },
     "companionPlants": ["Tomato", "Potato", "Cucumber", "Rose", "Lettuce (Loose Leaf)"],
     "antagonistPlants": [],
+    "pestsAndDiseases": ["pest-2"],
+    "harvestInstructions": "Primarily grown for ornamental display. To keep the plant tidy and encourage more blooms, deadhead spent flowers. The petals are edible and can be picked as needed for use in salads or as garnish.",
+    "containerGardening": "Excellent for containers. Use at least a 1-gallon pot per plant with good drainage. Dwarf varieties are best.",
+    "storage": "Dried flower heads can be stored in a paper bag in a cool, dry place for seed saving.",
+    "succession": "For continuous blooms until frost, you can start seeds indoors 6-8 weeks before the last frost and transplant out, or sow a new batch of seeds directly in the garden every 2-3 weeks in late spring.",
     "careTasks": [
       {
         "name": "Thin seedlings",
@@ -53,6 +59,7 @@
     "daysToMaturity": 90,
     "spacing": "24-36 inches for giant varieties, 6-12 inches for smaller ones",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1 to 1.5 inches deep.",
     "description": "Iconic, towering flowers that follow the sun. Sunflowers are fast-growing annuals that produce beautiful heads full of seeds, which can be eaten or left for wildlife.",
     "tips": "Taller varieties may need staking to protect them from wind. The flower head is actually composed of thousands of tiny individual flowers.",
     "soil": {
@@ -72,6 +79,11 @@
     },
     "companionPlants": ["Cucumber", "Lettuce (Loose Leaf)", "Sweet Corn", "Green Beans (Bush)", "Peas"],
     "antagonistPlants": ["Potato", "Pole Beans", "Fennel (Bulbing)"],
+    "pestsAndDiseases": ["pest-5", "disease-1", "disease-2"],
+    "harvestInstructions": "To harvest for seeds, wait until the back of the flower head turns from green to yellow-brown and the head droops. The small petals on the face will have shriveled. Cut the head leaving about a foot of stem, and hang it in a warm, dry, well-ventilated place to cure for a few weeks. Rub the seeds out with your hand or over a bucket.",
+    "containerGardening": "Possible for smaller varieties. Use a large, deep pot (at least 5 gallons) to accommodate the taproot. Ensure it's heavy enough to not tip over.",
+    "storage": "Store dried, raw seeds in an airtight container in a cool, dark place for up to a year. Roasted seeds can be stored similarly for a few months.",
+    "succession": "Not typically succession planted in a single season due to their long growth period. However, planting different varieties with different days to maturity can create a staggered bloom time.",
     "careTasks": [
       {
         "name": "Provide support",
@@ -100,6 +112,7 @@
     "daysToMaturity": 55,
     "spacing": "10-12 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "1/2 to 1 inch deep.",
     "description": "A versatile and easy-to-grow flower with edible leaves, flowers, and seed pods that have a peppery taste. Comes in both vining and bush types.",
     "tips": "Thrives on neglect; overly rich soil will lead to more leaves and fewer flowers. Often used as a 'trap crop' to lure aphids away from vegetables.",
     "soil": {
@@ -119,6 +132,11 @@
     },
     "companionPlants": ["Cucumber", "Zucchini", "Winter Squash (Butternut)", "Tomato", "Bell Pepper", "Jalapeño Pepper", "Habanero Pepper", "Cayenne Pepper", "Radishes"],
     "antagonistPlants": ["Broccoli", "Kale", "Fennel (Bulbing)"],
+    "pestsAndDiseases": ["pest-1"],
+    "harvestInstructions": "Harvest flowers and leaves throughout the season. For seed pods (poor man's capers), pick them when they are still green and tender. They can be pickled.",
+    "containerGardening": "Grows very well in containers and hanging baskets. A 1-2 gallon pot is sufficient for bush types. Vining types will cascade nicely.",
+    "storage": "Flowers and leaves are best used fresh. Seed pods can be pickled and stored in the refrigerator for several months.",
+    "succession": "Sow seeds every 3-4 weeks through late spring for a continuous supply of flowers and leaves, especially in hotter climates where mid-summer performance can decline.",
     "careTasks": [
       {
         "name": "Watering",
@@ -141,6 +159,7 @@
     "daysToMaturity": 75,
     "spacing": "9-12 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 inch deep.",
     "description": "A vibrant, low-maintenance annual that provides a burst of color from summer until the first frost. Zinnias are excellent for cut flower gardens.",
     "tips": "Good air circulation is key to preventing powdery mildew. Pinching young plants can encourage bushier growth. The more you cut, the more they bloom.",
     "soil": {
@@ -160,12 +179,17 @@
     },
     "companionPlants": ["Tomato", "Cucumber", "Marigold", "Cosmos", "Lettuce (Loose Leaf)"],
     "antagonistPlants": ["Impatiens", "Hydrangea", "Ferns", "Fennel (Bulbing)"],
+    "pestsAndDiseases": ["disease-1"],
+    "harvestInstructions": "For bouquets, cut stems before the flower is fully open. The 'wiggle test' is key: grab the stem about 8 inches below the flower and shake it. If the flower is stiff, it's ready. If it's floppy, it's not ready and will wilt.",
+    "containerGardening": "Dwarf and shorter varieties are excellent for containers. Use a pot at least 8-10 inches in diameter with good drainage.",
+    "storage": "Best used as fresh cut flowers. To save seeds, let the best blooms dry completely on the stem, then harvest and store the seed heads.",
+    "succession": "Sow seeds every 2-3 weeks for a continuous bloom, or cut back plants mid-season to encourage a new flush of growth and flowers for the fall.",
     "careTasks": [
       {
         "name": "Pinch young plants",
         "daysAfterPlanting": 21,
         "recurring": null,
-        "description": "When plants are about 8-12 inches tall, pinch off the top 4 inches of the central stem to encourage branching and more flowers."
+        "description": "When plants are about 8-12 inches tall, pinch off the top 4 inches of the central stem to encourage branching and more. This is not required for all varieties."
       },
       {
         "name": "Watering",

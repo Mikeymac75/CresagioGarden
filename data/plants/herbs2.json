@@ -8,15 +8,19 @@
     "daysToMaturity": 45,
     "spacing": "12-18 inches",
     "sunRequirement": "Partial shade to full sun",
+    "plantingDepth": "1/4 inch deep.",
     "startIndoorsWeeksBefore": 6,
     "transplantWeeksAfterLastFrost": 0,
     "directSowWeeksAfterLastFrost": 2,
     "wateringNeeds": "High moisture",
     "wateringFrequencyDays": 2,
     "description": "A vigorous perennial herb with a refreshing flavor. Popular for teas, cocktails, and culinary uses. Spreads rapidly by underground runners.",
-    "tips": "Plant in containers to prevent spreading. Pinch flowers to maintain leaf production. Divide plants every 2-3 years.",
-    "succession": "Not necessary; perennial plant continues producing.",
+    "tips": "Plant in containers to prevent it from taking over the garden. Pinch flowers to maintain leaf production. Divide plants every 2-3 years.",
+    "succession": "Not necessary; perennial plant spreads and produces continuously.",
     "yield": "Continuous harvest throughout growing season.",
+    "pestsAndDiseases": ["disease-1"],
+    "harvestInstructions": "Harvest stems and leaves as needed. Cut stems back to just above a leaf node to encourage bushier growth. Harvest frequently to keep the plant in check.",
+    "containerGardening": "Highly recommended to prevent aggressive spreading. Use any size pot with good drainage, but be aware it will quickly fill it. Keep well-watered.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Moist, well-drained soil rich in organic matter.",
@@ -54,11 +58,7 @@
       "Chamomile",
       "Other Mints"
     ],
-    "storage": {
-      "method": "Refrigerate or freeze",
-      "duration": "1 week fresh, 6 months frozen",
-      "notes": "Store fresh stems in water in refrigerator. Freeze leaves in ice cubes or dry for long-term storage."
-    },
+    "storage": "Keep fresh stems in a glass of water. Dries well for teas. Can be chopped and frozen in ice cube trays with water or oil.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -101,6 +101,7 @@
     "daysToMaturity": 90,
     "spacing": "24-36 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 inch deep, but starting from cuttings is much easier and more reliable.",
     "startIndoorsWeeksBefore": 10,
     "transplantWeeksAfterLastFrost": 2,
     "directSowWeeksAfterLastFrost": null,
@@ -108,8 +109,11 @@
     "wateringFrequencyDays": 7,
     "description": "A woody, aromatic perennial herb with needle-like leaves. Essential for Mediterranean cooking and valued for its fragrant, pine-like scent.",
     "tips": "Protect from harsh winter winds. Prune after flowering to maintain shape. Excellent in containers for colder climates.",
-    "succession": "Not necessary; evergreen perennial provides year-round harvest.",
+    "succession": "Not necessary; evergreen perennial provides year-round harvest where hardy.",
     "yield": "Continuous harvest throughout the year.",
+    "pestsAndDiseases": ["pest-2", "disease-1"],
+    "harvestInstructions": "Harvest sprigs by cutting them off the plant. Do not cut back into the old, woody growth, as it may not regrow. Harvest regularly once the plant is established.",
+    "containerGardening": "Excellent for containers, especially in cold climates where it must be brought indoors for winter. Ensure superb drainage to prevent root rot.",
     "soil": {
       "ph": "6.0-7.5",
       "type": "Well-drained, sandy soil. Poor to moderately fertile.",
@@ -149,11 +153,7 @@
       "Basil",
       "Cucumber"
     ],
-    "storage": {
-      "method": "Dry or freeze",
-      "duration": "1 year dried, 6 months frozen",
-      "notes": "Dry sprigs hung in bundles or freeze whole sprigs. Fresh sprigs last 1-2 weeks in refrigerator."
-    },
+    "storage": "Can be hung in bundles to air dry. Fresh sprigs last 1-2 weeks in the refrigerator. Also freezes well, either loose or in oil.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -196,6 +196,7 @@
     "daysToMaturity": 75,
     "spacing": "6-12 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 inch deep, barely cover as seeds need light to germinate.",
     "startIndoorsWeeksBefore": 8,
     "transplantWeeksAfterLastFrost": 1,
     "directSowWeeksAfterLastFrost": 2,
@@ -205,6 +206,9 @@
     "tips": "Trim back after flowering to maintain compact growth. Divide clumps every 3-4 years to rejuvenate plants.",
     "succession": "Not necessary; perennial provides continuous harvest.",
     "yield": "Continuous harvest spring through fall.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "Cut fresh sprigs as needed throughout the season. For a large harvest for drying, cut the plant back by about half just before it begins to flower for the most intense flavor.",
+    "containerGardening": "Grows well in pots, especially creeping varieties which will spill over the sides. Needs excellent drainage and a gritty soil mix.",
     "soil": {
       "ph": "6.0-8.0",
       "type": "Well-drained, light soil. Tolerates poor, rocky soils.",
@@ -241,11 +245,7 @@
       "Basil",
       "Cucumber"
     ],
-    "storage": {
-      "method": "Dry or freeze",
-      "duration": "1 year dried, 6 months frozen",
-      "notes": "Air dry in small bundles or freeze whole sprigs. Dried thyme retains excellent flavor."
-    },
+    "storage": "Dries exceptionally well and retains flavor. Hang small bundles in a well-ventilated area. Can also be frozen on the stem.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -288,6 +288,7 @@
     "daysToMaturity": 80,
     "spacing": "8-12 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 inch deep, surface sow as seeds need light.",
     "startIndoorsWeeksBefore": 6,
     "transplantWeeksAfterLastFrost": 2,
     "directSowWeeksAfterLastFrost": 2,
@@ -297,6 +298,9 @@
     "tips": "Pinch flowers to maintain leaf quality. Divide plants every 3 years. Greek oregano has the strongest flavor for cooking.",
     "succession": "Not necessary; perennial provides season-long harvest.",
     "yield": "Abundant harvest throughout growing season.",
+    "pestsAndDiseases": ["pest-1"],
+    "harvestInstructions": "Cut sprigs as needed. The flavor is most intense just before the plant flowers. For a large harvest for drying, cut the plant back to a few inches from the ground.",
+    "containerGardening": "Grows well in containers. A 1-2 gallon pot is sufficient. It tends to spread, so a wide pot is a good choice.",
     "soil": {
       "ph": "6.0-8.0",
       "type": "Well-drained, moderately fertile soil.",
@@ -335,11 +339,7 @@
       "Mint",
       "Cucumber"
     ],
-    "storage": {
-      "method": "Dry or freeze",
-      "duration": "1 year dried, 6 months frozen",
-      "notes": "Hang in small bundles to air dry. Freezing preserves more flavor than drying for fresh use."
-    },
+    "storage": "Dries very well and is the most common way to preserve it. Hang in small bundles to air dry. Can also be frozen in oil or water.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -382,6 +382,7 @@
     "daysToMaturity": 40,
     "spacing": "4-6 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 inch deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": 0,
@@ -389,8 +390,11 @@
     "wateringFrequencyDays": 3,
     "description": "A delicate annual herb with feathery foliage and distinctive tangy flavor. Essential for pickles, fish dishes, and European cuisine. Self-seeds readily.",
     "tips": "Direct sow only - does not transplant well. Sow every 2-3 weeks for continuous harvest. Allow some plants to flower for dill seeds.",
-    "succession": "Sow every 2-3 weeks for continuous fresh leaves.",
+    "succession": "Sow every 2-3 weeks for a continuous supply of fresh leaves (dill weed).",
     "yield": "Multiple cuttings per plant before flowering.",
+    "pestsAndDiseases": ["pest-1"],
+    "harvestInstructions": "Harvest feathery leaves (dill weed) anytime during the growing season by snipping them off. For dill seed, let the plant flower and the seed heads turn brown, then cut the entire stalk and hang to dry.",
+    "containerGardening": "Can be grown in deep pots (at least 12 inches) to accommodate its long taproot. May require staking if it gets tall.",
     "soil": {
       "ph": "5.8-6.5",
       "type": "Well-drained, fertile soil with good organic matter.",
@@ -427,11 +431,7 @@
       "Cilantro",
       "Lavender"
     ],
-    "storage": {
-      "method": "Refrigerate or freeze",
-      "duration": "1 week fresh, 6 months frozen",
-      "notes": "Store fresh stems in water. Freeze whole sprigs or dry for seeds. Loses flavor when dried."
-    },
+    "storage": "Fresh leaves are best and can be stored in water in the fridge for a week. They can be frozen, but lose flavor when dried. Dried seeds should be stored in an airtight container.",
     "careTasks": [
       {
         "name": "Direct sowing",
@@ -474,15 +474,19 @@
     "daysToMaturity": 60,
     "spacing": "6-8 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "1/4 inch deep.",
     "startIndoorsWeeksBefore": 8,
     "transplantWeeksAfterLastFrost": 0,
     "directSowWeeksAfterLastFrost": 2,
     "wateringNeeds": "Moderate moisture",
     "wateringFrequencyDays": 3,
     "description": "A hardy perennial herb with slender, hollow leaves and mild onion flavor. Produces attractive purple flowers that are also edible. Excellent for containers.",
-    "tips": "Cut like grass, taking entire clumps down to 2 inches. Divide clumps every 3-4 years. Flowers are edible and attractive.",
+    "tips": "Cut leaves down to 2 inches from the ground for harvesting. Divide clumps every 3-4 years to reinvigorate them. Flowers are edible and make a great garnish.",
     "succession": "Not necessary; perennial provides continuous harvest.",
     "yield": "Multiple harvests throughout growing season.",
+    "pestsAndDiseases": ["pest-1"],
+    "harvestInstructions": "Harvest leaves by cutting them at the base, about 1-2 inches from the ground. Harvest from the outside of the clump first. Edible flowers can be harvested as they open.",
+    "containerGardening": "Excellent for containers. A 6-8 inch pot is a good size. Can be kept on a sunny windowsill through winter.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Well-drained, fertile soil rich in organic matter.",
@@ -513,11 +517,7 @@
       "Peas",
       "Asparagus"
     ],
-    "storage": {
-      "method": "Refrigerate or freeze",
-      "duration": "1 week fresh, 6 months frozen",
-      "notes": "Store fresh leaves in a plastic bag in the refrigerator. Freeze chopped chives in ice cube trays with water."
-    },
+    "storage": "Best used fresh. Store cut leaves in a plastic bag in the refrigerator for up to a week. They freeze well when chopped, but do not retain flavor when dried.",
     "careTasks": [
       {
         "name": "Care for Seedlings",

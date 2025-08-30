@@ -8,6 +8,7 @@
     "daysToMaturity": 75,
     "spacing": "8-12 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "1/8 to 1/4 inch deep.",
     "startIndoorsWeeksBefore": 4,
     "transplantWeeksAfterLastFrost": -2,
     "directSowWeeksAfterLastFrost": -4,
@@ -15,8 +16,11 @@
     "wateringFrequencyDays": 2,
     "description": "A crisp, upright lettuce with elongated leaves forming loose heads. Excellent heat tolerance and distinctive crunchy texture perfect for Caesar salads.",
     "tips": "Plant in succession every 2 weeks for continuous harvest. Harvest outer leaves or cut entire head at base. Provide afternoon shade in hot weather.",
-    "succession": "Plant every 2 weeks from early spring through late summer.",
+    "succession": "Plant every 2 weeks from early spring through late summer for a continuous supply of heads.",
     "yield": "1 large head per plant, or continuous leaf harvest.",
+    "pestsAndDiseases": ["pest-1", "pest-4"],
+    "harvestInstructions": "Harvest outer leaves at any time, or wait for a full head to form. To harvest the head, cut the plant at the soil level. Some varieties may regrow for a second, smaller harvest.",
+    "containerGardening": "Grows well in containers at least 6-8 inches deep. Space plants according to their mature size to allow for good air circulation.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Well-drained, fertile soil rich in organic matter.",
@@ -54,11 +58,7 @@
       "Fennel (Bulbing)",
       "Parsley"
     ],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1-2 weeks",
-      "notes": "Store in perforated plastic bags in refrigerator crisper. Do not wash until ready to use."
-    },
+    "storage": "Store washed and thoroughly dried heads or leaves in a plastic bag in the crisper drawer for up to 10 days. Can be frozen for use in smoothies.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -101,6 +101,7 @@
     "daysToMaturity": 60,
     "spacing": "6-10 inches",
     "sunRequirement": "Partial shade to full sun",
+    "plantingDepth": "1/8 to 1/4 inch deep.",
     "startIndoorsWeeksBefore": 4,
     "transplantWeeksAfterLastFrost": -2,
     "directSowWeeksAfterLastFrost": -4,
@@ -108,8 +109,11 @@
     "wateringFrequencyDays": 2,
     "description": "A tender lettuce forming loose, soft heads with buttery-textured leaves. Also known as Boston or Bibb lettuce, prized for its sweet, delicate flavor.",
     "tips": "Handle gently as leaves bruise easily. Excellent for containers. Harvest entire heads or individual leaves for extended harvest.",
-    "succession": "Plant every 2 weeks from early spring through fall.",
+    "succession": "Plant every 2 weeks from early spring through fall for a constant supply.",
     "yield": "1 soft head per plant weighing 4-8 oz.",
+    "pestsAndDiseases": ["pest-1", "pest-4"],
+    "harvestInstructions": "Harvest the entire loose head by cutting it at the base when it is soft but well-formed. The tender leaves bruise easily.",
+    "containerGardening": "Excellent for containers and window boxes due to its compact size and shallow roots. Keep soil consistently moist.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Rich, well-drained soil with high organic matter content.",
@@ -147,11 +151,7 @@
       "Fennel (Bulbing)",
       "Parsley"
     ],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "5-7 days",
-      "notes": "Very delicate - store loosely wrapped in damp paper towels. Use quickly for best quality."
-    },
+    "storage": "Very delicate. Store unwashed in a plastic container in the refrigerator for 3-5 days. Best eaten soon after harvest.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -194,6 +194,7 @@
     "daysToMaturity": 45,
     "spacing": "4-6 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "1/4 to 1/2 inch deep.",
     "startIndoorsWeeksBefore": 3,
     "transplantWeeksAfterLastFrost": -3,
     "directSowWeeksAfterLastFrost": -6,
@@ -201,8 +202,11 @@
     "wateringFrequencyDays": 3,
     "description": "Fast-growing leafy greens with a spicy, peppery flavor that intensifies with heat and age. Excellent cooked or raw when young and tender.",
     "tips": "Harvest young leaves for milder flavor. Cold weather sweetens the leaves. Plant in fall for best flavor and slower bolting.",
-    "succession": "Plant every 2-3 weeks for continuous harvest.",
+    "succession": "Plant every 2-3 weeks for continuous harvest of tender leaves.",
     "yield": "Multiple harvests of leaves per plant.",
+    "pestsAndDiseases": ["pest-1", "pest-3"],
+    "harvestInstructions": "Harvest young, tender leaves for a milder, peppery flavor. Use the 'cut-and-come-again' method by harvesting outer leaves. The flavor becomes much spicier as leaves mature and in hot weather.",
+    "containerGardening": "Grows quickly and easily in containers. A wide pot is good for harvesting lots of young leaves.",
     "soil": {
       "ph": "6.0-7.5",
       "type": "Well-drained, fertile soil with good organic matter.",
@@ -239,11 +243,7 @@
       "Strawberry (June-Bearing)",
       "Grape"
     ],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1 week",
-      "notes": "Store in perforated bags in refrigerator. Wash just before use. Can be frozen for cooking."
-    },
+    "storage": "Store in a perforated plastic bag in the refrigerator for up to a week. Wash just before use. Can be blanched and frozen for use in cooked dishes.",
     "careTasks": [
       {
         "name": "Direct sowing",

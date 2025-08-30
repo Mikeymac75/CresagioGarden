@@ -7,6 +7,7 @@
     "daysToMaturity": 80,
     "spacing": "12 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1-2 inches deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": 2,
@@ -14,8 +15,11 @@
     "wateringFrequencyDays": 5,
     "description": "A tall, warm-season grass crop grown for its sweet, edible kernels. It is wind-pollinated.",
     "tips": "For successful wind pollination, plant corn in a block of at least 4x4 rows, not in a single long row. Harvest when silks have turned brown and kernels are plump and milky.",
-    "succession": "For a longer harvest, plant an early, a mid-season, and a late-season variety, or make succession plantings of the same variety every 2 weeks.",
+    "succession": "To extend the harvest, plant an early, mid, and late-season variety, or make succession plantings of the same variety every 2 weeks until mid-summer.",
     "yield": "Typically 1-2 ears per stalk.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "Harvest approximately 20 days after the silks first appear. The silks should be brown and dry, and the ear should feel plump and full. Puncture a kernel with a fingernail; if the juice is milky, it's ready. If it's clear, it's not ready. If it's starchy, it's past its prime. Pull the ear downwards and twist to remove it from the stalk.",
+    "containerGardening": "Not ideal, but possible with very large, deep containers (at least 15-20 gallons and 12 inches deep). Plant in a block of at least 9-12 plants for pollination. Requires heavy watering and feeding.",
     "soil": {
       "ph": "6.0-6.8",
       "type": "Well-drained soil rich in organic matter.",
@@ -41,11 +45,7 @@
     },
     "companionPlants": ["Green Beans (Bush)", "Zucchini", "Winter Squash (Butternut)", "Cucumber", "Peas", "Sunflower"],
     "antagonistPlants": ["Tomato", "Broccoli", "Cabbage", "Fennel (Bulbing)"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1-3 days",
-      "notes": "The sugars in sweet corn begin converting to starch immediately after picking. For best flavor, eat, freeze, or can it as soon as possible. Store in the husk in the refrigerator."
-    },
+    "storage": "Sugars convert to starch quickly after picking. For best flavor, eat immediately. Store in the husk in the refrigerator for 1-3 days. For long-term preservation, blanch kernels and freeze them, or use a pressure canner.",
     "careTasks": [
       {
         "name": "Care for Seedlings",

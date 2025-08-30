@@ -8,15 +8,19 @@
     "daysToMaturity": 60,
     "spacing": "8-12 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 inch deep.",
     "startIndoorsWeeksBefore": 6,
     "transplantWeeksAfterLastFrost": 2,
     "directSowWeeksAfterLastFrost": 2,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 3,
     "description": "A fragrant, warm-season herb that is a staple in many cuisines, especially Italian. Very sensitive to frost.",
-    "tips": "Harvest often by pinching stems just above a pair of leaves. This encourages the plant to become bushier and more productive.",
+    "tips": "Harvest often by pinching stems just above a pair of leaves. This encourages the plant to become bushier and more productive. Do not let the plant flower.",
     "succession": "Sow seeds every 2-3 weeks for a continuous supply of young, tender leaves throughout the summer.",
     "yield": "Continuous harvest of leaves. A few plants can provide a steady supply for a family.",
+    "pestsAndDiseases": ["pest-1", "disease-2"],
+    "harvestInstructions": "Harvest leaves by pinching stems just above a set of two leaves. Start harvesting from the top of the plant to encourage bushy growth. Harvest regularly, and pinch off any flower buds to ensure the best leaf flavor.",
+    "containerGardening": "Excellent for containers. A 1-2 gallon pot is sufficient. Ensure good drainage and place in a sunny location.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Well-drained, rich soil.",
@@ -26,7 +30,7 @@
       "optimalLowF": 70,
       "optimalHighF": 90,
       "absoluteMinF": 45,
-      "notes": "Very sensitive to frost and cool temperatures. Prefers warm days and nights (above 60\u00b0F)."
+      "notes": "Very sensitive to frost and cool temperatures. Prefers warm days and nights (above 60°F)."
     },
     "environmentalAlerts": [
       {
@@ -57,11 +61,7 @@
       "Sage",
       "Cucumber"
     ],
-    "storage": {
-      "method": "Fresh in water or frozen",
-      "duration": "1 week (fresh), 6 months (frozen)",
-      "notes": "Keep fresh stems in a glass of water on the counter like a bouquet. Do not refrigerate, as leaves will turn black. Can be pureed with olive oil and frozen in ice cube trays."
-    },
+    "storage": "Best used fresh. Keep stems in a glass of water on the counter. To preserve, make pesto or puree leaves with olive oil and freeze in ice cube trays. Drying is possible but it loses much of its flavor.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -104,6 +104,7 @@
     "daysToMaturity": 45,
     "spacing": "4-6 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "1/4 to 1/2 inch deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": -2,
@@ -111,8 +112,11 @@
     "wateringFrequencyDays": 3,
     "description": "A fast-growing, cool-season herb. The leaves are called cilantro, and its seeds are known as coriander.",
     "tips": "Tends to bolt (go to flower) very quickly in heat. Provide afternoon shade in warmer climates to prolong the leaf harvest.",
-    "succession": "Essential for a continuous supply. Sow new seeds every 2 weeks from spring until early fall, as plants bolt quickly.",
+    "succession": "Essential for a continuous supply of leaves. Sow new seeds every 2 weeks from spring until early fall, as individual plants bolt quickly.",
     "yield": "Continuous harvest of leaves for 4-6 weeks per planting, then coriander seeds.",
+    "pestsAndDiseases": ["pest-1"],
+    "harvestInstructions": "Harvest leaves once the plant is 6 inches tall. Cut the outer leaves at the base, leaving the inner ones to continue growing. To harvest coriander seeds, let the plant bolt and the seed heads turn brown, then cut the stalks and hang to dry before threshing.",
+    "containerGardening": "Grows well in pots at least 8 inches deep to accommodate its taproot. Tends to bolt faster in containers due to heat stress, so keep well-watered.",
     "soil": {
       "ph": "6.2-6.8",
       "type": "Well-drained, light soil.",
@@ -122,7 +126,7 @@
       "optimalLowF": 50,
       "optimalHighF": 75,
       "absoluteMinF": 32,
-      "notes": "A cool-season herb. Bolts rapidly in temperatures above 85\u00b0F. Can tolerate a light frost."
+      "notes": "A cool-season herb. Bolts rapidly in temperatures above 85°F. Can tolerate a light frost."
     },
     "environmentalAlerts": [
       {
@@ -148,11 +152,7 @@
       "Fennel (Bulbing)",
       "Lavender"
     ],
-    "storage": {
-      "method": "Refrigerate or freeze leaves; dry store seeds",
-      "duration": "1 week (refrigerated leaves)",
-      "notes": "Store leaf stems in a jar of water in the fridge, loosely covered. Leaves can also be chopped and frozen. Dry coriander seeds completely and store in an airtight container."
-    },
+    "storage": "Store fresh leaf stems in a jar of water in the fridge, loosely covered. Cilantro doesn't retain flavor well when dried, but it can be chopped and frozen in water or oil. Store dried coriander seeds in an airtight container.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -195,6 +195,7 @@
     "daysToMaturity": 75,
     "spacing": "6-8 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "1/4 inch deep.",
     "startIndoorsWeeksBefore": 10,
     "transplantWeeksAfterLastFrost": -2,
     "directSowWeeksAfterLastFrost": -4,
@@ -202,8 +203,11 @@
     "wateringFrequencyDays": 3,
     "description": "A biennial herb typically grown as an annual, available in curly-leaf and flat-leaf (Italian) varieties.",
     "tips": "Soak seeds overnight before planting to speed up the notoriously slow germination. Parsley is a host plant for the black swallowtail butterfly caterpillar.",
-    "succession": "Not typically needed as plants are productive all season long. Plant once in spring for a season-long harvest.",
+    "succession": "Not typically needed as plants are productive all season. In mild climates, it will overwinter and produce a second, smaller crop in its second year before flowering.",
     "yield": "Continuous harvest of leaves. A few plants are usually sufficient for family use.",
+    "pestsAndDiseases": ["pest-1"],
+    "harvestInstructions": "Harvest the larger outer leaves at the base of the stem, leaving the inner foliage to mature. This encourages the plant to produce new growth from the center. Harvest regularly throughout the season.",
+    "containerGardening": "Grows very well in containers. A pot 8-10 inches in diameter and depth is suitable. Can be brought indoors to overwinter near a sunny window.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Rich, moist, well-drained soil.",
@@ -240,11 +244,7 @@
       "Dill",
       "Lettuce (Loose Leaf)"
     ],
-    "storage": {
-      "method": "Refrigerate or freeze",
-      "duration": "1 week (refrigerated)",
-      "notes": "Place stems in a glass of water in the refrigerator, or wrap the bunch in a damp paper towel and place in a plastic bag. Freezes well when chopped."
-    },
+    "storage": "Keep fresh parsley in the refrigerator with stems in a glass of water. For long-term preservation, it can be finely chopped and frozen in water in ice cube trays, or dried.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
