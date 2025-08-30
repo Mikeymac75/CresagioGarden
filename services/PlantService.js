@@ -17,8 +17,6 @@ const plantDataFiles = {
   'root_vegetables.json': () => require('../data/plants/root_vegetables.json'),
   'root_vegetables2.json': () => require('../data/plants/root_vegetables2.json'),
   'flowers.json': () => require('../data/plants/flowers.json'),
-  'vegetables2.json': () => require('../data/plants/vegetables2.json'),
-  'flowers2.json': () => require('../data/plants/flowers2.json'),
 };
 
 // A map for the corresponding FAQ files.
@@ -36,8 +34,6 @@ const plantFaqFiles = {
   'root_vegetables_faq.json': () => require('../data/plants/root_vegetables_faq.json'),
   'root_vegetables2_faq.json': () => require('../data/plants/root_vegetables2_faq.json'),
   'flowers_faq.json': () => require('../data/plants/flowers_faq.json'),
-  'vegetables2_faq.json': () => require('../data/plants/vegetables2_faq.json'),
-  'flowers2_faq.json': () => require('../data/plants/flowers2_faq.json'),
 };
 
 const basePlants = plantIndex;
