@@ -8,6 +8,7 @@
     "daysToMaturity": 70,
     "spacing": "18 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 to 1/2 inch deep.",
     "startIndoorsWeeksBefore": 6,
     "transplantWeeksAfterLastFrost": -2,
     "directSowWeeksAfterLastFrost": -4,
@@ -17,6 +18,9 @@
     "tips": "For a fall harvest, start seeds indoors in mid-summer. Plant when soil temperature is consistently between 60-75°F. Heat can cause premature flowering (bolting).",
     "succession": "For a continuous harvest, plant new seedlings every 2-3 weeks.",
     "yield": "1 large central head and multiple smaller side shoots per plant.",
+    "pestsAndDiseases": ["pest-1", "pest-3"],
+    "harvestInstructions": "Harvest the main head when it is firm and tight, before the flower buds open. Cut the stalk at an angle. The plant will continue to produce smaller side shoots for a prolonged harvest.",
+    "containerGardening": "Possible in large (5+ gallon) pots. Requires consistent watering and feeding to form a good head.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Well-drained, fertile loamy soil.",
@@ -42,11 +46,7 @@
     },
     "companionPlants": ["Rosemary", "Chamomile", "Marigold", "Onions"],
     "antagonistPlants": ["Tomato", "Bell Pepper", "Strawberry (June-Bearing)", "Grape"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1-2 weeks",
-      "notes": "Store unwashed in a perforated plastic bag in the crisper drawer. Blanch and freeze for long-term storage."
-    },
+    "storage": "Store unwashed in a perforated plastic bag in the crisper drawer for up to a week. For long-term preservation, blanch florets and freeze.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -106,6 +106,7 @@
     "daysToMaturity": 80,
     "spacing": "18-24 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 to 1/2 inch deep.",
     "startIndoorsWeeksBefore": 6,
     "transplantWeeksAfterLastFrost": -2,
     "directSowWeeksAfterLastFrost": -4,
@@ -115,6 +116,9 @@
     "tips": "Provide consistent moisture to prevent heads from splitting. Rotate crops to avoid soil-borne diseases.",
     "succession": "For a continuous harvest, plant new seedlings every 2-3 weeks, choosing varieties with different maturity dates.",
     "yield": "One primary head per plant; some varieties may produce smaller secondary heads.",
+    "pestsAndDiseases": ["pest-3", "pest-4"],
+    "harvestInstructions": "Harvest when the head is firm and has reached a desirable size. Cut the stem at the base of the plant. Leaving the stalk and roots may encourage small secondary heads to form.",
+    "containerGardening": "Compact varieties can be grown in 5-10 gallon containers. Requires consistent moisture to prevent heads from splitting.",
     "soil": {
       "ph": "6.0-7.5",
       "type": "Well-drained, fertile soil.",
@@ -140,11 +144,7 @@
     },
     "companionPlants": ["Dill", "Celery", "Onions", "Thyme"],
     "antagonistPlants": ["Tomato", "Bell Pepper", "Strawberry (June-Bearing)", "Grape"],
-    "storage": {
-      "method": "Refrigerate or root cellar",
-      "duration": "1-2 months",
-      "notes": "Store in a cool, moist place. Do not remove outer leaves until ready to use. Can be shredded for sauerkraut."
-    },
+    "storage": "Store in a cool, moist place like a root cellar or refrigerator for several months. Excellent for making sauerkraut or kimchi for long-term preservation.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -192,6 +192,7 @@
     "daysToMaturity": 75,
     "spacing": "18-24 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 to 1/2 inch deep.",
     "startIndoorsWeeksBefore": 6,
     "transplantWeeksAfterLastFrost": -2,
     "directSowWeeksAfterLastFrost": null,
@@ -201,6 +202,9 @@
     "tips": "Cauliflower is more sensitive to temperature changes than its cabbage-family relatives. Avoid disturbing roots when transplanting.",
     "succession": "Succession planting is possible but challenging due to its sensitivity to temperature. Best to focus on a spring and fall crop.",
     "yield": "One head per plant.",
+    "pestsAndDiseases": ["pest-3"],
+    "harvestInstructions": "Harvest when the head is 6-8 inches in diameter, firm, and the curds are still smooth. If it starts to look 'ricey' (curds separating), harvest immediately. Cut the entire head off the plant.",
+    "containerGardening": "Challenging but possible in large (5-10 gallon) pots. Very sensitive to inconsistent watering and temperature swings.",
     "soil": {
       "ph": "6.5-7.0",
       "type": "Rich, well-drained, and moist soil.",
@@ -226,11 +230,7 @@
     },
     "companionPlants": ["Green Beans (Bush)", "Celery", "Peas"],
     "antagonistPlants": ["Tomato", "Bell Pepper", "Strawberry (June-Bearing)", "Grape"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1-2 weeks",
-      "notes": "Store wrapped in plastic to retain moisture. Can be blanched and frozen for long-term preservation."
-    },
+    "storage": "Store wrapped in plastic in the fridge for 1-2 weeks. Can be blanched and frozen or pickled.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -273,6 +273,7 @@
     "daysToMaturity": 100,
     "spacing": "24 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 to 1/2 inch deep.",
     "startIndoorsWeeksBefore": 12,
     "transplantWeeksAfterLastFrost": -4,
     "directSowWeeksAfterLastFrost": null,
@@ -282,6 +283,9 @@
     "tips": "A light frost improves the sprouts' flavor, making them sweeter. Provide support or staking in windy areas.",
     "succession": "Not typically succession planted due to its long growing season. Plant once for a late fall/early winter harvest.",
     "yield": "50-100 sprouts per plant, harvested over several weeks.",
+    "pestsAndDiseases": ["pest-1", "pest-3"],
+    "harvestInstructions": "Harvest sprouts from the bottom of the stalk upwards when they are firm, green, and 1-2 inches in diameter. Twist or snap them off. Flavor improves after a light frost.",
+    "containerGardening": "Possible in large, deep pots (10+ gallons) with staking for support. A long-season commitment.",
     "soil": {
       "ph": "6.0-7.5",
       "type": "Fertile, well-drained soil.",
@@ -307,11 +311,7 @@
     },
     "companionPlants": ["Marigold", "Nasturtium", "Rosemary"],
     "antagonistPlants": ["Tomato", "Bell Pepper", "Strawberry (June-Bearing)", "Grape"],
-    "storage": {
-      "method": "Refrigerate or on the stalk",
-      "duration": "2-4 weeks",
-      "notes": "Sprouts can be refrigerated, or the entire stalk can be cut and stored in a cool place, which keeps them fresh longer."
-    },
+    "storage": "Refrigerate loose sprouts for a few weeks. Storing the entire stalk in a cool place keeps them fresh longer. Can be blanched and frozen.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -359,6 +359,7 @@
     "daysToMaturity": 120,
     "spacing": "6 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/2 inch deep in flats, or in 6-inch deep trenches in the garden.",
     "startIndoorsWeeksBefore": 10,
     "transplantWeeksAfterLastFrost": -2,
     "directSowWeeksAfterLastFrost": -6,
@@ -368,6 +369,9 @@
     "tips": "Plant in trenches and gradually fill in soil to blanch the stems (keep them white and tender).",
     "succession": "Can be succession planted every 2-3 weeks for a continuous harvest from late summer through winter.",
     "yield": "One stalk per plant.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "Harvest when stalks are about 1 inch in diameter. Loosen the soil with a fork and gently pull them up. Can be harvested from late summer through early winter.",
+    "containerGardening": "Can be grown in deep pots (at least 12 inches). Hilling is achieved by adding more soil to the pot as they grow.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Rich, well-drained soil.",
@@ -393,11 +397,7 @@
     },
     "companionPlants": ["Carrots", "Celery", "Beets", "Marigold", "Chamomile"],
     "antagonistPlants": ["Green Beans (Bush)", "Peas", "Asparagus", "Sage"],
-    "storage": {
-      "method": "Refrigerate or leave in ground",
-      "duration": "2-4 weeks refrigerated; several months in ground",
-      "notes": "Can be stored in the refrigerator, or left in the garden and harvested as needed in mild climates. Do not wash until ready to use."
-    },
+    "storage": "Store in the fridge for 2-4 weeks. Can also be left in the ground and harvested as needed in mild climates. Can be chopped and frozen.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -446,6 +446,7 @@
     "daysToMaturity": 730,
     "spacing": "18 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "Plant 1-year-old crowns in a 6-8 inch deep trench, with crowns 18 inches apart.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": -4,
     "directSowWeeksAfterLastFrost": null,
@@ -455,6 +456,9 @@
     "tips": "Plant 1-year-old crowns for a faster harvest. Avoid harvesting any spears in the first year to allow strong root systems to develop.",
     "succession": "Not applicable; it is a perennial that produces for many years from the same root system.",
     "yield": "0.5-1 lb of spears per plant per season, once established.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "Do not harvest the first year. In the second year, harvest for 2-3 weeks. From year 3 on, harvest all spears that are pencil-thick or larger for 6-8 weeks by snapping them off at the base.",
+    "containerGardening": "Not recommended. Asparagus is a long-term perennial that requires a large, permanent bed to establish its extensive root system.",
     "soil": {
       "ph": "6.5-7.5",
       "type": "Well-drained, sandy loam.",
@@ -480,11 +484,7 @@
     },
     "companionPlants": ["Tomato", "Parsley", "Basil", "Marigold", "Strawberry (June-Bearing)"],
     "antagonistPlants": ["Onions", "Garlic", "Potato", "Fennel (Bulbing)"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "5-7 days",
-      "notes": "For best results, stand fresh spears upright in a glass with an inch of water, or wrap the stem ends in a damp paper towel before refrigerating."
-    },
+    "storage": "Best eaten fresh. Store spears upright in a glass with an inch of water in the fridge for up to a week. Can be blanched and frozen.",
     "careTasks": [
       {
         "name": "Do not harvest (Year 1)",
@@ -532,6 +532,7 @@
     "daysToMaturity": 85,
     "spacing": "12 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 to 1/2 inch deep.",
     "startIndoorsWeeksBefore": 4,
     "transplantWeeksAfterLastFrost": -2,
     "directSowWeeksAfterLastFrost": -2,
@@ -541,6 +542,9 @@
     "tips": "Consistent watering is crucial; dry soil can cause the plant to bolt (flower prematurely) instead of forming a bulb.",
     "succession": "Sow every 2-3 weeks for a continuous harvest in cool weather. Avoid planting in the heat of summer.",
     "yield": "One bulb per plant.",
+    "pestsAndDiseases": ["pest-1"],
+    "harvestInstructions": "Harvest when the bulb is firm and about the size of a tennis ball. Cut the plant off at the soil line. The fronds can be used as an herb.",
+    "containerGardening": "Grows well in pots that are at least 10 inches deep to accommodate the taproot. Requires consistent watering to prevent bolting.",
     "soil": {
       "ph": "5.5-7.0",
       "type": "Rich, well-drained soil.",
@@ -566,11 +570,7 @@
     },
     "companionPlants": ["Dill", "Sage", "Chamomile"],
     "antagonistPlants": ["Green Beans (Bush)", "Tomato", "Kohlrabi", "Coriander"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1 week",
-      "notes": "Store in a plastic bag in the crisper drawer. Use quickly as it loses its delicate flavor."
-    },
+    "storage": "Store in a plastic bag in the fridge crisper for up to a week. The flavor fades over time.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -613,6 +613,7 @@
     "daysToMaturity": 180,
     "spacing": "48 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/2 inch deep for seeds, or plant crowns with the top just at the soil surface.",
     "startIndoorsWeeksBefore": 8,
     "transplantWeeksAfterLastFrost": -2,
     "directSowWeeksAfterLastFrost": null,
@@ -622,6 +623,9 @@
     "tips": "Artichokes are heavy feeders and require ample space, water, and nutrients to thrive.",
     "succession": "Not applicable; grown as a perennial in warm climates or an annual in colder zones.",
     "yield": "5-10 primary buds and several smaller secondary buds per plant.",
+    "pestsAndDiseases": ["pest-1", "pest-4"],
+    "harvestInstructions": "Harvest the main, terminal bud when it is large, firm, and the bracts are still tightly closed. Cut the stem 1-2 inches below the bud. Smaller side buds will follow.",
+    "containerGardening": "Requires a very large container (20+ gallons) and is only feasible for a single season in most climates. Heavy feeder and water user.",
     "soil": {
       "ph": "6.5-7.5",
       "type": "Deep, fertile, well-drained soil.",
@@ -647,11 +651,7 @@
     },
     "companionPlants": ["Peas", "Cabbage", "Sunflower", "Tarragon", "Asparagus"],
     "antagonistPlants": ["Potato", "Tomato", "Fennel (Bulbing)"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1-2 weeks",
-      "notes": "Sprinkle buds with water and store in a perforated plastic bag in the refrigerator. Best when cooked soon after harvesting."
-    },
+    "storage": "Store in a plastic bag in the fridge for 1-2 weeks. Best when cooked soon after harvesting. The hearts can be preserved in oil or marinated.",
     "careTasks": [
       {
         "name": "Care for Seedlings",

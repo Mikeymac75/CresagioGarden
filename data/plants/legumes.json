@@ -8,6 +8,7 @@
     "daysToMaturity": 55,
     "spacing": "4-6 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1 inch deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": 1,
@@ -17,6 +18,9 @@
     "tips": "After the soil has warmed, plant seeds directly in the garden. Avoid disturbing the roots. Water at the base to prevent leaf diseases.",
     "succession": "Sow new seeds every 2-3 weeks until mid-summer for a continuous harvest throughout the season.",
     "yield": "Continuous harvest over several weeks. A 10-foot row can produce 3-5 lbs of beans.",
+    "pestsAndDiseases": ["pest-1"],
+    "harvestInstructions": "Pick beans when they are firm, crisp, and about the thickness of a pencil, before the seeds inside begin to swell. Harvest every 2-3 days to encourage more production.",
+    "containerGardening": "Bush beans are well-suited for containers. Use a pot that is at least 8-10 inches deep and wide enough to space plants 4-6 inches apart.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Well-drained soil with moderate fertility.",
@@ -42,11 +46,7 @@
     },
     "companionPlants": ["Sweet Corn", "Carrots", "Cucumber", "Strawberry (June-Bearing)", "Rosemary"],
     "antagonistPlants": ["Onions", "Garlic", "Chives", "Fennel (Bulbing)", "Peas"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1 week",
-      "notes": "Store unwashed in a plastic bag in the crisper drawer. For long-term storage, beans can be blanched and frozen, canned, or pickled."
-    },
+    "storage": "Store unwashed in a plastic bag in the crisper drawer for up to a week. For long-term storage, beans can be blanched and frozen, canned, or pickled (dilly beans).",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -83,6 +83,7 @@
     "daysToMaturity": 60,
     "spacing": "2-4 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1 inch deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": -6,
@@ -92,6 +93,9 @@
     "tips": "Harvest pods when they are plump and sweet for best flavor. Pods left on the vine too long become starchy and tough.",
     "succession": "Make 2-3 sowings 10-14 days apart in early spring for a longer harvest. Can also be planted in late summer for a fall crop.",
     "yield": "Harvest over 2-3 weeks. A 10-foot row can produce 2-4 lbs of shelled peas.",
+    "pestsAndDiseases": ["pest-1", "disease-1"],
+    "harvestInstructions": "Harvest snow peas when pods are still flat. Harvest snap peas when pods are plump and crisp. Harvest shelling peas when pods are full and rounded. Pick regularly to encourage more pods.",
+    "containerGardening": "Dwarf or bush varieties are best. Use a pot at least 8 inches deep and provide a small trellis for support. Keep soil consistently moist.",
     "soil": {
       "ph": "6.0-7.5",
       "type": "Well-drained, fertile soil.",
@@ -117,11 +121,7 @@
     },
     "companionPlants": ["Carrots", "Radishes", "Cucumber", "Turnips", "Mint"],
     "antagonistPlants": ["Onions", "Garlic", "Chives", "Fennel (Bulbing)"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "3-5 days",
-      "notes": "The sugars in peas quickly turn to starch after picking, so eat or preserve them as soon as possible. Store in a perforated plastic bag."
-    },
+    "storage": "Best eaten fresh as sugars quickly turn to starch. Store pods in the fridge for a few days. For long-term, shell (if needed), blanch, and freeze.",
     "careTasks": [
       {
         "name": "Care for Seedlings",

@@ -8,15 +8,20 @@
     "daysToMaturity": 65,
     "spacing": "18-24 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 inch deep for seeds, or plant transplants deep enough to cover the first set of true leaves.",
     "startIndoorsWeeksBefore": 6,
     "transplantWeeksAfterLastFrost": 2,
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Consistent, deep watering",
     "wateringFrequencyDays": 3,
-    "description": "A small, sweet tomato variety that grows in clusters. Great for salads and snacking.",
-    "tips": "Provide sturdy support as they can grow quite large. Water consistently to prevent cracking.",
-    "succession": "Plant every 2-3 weeks for a continuous harvest.",
+    "description": "A small, sweet tomato variety that grows in clusters. Typically indeterminate and requires support.",
+    "tips": "Provide sturdy support as they can grow quite large and produce heavily. Water consistently to prevent cracking. Pruning suckers can improve air circulation.",
+    "pruning": "Most cherry tomatoes are indeterminate. Remove 'suckers' (small shoots that form in the 'V' between the main stem and a branch) to improve air circulation, though some gardeners leave them for a higher yield of smaller fruits.",
+    "succession": "One planting is usually sufficient for a season-long harvest due to their indeterminate nature.",
     "yield": "High yield, can produce hundreds of tomatoes per plant.",
+    "pestsAndDiseases": ["disorder-1", "disease-3", "disease-4"],
+    "harvestInstructions": "Harvest when clusters of tomatoes are fully colored and firm. They often ripen in quick succession. Pick frequently to encourage more production.",
+    "containerGardening": "Excellent for containers. Use at least a 5-gallon pot with a tall cage or stake. Requires consistent watering.",
     "soil": {
       "ph": "6.2-6.8",
       "type": "Well-drained, loamy soil rich in organic matter.",
@@ -42,11 +47,7 @@
     },
     "companionPlants": ["Basil", "Carrots", "Marigold"],
     "antagonistPlants": ["Cabbage", "Sweet Corn", "Potato", "Fennel (Bulbing)", "Broccoli"],
-    "storage": {
-      "method": "Room temperature",
-      "duration": "3-7 days",
-      "notes": "Store on the counter, not in the refrigerator."
-    },
+    "storage": "Store at room temperature, not in the refrigerator. Can be frozen whole, dehydrated, or canned for long-term preservation.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -89,15 +90,20 @@
     "daysToMaturity": 85,
     "spacing": "24-36 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/4 inch deep for seeds, or plant transplants deep enough to cover the first set of true leaves.",
     "startIndoorsWeeksBefore": 6,
     "transplantWeeksAfterLastFrost": 2,
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Consistent, deep watering",
     "wateringFrequencyDays": 3,
-    "description": "A large, meaty tomato variety, perfect for slicing.",
-    "tips": "Provide strong support due to the heavy fruit. Mulch to retain moisture.",
-    "succession": "Not typically needed due to long harvest period.",
-    "yield": "Lower yield than other varieties, but much larger fruit.",
+    "description": "A large, meaty tomato variety, perfect for slicing. Most are indeterminate.",
+    "tips": "Provide very strong support due to the heavy fruit. Mulch heavily to retain moisture and prevent soil splash. Thinning fruit can lead to larger individual tomatoes.",
+    "pruning": "Pruning suckers is highly recommended to direct the plant's energy into developing large fruits and to improve air circulation, which helps prevent disease.",
+    "succession": "Not typically needed due to long harvest period of indeterminate plants.",
+    "yield": "Lower yield in number of fruits than other varieties, but much larger fruit.",
+    "pestsAndDiseases": ["disorder-1", "disease-3", "disease-4"],
+    "harvestInstructions": "Harvest when fruit is fully colored and firm with some give. Due to their size, it may be best to use two hands to support the fruit while twisting or use pruners.",
+    "containerGardening": "Challenging due to size, but possible with a very large (15-20 gallon) container and extremely sturdy staking. Consistent watering and feeding are critical.",
     "soil": {
       "ph": "6.0-6.8",
       "type": "Well-drained, fertile soil high in organic matter.",
@@ -123,11 +129,7 @@
     },
     "companionPlants": ["Basil", "Carrots", "Marigold"],
     "antagonistPlants": ["Cabbage", "Sweet Corn", "Potato", "Fennel (Bulbing)", "Broccoli"],
-    "storage": {
-      "method": "Room temperature",
-      "duration": "3-7 days",
-      "notes": "Store on the counter, not in the refrigerator."
-    },
+    "storage": "Store on the counter at room temperature. Because of their size, use quickly after slicing. Can be frozen (sliced or whole) or canned.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -170,15 +172,19 @@
     "daysToMaturity": 75,
     "spacing": "12-16 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/2 inch deep.",
     "startIndoorsWeeksBefore": 4,
     "transplantWeeksAfterLastFrost": 2,
     "directSowWeeksAfterLastFrost": 2,
     "wateringNeeds": "Regular watering",
     "wateringFrequencyDays": 3,
-    "description": "A small, grape-sized fruit that looks like a tiny watermelon and tastes like a cucumber with a hint of lime.",
-    "tips": "Grow on a trellis to save space and make harvesting easier. The roots develop tubers, so a large pot is best if container gardening.",
-    "succession": "Plant every 2-3 weeks for a continuous harvest.",
+    "description": "A small, grape-sized fruit that looks like a tiny watermelon and tastes like a cucumber with a hint of lime. In warm climates (zones 7+), the plant can be a perennial, growing back from its underground tuber.",
+    "tips": "Grow on a trellis at least 4-6 feet tall to save space and make harvesting easier. The plant is drought-tolerant once established but produces best with consistent water. In cooler climates, you can dig up the tuber and store it over winter like a dahlia.",
+    "succession": "For a long and heavy harvest, plant a new batch of seeds every 3-4 weeks through late spring.",
     "yield": "Very prolific.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "Harvest when fruits are firm and about the size of a grape. They should detach easily. Harvest regularly to encourage more production.",
+    "containerGardening": "Ideal for containers. Use at least a 5-gallon pot with a trellis of at least 4-6 feet. The plant will produce underground tubers, so give it room.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Well-drained soil.",
@@ -204,11 +210,7 @@
     },
     "companionPlants": ["Sweet Corn", "Green Beans (Bush)", "Nasturtium"],
     "antagonistPlants": ["Potato", "Cucumber", "Watermelon", "Cantaloupe", "Fennel (Bulbing)"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1 week",
-      "notes": "Store in the refrigerator."
-    },
+    "storage": "Store in the refrigerator for up to a week. They are excellent for pickling or adding to salsas.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -251,25 +253,31 @@
     "daysToMaturity": 730,
     "spacing": "4-6 feet",
     "sunRequirement": "Full sun",
+    "plantingDepth": "Plant at the same depth it was in the nursery pot. Do not plant too deep or bury the crown.",
+    "winterChill": "Most highbush varieties require 800-1000 chill hours below 45°F. Low-chill varieties like Southern Highbush are available for warmer climates.",
+    "pruningSchedule": "Prune in late winter/early spring while dormant. For the first 2-3 years, remove only dead, damaged, or crossing branches. On mature plants, also remove 1-2 of the oldest, least productive canes each year to encourage new growth.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Consistent moisture",
     "wateringFrequencyDays": 2,
-    "description": "A perennial shrub producing sweet, antioxidant-rich berries. Requires cross-pollination for best fruit set.",
-    "tips": "Plant at least two different varieties for better pollination. Mulch heavily to maintain soil moisture and acidity.",
-    "succession": "Not applicable for perennial plants.",
+    "description": "A perennial shrub producing sweet, antioxidant-rich berries. Requires acidic soil to thrive.",
+    "tips": "Plant at least two different varieties for better pollination and a larger harvest. Mulch heavily with acidic materials like pine needles or oak leaves to maintain soil moisture and acidity. Use netting to protect ripening berries from birds.",
+    "succession": "Not applicable. Plant early, mid, and late-season varieties to extend the harvest period over several months.",
     "yield": "5-10 pounds per mature bush.",
+    "pestsAndDiseases": ["pest-4"],
+    "harvestInstructions": "Berries ripen over several weeks. Harvest only fully blue berries with a light, powdery bloom. They should come off the stem with a gentle tug. Taste a few to check for sweetness before a large harvest.",
+    "containerGardening": "Compact or half-high varieties are suitable for large containers (15-20 gallons). Use an acidic potting mix for azaleas and rhododendrons. Regular watering is critical as they have shallow roots.",
     "soil": {
       "ph": "4.5-5.5",
       "type": "Acidic, well-drained soil rich in organic matter.",
-      "notes": "Requires acidic soil. Amend with sulfur if needed."
+      "notes": "Requires acidic soil. Amend with elemental sulfur or use acidifying fertilizers if soil pH is too high."
     },
     "temperature": {
       "optimalLowF": 60,
       "optimalHighF": 80,
       "absoluteMinF": -20,
-      "notes": "Cold-hardy perennial. Most varieties require winter chill hours."
+      "notes": "Cold-hardy perennial. Most varieties require a specific number of winter chill hours to produce fruit."
     },
     "environmentalAlerts": [
       {
@@ -285,11 +293,7 @@
     },
     "companionPlants": ["Azalea", "Rhododendron", "Cranberry"],
     "antagonistPlants": ["Tomato", "Peas", "Green Beans (Bush)", "Cabbage", "Cauliflower", "Lawn Grass"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "7-10 days",
-      "notes": "Store unwashed in refrigerator. Freeze for long-term storage."
-    },
+    "storage": "Store unwashed berries in the refrigerator for 7-10 days. For long-term preservation, they freeze exceptionally well and are perfect for jams, syrups, and baking.",
     "careTasks": [
       {
         "name": "Water deeply",
@@ -326,15 +330,21 @@
     "daysToMaturity": 365,
     "spacing": "18-24 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "Plant shallowly, with the crown about 1-2 inches above the soil line.",
+    "winterChill": "Requires 800-1600 chill hours, depending on the variety.",
+    "pruningSchedule": "For summer-bearing: after harvest, prune the canes that just fruited (floricanes) to the ground. For everbearing: in late winter, prune the top portion of canes that fruited last fall; these will produce a summer crop, after which they should be removed.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Regular watering",
     "wateringFrequencyDays": 3,
     "description": "A perennial cane fruit producing sweet-tart berries. Available in summer-bearing and everbearing varieties.",
-    "tips": "Install trellis system for support. Prune old canes after harvest to promote new growth.",
-    "succession": "Not applicable for perennial plants.",
+    "tips": "Install a trellis system for support and to improve air circulation. Use netting to protect ripening berries from birds. Canes are biennial: they grow one year (primocanes) and fruit the next (floricanes).",
+    "succession": "Not applicable. Plant both summer-bearing and everbearing varieties to get a harvest in summer and another in fall.",
     "yield": "2-4 pounds per mature plant.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "Harvest when berries are deeply colored and pull easily from the central core (receptacle). Pick every couple of days, preferably in the morning.",
+    "containerGardening": "Possible in large containers (10+ gallons) with a trellis, but requires diligent watering and winter protection for the pot in cold climates.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Well-drained, fertile soil rich in organic matter.",
@@ -360,11 +370,7 @@
     },
     "companionPlants": ["Garlic", "Chives", "Tansy"],
     "antagonistPlants": ["Potato", "Tomato", "Eggplant", "Blackberry"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "2-3 days",
-      "notes": "Very perishable. Use quickly or freeze immediately."
-    },
+    "storage": "Extremely perishable. Store unwashed in a single layer in the refrigerator for 1-2 days. For long-term, freeze on a baking sheet before transferring to a bag. Excellent for jams.",
     "careTasks": [
       {
         "name": "Install trellis system",
@@ -401,15 +407,21 @@
     "daysToMaturity": 365,
     "spacing": "3-4 feet",
     "sunRequirement": "Full sun",
+    "plantingDepth": "Plant at the same depth as it was in the nursery pot.",
+    "winterChill": "Typically requires 200-500 chill hours. Less than most raspberries and blueberries.",
+    "pruningSchedule": "In late winter, prune side branches (laterals) on the floricanes back to 12-18 inches. In summer, tip-prune new primocanes when they reach 3-4 feet to encourage branching. After fruiting, remove the old floricanes that have died back.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Deep, regular watering",
     "wateringFrequencyDays": 4,
-    "description": "A thorny perennial cane producing large, sweet-tart berries. Very vigorous and productive.",
-    "tips": "Wear gloves when harvesting due to thorns. Prune old canes annually for best production.",
-    "succession": "Not applicable for perennial plants.",
+    "description": "A thorny or thornless perennial cane producing large, sweet-tart berries. Very vigorous and productive.",
+    "tips": "Wear gloves when harvesting thorny varieties. A sturdy trellis is essential to manage the vigorous canes. Use netting to protect ripening berries from birds.",
+    "succession": "Not applicable. Choose varieties that ripen at different times to extend the harvest season.",
     "yield": "5-10 pounds per mature plant.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "Harvest when berries are fully black, plump, and lose their high gloss. A ripe berry will be sweet, not tart, and should pull easily from the plant with its core (receptacle) intact.",
+    "containerGardening": "Thornless, erect varieties can be grown in large (10-15 gallon) pots with a sturdy trellis. Regular pruning is necessary to maintain a manageable size.",
     "soil": {
       "ph": "5.5-7.0",
       "type": "Well-drained soil with good organic content.",
@@ -435,11 +447,7 @@
     },
     "companionPlants": ["Mint", "Chives", "Marigold"],
     "antagonistPlants": ["Potato", "Tomato", "Eggplant", "Raspberry"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "3-5 days",
-      "notes": "Store unwashed in refrigerator. Rinse just before eating."
-    },
+    "storage": "Store unwashed in the refrigerator for 3-5 days. They freeze well and make excellent jams, syrups, and pies.",
     "careTasks": [
       {
         "name": "Install sturdy trellis",
@@ -475,15 +483,23 @@
     "daysToMaturity": 1095,
     "spacing": "6-8 feet",
     "sunRequirement": "Full sun",
+    "plantingDepth": "Plant at the same depth or slightly deeper than it was in the nursery pot.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Moderate watering",
     "wateringFrequencyDays": 7,
     "description": "A perennial vine producing clusters of sweet fruit. Takes several years to establish and produce significant harvest.",
-    "tips": "Requires strong trellis system and annual pruning. Choose varieties suited to your climate zone.",
-    "succession": "Not applicable for perennial plants.",
+    "tips": "Requires a strong trellis system. Annual pruning is critical for fruit production; grapes fruit on new growth from one-year-old canes.",
+    "succession": "Not applicable. Plant different varieties (e.g., table, wine, early, late) for different uses and harvest times.",
     "yield": "10-30 pounds per mature vine.",
+    "pestsAndDiseases": ["disease-1", "disease-2"],
+    "harvestInstructions": "Harvest when grapes are fully colored, have a slight bloom, and are sweet to the taste. They do not ripen after being picked. Harvest entire clusters with pruners.",
+    "containerGardening": "Possible in very large containers (20+ gallons) with a sturdy trellis, but yield will be limited. Requires careful water and nutrient management.",
+    "rootstockInfo": "Many grape varieties are grafted onto rootstocks that are resistant to pests like phylloxera and tolerant of specific soil conditions (e.g., clay, drought).",
+    "trainingSystems": "Common systems include Cane Pruning (like Guyot) and Spur Pruning (like Cordon), depending on the grape variety's fruiting habit.",
+    "pollinatorRecommendations": "Most grapes are self-fertile, but some varieties may benefit from cross-pollination with another variety blooming at the same time.",
+    "dormantSeasonCare": "The most important task is pruning, which is done in late winter. This controls the size of the vine and determines the number of fruit clusters for the coming season. Also a good time to apply dormant oil spray.",
     "soil": {
       "ph": "6.0-7.5",
       "type": "Well-drained, slightly alkaline soil.",
@@ -509,11 +525,7 @@
     },
     "companionPlants": ["Rose", "Lavender", "Oregano"],
     "antagonistPlants": ["Cabbage", "Radishes", "Black Walnut", "Sunflower"],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1-2 weeks",
-      "notes": "Store in perforated bags in refrigerator."
-    },
+    "storage": "Store unwashed grape clusters in a perforated plastic bag in the refrigerator for 1-2 weeks. Can be frozen for long-term use or made into juice or jelly.",
     "careTasks": [
       {
         "name": "Install trellis system",
@@ -549,15 +561,23 @@
     "daysToMaturity": 1460,
     "spacing": "12-15 feet",
     "sunRequirement": "Full sun",
+    "plantingDepth": "Plant with the graft union 2-3 inches above the soil line.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": null,
     "wateringNeeds": "Deep, infrequent watering",
     "wateringFrequencyDays": 10,
     "description": "A fruit tree producing crisp, sweet apples. Requires cross-pollination from another apple variety for fruit production.",
-    "tips": "Plant at least two different varieties for pollination. Annual pruning is essential for tree health and fruit quality.",
-    "succession": "Not applicable for perennial trees.",
-    "yield": "30-50 pounds per mature tree.",
+    "tips": "Plant at least two different varieties that bloom at the same time for pollination. Annual pruning is essential for tree health and fruit quality.",
+    "succession": "Not applicable. Plant different varieties (early, mid, late season) to have apples for an extended period.",
+    "yield": "30-50 pounds per mature dwarf tree.",
+    "pestsAndDiseases": ["disease-1"],
+    "harvestInstructions": "Harvest when apples are fully colored and easily twist off the branch with an upward lift. Taste for ripeness. Different varieties ripen at different times from late summer through fall.",
+    "containerGardening": "Only dwarf or super-dwarf rootstocks are suitable for very large containers (25+ gallons). Requires significant pruning and care.",
+    "rootstockInfo": "Apple trees are grafted onto rootstocks that control the tree's size (dwarf, semi-dwarf, standard), disease resistance, and cold hardiness.",
+    "trainingSystems": "Common systems include Central Leader for standard trees, and Espalier or Tall Spindle for high-density or ornamental plantings.",
+    "pollinatorRecommendations": "Requires a different apple or crabapple variety that blooms at the same time for cross-pollination. Some varieties are 'triploid' and cannot pollinate others.",
+    "dormantSeasonCare": "Prune in late winter to remove dead or crossing branches, improve light penetration, and maintain a strong structure. Apply dormant oil sprays to control overwintering pests.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Well-drained, fertile soil with good organic content.",
@@ -583,11 +603,7 @@
     },
     "companionPlants": ["Chives", "Nasturtium", "Comfrey"],
     "antagonistPlants": ["Juniper", "Potato", "Fennel (Bulbing)", "Carrots", "Rosemary"],
-    "storage": {
-      "method": "Cool, humid storage",
-      "duration": "2-6 months",
-      "notes": "Store in cool cellar or refrigerator for long-term storage."
-    },
+    "storage": "Store in a cool, dark, humid place like a root cellar or refrigerator for 2-6 months. Can be processed into applesauce, cider, or dried slices for long-term preservation.",
     "careTasks": [
       {
         "name": "Deep watering",

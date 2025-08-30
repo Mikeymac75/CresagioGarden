@@ -8,6 +8,7 @@
     "daysToMaturity": 45,
     "spacing": "6-8 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "1/8 to 1/4 inch deep.",
     "startIndoorsWeeksBefore": 4,
     "transplantWeeksAfterLastFrost": -2,
     "directSowWeeksAfterLastFrost": -2,
@@ -17,6 +18,9 @@
     "tips": "Provide afternoon shade in warmer weather to prevent bolting (going to seed) and extend the harvest season.",
     "succession": "Essential for a steady supply. Sow new seeds every 2 weeks throughout the growing season.",
     "yield": "Continuous harvest of outer leaves. 2-3 plants per person is usually sufficient at any one time.",
+    "pestsAndDiseases": ["pest-1", "pest-4"],
+    "harvestInstructions": "Harvest outer leaves when they reach 3-4 inches long using the 'cut-and-come-again' method. This allows the central bud to continue producing new leaves.",
+    "containerGardening": "Excellent for containers and window boxes. A wide, shallow pot is suitable. Keep consistently watered as they have shallow roots.",
     "soil": {
       "ph": "6.0-6.8",
       "type": "Loose, well-drained soil with plenty of organic matter.",
@@ -26,7 +30,7 @@
       "optimalLowF": 60,
       "optimalHighF": 70,
       "absoluteMinF": 32,
-      "notes": "A cool-season crop. Will bolt and become bitter in hot weather (above 80\u00b0F). Appreciates afternoon shade."
+      "notes": "A cool-season crop. Will bolt and become bitter in hot weather (above 80°F). Appreciates afternoon shade."
     },
     "environmentalAlerts": [
       {
@@ -54,11 +58,7 @@
       "Fennel (Bulbing)",
       "Parsley"
     ],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "5-10 days",
-      "notes": "Wash and dry leaves thoroughly. Store in a plastic bag or container with a paper towel to absorb excess moisture."
-    },
+    "storage": "Wash and dry leaves thoroughly. Store in a container or plastic bag with a paper towel in the refrigerator to absorb excess moisture. Best eaten within a week.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -101,6 +101,7 @@
     "daysToMaturity": 40,
     "spacing": "4-6 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "1/2 inch deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": -4,
@@ -110,6 +111,9 @@
     "tips": "Spinach bolts very quickly in response to heat and long day length. Choose bolt-resistant varieties for later plantings.",
     "succession": "Sow seeds every 2 weeks in early spring and again in late summer for a fall crop. Avoid sowing in late spring as heat causes rapid bolting.",
     "yield": "Continuous harvest of leaves. A 10-foot row can provide plenty for a family.",
+    "pestsAndDiseases": ["pest-1", "disease-2"],
+    "harvestInstructions": "Harvest outer leaves when they are 3-6 inches long. Alternatively, harvest the entire plant at the base before it starts to bolt (send up a flower stalk).",
+    "containerGardening": "Grows well in containers at least 8 inches deep. Choose bolt-resistant varieties. Requires consistent moisture as pots dry out quickly.",
     "soil": {
       "ph": "6.5-7.5",
       "type": "Well-drained, fertile loam.",
@@ -146,11 +150,7 @@
       "Potato",
       "Fennel (Bulbing)"
     ],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "5-7 days",
-      "notes": "Store unwashed in a plastic bag in the crisper. Wash just before use to prevent premature decay. Also freezes well after blanching."
-    },
+    "storage": "Store unwashed in a plastic bag in the crisper for up to a week. Wash just before use. For long-term preservation, blanch and freeze.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -187,6 +187,7 @@
     "daysToMaturity": 60,
     "spacing": "12-18 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "1/2 inch deep.",
     "startIndoorsWeeksBefore": 6,
     "transplantWeeksAfterLastFrost": -2,
     "directSowWeeksAfterLastFrost": -4,
@@ -196,6 +197,9 @@
     "tips": "Harvest outer leaves from the bottom up to allow the center of the plant to keep producing new leaves. Very cold tolerant and can often be harvested into winter.",
     "succession": "Not usually necessary as one planting provides a long harvest. Can plant a second crop in mid-summer for a fall/winter harvest.",
     "yield": "Continuous harvest of leaves over many months.",
+    "pestsAndDiseases": ["pest-1", "pest-3"],
+    "harvestInstructions": "Harvest the lower, outer leaves when they are about the size of your hand. Leave the central bud and at least 4-5 inner leaves intact to continue producing. Flavor improves after a frost.",
+    "containerGardening": "Grows well in large pots (5+ gallons). Its ornamental leaves make it a great choice for edible landscaping. Keep well-watered.",
     "soil": {
       "ph": "6.0-7.5",
       "type": "Fertile, well-drained soil.",
@@ -233,11 +237,7 @@
       "Strawberry (June-Bearing)",
       "Grape"
     ],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1-2 weeks",
-      "notes": "Store in a plastic bag in the crisper drawer. For best results, wash, dry, and then store. Can be blanched and frozen for long-term storage."
-    },
+    "storage": "Store unwashed leaves in a plastic bag in the crisper drawer for 1-2 weeks. For long-term storage, kale can be de-stemmed, blanched, and frozen.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -280,6 +280,7 @@
     "daysToMaturity": 55,
     "spacing": "6-8 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "1/2 inch deep.",
     "startIndoorsWeeksBefore": 4,
     "transplantWeeksAfterLastFrost": -2,
     "directSowWeeksAfterLastFrost": -2,
@@ -289,6 +290,9 @@
     "tips": "Harvest outer leaves regularly to encourage continued growth. Both the leaves and the colorful stems are edible.",
     "succession": "Not necessary. One planting provides a continuous harvest from late spring until a hard frost.",
     "yield": "Continuous harvest of leaves and stems all season long.",
+    "pestsAndDiseases": ["pest-1", "pest-4"],
+    "harvestInstructions": "Use the 'cut-and-come-again' method by cutting outer leaves 1-2 inches from the ground, leaving the inner leaves to grow. Both the leaf and the stem are edible.",
+    "containerGardening": "Excellent for containers. A 5-gallon pot is a good size. Its colorful stems make it a great 'thriller' element in mixed pots.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Well-drained soil rich in organic matter.",
@@ -326,11 +330,7 @@
       "Potato",
       "Sweet Corn"
     ],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1 week",
-      "notes": "Store unwashed in a plastic bag in the crisper. Stems and leaves can be stored separately if desired."
-    },
+    "storage": "Store unwashed leaves in a plastic bag in the crisper for up to a week. Stems and leaves can be blanched and frozen for long-term storage.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -379,6 +379,7 @@
     "daysToMaturity": 35,
     "spacing": "4-6 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "1/4 inch deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": -4,
@@ -388,6 +389,9 @@
     "tips": "Harvest leaves when they are young and tender for the mildest flavor. The flowers are also edible and have a similar peppery taste.",
     "succession": "Sow every 2-3 weeks for a continuous supply. It grows so fast that succession planting is key to having it all season.",
     "yield": "Continuous harvest of leaves. A small patch is often enough due to its fast growth.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "Harvest outer leaves when they are 2-4 inches long for the best flavor. Harvest frequently to delay bolting. Edible flowers can be used in salads.",
+    "containerGardening": "Grows very well in containers of any size. A fast and easy crop for a sunny windowsill or balcony.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Average, well-drained soil.",
@@ -423,11 +427,7 @@
       "Strawberry (June-Bearing)",
       "Grape"
     ],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "2-4 days",
-      "notes": "Very perishable. Wash, dry thoroughly, and store in a plastic bag with a paper towel to absorb moisture."
-    },
+    "storage": "Highly perishable. Wash, dry thoroughly, and store in a plastic bag with a paper towel in the refrigerator for 2-4 days. Best used immediately.",
     "careTasks": [
       {
         "name": "Care for Seedlings",
@@ -470,6 +470,7 @@
     "daysToMaturity": 65,
     "spacing": "18-24 inches",
     "sunRequirement": "Full sun to partial shade",
+    "plantingDepth": "1/2 inch deep.",
     "startIndoorsWeeksBefore": 6,
     "transplantWeeksAfterLastFrost": -2,
     "directSowWeeksAfterLastFrost": -4,
@@ -479,6 +480,9 @@
     "tips": "Harvest outer leaves from the bottom up to allow the plant to grow and produce for a long period. Can produce well into the winter in mild climates.",
     "succession": "Not usually necessary as plants are very productive. A second planting in mid-summer can provide a tender fall crop.",
     "yield": "Continuous harvest of leaves. A few plants can provide a large harvest over a long season.",
+    "pestsAndDiseases": ["pest-1", "pest-3"],
+    "harvestInstructions": "Harvest the lower leaves when they are dark green and at a desirable size, working your way up the stalk. A light frost will improve their flavor.",
+    "containerGardening": "Possible in large containers (5-10 gallons), but plants can get quite large. Consistent watering is key to prevent toughness.",
     "soil": {
       "ph": "6.5-7.5",
       "type": "Fertile, well-drained soil.",
@@ -516,11 +520,7 @@
       "Strawberry (June-Bearing)",
       "Grape"
     ],
-    "storage": {
-      "method": "Refrigerate",
-      "duration": "1 week",
-      "notes": "Store unwashed in a plastic bag in the crisper. Can be blanched and frozen for long-term preservation."
-    },
+    "storage": "Store unwashed in a plastic bag in the crisper for up to a week. For long-term preservation, de-stem, blanch, and freeze.",
     "careTasks": [
       {
         "name": "Care for Seedlings",

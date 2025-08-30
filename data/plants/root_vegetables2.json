@@ -8,6 +8,7 @@
     "daysToMaturity": 100,
     "spacing": "12-18 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "Plant slips 4-6 inches deep, with a few leaves showing above the soil.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": 3,
     "directSowWeeksAfterLastFrost": null,
@@ -15,8 +16,11 @@
     "wateringFrequencyDays": 5,
     "description": "A warm-season vine producing nutritious, sweet orange tubers. Grown from slips (rooted cuttings) rather than seeds. Excellent source of vitamins A and C.",
     "tips": "Purchase certified disease-free slips from reputable suppliers. Hill soil around plants as they grow. Harvest before first frost for best storage.",
-    "succession": "Not applicable - single season crop.",
+    "succession": "Not applicable - single long season crop.",
     "yield": "3-6 pounds per plant, depending on variety and growing conditions.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "Harvest before the first fall frost, as cold temperatures can damage the tubers. Loosen the soil carefully with a garden fork several feet from the plant's center to avoid bruising. Handle gently as they damage easily.",
+    "containerGardening": "Compact or bush varieties can be grown in large (15-20 gallon) containers or grow bags. Ensure good drainage and consistent watering.",
     "soil": {
       "ph": "5.8-6.2",
       "type": "Well-drained, loose, sandy loam soil.",
@@ -47,11 +51,7 @@
     },
     "companionPlants": ["Green Beans (Bush)", "Peas", "Oregano", "Thyme", "Carrots", "Onions"],
     "antagonistPlants": ["Zucchini", "Winter Squash (Butternut)", "Parsnip", "Fennel (Bulbing)"],
-    "storage": {
-      "method": "Cure then store in cool, dry place",
-      "duration": "6-10 months when properly cured",
-      "notes": "Cure in warm, humid conditions for 7-10 days, then store at 55-60°F with high humidity."
-    },
+    "storage": "Must be cured first. Hold them at 80-85°F and high humidity for 1-2 weeks, then store in a cool, dark place (55-60°F). Do not refrigerate. Properly cured sweet potatoes can last for months. Can also be canned or frozen after cooking.",
     "careTasks": [
       {
         "name": "Plant slips",
@@ -94,6 +94,7 @@
     "daysToMaturity": 120,
     "spacing": "3-4 inches",
     "sunRequirement": "Full sun",
+    "plantingDepth": "1/2 inch deep.",
     "startIndoorsWeeksBefore": null,
     "transplantWeeksAfterLastFrost": null,
     "directSowWeeksAfterLastFrost": -2,
@@ -103,6 +104,9 @@
     "tips": "Seeds have poor germination - sow thickly and thin later. Can remain in ground through winter in most climates for sweetest flavor.",
     "succession": "Not recommended - long growing season makes succession planting impractical.",
     "yield": "1 root per plant, typically 8-12 inches long.",
+    "pestsAndDiseases": [],
+    "harvestInstructions": "Harvest after the first few frosts, as cold weather converts starches to sugars and improves flavor. They can be left in the ground and harvested as needed throughout the winter if the ground doesn't freeze solid.",
+    "containerGardening": "Requires a very deep container (at least 18-24 inches) to accommodate the long taproot. Not ideal, but possible.",
     "soil": {
       "ph": "6.0-7.0",
       "type": "Deep, loose, well-drained soil free of stones and debris.",
@@ -128,11 +132,7 @@
     },
     "companionPlants": ["Onions", "Radishes", "Lettuce (Loose Leaf)", "Rosemary", "Peas"],
     "antagonistPlants": ["Carrots", "Celery", "Dill", "Fennel (Bulbing)", "Potato"],
-    "storage": {
-      "method": "Leave in ground or store in root cellar",
-      "duration": "All winter in ground, 4-6 months in storage",
-      "notes": "Best left in ground and harvested as needed. Store harvested roots in damp sand at 32-35°F."
-    },
+    "storage": "Best stored in the ground and harvested as needed. If harvested, remove tops and store in a root cellar or the crisper drawer of the refrigerator for several weeks. Can be cooked and frozen.",
     "careTasks": [
       {
         "name": "Direct sowing",

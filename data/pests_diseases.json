@@ -1,0 +1,73 @@
+[
+  {
+    "id": "pest-1",
+    "name": "Aphids",
+    "description": "Small, sap-sucking insects that cluster on new growth, often causing leaves to yellow and curl. They secrete a sticky substance called honeydew, which can lead to sooty mold.",
+    "prevention": "Introduce beneficial insects like ladybugs, lacewings, and parasitic wasps. Plant trap crops like nasturtiums or mustard greens nearby. Regularly inspect plants and spray with a strong jet of water to dislodge them. Avoid over-fertilizing with nitrogen.",
+    "treatment": "For minor infestations, a strong jet of water can dislodge them. For heavier infestations, apply insecticidal soap or neem oil, ensuring complete coverage of the plant. Repeat applications may be necessary."
+  },
+  {
+    "id": "pest-2",
+    "name": "Spider Mites",
+    "description": "Tiny, spider-like pests that are difficult to see with the naked eye. They suck plant juices, causing stippling (tiny yellow or white dots) on leaves. Fine webbing on the underside of leaves is a clear sign of infestation.",
+    "prevention": "Spider mites thrive in hot, dry conditions, so increasing humidity around plants can deter them. Regularly misting plants can help. Quarantine new plants before introducing them to your garden.",
+    "treatment": "Spray with insecticidal soap or neem oil, paying close attention to the underside of leaves. Introduce predatory mites as a biological control."
+  },
+  {
+    "id": "pest-3",
+    "name": "Cabbage Worms",
+    "description": "The larval stage of the Cabbage White butterfly. These green caterpillars chew large, irregular holes in the leaves of brassica plants like cabbage, kale, and broccoli.",
+    "prevention": "Use floating row covers to prevent butterflies from laying eggs on plants. Plant aromatic herbs like thyme or dill nearby to deter them. Inspect the underside of leaves for eggs and caterpillars regularly.",
+    "treatment": "Handpick caterpillars from plants. Apply Bacillus thuringiensis (Bt), a natural bacterium that is toxic to caterpillars but safe for other organisms."
+  },
+  {
+    "id": "disease-1",
+    "name": "Powdery Mildew",
+    "description": "A fungal disease that appears as white, powdery spots on leaves and stems. It thrives in humid conditions with poor air circulation and can weaken the plant by blocking sunlight.",
+    "prevention": "Ensure good air circulation by properly spacing plants. Water at the base of the plant to keep foliage dry. Choose disease-resistant varieties when possible.",
+    "treatment": "Remove and destroy infected leaves. Spray with a solution of baking soda (1 tablespoon per gallon of water with a few drops of liquid soap) or a commercial fungicide. Neem oil is also effective."
+  },
+  {
+    "id": "disease-2",
+    "name": "Downy Mildew",
+    "description": "Often confused with powdery mildew, this disease causes yellow spots on the upper surfaces of leaves and a fuzzy, purplish-gray mold on the undersides. It prefers cool, moist conditions.",
+    "prevention": "Similar to powdery mildew: ensure good air circulation, avoid overhead watering, and select resistant varieties. Rotate crops and clean up garden debris in the fall.",
+    "treatment": "Remove infected plant parts immediately. Apply a copper-based fungicide, ensuring thorough coverage of the undersides of leaves."
+  },
+
+  {
+    "id": "disorder-1",
+    "name": "Blossom End Rot",
+    "description": "A dark, sunken, leathery spot on the bottom of fruits like tomatoes, peppers, and squash. It is not a disease but a physiological disorder caused by a calcium imbalance, usually triggered by inconsistent watering.",
+    "prevention": "Ensure consistent, deep watering to maintain even soil moisture. Amend soil with a calcium source like crushed eggshells, bone meal, or lime before planting. Avoid high-nitrogen fertilizers.",
+    "treatment": "Correct watering practices immediately. A foliar spray with a calcium solution can provide a quick fix for developing fruits, but long-term soil and watering management is key."
+  },
+  {
+    "id": "pest-4",
+    "name": "Slugs & Snails",
+    "description": "Mollusks that chew irregular holes in leaves and can devour entire seedlings. They are most active at night and in damp, cool conditions, leaving a tell-tale slime trail.",
+    "prevention": "Create barriers with crushed eggshells, diatomaceous earth, or copper tape around plants. Remove hiding places like boards and stones. Encourage natural predators like toads and birds.",
+    "treatment": "Handpick them at night. Set beer traps (containers filled with beer, sunk into the soil) to attract and drown them. Use iron phosphate-based slug baits, which are safer for pets and wildlife than traditional metaldehyde baits."
+  },
+  {
+    "id": "pest-5",
+    "name": "Squash Vine Borer",
+    "description": "The larva of a day-flying moth that resembles a wasp. The borer tunnels into the stems of squash and pumpkin plants, causing the plant to suddenly wilt and die. Sawdust-like frass (excrement) near the base of the plant is a key sign.",
+    "prevention": "Use floating row covers until the plants begin to flower. Wrap the base of the stems with aluminum foil or nylon stockings to prevent egg-laying. Plant a trap crop of Hubbard squash, which they prefer.",
+    "treatment": "If caught early, you can perform surgery: carefully slit the stem lengthwise at the entry point and remove the borer. Cover the slit stem with moist soil to encourage it to re-root. Injecting stems with Bt can also be effective."
+  },
+  {
+    "id": "disease-3",
+    "name": "Early Blight",
+    "description": "A fungal disease primarily affecting tomatoes and potatoes. It appears as small, dark lesions, often with a 'bullseye' pattern, on lower leaves. The leaves may yellow and drop, and the disease can spread to stems and fruit.",
+    "prevention": "Rotate crops, giving at least 2-3 years before planting nightshades in the same spot. Mulch heavily to prevent fungal spores from splashing from the soil onto the leaves. Keep foliage dry by using drip irrigation.",
+    "treatment": "Remove and destroy infected lower leaves. Apply a copper or chlorothalonil-based fungicide at the first sign of disease and continue every 7-10 days."
+  },
+  {
+    "id": "disease-4",
+    "name": "Late Blight",
+    "description": "A devastating fungal disease (oomycete) affecting tomatoes and potatoes, responsible for the Irish Potato Famine. It appears as large, water-soaked, greenish-black blotches on leaves and stems, spreading rapidly in cool, wet weather. A white, fuzzy mold may appear on the underside of leaves.",
+    "prevention": "Plant certified disease-free seed potatoes and tomato seedlings. Ensure ample spacing for air circulation. Avoid overhead watering. Prophylactic fungicide sprays may be necessary in humid climates.",
+    "treatment": "Immediate action is critical. Remove and destroy all infected plants to prevent spread; do not compost them. Fungicides containing copper or chlorothalonil can slow the spread if applied early, but control is very difficult once established."
+  }
+]
