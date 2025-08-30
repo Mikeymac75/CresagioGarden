@@ -23,7 +23,7 @@
       "vegetative": "1-1-1",
       "flowering": "1-2-2"
     },
-    "companionPlants": ["Tomato", "Potato", "Cucumber", "Rose", "Lettuce"],
+    "companionPlants": ["Tomato", "Potato", "Cucumber", "Rose", "Lettuce (Loose Leaf)"],
     "antagonistPlants": [],
     "careTasks": [
       {
@@ -70,8 +70,8 @@
       "vegetative": "3-2-2",
       "flowering": "2-3-2"
     },
-    "companionPlants": ["Cucumber", "Lettuce", "Corn", "Bush Beans", "Peas"],
-    "antagonistPlants": ["Potato", "Pole Beans", "Fennel"],
+    "companionPlants": ["Cucumber", "Lettuce (Loose Leaf)", "Sweet Corn", "Green Beans (Bush)", "Peas"],
+    "antagonistPlants": ["Potato", "Pole Beans", "Fennel (Bulbing)"],
     "careTasks": [
       {
         "name": "Provide support",
@@ -117,8 +117,8 @@
       "vegetative": "1-1-1",
       "flowering": "1-1-1"
     },
-    "companionPlants": ["Cucumber", "Squash", "Tomato", "Pepper", "Radish"],
-    "antagonistPlants": ["Broccoli", "Kale", "Fennel"],
+    "companionPlants": ["Cucumber", "Zucchini", "Winter Squash (Butternut)", "Tomato", "Bell Pepper", "Jalapeño Pepper", "Habanero Pepper", "Cayenne Pepper", "Radishes"],
+    "antagonistPlants": ["Broccoli", "Kale", "Fennel (Bulbing)"],
     "careTasks": [
       {
         "name": "Watering",
@@ -158,8 +158,8 @@
       "vegetative": "2-2-2",
       "flowering": "1-2-2"
     },
-    "companionPlants": ["Tomato", "Cucumber", "Marigold", "Cosmos", "Lettuce"],
-    "antagonistPlants": ["Impatiens", "Hydrangea", "Ferns", "Fennel"],
+    "companionPlants": ["Tomato", "Cucumber", "Marigold", "Cosmos", "Lettuce (Loose Leaf)"],
+    "antagonistPlants": ["Impatiens", "Hydrangea", "Ferns", "Fennel (Bulbing)"],
     "careTasks": [
       {
         "name": "Pinch young plants",
