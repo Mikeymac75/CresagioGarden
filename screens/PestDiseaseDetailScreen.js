@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
-import { getPestImage } from '../../services/utils/ImageUtils';
+import { getPestImage } from '../services/utils/ImageUtils';
 
 const PestDiseaseDetailScreen = ({ route }) => {
   const { pest } = route.params;
