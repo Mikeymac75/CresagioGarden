@@ -1,11 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
+import { getPestImage } from '../../services/utils/ImageUtils';
 
 const PestDiseaseDetailScreen = ({ route }) => {
   const { pest } = route.params;
+  const pestImageSource = getPestImage(pest.id);
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      {pestImageSource && (
+        <Image source={pestImageSource} style={styles.pestImage} resizeMode="cover" />
+      )}
       <View style={styles.card}>
         <Text style={styles.title}>{pest.name}</Text>
 
@@ -35,6 +40,12 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 16,
     elevation: 2,
+  },
+  pestImage: {
+    width: '100%',
+    height: 250,
+    borderRadius: 12,
+    marginBottom: 16,
   },
   title: {
     fontSize: 28,
