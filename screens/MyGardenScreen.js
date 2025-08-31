@@ -230,6 +230,13 @@ export default function MyGardenScreen({ navigation }) {
               <Ionicons name="help-circle-outline" size={20} color="#4CAF50" />
               <Text style={styles.faqButtonText}>App FAQ</Text>
             </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.pestDiseaseButton}
+              onPress={() => navigation.navigate('PestDiseaseLibrary')}
+            >
+              <Ionicons name="bug" size={20} color="#4CAF50" />
+              <Text style={styles.pestDiseaseButtonText}>Pest & Disease Library</Text>
+            </TouchableOpacity>
           </View>
         )}}
         ListEmptyComponent={() => (
@@ -365,6 +372,23 @@ const styles = StyleSheet.create({
   },
   addButtonText: {
     color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
+    marginLeft: 8,
+  },
+  pestDiseaseButton: {
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#4CAF50',
+    marginTop: 10,
+  },
+  pestDiseaseButtonText: {
+    color: '#4CAF50',
     fontWeight: 'bold',
     fontSize: 16,
     marginLeft: 8,

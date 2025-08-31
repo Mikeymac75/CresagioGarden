@@ -110,7 +110,7 @@ const TaskGenerator = {
               id: `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`,
               plantName: displayName,
               task: `${taskEmoji} ${baseTaskDescription} ${displayName}`,
-              description: careTask.description,
+              description: isHarvestTask ? plantDetails.harvestInstructions : careTask.description,
               date: taskDate.toISOString(),
               type: taskType
             });
@@ -123,7 +123,7 @@ const TaskGenerator = {
               id: `${gardenEntry.id}-${careTask.name}-${taskDate.toISOString()}`,
               plantName: displayName,
               task: `${taskEmoji} ${baseTaskDescription} for ${displayName}`,
-              description: careTask.description,
+              description: isHarvestTask ? plantDetails.harvestInstructions : careTask.description,
               date: taskDate.toISOString(),
               type: taskType
             });
@@ -360,6 +360,7 @@ export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, fi
           id: `${gardenEntry.id}-harvest-${harvestDate.toISOString()}`,
           plantName: displayName,
           task: `🥕 Harvest ${displayName}`,
+          description: plantDetails.harvestInstructions,
           date: harvestDate.toISOString(),
           type: TASK_TYPES.HARVEST
         };
