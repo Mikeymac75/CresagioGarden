@@ -263,6 +263,28 @@ export const generateDynamicAlerts = (weatherData, myGarden, allPlants) => {
           priority: 'medium',
         });
       }
+
+      // Handle environmental alerts from plant data
+      if (plantDetails.environmentalAlerts) {
+        const weatherConditionMap = {
+          FROST_WARNING: weatherData.hardFreezeWarning,
+          // Future conditions can be added here, e.g.:
+          // HIGH_WIND_WARNING: weatherData.highWindWarning,
+          // HEAVY_RAIN_WARNING: weatherData.heavyRainWarning,
+        };
+
+        plantDetails.environmentalAlerts.forEach(alert => {
+          if (weatherConditionMap[alert.condition]) {
+            dynamicAlerts.push({
+              id: `env-alert-${plantDetails.id}-${alert.condition}-${now.getTime()}`,
+              task: `⚠️ ${alert.message}`,
+              date: now.toISOString(),
+              type: 'alert',
+              priority: alert.priority,
+            });
+          }
+        });
+      }
     });
 
     // Remove duplicates and sort by priority

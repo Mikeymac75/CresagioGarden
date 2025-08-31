@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, ActivityIndicator, TouchableOpacity, Alert, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import plantIndex from '../assets/plant_index.json';
+import pestsAndDiseasesData from '../data/pests_diseases.json';
 import ProgressBar from '../components/ProgressBar';
 import TemperatureRange from '../components/TemperatureRange';
 import { loadPlantDetails, loadPlantFaq } from '../services/PlantService';
@@ -267,10 +268,80 @@ const PlantDetailScreen = ({ route, navigation }) => {
         {plant.temperature && (
             <TemperatureRange temperature={plant.temperature} unit={tempUnit} />
         )}
+        {plant.plantingDepth && (
+          <DetailRow icon="arrow-down-outline" label="Planting Depth" value={plant.plantingDepth} />
+        )}
       </View>
 
       <NpkCard npk={plant.npk} />
+
+      {/* Harvesting Card */}
+      <View style={styles.card}>
+        <Text style={styles.sectionTitle}>Harvesting</Text>
+        {plant.harvestType && <DetailRow icon="cut-outline" label="Harvest Type" value={plant.harvestType} />}
+        {plant.harvestType === 'continuous' && plant.harvestPeriodDays && (
+          <DetailRow icon="sync-outline" label="Harvest Period" value={`${plant.harvestPeriodDays} days`} />
+        )}
+        {plant.yield && <DetailRow icon="basket-outline" label="Yield" value={plant.yield} />}
+        {plant.harvestInstructions && (
+          <>
+            <Text style={styles.subSectionTitle}>Harvest Instructions</Text>
+            <Text style={styles.description}>{plant.harvestInstructions}</Text>
+          </>
+        )}
+      </View>
+
+      {/* Pests & Diseases Card */}
+      {plant.pestsAndDiseases && plant.pestsAndDiseases.length > 0 && (
+        <View style={styles.card}>
+          <Text style={styles.sectionTitle}>Pests & Diseases</Text>
+          <View style={styles.companionList}>
+            {plant.pestsAndDiseases.map((pestId) => {
+              const pest = pestsAndDiseasesData.find((p) => p.id === pestId);
+              if (!pest) return null;
+              return (
+                <TouchableOpacity
+                  key={pest.id}
+                  onPress={() => navigation.navigate('PestDiseaseDetail', { pest: pest })}
+                >
+                  <Text style={styles.companionLink}>{pest.name}</Text>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        </View>
+      )}
+
       <PlantCompanionsCard plant={plant} navigation={navigation} />
+
+      {/* Care & Tips Card */}
+      <View style={styles.card}>
+        <Text style={styles.sectionTitle}>Care & Tips</Text>
+        {plant.tips && (
+          <>
+            <Text style={styles.subSectionTitle}>General Tips</Text>
+            <Text style={styles.description}>{plant.tips}</Text>
+          </>
+        )}
+        {plant.succession && (
+          <>
+            <Text style={styles.subSectionTitle}>Succession Planting</Text>
+            <Text style={styles.description}>{plant.succession}</Text>
+          </>
+        )}
+        {plant.containerGardening && (
+          <>
+            <Text style={styles.subSectionTitle}>Container Gardening</Text>
+            <Text style={styles.description}>{plant.containerGardening}</Text>
+          </>
+        )}
+        {plant.storage && (
+          <>
+            <Text style={styles.subSectionTitle}>Storage</Text>
+            <Text style={styles.description}>{plant.storage}</Text>
+          </>
+        )}
+      </View>
 
       <FaqSection faqData={faqData} />
 

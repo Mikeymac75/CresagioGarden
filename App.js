@@ -16,6 +16,8 @@ import PlantCalendarScreen from './screens/PlantCalendarScreen';
 import GardenJournalScreen from './screens/GardenJournalScreen';
 import AllTasksCalendarScreen from './screens/AllTasksCalendarScreen';
 import PlantDetailScreen from './screens/PlantDetailScreen';
+import PestDiseaseLibraryScreen from './screens/PestDiseaseLibraryScreen';
+import PestDiseaseDetailScreen from './screens/PestDiseaseDetailScreen';
 import UpgradeScreen from './screens/UpgradeScreen';
 import AppFaqScreen from './screens/AppFaqScreen';
 import SettingsScreen from './screens/SettingsScreen';
@@ -60,6 +62,18 @@ function GardenStackNavigator() {
         name="Upgrade"
         component={UpgradeScreen}
         options={{ headerShown: false }}
+      />
+      <GardenStack.Screen
+        name="PestDiseaseLibrary"
+        component={PestDiseaseLibraryScreen}
+        options={{ title: 'Pest & Disease Library' }}
+      />
+      <GardenStack.Screen
+        name="PestDiseaseDetail"
+        component={PestDiseaseDetailScreen}
+        options={({ route }) => ({
+          title: route.params.pest.name,
+        })}
       />
     </GardenStack.Navigator>
   );
