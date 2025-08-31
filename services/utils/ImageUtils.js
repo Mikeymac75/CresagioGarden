@@ -41,7 +41,7 @@ const plantImages = {
   40: require('../../assets/images/plants/40.jpg'),
   41: require('../../assets/images/plants/41.jpg'),
   42: require('../../assets/images/plants/42.jpg'),
-  43: require('../../assets/images/plants/43.jpg'),
+  // 43: require('../../assets/images/plants/43.jpg'), // Renable when image is added
   44: require('../../assets/images/plants/44.jpg'),
   45: require('../../assets/images/plants/45.jpg'),
   46: require('../../assets/images/plants/46.jpg'),
