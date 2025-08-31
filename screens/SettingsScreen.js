@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert, Linking } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, TouchableOpacity, Alert, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { getItem as getSecureItem, setItem as setSecureItem } from '../utils/SecureStorage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -109,7 +109,7 @@ const SettingsScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.title}>Settings</Text>
 
       <View style={styles.section}>
@@ -175,7 +175,7 @@ const SettingsScreen = ({ navigation }) => {
           <Text style={styles.rowText}>Toggle Premium (Dev)</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

@@ -41,6 +41,7 @@ const plantImages = {
   40: require('../../assets/images/plants/40.jpg'),
   41: require('../../assets/images/plants/41.jpg'),
   42: require('../../assets/images/plants/42.jpg'),
+  43: require('../../assets/images/plants/43.jpg'),
   44: require('../../assets/images/plants/44.jpg'),
   45: require('../../assets/images/plants/45.jpg'),
   46: require('../../assets/images/plants/46.jpg'),
@@ -53,8 +54,32 @@ const plantImages = {
   53: require('../../assets/images/plants/53.jpg'),
   54: require('../../assets/images/plants/54.jpg'),
   55: require('../../assets/images/plants/55.jpg'),
+  63: require('../../assets/images/plants/63.jpg'),
+  64: require('../../assets/images/plants/64.jpg'),
+  65: require('../../assets/images/plants/65.jpg'),
+  66: require('../../assets/images/plants/66.jpg'),
 };
 
 export const getPlantImage = (plantId) => {
   return plantImages[plantId];
+};
+
+const pestImages = {};
+
+export const getPestImage = (pestId) => {
+  // Assuming the pestId is a string like 'pest-1' and the image is 'pest-1.jpg'
+  // This is a dynamic approach since we don't have the files yet.
+  // A static map would be better if the file names are known.
+  const imageMap = {
+    'pest-1': require('../../assets/images/pests/pest-1.jpg'),
+    'pest-2': require('../../assets/images/pests/pest-2.jpg'),
+    'pest-3': require('../../assets/images/pests/pest-3.jpg'),
+    'pest-4': require('../../assets/images/pests/pest-4.jpg'),
+    'pest-5': require('../../assets/images/pests/pest-5.jpg'),
+    'disease-1': require('../../assets/images/pests/disease-1.jpg'),
+    'disease-2': require('../../assets/images/pests/disease-2.jpg'),
+    'disease-3': require('../../assets/images/pests/disease-3.jpg'),
+    'disease-4': require('../../assets/images/pests/disease-4.jpg'),
+  };
+  return imageMap[pestId];
 };
