@@ -67,19 +67,18 @@ export const getPlantImage = (plantId) => {
 const pestImages = {};
 
 export const getPestImage = (pestId) => {
-  // Assuming the pestId is a string like 'pest-1' and the image is 'pest-1.jpg'
-  // This is a dynamic approach since we don't have the files yet.
-  // A static map would be better if the file names are known.
+  // When pest/disease images are added to assets/images/pests,
+  // uncomment this map and add the appropriate entries.
   const imageMap = {
-    'pest-1': require('../../assets/images/pests/pest-1.jpg'),
-    'pest-2': require('../../assets/images/pests/pest-2.jpg'),
-    'pest-3': require('../../assets/images/pests/pest-3.jpg'),
-    'pest-4': require('../../assets/images/pests/pest-4.jpg'),
-    'pest-5': require('../../assets/images/pests/pest-5.jpg'),
-    'disease-1': require('../../assets/images/pests/disease-1.jpg'),
-    'disease-2': require('../../assets/images/pests/disease-2.jpg'),
-    'disease-3': require('../../assets/images/pests/disease-3.jpg'),
-    'disease-4': require('../../assets/images/pests/disease-4.jpg'),
+    // 'pest-1': require('../../assets/images/pests/pest-1.jpg'),
+    // 'pest-2': require('../../assets/images/pests/pest-2.jpg'),
+    // 'pest-3': require('../../assets/images/pests/pest-3.jpg'),
+    // 'pest-4': require('../../assets/images/pests/pest-4.jpg'),
+    // 'pest-5': require('../../assets/images/pests/pest-5.jpg'),
+    // 'disease-1': require('../../assets/images/pests/disease-1.jpg'),
+    // 'disease-2': require('../../assets/images/pests/disease-2.jpg'),
+    // 'disease-3': require('../../assets/images/pests/disease-3.jpg'),
+    // 'disease-4': require('../../assets/images/pests/disease-4.jpg'),
   };
   return imageMap[pestId];
 };

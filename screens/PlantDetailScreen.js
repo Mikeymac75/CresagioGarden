@@ -224,6 +224,8 @@ const PlantDetailScreen = ({ route, navigation }) => {
 
   const wateringTask = plant?.careTasks?.find(t => t.name === 'Watering');
 
+  const plantImageSource = getPlantImage(plant.id);
+
   return (
     <>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -249,7 +251,9 @@ const PlantDetailScreen = ({ route, navigation }) => {
       )}
 
       <View style={styles.card}>
-        <Image source={getPlantImage(plant.id)} style={styles.plantImage} />
+        {plantImageSource && (
+          <Image source={plantImageSource} style={styles.plantImage} />
+        )}
         <Text style={styles.title}>{plant.name}</Text>
         <Text style={styles.category}>{plant.category}</Text>
         <Text style={styles.description}>{plant.description}</Text>
