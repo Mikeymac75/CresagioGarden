@@ -70,15 +70,11 @@ export const getPestImage = (pestId) => {
   // When pest/disease images are added to assets/images/pests,
   // uncomment this map and add the appropriate entries.
   const imageMap = {
-    // 'pest-1': require('../../assets/images/pests/pest-1.jpg'),
-    // 'pest-2': require('../../assets/images/pests/pest-2.jpg'),
-    // 'pest-3': require('../../assets/images/pests/pest-3.jpg'),
-    // 'pest-4': require('../../assets/images/pests/pest-4.jpg'),
-    // 'pest-5': require('../../assets/images/pests/pest-5.jpg'),
-    // 'disease-1': require('../../assets/images/pests/disease-1.jpg'),
-    // 'disease-2': require('../../assets/images/pests/disease-2.jpg'),
-    // 'disease-3': require('../../assets/images/pests/disease-3.jpg'),
-    // 'disease-4': require('../../assets/images/pests/disease-4.jpg'),
+    'pest-1': require('../../assets/images/pests/pest-1.jpg'),
+    'pest-2': require('../../assets/images/pests/pest-2.jpg'),
+    'pest-3': require('../../assets/images/pests/pest-3.jpg'),
+    'pest-4': require('../../assets/images/pests/pest-4.jpg'),
+    'disease-1': require('../../assets/images/pests/disease-1.jpg'),
   };
   return imageMap[pestId];
 };
