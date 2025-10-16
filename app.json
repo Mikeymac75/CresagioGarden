@@ -19,15 +19,10 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.CresagioGarden.cresagiogarden"
+      "package": "com.mikeymac75.cresagiogarden"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "2ac1e671-8c10-4542-8096-dacebe06e8f6"
-      }
     },
     "plugins": [
       "expo-secure-store",
