@@ -26,6 +26,7 @@ const useHomeScreenData = (navigation) => {
   const [plantCount, setPlantCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [weatherData, setWeatherData] = useState(null);
+  const [weatherError, setWeatherError] = useState(null);
 
   const loadData = useCallback(async () => {
     setLoading(true);
@@ -77,12 +78,17 @@ const useHomeScreenData = (navigation) => {
           }
         }
 
-        const weatherPromise = (parsedUserData.latitude && parsedUserData.longitude)
-          ? getWeatherForecast(parsedUserData.latitude, parsedUserData.longitude)
-          : Promise.resolve(null);
+        let weather = null;
+        if (parsedUserData.latitude && parsedUserData.longitude) {
+          try {
+            weather = await getWeatherForecast(parsedUserData.latitude, parsedUserData.longitude);
+          } catch (error) {
+            console.error('Weather service failed:', error);
+            setWeatherError('Could not load weather data.');
+          }
+        }
 
-        const [weather, plantable, rawTasks, seasonal, allPlants] = await Promise.all([
-          weatherPromise,
+        const [plantable, rawTasks, seasonal, allPlants] = await Promise.all([
           getPlantableNow(parsedUserData.firstFrostDate),
           getUpcomingTasksForMyGarden(myGarden, parsedUserData.lastFrostDate, parsedUserData.firstFrostDate, parsedUserData.latitude, parsedUserData.longitude),
           getSeasonalTasks(parsedUserData.lastFrostDate, parsedUserData.firstFrostDate),
@@ -294,6 +300,7 @@ const useHomeScreenData = (navigation) => {
     plantCount,
     loading,
     weatherData,
+    weatherError,
     toggleTask,
     handleChangeLocation,
     loadData,
