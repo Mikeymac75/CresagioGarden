@@ -2,7 +2,17 @@ import React from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 
-const WeatherWidget = React.memo(({ weatherData, locationAvailable, locationName, highTemp, lowTemp }) => {
+const WeatherWidget = React.memo(({ weatherData, weatherError, locationAvailable, locationName, highTemp, lowTemp }) => {
+  if (weatherError) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Local Weather</Text>
+        <Text style={styles.infoText}>
+          {weatherError}
+        </Text>
+      </View>
+    );
+  }
   // If location is not available, show a helpful message.
   if (!locationAvailable) {
     return (
@@ -65,6 +75,7 @@ WeatherWidget.propTypes = {
       todayHigh: PropTypes.number,
       todayLow: PropTypes.number,
     }),
+    weatherError: PropTypes.string,
     locationAvailable: PropTypes.bool.isRequired,
     locationName: PropTypes.string,
     highTemp: PropTypes.number,

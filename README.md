@@ -1,6 +1,6 @@
-# Garden Command
+# Cresagio Garden
 
-Garden Command is a mobile application designed to help gardeners of all levels plan, manage, and track their gardening activities. It provides personalized planting schedules, task reminders, and a wealth of information about various plants, all tailored to the user's local climate.
+Cresagio Garden is a mobile application designed to help gardeners of all levels plan, manage, and track their gardening activities. It provides personalized planting schedules, task reminders, and a wealth of information about various plants, all tailored to the user's local climate.
 
 ## Key Features
 
@@ -64,8 +64,8 @@ This project uses `expo-dev-client`, which requires a custom development client 
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/garden-command.git
-    cd garden-command
+    git clone [https://github.com/your-username/cresagio-garden.git](https://github.com/your-username/cresagio-garden.git)
+    cd cresagio-garden
     ```
 
 2.  **Install dependencies:**
@@ -74,9 +74,7 @@ This project uses `expo-dev-client`, which requires a custom development client 
     ```
 
 3.  **Build the development client:**
-
     Build the development client for your target platform. This command will produce a custom build of the app that includes `expo-dev-client`.
-
     ```bash
     # Build for iOS or Android
     npx eas build --profile development --platform [ios|android]
@@ -84,9 +82,7 @@ This project uses `expo-dev-client`, which requires a custom development client 
     Once the build is complete, download and install the app onto your physical device or simulator/emulator.
 
 4.  **Start the development server:**
-
     With the development client installed and running, start the Metro server.
-
     ```bash
     npx expo start --dev-client
     ```
@@ -133,7 +129,6 @@ The app's navigation is built using React Navigation and is organized as follows
 │   ├── constants.js    # Application-wide constants
 ├── utils/              # General utility functions
 │   ├── SecureStorage.js # Wrapper for Expo's SecureStore
-│   ├── scheduleGenerator.js
 │   └── validationSchemas.js # Yup validation schemas
 ├── App.js              # Main app component and navigation setup
 ├── package.json        # Project dependencies and scripts

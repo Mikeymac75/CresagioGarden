@@ -6,6 +6,16 @@ export const DateUtils = {
    * Creates a date from a string with proper timezone handling
    */
   createDate: (dateString) => {
+    // ISO 8601 format regex
+    const iso8601Regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$/;
+
+    if (typeof dateString === 'string' && iso8601Regex.test(dateString)) {
+      const isoDate = new Date(dateString);
+      if (!isNaN(isoDate.getTime())) {
+        return isoDate;
+      }
+    }
+
     // Attempt to parse the date string
     const parsedDate = new Date(dateString);
 

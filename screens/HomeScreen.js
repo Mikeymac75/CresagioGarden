@@ -128,6 +128,7 @@ const HomeScreen = ({ navigation }) => {
 
       <WeatherWidget
         weatherData={weatherData}
+        weatherError={weatherError}
         locationAvailable={!!(userData?.latitude && userData?.longitude)}
         locationName={userData?.locationName}
         highTemp={weatherData?.todayHigh}

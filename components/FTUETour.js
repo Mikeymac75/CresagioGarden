@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const tourSteps = [
     {
-      title: 'Welcome to Garden Command! 🌱',
+      title: 'Welcome to Cresagio Garden! 🌱',
       text: 'This quick tour will guide you through the first steps to get your digital garden growing.',
     },
     {
