@@ -3,7 +3,6 @@
     "name": "Cresagio Garden",
     "slug": "cresagio-garden",
     "version": "1.0.0",
-    "comment": "Forcing new build configuration", //  <-- ADD THIS LINE
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -20,15 +19,25 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.mikeymac75.cresagiogarden",
-      "targetSdkVersion": 35
+      "package": "com.mikeymac75.cresagiogarden"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-secure-store",
-      "expo-font"
+      "expo-font",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 34,
+            "targetSdkVersion": 34,
+            "minSdkVersion": 23,
+            "buildToolsVersion": "34.0.0"
+          }
+        }
+      ]
     ],
     "extra": {
       "eas": {
