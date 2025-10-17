@@ -19,7 +19,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.mikeymac75.cresagiogarden"
+      "package": "com.mikeymac75.cresagiogarden",
+      "targetSdkVersion": 35
     },
     "web": {
       "favicon": "./assets/favicon.png"
