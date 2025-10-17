@@ -3,6 +3,7 @@
     "name": "Cresagio Garden",
     "slug": "cresagio-garden",
     "version": "1.0.0",
+    "comment": "Forcing new build configuration", //  <-- ADD THIS LINE
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -28,6 +29,11 @@
     "plugins": [
       "expo-secure-store",
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "4beb6da2-7c0b-4e5f-b7c2-61ee8a6f9ca9"
+      }
+    }
   }
 }
