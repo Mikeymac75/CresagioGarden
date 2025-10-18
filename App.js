@@ -140,12 +140,18 @@ export default function App() {
         const ftueCompleteString = await getSecureItem('ftueComplete');
 
         if (userDataString) {
-          const userData = JSON.parse(userDataString);
-          if (userData.setupComplete) {
-            route = 'MainApp'; // Go to main app if setup is complete
-            if (ftueCompleteString !== 'true') {
-              showTour = true; // Show tour if not yet completed
+          try {
+            const userData = JSON.parse(userDataString);
+            if (userData.setupComplete) {
+              route = 'MainApp'; // Go to main app if setup is complete
+              if (ftueCompleteString !== 'true') {
+                showTour = true; // Show tour if not yet completed
+              }
             }
+          } catch (e) {
+            console.error('Failed to parse user data, redirecting to Setup.', e);
+            route = 'Setup';
+            showTour = false;
           }
         }
         // If userDataString is null or setupComplete is false, route remains 'Setup'

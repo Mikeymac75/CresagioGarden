@@ -72,8 +72,12 @@ const HomeScreen = ({ navigation }) => {
     });
   };
 
+  const safeUpcomingTasks = Array.isArray(upcomingTasks) ? upcomingTasks : [];
+  const safeOverdueTasks = Array.isArray(overdueTasks) ? overdueTasks : [];
+  const safePlantableNow = Array.isArray(plantableNow) ? plantableNow : [];
+
   const groupedTasks = useMemo(() => {
-    return upcomingTasks
+    return safeUpcomingTasks
       .reduce((acc, task) => {
         const day = formatDate(task.date);
         if (!acc[day]) {
@@ -152,17 +156,17 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
         <View style={styles.statDivider} />
         <View style={styles.statItem}>
-          <Text style={styles.statNumber}>{upcomingTasks.length}</Text>
+          <Text style={styles.statNumber}>{safeUpcomingTasks.length}</Text>
           <Text style={styles.statLabel}>Tasks This Week</Text>
         </View>
       </View>
 
-      {overdueTasks.length > 0 && (
+      {safeOverdueTasks.length > 0 && (
         <View style={styles.section}>
           <Text style={[styles.sectionTitle, { color: '#D32F2F' }]}>
             🚩 Action Needed
           </Text>
-          {overdueTasks.map(item => {
+          {safeOverdueTasks.map(item => {
             const isCompleted = completedTasks.has(item.id);
             const daysOverdue = Math.floor((new Date() - new Date(item.date)) / (1000 * 60 * 60 * 24));
 
@@ -190,7 +194,7 @@ const HomeScreen = ({ navigation }) => {
 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>🗓️ This Week at a Glance</Text>
-        {upcomingTasks.length > 0 ? (
+        {safeUpcomingTasks.length > 0 ? (
           Object.entries(groupedTasks).map(([day, tasks]) => (
             <View key={day} style={styles.dayGroup}>
               <TouchableOpacity
@@ -207,7 +211,7 @@ const HomeScreen = ({ navigation }) => {
               {expandedDays.includes(day) && tasks.map((item) => {
                 const isCompleted = completedTasks.has(item.id);
                 const isAlert = item.type === 'alert';
-                const rainAlert = upcomingTasks.find(t => t.modifiesTasks === 'water' && formatDate(t.date) === 'Today');
+                const rainAlert = safeUpcomingTasks.find(t => t.modifiesTasks === 'water' && formatDate(t.date) === 'Today');
                 const isSkipped = item.type === 'water' && rainAlert && formatDate(item.date) === 'Today';
                 const canToggle = !isAlert && !isSkipped;
 
@@ -250,8 +254,8 @@ const HomeScreen = ({ navigation }) => {
 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>🌱 What You Can Still Plant</Text>
-        {plantableNow.length > 0 ? (
-          plantableNow.slice(0, 3).map(plant => (
+        {safePlantableNow.length > 0 ? (
+          safePlantableNow.slice(0, 3).map(plant => (
             <TouchableOpacity
               key={plant.id}
               style={styles.plantCard}
