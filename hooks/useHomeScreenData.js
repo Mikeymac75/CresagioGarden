@@ -160,6 +160,11 @@ const useHomeScreenData = (navigation) => {
 
         setUpcomingTasks(upcoming.sort((a, b) => new Date(a.date) - new Date(b.date)));
         setOverdueTasks(overdue.sort((a, b) => new Date(a.date) - new Date(b.date)));
+      } else {
+        // If no user data, the user needs to go through setup.
+        console.log('No user data found, redirecting to Setup screen.');
+        navigation.replace('Setup');
+        return; // Stop further execution in this function
       }
     } catch (error) {
       console.error('Error loading data:', error);

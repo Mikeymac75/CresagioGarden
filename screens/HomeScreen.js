@@ -92,7 +92,7 @@ const HomeScreen = ({ navigation }) => {
     );
   };
 
-  if (loading) {
+  if (loading || !userData) {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.header}>
