@@ -37,12 +37,19 @@
             "buildToolsVersion": "35.0.0"
           }
         }
-      ]
+      ],
+      "expo-updates"
     ],
     "extra": {
       "eas": {
         "projectId": "4beb6da2-7c0b-4e5f-b7c2-61ee8a6f9ca9"
       }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/4beb6da2-7c0b-4e5f-b7c2-61ee8a6f9ca9"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
     }
   }
 }

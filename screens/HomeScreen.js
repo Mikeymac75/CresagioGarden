@@ -42,6 +42,7 @@ const HomeScreen = ({ navigation }) => {
     plantCount,
     loading,
     weatherData,
+    weatherError,
     toggleTask,
     snoozeTask,
     handleChangeLocation,
