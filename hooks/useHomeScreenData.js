@@ -132,6 +132,10 @@ const useHomeScreenData = (navigation) => {
         const overdue = [];
 
         tasksWithSnooze.forEach(task => {
+          if (!task.date || isNaN(new Date(task.date))) {
+            console.warn('Skipping task with invalid date:', task);
+            return;
+          }
           const taskDate = new Date(task.date);
           taskDate.setHours(0, 0, 0, 0);
           const isCompleted = loadedCompletedTasks.has(task.id);
