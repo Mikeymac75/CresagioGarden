@@ -78,14 +78,10 @@ const useHomeScreenData = (navigation) => {
           }
         }
 
-        let weather = null;
+        // Fetch weather data but don't let it block other data fetching.
+        let weatherResult = null;
         if (parsedUserData.latitude && parsedUserData.longitude) {
-          try {
-            weather = await getWeatherForecast(parsedUserData.latitude, parsedUserData.longitude);
-          } catch (error) {
-            console.error('Weather service failed:', error);
-            setWeatherError('Could not load weather data.');
-          }
+          weatherResult = await getWeatherForecast(parsedUserData.latitude, parsedUserData.longitude);
         }
 
         const [plantable, rawTasks, seasonal, allPlants] = await Promise.all([
@@ -95,14 +91,22 @@ const useHomeScreenData = (navigation) => {
           loadPlants(),
         ]);
 
-        if (weather) setWeatherData(weather);
         setPlantableNow(plantable);
 
         let allUpcomingItems = [...rawTasks, ...seasonal];
 
-        if (weather) {
-          const alerts = generateDynamicAlerts(weather, myGarden, allPlants);
+        // Now handle the weather result
+        if (weatherResult && !weatherResult.error) {
+          setWeatherData(weatherResult);
+          setWeatherError(null); // Clear previous errors
+          const alerts = generateDynamicAlerts(weatherResult, myGarden, allPlants);
           allUpcomingItems = [...alerts, ...allUpcomingItems];
+        } else {
+          setWeatherData(null);
+          setWeatherError('Could not load weather data.');
+          if (weatherResult) {
+            console.error("Weather service failed:", weatherResult.error);
+          }
         }
 
         const tasksWithSnooze = allUpcomingItems.map(task => {
