@@ -60,6 +60,10 @@ const HomeScreen = ({ navigation }) => {
   };
 
   const formatDate = (dateString) => {
+    if (!dateString || isNaN(new Date(dateString))) {
+      // Return a default or error string for invalid dates
+      return 'Invalid Date';
+    }
     const date = new Date(dateString);
     const today = new Date();
     const tomorrow = new Date();
