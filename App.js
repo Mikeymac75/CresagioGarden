@@ -134,24 +134,24 @@ export default function App() {
   useEffect(() => {
     const checkSetup = async () => {
       let route = 'Setup'; // Default route
-      let showTour = false;
+      // let showTour = false;
       try {
         const userDataString = await getSecureItem('userData');
-        const ftueCompleteString = await getSecureItem('ftueComplete');
+        // const ftueCompleteString = await getSecureItem('ftueComplete');
 
         if (userDataString) {
           try {
             const userData = JSON.parse(userDataString);
             if (userData.setupComplete) {
               route = 'MainApp'; // Go to main app if setup is complete
-              if (ftueCompleteString !== 'true') {
-                showTour = true; // Show tour if not yet completed
-              }
+              // if (ftueCompleteString !== 'true') {
+              //   showTour = true; // Show tour if not yet completed
+              // }
             }
           } catch (e) {
             console.error('Failed to parse user data, redirecting to Setup.', e);
             route = 'Setup';
-            showTour = false;
+            // showTour = false;
           }
         }
         // If userDataString is null or setupComplete is false, route remains 'Setup'
@@ -159,11 +159,11 @@ export default function App() {
         console.error('Error checking setup status:', error);
         // Fallback to Setup screen on any error during check
         route = 'Setup';
-        showTour = false; // Don't show tour if setup check failed
+        // showTour = false; // Don't show tour if setup check failed
       } finally {
         // Ensure state is always updated
         setInitialRoute(route);
-        setShowFtueTour(showTour);
+        // setShowFtueTour(showTour);
       }
     };
 
