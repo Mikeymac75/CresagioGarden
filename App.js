@@ -214,7 +214,7 @@ export default function App() {
           />
         </RootStack.Navigator>
       </NavigationContainer>
-      <FTUETour isVisible={showFtueTour} onFinish={handleFtueFinish} />
+      {/* <FTUETour isVisible={showFtueTour} onFinish={handleFtueFinish} /> */}
     </>
   );
 }
