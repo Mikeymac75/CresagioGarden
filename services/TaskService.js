@@ -260,11 +260,11 @@ export const getTasksForMonth = async (lastFrostDate, monthIndex) => {
 /**
  * Enhanced upcoming tasks function with better organization
  */
-export const getUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, firstFrostDate, latitude, longitude) => {
+export const getUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, firstFrostDate, weatherData) => {
   if (!Array.isArray(myGarden)) return [];
 
   try {
-    const allTasks = await getAllUpcomingTasksForMyGarden(myGarden, lastFrostDate, firstFrostDate, latitude, longitude);
+    const allTasks = await getAllUpcomingTasksForMyGarden(myGarden, lastFrostDate, firstFrostDate, weatherData);
     return allTasks;
   } catch (error) {
     console.error('Error generating upcoming tasks:', error);
@@ -275,7 +275,7 @@ export const getUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, first
 /**
  * Enhanced all tasks function with modular task generation
  */
-export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, firstFrostDate, latitude, longitude) => {
+export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, firstFrostDate, weatherData) => {
   if (!Array.isArray(myGarden) || myGarden.length === 0) {
     return [];
   }
@@ -284,7 +284,6 @@ export const getAllUpcomingTasksForMyGarden = async (myGarden, lastFrostDate, fi
     const firstFrost = firstFrostDate ? DateUtils.createDate(firstFrostDate) : null;
     let allTasks = [];
     const allPlants = await loadPlants();
-    const weatherData = await getWeatherForecast(latitude, longitude);
     const wateringPrefs = await getWateringPreferences();
 
     myGarden.forEach(gardenEntry => {
