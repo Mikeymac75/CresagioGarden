@@ -196,9 +196,27 @@ export const getWeatherForecast = async (latitude, longitude) => {
   }
 
   console.error("Weather forecast error after all retries:", lastError);
+  return getFallbackWeatherData();
+};
+
+/**
+ * Provides a default weather object when the live service fails.
+ * This ensures the app can continue to function in a degraded state.
+ */
+export const getFallbackWeatherData = () => {
+  console.log("Using fallback weather data.");
   return {
-    error: `Failed to fetch weather data: ${lastError.message}`,
-    fallback: true
+    currentWeather: {
+      temperature: 15, // A neutral temperature
+      symbol_code: 'cloudy',
+    },
+    hourlyForecast: Array(8).fill({ temperature: 15 }),
+    alerts: [],
+    hardFreezeWarning: false,
+    todayHigh: 20,
+    todayLow: 10,
+    error: "Weather data is currently unavailable. Using approximated data.",
+    fallback: true,
   };
 };
 

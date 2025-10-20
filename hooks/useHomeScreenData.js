@@ -96,17 +96,19 @@ const useHomeScreenData = (navigation) => {
         let allUpcomingItems = [...rawTasks, ...seasonal];
 
         // Now handle the weather result
-        if (weatherResult && !weatherResult.error) {
-          setWeatherData(weatherResult);
-          setWeatherError(null); // Clear previous errors
-          const alerts = generateDynamicAlerts(weatherResult, myGarden, allPlants);
-          allUpcomingItems = [...alerts, ...allUpcomingItems];
+        if (weatherResult) {
+          if (weatherResult.fallback) {
+            setWeatherData(weatherResult);
+            setWeatherError(weatherResult.error);
+          } else {
+            setWeatherData(weatherResult);
+            setWeatherError(null); // Clear previous errors
+            const alerts = generateDynamicAlerts(weatherResult, myGarden, allPlants);
+            allUpcomingItems = [...alerts, ...allUpcomingItems];
+          }
         } else {
           setWeatherData(null);
           setWeatherError('Could not load weather data.');
-          if (weatherResult) {
-            console.error("Weather service failed:", weatherResult.error);
-          }
         }
 
         const tasksWithSnooze = allUpcomingItems.map(task => {
