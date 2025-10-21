@@ -21,6 +21,7 @@ const SettingsScreen = ({ navigation }) => {
     setTempUnit(unit);
   };
 
+  /* // -------- BACKUP & RESTORE SECTION (Commented Out) --------
   const handleBackup = async () => {
     try {
         const myGardenString = await getSecureItem('myGarden');
@@ -103,6 +104,7 @@ const SettingsScreen = ({ navigation }) => {
         ]
     );
   };
+  // -------- END BACKUP & RESTORE SECTION -------- */
 
   const handleRestorePurchases = () => {
     Alert.alert('Restore Purchases', 'Contacting the App Store... Premium status successfully restored!');
@@ -134,6 +136,7 @@ const SettingsScreen = ({ navigation }) => {
         </View>
       </View>
 
+      {/* -------- BACKUP & RESTORE SECTION (Commented Out UI) --------
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Backup & Restore</Text>
         <TouchableOpacity style={styles.row} onPress={handleBackup}>
@@ -144,6 +147,15 @@ const SettingsScreen = ({ navigation }) => {
           <Ionicons name="cloud-download-outline" size={24} color="#4CAF50" />
           <Text style={styles.rowText}>Restore from Backup</Text>
         </TouchableOpacity>
+        <TouchableOpacity style={styles.row} onPress={handleRestorePurchases}>
+          <Ionicons name="receipt-outline" size={24} color="#4CAF50" />
+          <Text style={styles.rowText}>Restore Purchases</Text>
+        </TouchableOpacity>
+      </View>
+      -------- END BACKUP & RESTORE SECTION -------- */}
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Purchases</Text>
         <TouchableOpacity style={styles.row} onPress={handleRestorePurchases}>
           <Ionicons name="receipt-outline" size={24} color="#4CAF50" />
           <Text style={styles.rowText}>Restore Purchases</Text>
@@ -192,6 +204,18 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
+  },
+  // Make sure last row doesn't have a border
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 12,
+    borderBottomWidth: 1, // Add border by default
+    borderBottomColor: '#eee',
+  },
+  // Add a style to remove the border for the last item in a section if needed
+  lastRow: {
+    borderBottomWidth: 0,
   },
   rowText: {
     fontSize: 18,
