@@ -108,7 +108,7 @@
     "temperature": {
       "optimalLowF": 50,
       "optimalHighF": 75,
-      "absoluteMinF": 32,
+      "absoluteMinF": 28,
       "notes": "Very fast-growing cool-season crop. Becomes woody and spicy (hot) if left too long or grown in heat."
     },
     "environmentalAlerts": [
