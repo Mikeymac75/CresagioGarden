@@ -18,7 +18,7 @@ import AllTasksCalendarScreen from './screens/AllTasksCalendarScreen';
 import PlantDetailScreen from './screens/PlantDetailScreen';
 import PestDiseaseLibraryScreen from './screens/PestDiseaseLibraryScreen';
 import PestDiseaseDetailScreen from './screens/PestDiseaseDetailScreen';
-import UpgradeScreen from './screens/UpgradeScreen';
+import SupportScreen from './screens/SupportScreen';
 import AppFaqScreen from './screens/AppFaqScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import { ActivityIndicator, View } from 'react-native';
@@ -59,8 +59,8 @@ function GardenStackNavigator() {
         options={{ title: 'App FAQ' }}
       />
       <GardenStack.Screen
-        name="Upgrade"
-        component={UpgradeScreen}
+        name="Support"
+        component={SupportScreen}
         options={{ headerShown: false }}
       />
       <GardenStack.Screen

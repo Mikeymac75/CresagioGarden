@@ -30,7 +30,7 @@ import { loadPlantDetails } from '../services/PlantService';
 
 export default function MyGardenScreen({ navigation }) {
   const [myGarden, setMyGarden] = useState([]);
-  const [isPremium, setIsPremium] = useState(false);
+
   const { availablePlants, allPlants } = useSeedBank();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modalStep, setModalStep] = useState('list'); // 'list', 'date', 'name'
@@ -42,12 +42,8 @@ export default function MyGardenScreen({ navigation }) {
     React.useCallback(() => {
       const loadData = async () => {
         try {
-          const [garden, premiumStatus] = await Promise.all([
-            getSecureItem('myGarden'),
-            AsyncStorage.getItem('isPremium'),
-          ]);
+          const garden = await getSecureItem('myGarden');
           setMyGarden(garden ? JSON.parse(garden) : []);
-          setIsPremium(premiumStatus === 'true');
         } catch (error) {
           console.error('Error loading garden data:', error);
         }
@@ -58,16 +54,12 @@ export default function MyGardenScreen({ navigation }) {
 
   useEffect(() => {
     const activePlants = myGarden.filter(p => p.status !== 'harvested').length;
-    const limit = isPremium ? '∞' : '10';
     navigation.setOptions({
-      // Make the header title a button
       headerTitle: () => (
-        <TouchableOpacity onPress={() => navigation.navigate('Upgrade')}>
-          <Text style={styles.headerTitleText}>My Garden ({activePlants}/{limit})</Text>
-        </TouchableOpacity>
+        <Text style={styles.headerTitleText}>My Garden ({activePlants})</Text>
       ),
     });
-  }, [myGarden, navigation, isPremium]);
+  }, [myGarden, navigation]);
 
   const loadMyGarden = async () => {
     try {
@@ -94,17 +86,6 @@ export default function MyGardenScreen({ navigation }) {
   };
   
   const addPlant = async () => {
-    if (!isPremium && myGarden.filter(p => p.status !== 'harvested').length >= 10) {
-      Alert.alert(
-        'Garden Full!',
-        'Upgrade to Pro for more plant slots.',
-        [
-          { text: 'Cancel', style: 'cancel' },
-          { text: 'Upgrade', onPress: () => navigation.navigate('Upgrade') },
-        ]
-      );
-      return;
-    }
     const newPlantEntry = {
       id: Date.now().toString(),
       plantId: selectedPlant.id,
@@ -198,23 +179,14 @@ export default function MyGardenScreen({ navigation }) {
         keyExtractor={item => item.id.toString()}
         contentContainerStyle={styles.content}
         ListHeaderComponent={() => {
-          const limitReached = !isPremium && activeGarden.length >= 10;
           return (
           <View style={styles.headerButtons}>
             <TouchableOpacity
-              style={[styles.addButton, limitReached && styles.upgradeButton]}
-              onPress={() => {
-                if (limitReached) {
-                  navigation.navigate('Upgrade');
-                } else {
-                  setIsModalVisible(true);
-                }
-              }}
+              style={styles.addButton}
+              onPress={() => setIsModalVisible(true)}
             >
-              <Ionicons name={limitReached ? "star" : "add"} size={20} color="white" />
-              <Text style={styles.addButtonText}>
-                {limitReached ? 'Upgrade to Add More Plants' : 'Add New Plant'}
-              </Text>
+              <Ionicons name="add" size={20} color="white" />
+              <Text style={styles.addButtonText}>Add New Plant</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.seedBankButton}
@@ -426,9 +398,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 8,
   },
-  upgradeButton: {
-    backgroundColor: '#FFC107', // A nice gold color for upgrades
-  },
+
   disabledText: { color: '#a5d6a7' },
   emptyState: { alignItems: 'center', paddingVertical: 60 },
   emptyStateTitle: {

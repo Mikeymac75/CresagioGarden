@@ -19,25 +19,8 @@ export default function CustomPlantScreen({ navigation }) {
   const [wateringFrequencyDays, setWateringFrequencyDays] = useState('');
 
   const handleSave = async () => {
-    // --- THE FIX: Check for existing custom plants ---
-    const [existingPlantsString, isPremium] = await Promise.all([
-      AsyncStorage.getItem('userCustomPlants'),
-      AsyncStorage.getItem('isPremium'),
-    ]);
+    const existingPlantsString = await AsyncStorage.getItem('userCustomPlants');
     const existingPlants = existingPlantsString ? JSON.parse(existingPlantsString) : [];
-
-    if (isPremium !== 'true' && existingPlants.length >= 1) {
-      Alert.alert(
-        'Limit Reached',
-        'You can only create one custom plant in the free version. Please upgrade to Pro for unlimited custom plants!',
-        [
-          { text: 'Cancel', style: 'cancel' },
-          { text: 'Upgrade', onPress: () => navigation.navigate('Upgrade') },
-        ]
-      );
-      return;
-    }
-    // --- END FIX ---
 
     if (!name.trim() || !daysToMaturity.trim() || !wateringFrequencyDays.trim()) {
       Alert.alert('Error', 'Please fill out all fields.');

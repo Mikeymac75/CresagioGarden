@@ -106,9 +106,7 @@ const SettingsScreen = ({ navigation }) => {
   };
   // -------- END BACKUP & RESTORE SECTION -------- */
 
-  const handleRestorePurchases = () => {
-    Alert.alert('Restore Purchases', 'Contacting the App Store... Premium status successfully restored!');
-  };
+
 
   return (
     <ScrollView style={styles.container}>
@@ -147,24 +145,20 @@ const SettingsScreen = ({ navigation }) => {
           <Ionicons name="cloud-download-outline" size={24} color="#4CAF50" />
           <Text style={styles.rowText}>Restore from Backup</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.row} onPress={handleRestorePurchases}>
-          <Ionicons name="receipt-outline" size={24} color="#4CAF50" />
-          <Text style={styles.rowText}>Restore Purchases</Text>
-        </TouchableOpacity>
       </View>
       -------- END BACKUP & RESTORE SECTION -------- */}
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Purchases</Text>
-        <TouchableOpacity style={styles.row} onPress={handleRestorePurchases}>
-          <Ionicons name="receipt-outline" size={24} color="#4CAF50" />
-          <Text style={styles.rowText}>Restore Purchases</Text>
+        <Text style={styles.sectionTitle}>Support</Text>
+        <TouchableOpacity style={styles.row} onPress={() => navigation.navigate('Support')}>
+          <Ionicons name="heart-outline" size={24} color="#E91E63" />
+          <Text style={styles.rowText}>Support the App</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Community</Text>
-        <TouchableOpacity style={styles.row} onPress={() => Linking.openURL('https://discord.gg/your-invite-code-here')}>
+        <TouchableOpacity style={styles.row} onPress={() => Linking.openURL('https://discord.gg/7TMKKVNUsF')}>
           <Ionicons name="logo-discord" size={24} color="#4CAF50" />
           <Text style={styles.rowText}>Join our Discord Community</Text>
         </TouchableOpacity>

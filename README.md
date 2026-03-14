@@ -38,15 +38,22 @@ The application is organized into four main tabs, each with a distinct set of fe
 *   **Digital Diary:** Document your gardening journey, take notes, and log your successes and challenges.
 *   **Easy Entry Management:** Create, view, and manage your journal entries.
 
-### Freemium Model
+### Free & Open Source
 
-*   **Free Tier:** Enjoy core features like adding up to 10 plants, tracking tasks, and accessing the plant database.
-*   **Premium Upgrade:** Unlock unlimited plants and gain access to exclusive future features.
+Cresagio Garden is completely free and open source. All features are fully unlocked — no paywalls, no subscriptions, no ads.
 
-### Core Features
+If you find the app useful, consider [buying me a coffee](https://buymeacoffee.com/The.Macs) ☕
 
-*   **Local Notifications:** Receive timely reminders for important gardening tasks like watering, fertilizing, and harvesting.
-*   **Secure Storage:** Your garden data is stored securely on your device.
+### Contributing
+
+Contributions are welcome! Feel free to:
+*   Report bugs or request features via [GitHub Issues](https://github.com/Mikeymac75/CresagioGarden/issues)
+*   Submit pull requests
+*   Join our [Discord community](https://discord.gg/7TMKKVNUsF)
+
+### License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ## Getting Started
 

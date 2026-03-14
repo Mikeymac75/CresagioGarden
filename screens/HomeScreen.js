@@ -147,15 +147,9 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.statsCard}>
         <TouchableOpacity
           style={styles.statItem}
-          onPress={() => {
-            if (plantCount >= 10) {
-              navigation.navigate('Upgrade');
-            } else {
-              navigation.navigate('MyGarden');
-            }
-          }}
+          onPress={() => navigation.navigate('MyGarden')}
         >
-          <Text style={styles.statNumber}>{plantCount}/10</Text>
+          <Text style={styles.statNumber}>{plantCount}</Text>
           <Text style={styles.statLabel}>Plants in Garden</Text>
         </TouchableOpacity>
         <View style={styles.statDivider} />
