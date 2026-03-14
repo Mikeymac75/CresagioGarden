@@ -16,6 +16,10 @@ Notifications.setNotificationHandler({
  * @returns {Promise<boolean>} Whether permission was granted.
  */
 export const requestNotificationPermissions = async () => {
+  if (Platform.OS === 'web') {
+    return false; // Skip push notifications on web to prevent setup crashes
+  }
+
   const { status: existingStatus } = await Notifications.getPermissionsAsync();
   let finalStatus = existingStatus;
 
