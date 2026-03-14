@@ -4,7 +4,7 @@ Cresagio Garden is a free, open-source mobile application designed to help garde
 
 ## Try It
 
-🌐 **Web App:** [cresagio.com](https://cresagio.com) — works on any device, add to your home screen for an app-like experience
+🌐 **Web App:** [garden.cresagio.com](https://garden.cresagio.com) — works on any device, add to your home screen for an app-like experience
 
 📱 **Android:** [Google Play Store](https://play.google.com/store/apps/details?id=com.mikeymac75.cresagiogarden)
 
