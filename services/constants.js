@@ -6,7 +6,7 @@ export const CONFIG = {
   HEAVY_RAIN_THRESHOLD_MM: 10,
   HEATWAVE_TEMP_CELSIUS: 30,
   HARD_FREEZE_TEMP_CELSIUS: -2,
-  USER_AGENT: "GardenCommand/1.0 https://github.com/your-username/garden-command",
+  USER_AGENT: "CresagioGarden/1.0 https://github.com/Mikeymac75/CresagioGarden",
   WEATHER_API_BASE_URL: "https://api.met.no/weatherapi/locationforecast/2.0/compact",
   WEATHER_API_TIMEOUT: 15000, // 15 seconds
   WEATHER_API_MAX_RETRIES: 3,
