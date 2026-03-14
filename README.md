@@ -1,6 +1,12 @@
 # Cresagio Garden
 
-Cresagio Garden is a mobile application designed to help gardeners of all levels plan, manage, and track their gardening activities. It provides personalized planting schedules, task reminders, and a wealth of information about various plants, all tailored to the user's local climate.
+Cresagio Garden is a free, open-source mobile application designed to help gardeners of all levels plan, manage, and track their gardening activities. It provides personalized planting schedules, task reminders, and a wealth of information about various plants, all tailored to the user's local climate.
+
+## Try It
+
+🌐 **Web App:** [cresagio.com](https://cresagio.com) — works on any device, add to your home screen for an app-like experience
+
+📱 **Android:** [Google Play Store](https://play.google.com/store/apps/details?id=com.mikeymac75.cresagiogarden)
 
 ## Key Features
 
@@ -71,8 +77,8 @@ This project uses `expo-dev-client`, which requires a custom development client 
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/cresagio-garden.git](https://github.com/your-username/cresagio-garden.git)
-    cd cresagio-garden
+    git clone https://github.com/Mikeymac75/CresagioGarden.git
+    cd CresagioGarden
     ```
 
 2.  **Install dependencies:**
